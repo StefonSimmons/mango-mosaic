@@ -8,7 +8,7 @@
 
 User.create(
   email: 'ashleam2013@gmail.com',
-  password_digest: ENV["admin_password"]
+  password: ENV["admin_password"]
 )
 
 Post.create(
