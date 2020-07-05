@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <h1>Mangooooooos in the front</h1>
+      <h1>App....Mangooooooos in the front</h1>
     </>
   )
 }
