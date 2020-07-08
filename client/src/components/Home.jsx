@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 const HomeImg = styled.img`
   width: 500px;
   height: 500px;
+  padding-left: 15px;
 `
 const ContentWrapper = styled.div`
   width: 450px;
@@ -25,6 +26,7 @@ const ContentTitle = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  padding-left: 15px;
 `
 const Content = styled.p`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -46,8 +48,8 @@ const GreenSquare = styled.div`
   width: 500px;
   height: 500px;
   position: relative;
-  top: -8%;
-  left: -8%;
+  top: -9%;
+  left: -5%;
   opacity: .2;
 `
 

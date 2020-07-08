@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -34,6 +35,10 @@ const Nav = styled.nav`
 const List = styled.ul`
   display: flex;
 `
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
 const NavItem = styled.li`
   padding-left: 69px;
 `
@@ -49,8 +54,8 @@ export default function Header() {
       </div>
       <Nav>
         <List>
-          <NavItem>Home</NavItem>
-          <NavItem>Blog</NavItem>
+          <NavLink to='/'><NavItem>Home</NavItem></NavLink>
+          <NavLink to='/blog'><NavItem>Blog</NavItem></NavLink>
           <NavItem>About</NavItem>
           <NavItem>Contact</NavItem>
         </List>
