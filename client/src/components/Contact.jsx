@@ -54,9 +54,9 @@ export default function Contact() {
           <Content>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>
           <ContentTitle2>Social</ContentTitle2>
           <SocialLinks>
-            <a href="https://www.instagram.com/mango.mosaic/" className="fa fa-instagram"></a>
-            <a href="#" className="fa fa-twitter"></a>
-            <a href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" className="fa fa-linkedin"></a>
+            <a href="https://www.instagram.com/mango.mosaic/" rel="noopener noreferrer" target='_blank' className="fa fa-instagram"> </a>
+            <a href="https://www.twitter.com/ashleaamorgan1" rel="noopener noreferrer" target='_blank' className="fa fa-twitter"> </a>
+            <a href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" rel="noopener noreferrer" target='_blank' className="fa fa-linkedin"> </a>
           </SocialLinks>
         </ContentWrapper>
       </Wrapper>
