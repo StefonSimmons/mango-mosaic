@@ -1,8 +1,32 @@
 import React from 'react'
-import { Main, Wrapper, Photo, ContentWrapper, ContentTitle, Content } from './About'
+import { Main, Wrapper, ContentWrapper, ContentTitle } from './About'
 import styled from 'styled-components'
 import './SocialIcon.css'
 
+
+const Photo = styled.img`
+  width: 500px;
+  height: 500px;
+  top: 25%;
+  left: 15%;
+`
+const Content = styled.p`
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1.75;
+  padding-left: 10%
+`
+const Email = styled.a`
+  text-decoration: none;
+  color: black
+`
+const SocialLinks = styled.div`
+padding-left: 4.5%
+`
+const ContentTitle2 = styled(ContentTitle)`
+  margin-top: 30px
+`
 const YellowSquare = styled.div`
   background-color: #CBB334;
   width: 500px;
@@ -18,6 +42,8 @@ width: 500px;
   z-index: -1;
 `
 
+
+
 export default function Contact() {
   return (
     <Main>
@@ -25,11 +51,13 @@ export default function Contact() {
         <Photo src='https://imgur.com/TK6W9lt.png' alt='phone-booth' />
         <ContentWrapper>
           <ContentTitle>Contact</ContentTitle>
-          <Content>Email | ashleam2013@gmail.com</Content>
-          <ContentTitle>Social</ContentTitle>
-          <a href="#" className="fa fa-instagram"></a>
-          <a href="#" className="fa fa-twitter"></a>
-          <a href="#" className="fa fa-linkedin"></a>
+          <Content>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>
+          <ContentTitle2>Social</ContentTitle2>
+          <SocialLinks>
+            <a href="https://www.instagram.com/mango.mosaic/" className="fa fa-instagram"></a>
+            <a href="#" className="fa fa-twitter"></a>
+            <a href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" className="fa fa-linkedin"></a>
+          </SocialLinks>
         </ContentWrapper>
       </Wrapper>
       <YellowSquare>

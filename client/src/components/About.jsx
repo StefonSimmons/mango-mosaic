@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   margin-top: 30px;
   position: absolute;
 `
-export const Photo = styled.img`
+const Photo = styled.img`
   width: 500px;
   top: 25%;
   left: 15%;
@@ -29,7 +29,7 @@ export const ContentTitle = styled.h1`
   margin-bottom: 15px;
   padding-left: 15px;
 `
-export const Content = styled.p`
+const Content = styled.p`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
