@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -11,6 +12,10 @@ const PostsWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, 300px);
   grid-auto-rows: 30%;
   justify-content: center;
+`
+const PostLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `
 const Post = styled.div`
   margin: 20px 25px;
@@ -64,10 +69,12 @@ export default function Blog({ allPosts }) {
       <BlogID>{`#${post.id}`}</BlogID>
       <Wrapper>
         <PostImg src={post.img_URL} alt={post.img_URL} />
-        <ContentWrapper>
-          <PostTitle>{post.main_title}</PostTitle>
-          <PostSubTitle>{post.subtitle}</PostSubTitle>
-        </ContentWrapper>
+        <PostLink to={`/blog/${post.id}`}>
+          <ContentWrapper>
+            <PostTitle>{post.main_title}</PostTitle>
+            <PostSubTitle>{post.subtitle}</PostSubTitle>
+          </ContentWrapper>
+        </PostLink>
       </Wrapper>
       <ColorSquare>
       </ColorSquare>

@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Blog from './components/Blog'
 import About from './components/About'
 import Contact from './components/Contact';
+import Post from './components/Post'
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
           <Home />
         </Route>
 
-        <Route path= '/blog'>
+        <Route exact path= '/blog'>
           <Blog
             allPosts = {allPosts}
           />
@@ -46,6 +47,13 @@ function App() {
         <Route path= '/contact-me'>
           <Contact />
         </Route>
+
+        <Route exact path={`/blog/:postId`}>
+          <Post
+            allPosts = {allPosts}
+          />
+        </Route>
+
       </Switch>
     </>
   )
