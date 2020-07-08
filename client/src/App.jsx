@@ -4,6 +4,7 @@ import { getAllPosts } from './services/posts'
 import Header from './components/Header'
 import Home from './components/Home'
 import Blog from './components/Blog'
+import About from './components/About'
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
           />
         </Route>
 
+        <Route path= '/about-me'>
+          <About />
+        </Route>
       </Switch>
     </>
   )
