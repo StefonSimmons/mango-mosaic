@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import Blog from './components/Blog'
 import About from './components/About'
+import Contact from './components/Contact';
 
 function App() {
 
@@ -40,6 +41,10 @@ function App() {
 
         <Route path= '/about-me'>
           <About />
+        </Route>
+
+        <Route path= '/contact-me'>
+          <Contact />
         </Route>
       </Switch>
     </>
