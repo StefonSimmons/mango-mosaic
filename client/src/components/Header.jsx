@@ -28,7 +28,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   font-family: 'Dancing Script', cursive;
-  font-size: 48px;
+  font-size: 42px;
   letter-spacing: 2px;
 `
 const List = styled.ul`

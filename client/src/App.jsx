@@ -1,12 +1,21 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
+import Home from './components/Home'
 
 
 function App() {
   return (
     <>
       <Header />
-      <h1>App....Mangooooooos in the front</h1>
+
+      <Switch>
+
+        <Route>
+          <Home exact path= '/'/>
+        </Route>
+
+      </Switch>
     </>
   )
 }
