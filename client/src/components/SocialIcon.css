@@ -1,0 +1,21 @@
+.fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 7px;
+  border-radius: 5px
+}
+
+.fa-instagram {
+  color: black;
+}
+
+.fa-twitter {
+  color: black
+}
+
+.fa-linkedin {
+  color: black;
+}

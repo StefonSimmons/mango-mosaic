@@ -1,48 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Main = styled.div`
+export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   height: 75vh
 `
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
   position: absolute;
 `
-const Photo = styled.img`
+export const Photo = styled.img`
   width: 500px;
   top: 25%;
   left: 15%;
 `
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   width: 450px;
   margin-left: 50px;
 `
-const ContentTitle = styled.h1`
+export const ContentTitle = styled.h1`
   font-family: 'Dancing Script', cursive;
   font-size: 48px;
   letter-spacing: 2px;
   margin-bottom: 15px;
   padding-left: 15px;
 `
-const Content = styled.p`
+export const Content = styled.p`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
 `
-const RedSquare = styled.div`
+export const RedSquare = styled.div`
   background-color: #972309;
   width: 500px;
   height: 500px;
   opacity: .2;
   z-index: -1;
 `
-const YellowSquare = styled.div`
+export const YellowSquare = styled.div`
   background-color: #CBB334;
   width: 500px;
   height: 500px;
