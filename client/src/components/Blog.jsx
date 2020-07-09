@@ -6,11 +6,11 @@ import styled from 'styled-components'
 const Main = styled.div`
   margin: 0 auto;
   width: 70%;
+  // background: rgba(208, 235, 45, .7);
 `
 const PostsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
-  grid-auto-rows: 30%;
+  grid-template: auto/auto auto auto;  
   justify-content: center;
 `
 const PostLink = styled(Link)`
@@ -19,7 +19,8 @@ const PostLink = styled(Link)`
 `
 const Post = styled.div`
   margin: 20px 25px;
-  align-items: start
+  align-items: start;
+  height: 300px
 `
 const BlogID = styled.p`
   font-family: 'Dancing Script', cursive;
@@ -27,7 +28,7 @@ const BlogID = styled.p`
   margin-bottom: 20px
 `
 const Wrapper = styled.div`
-  // background: yellow;
+  // background: rgba(208, 235, 45, .7);
   width: 295px;
 `
 const PostImg = styled.img`
@@ -56,7 +57,7 @@ const ColorSquare = styled.div`
   background-color: #EF7218;
   width: 250px;
   height: 259px;
-  top: -65%;
+  top: -75%;
   left: 10%;
   position: relative;
   z-index: -1;
