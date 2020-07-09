@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -40,10 +40,12 @@ const YellowSquare = styled.div`
   background-color: #CBB344;
   opacity: .5;
 `
-const RecentPosts = styled.div`
+const RecentPostsContainer = styled.div`
   position: absolute;
-  right: 7.5%;
-  top: 4.5%
+  right: 6.90%;
+  top: 4.5%;
+  display: flex;
+  flex-direction: column;
 `
 const RPTitle = styled.h3`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -51,6 +53,24 @@ const RPTitle = styled.h3`
   font-size: 15px;
   text-align: center;
   letter-spacing: 2px;
+  margin-bottom: 15px
+`
+const RPLink = styled(Link)`
+  color: black;
+  text-decoration: none
+`
+const RecentPost = styled.h4`
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 18px 0;
+`
+const SeeMore = styled(Link)`
+  align-self: center;
+  margin-top: 50px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 15px;
+  color: blue;
 `
 const Background = styled.div`
   display: flex;
@@ -82,11 +102,11 @@ export default function Post({ allPosts }) {
   const post = allPosts.filter(p => p.id === parseInt(postId))[0]
   console.log(post)
 
-  
+
   const recentPosts = allPosts.map((p, i) => {
     if (i < 5) {
       return (
-        <p>{p.main_title}</p>
+        <RPLink to={`/blog/${p.id}`}><RecentPost>{p.main_title}</RecentPost></RPLink>
       )
     }
   })
@@ -104,10 +124,11 @@ export default function Post({ allPosts }) {
             </ContentContainer>
             <YellowSquare>
             </YellowSquare>
-            <RecentPosts>
+            <RecentPostsContainer>
               <RPTitle>Most Recent Posts</RPTitle>
               {recentPosts}
-            </RecentPosts>
+              <SeeMore to='/blog'>See more posts...</SeeMore>
+            </RecentPostsContainer>
           </Wrapper>
           <Background>
             <GreenSquare>
