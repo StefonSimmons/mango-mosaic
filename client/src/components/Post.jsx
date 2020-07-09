@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   padding: 20px 0px;
 `
 const ContentContainer = styled.div`
-
 `
 const MainTitle = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -24,7 +23,7 @@ const SubTitle = styled.h2`
   font-size: 15px;
 `
 const PostImg = styled.img`
-  width: 600px
+  width: 900px
 `
 const Content = styled.p`
   width: 600px;
@@ -32,11 +31,26 @@ const Content = styled.p`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 15px;
+  letter-spacing: 2px;
+  line-height: 1.75;
+`
+const YellowSquare = styled.div`
+  width: 250px;
+  height: 400px;
+  background-color: #CBB344;
+  opacity: .5;
 `
 const RecentPosts = styled.div`
-  width: 300px;
-  height: 400px;
-  background-color: #CBB344
+  position: absolute;
+  right: 7.5%;
+  top: 4.5%
+`
+const RPTitle = styled.h3`
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 2px;
 `
 const Background = styled.div`
   display: flex;
@@ -80,8 +94,11 @@ export default function Post({ allPosts }) {
               <PostImg src={post.img_URL} alt={post.img_URL} />
               <Content>{post.content}</Content>
             </ContentContainer>
+            <YellowSquare>
+            </YellowSquare>
             <RecentPosts>
-
+              <RPTitle>Most Recent Posts</RPTitle>
+              
             </RecentPosts>
           </Wrapper>
           <Background>
