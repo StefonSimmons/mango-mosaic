@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   position: absolute;
 `
 const HomeImg = styled.img`
-  width: 500px;
+  width: 600px;
   height: 500px;
   padding-left: 15px;
 `
@@ -59,7 +59,8 @@ export default function Home() {
   return (
     <Main>
       <Wrapper>
-        <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' />
+        {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
+        <HomeImg src='https://imgur.com/VA9KBc1.png' alt='mango-home' />
         <ContentWrapper>
           <ContentTitle>This blog...</ContentTitle>
           <Content>Lorem IContentsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</Content>
