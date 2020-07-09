@@ -80,6 +80,7 @@ export default function Blog({ allPosts }) {
       </ColorSquare>
     </Post>
   )
+  
   return (
     <Main>
       <PostsWrapper>
