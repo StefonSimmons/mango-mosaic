@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { getAllPosts } from './services/posts'
+import { loginUser } from './services/auth'
 import Header from './components/Header'
 import Home from './components/Home'
 import Blog from './components/Blog'
@@ -14,6 +15,7 @@ function App() {
 
   const [allPosts, updateAllPosts] = useState([])
   const [logInModal, updateLoginModal] = useState(false)
+  const [admin, updateAdmin] = useState(null)
 
   useEffect(() => {
     const apiCall = async () => {
@@ -24,6 +26,11 @@ function App() {
     }
     apiCall()
   }, [])
+
+  const handleLoginSubmit = async (loginParams) => {
+    const admin = await loginUser(loginParams);
+    updateAdmin(admin)
+  }
 
   function toggleLogInModal() {
     updateLoginModal(!logInModal)
@@ -62,10 +69,11 @@ function App() {
       </Switch>
 
       <LogInForm
+        handleLoginSubmit={handleLoginSubmit}
         logInClicked={logInModal}
         hideLogInForm={toggleLogInModal}
       />
-      
+
       <Footer
         showLogInModal={toggleLogInModal}
       />

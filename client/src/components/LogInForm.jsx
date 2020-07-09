@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const LogInModal = styled.div`
@@ -12,7 +13,10 @@ const LogInModal = styled.div`
   background-color: #E3D1E2;
 `
 const Form = styled.form`
-  margin: 50px 0;
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center
 `
 const TitleLogIn = styled.h4`
   font-size: 42px;
@@ -32,62 +36,65 @@ const Input = styled.input`
   border: rgb(216,224,233) solid 2px;
   border-radius: 3px;
 `
+const LogInLnk = styled(Link)`
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px
+  letter-spacing: 1.26px;
+  color: white;
+`
+const Btn = styled.button`
+  margin: 20px 0;
+  padding: 6px 12px;
+  background-color: purple;
+  border-radius: 5px;
+  border: 1px solid purple
+`
+export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInForm }) {
 
-export default class LogInForm extends Component {
+  const [admin, updateAdmin] = useState({ email: '', password: '' })
+  const { email, password } = admin;
 
-  state = {
-    email: '',
-    password: ''
-  }
-
-
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    })
+    updateAdmin({ ...admin, [name]: value })
   }
 
-  render() {
-    const { email, password } = this.state;
-    const { handleLoginSubmit, logInClicked, hideLogInForm } = this.props;
-    return (
-      <>
-        <div className="w3-modal" style={logInClicked ? { display: "block" } : { display: "none" }}>
-          <LogInModal className="w3-modal-content w3-card-4 w3-animate-zoom">
-            <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={hideLogInForm}>&times;</span>
-            <Form onSubmit={(e) => {
-              e.preventDefault();
-              handleLoginSubmit(this.state);
-              hideLogInForm()
-              this.setState({
-                email: '',
-                password: ''
-              })
-            }}>
-              <TitleLogIn>Ashlea Only</TitleLogIn>
-              <Input
-                id="email"
-                type="text"
-                name="email"
-                value={email}
-                placeholder='Email'
-                onChange={this.handleChange}
-              />
 
-              <br />
-              <Input
-                id="password"
-                type="password"
-                name="password"
-                value={password}
-                placeholder='Secret Letters'
-                onChange={this.handleChange}
-              />
-            </Form>
-          </LogInModal>
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <div className="w3-modal" style={logInClicked ? { display: "block" } : { display: "none" }}>
+        <LogInModal className="w3-modal-content w3-card-4 w3-animate-zoom">
+          <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={hideLogInForm}>&times;</span>
+
+          <Form onSubmit={(e) => {
+            console.log(admin)
+            e.preventDefault();
+            handleLoginSubmit(admin);
+            hideLogInForm()
+            updateAdmin({ email: '', password: '' })
+          }}>
+            <TitleLogIn>Ashlea Only</TitleLogIn>
+            <Input
+              id="email"
+              type="text"
+              name="email"
+              value={email}
+              placeholder='Email'
+              onChange={handleChange}
+            />
+            <Input
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              placeholder='Secret Letters'
+              onChange={handleChange}
+            />
+            <Btn><LogInLnk to="#">Log In</LogInLnk></Btn>
+          </Form>
+        </LogInModal>
+      </div>
+    </>
+  )
 }
