@@ -6,7 +6,7 @@ const Main = styled.div`
   align-items: center;
   justify-content: flex-start;
   padding: 15px 75px ;
-  height: 75vh
+  height: 75vh;
 `
 const Wrapper = styled.div`
   display: flex;

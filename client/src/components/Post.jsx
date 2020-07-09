@@ -2,7 +2,9 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-
+const Main = styled.div`
+  height: 200vh
+`
 const Wrapper = styled.div`
   position: absolute;
   width: 100vw;
@@ -130,33 +132,35 @@ export default function Post({ allPosts }) {
   return (
     <>
       {post !== undefined ?
-        <div>
-          <Wrapper>
-            <ContentContainer>
-              <TitleWrapper>
-                <Title>
-                  <MainTitle>{post.main_title}</MainTitle>
-                  <SubTitle>{post.subtitle}</SubTitle>
-                </Title>
-              </TitleWrapper>
-              <PostImg src={post.img_URL} alt={post.img_URL} />
-              <Content>{post.content}</Content>
-            </ContentContainer>
-            <YellowSquare>
-            </YellowSquare>
-            <RecentPostsContainer>
-              <RPTitle>Most Recent Posts</RPTitle>
-              {recentPosts}
-              <SeeMore to='/blog'>See more posts...</SeeMore>
-            </RecentPostsContainer>
-          </Wrapper>
-          <Background>
-            <GreenSquare>
-            </GreenSquare>
-            <RedSquare>
-            </RedSquare>
-          </Background>
-        </div>
+        <>
+          <Main>
+            <Wrapper>
+              <ContentContainer>
+                <TitleWrapper>
+                  <Title>
+                    <MainTitle>{post.main_title}</MainTitle>
+                    <SubTitle>{post.subtitle}</SubTitle>
+                  </Title>
+                </TitleWrapper>
+                <PostImg src={post.img_URL} alt={post.img_URL} />
+                <Content>{post.content}</Content>
+              </ContentContainer>
+              <YellowSquare>
+              </YellowSquare>
+              <RecentPostsContainer>
+                <RPTitle>Most Recent Posts</RPTitle>
+                {recentPosts}
+                <SeeMore to='/blog'>See more posts...</SeeMore>
+              </RecentPostsContainer>
+            </Wrapper>
+            <Background>
+              <GreenSquare>
+              </GreenSquare>
+              <RedSquare>
+              </RedSquare>
+            </Background>
+          </Main>
+        </>
         :
         'Reloading...'
       }

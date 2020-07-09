@@ -5,8 +5,9 @@ import Header from './components/Header'
 import Home from './components/Home'
 import Blog from './components/Blog'
 import About from './components/About'
-import Contact from './components/Contact';
+import Contact from './components/Contact'
 import Post from './components/Post'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -30,31 +31,33 @@ function App() {
 
       <Switch>
 
-        <Route exact path= '/'>
+        <Route exact path='/'>
           <Home />
         </Route>
 
-        <Route exact path= '/blog'>
+        <Route exact path='/blog'>
           <Blog
-            allPosts = {allPosts}
+            allPosts={allPosts}
           />
         </Route>
 
-        <Route path= '/about-me'>
+        <Route path='/about-me'>
           <About />
         </Route>
 
-        <Route path= '/contact-me'>
+        <Route path='/contact-me'>
           <Contact />
         </Route>
 
         <Route exact path={`/blog/:postId`}>
           <Post
-            allPosts = {allPosts}
+            allPosts={allPosts}
           />
         </Route>
 
       </Switch>
+
+      <Footer />
     </>
   )
 }
