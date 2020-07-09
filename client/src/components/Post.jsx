@@ -4,7 +4,11 @@ import styled from 'styled-components'
 
 
 const Wrapper = styled.div`
-  position: absolute
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
 `
 const ContentContainer = styled.div`
 
@@ -30,7 +34,9 @@ const Content = styled.p`
   font-size: 15px;
 `
 const RecentPosts = styled.div`
-
+  width: 300px;
+  height: 400px;
+  background-color: #CBB344
 `
 const Background = styled.div`
   display: flex;
