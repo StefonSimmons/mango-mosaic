@@ -13,7 +13,7 @@ import LogInForm from './components/LogInForm';
 function App() {
 
   const [allPosts, updateAllPosts] = useState([])
-  const [toggleLogInModal, updateLoginModal] = useState(true)
+  const [logInModal, updateLoginModal] = useState(false)
 
   useEffect(() => {
     const apiCall = async () => {
@@ -25,8 +25,8 @@ function App() {
     apiCall()
   }, [])
 
-  function showLogInModal() {
-    updateLoginModal(true)
+  function toggleLogInModal() {
+    updateLoginModal(!logInModal)
   }
 
   return (
@@ -62,11 +62,12 @@ function App() {
       </Switch>
 
       <LogInForm
-        logInClicked={toggleLogInModal}
+        logInClicked={logInModal}
+        hideLogInForm={toggleLogInModal}
       />
       
       <Footer
-        showLogInModal={showLogInModal}
+        showLogInModal={toggleLogInModal}
       />
     </>
   )
