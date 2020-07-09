@@ -12,25 +12,34 @@ const Wrapper = styled.div`
 `
 const ContentContainer = styled.div`
 `
-const MainTitle = styled.h1`
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const Title = styled.div`
+  width: 650px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
-  font-size: 18px;
+`
+const MainTitle = styled.h1`
+  font-size: 24px;
 `
 const SubTitle = styled.h2`
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
+  font-size: 18px;
+  padding: 12px 0;
+  text-align: center;
 `
 const PostImg = styled.img`
   width: 900px
 `
 const Content = styled.p`
-  width: 600px;
+  width: 900px;
+  margin-top: 20px;
   padding: 0 5px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
 `
@@ -42,7 +51,7 @@ const YellowSquare = styled.div`
 `
 const RecentPostsContainer = styled.div`
   position: absolute;
-  right: 6.90%;
+  right: 6.9%;
   top: 4.5%;
   display: flex;
   flex-direction: column;
@@ -63,7 +72,14 @@ const RecentPost = styled.h4`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 15px;
-  padding: 18px 0;
+  padding: 18px 3px;
+
+  &:hover{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    opacity: .7;
+  }
 `
 const SeeMore = styled(Link)`
   align-self: center;
@@ -117,8 +133,12 @@ export default function Post({ allPosts }) {
         <div>
           <Wrapper>
             <ContentContainer>
-              <MainTitle>{post.main_title}</MainTitle>
-              <SubTitle>{post.subtitle}</SubTitle>
+              <TitleWrapper>
+                <Title>
+                  <MainTitle>{post.main_title}</MainTitle>
+                  <SubTitle>{post.subtitle}</SubTitle>
+                </Title>
+              </TitleWrapper>
               <PostImg src={post.img_URL} alt={post.img_URL} />
               <Content>{post.content}</Content>
             </ContentContainer>
@@ -136,7 +156,6 @@ export default function Post({ allPosts }) {
             <RedSquare>
             </RedSquare>
           </Background>
-
         </div>
         :
         'Reloading...'

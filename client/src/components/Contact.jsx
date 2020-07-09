@@ -22,7 +22,7 @@ const Email = styled.a`
   color: black
 `
 const SocialLinks = styled.div`
-padding-left: 4.5%
+  padding-left: 4.5%
 `
 const ContentTitle2 = styled(ContentTitle)`
   margin-top: 30px
@@ -35,8 +35,8 @@ const YellowSquare = styled.div`
   z-index: -1;
 `
 const RedSquare = styled.div`
-background-color: #972309;
-width: 500px;
+  background-color: #972309;
+  width: 500px;
   height: 500px;
   opacity: .2;
   z-index: -1;
