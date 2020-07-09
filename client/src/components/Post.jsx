@@ -82,6 +82,14 @@ export default function Post({ allPosts }) {
   const post = allPosts.filter(p => p.id === parseInt(postId))[0]
   console.log(post)
 
+  
+  const recentPosts = allPosts.map((p, i) => {
+    if (i < 5) {
+      return (
+        <p>{p.main_title}</p>
+      )
+    }
+  })
 
   return (
     <>
@@ -98,7 +106,7 @@ export default function Post({ allPosts }) {
             </YellowSquare>
             <RecentPosts>
               <RPTitle>Most Recent Posts</RPTitle>
-              
+              {recentPosts}
             </RecentPosts>
           </Wrapper>
           <Background>
