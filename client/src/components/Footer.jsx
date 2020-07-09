@@ -20,13 +20,13 @@ const AdminLogIn = styled.h6`
   letter-spacing: 5px;
   cursor: pointer;
 `
-export default function Footer() {
+export default function Footer({ showLogInModal }) {
   return (
     <>
       <Foot>
         <Bottom>
-          <AdminLogIn>Admin Log-in</AdminLogIn>
-          <Text>Crafted By Stefon Simmons</Text>
+          <AdminLogIn onClick={showLogInModal}>Admin Log-in</AdminLogIn>
+          <Text>Crafted By: Stefon Simmons</Text>
         </Bottom>
       </Foot>
     </>
