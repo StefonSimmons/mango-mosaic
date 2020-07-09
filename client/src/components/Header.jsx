@@ -56,8 +56,8 @@ export default function Header() {
         <List>
           <NavLink to='/'><NavItem>Home</NavItem></NavLink>
           <NavLink to='/blog'><NavItem>Blog</NavItem></NavLink>
-          <NavLink to='/about-me'><NavItem>About</NavItem></NavLink>
-          <NavLink to='/contact-me'><NavItem>Contact</NavItem></NavLink>
+          <NavLink to='/about-me'><NavItem>About me</NavItem></NavLink>
+          <NavLink to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
         </List>
       </Nav>
     </HeaderContainer>

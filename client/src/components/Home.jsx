@@ -13,9 +13,11 @@ const Wrapper = styled.div`
   position: absolute;
 `
 const HomeImg = styled.img`
-  width: 600px;
+  width: 400px;
   height: 500px;
-  padding-left: 15px;
+  margin-left: 55px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 30px 3px #000000;
 `
 const ContentWrapper = styled.div`
   width: 450px;
@@ -60,7 +62,8 @@ export default function Home() {
     <Main>
       <Wrapper>
         {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
-        <HomeImg src='https://imgur.com/VA9KBc1.png' alt='mango-home' />
+        {/* <HomeImg src='https://imgur.com/VA9KBc1.png' alt='mango-home' /> */}
+        <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
         <ContentWrapper>
           <ContentTitle>This blog...</ContentTitle>
           <Content>Lorem IContentsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</Content>
