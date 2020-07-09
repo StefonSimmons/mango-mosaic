@@ -19,7 +19,7 @@ function App() {
       updateAllPosts(res)
       console.log(res)
     }
-    return apiCall()
+    apiCall()
   }, [])
 
 

@@ -7,16 +7,12 @@ export default function Post({ allPosts }) {
   const { postId } = useParams()
 
   console.log(postId)
-  const post = allPosts.filter(p => console.log(p.id) === postId)
+  const post = allPosts.filter(p => p.id === parseInt(postId))[0]
   console.log(post)
-
 
   return (
     <div>
-      {console.log(post.main_title)}
-
-      A Post goes here
-      {post.main_title}
+      {post.main_title} 
     </div>
   )
 }
