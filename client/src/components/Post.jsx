@@ -12,18 +12,16 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 20px 0px;
-  // background: blue
-
 `
 const ContentContainer = styled.div`
 `
 const TitleWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
 `
 const Title = styled.div`
-  width: 650px;
+  width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
 `
@@ -34,6 +32,21 @@ const SubTitle = styled.h2`
   font-size: 18px;
   padding: 12px 0;
   text-align: center;
+`
+const EditDelete = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-right: 5px
+`
+const EditDeleteBtn = styled.button`
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+  letter-spacing: 2px;
+  padding: 3px 15px;
+  background-color: #E3D1E2;
+  border-radius: 10px;
+  border: 2px solid purple
 `
 const PostImg = styled.img`
   width: 900px
@@ -113,7 +126,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments }) {
+export default function Post({ allPosts, allComments, admin }) {
 
   console.log(allPosts)
 
@@ -148,7 +161,18 @@ export default function Post({ allPosts, allComments }) {
                     <MainTitle>{post.main_title}</MainTitle>
                     <SubTitle>{post.subtitle}</SubTitle>
                   </Title>
+                  {admin ?
+                    <EditDelete>
+                      <EditDeleteBtn>Edit</EditDeleteBtn>
+                      <EditDeleteBtn>Delete</EditDeleteBtn>
+
+                      {/* <i className="material-icons w3-xxxlarge">close</i> */}
+                    </EditDelete>
+                    :
+                    null
+                  }
                 </TitleWrapper>
+
                 <PostImg src={post.img_URL} alt={post.img_URL} />
                 <Content>{post.content}</Content>
               </ContentContainer>

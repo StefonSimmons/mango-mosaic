@@ -94,6 +94,7 @@ function App() {
 
         <Route exact path={`/blog/:postId`}>
           <Post
+            admin={admin}
             allPosts={allPosts}
             allComments={allComments}
           />
