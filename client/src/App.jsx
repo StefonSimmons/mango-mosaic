@@ -10,10 +10,12 @@ import Contact from './components/Contact'
 import Post from './components/Post'
 import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
+import { getAllComments } from './services/comments'
 
 function App() {
 
   const [allPosts, updateAllPosts] = useState([])
+  const [allComments, updateAllComments] = useState([])
   const [logInModal, updateLoginModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
 
@@ -28,15 +30,23 @@ function App() {
   }, [])
 
   useEffect(() => {
+    const getComments = async () => {
+      const res = await getAllComments()
+      updateAllComments(res)
+    }
+    getComments()
+  },[])
+
+  useEffect(() => {
     const verify = async () => {
       const admin = await verifyUser()
       updateAdmin(admin)
     }
     verify()
-  })
+  },[])
 
   const handleLoginSubmit = async (loginParams) => {
-    console.log('->',loginParams)
+    console.log('->', loginParams)
     const admin = await loginUser(loginParams);
     updateAdmin(admin)
     console.log(admin)
@@ -48,9 +58,13 @@ function App() {
     removeToken();
   }
 
+
+
   function toggleLogInModal() {
     updateLoginModal(!logInModal)
   }
+
+
 
   return (
     <>
@@ -81,6 +95,7 @@ function App() {
         <Route exact path={`/blog/:postId`}>
           <Post
             allPosts={allPosts}
+            allComments={allComments}
           />
         </Route>
 

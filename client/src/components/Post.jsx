@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import Comment from './Comment'
 
-const Main = styled.div`
-  height: 200vh
+const PostInfo = styled.div`
+  height: 150vh;
 `
 const Wrapper = styled.div`
   position: absolute;
@@ -11,6 +12,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 20px 0px;
+  // background: blue
+
 `
 const ContentContainer = styled.div`
 `
@@ -110,7 +113,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts }) {
+export default function Post({ allPosts, allComments }) {
 
   console.log(allPosts)
 
@@ -133,7 +136,8 @@ export default function Post({ allPosts }) {
     <>
       {post !== undefined ?
         <>
-          <Main>
+          <PostInfo>
+
             <Wrapper>
               <ContentContainer>
                 <TitleWrapper>
@@ -153,13 +157,20 @@ export default function Post({ allPosts }) {
                 <SeeMore to='/blog'>See more posts...</SeeMore>
               </RecentPostsContainer>
             </Wrapper>
+
             <Background>
               <GreenSquare>
               </GreenSquare>
               <RedSquare>
               </RedSquare>
             </Background>
-          </Main>
+
+          </PostInfo>
+
+          <Comment
+            allComments={allComments}
+          />
+
         </>
         :
         'Reloading...'
