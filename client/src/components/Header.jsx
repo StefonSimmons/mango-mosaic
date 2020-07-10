@@ -42,7 +42,13 @@ const NavLink = styled(Link)`
 const NavItem = styled.li`
   padding-left: 69px;
 `
-export default function Header() {
+const WelcomeBack = styled.li`
+  padding-left: 69px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0px;
+`
+export default function Header({ admin }) {
   return (
     <HeaderContainer>
       <div>
@@ -54,6 +60,7 @@ export default function Header() {
       </div>
       <Nav>
         <List>
+          {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack>: null}
           <NavLink to='/'><NavItem>Home</NavItem></NavLink>
           <NavLink to='/blog'><NavItem>Blog</NavItem></NavLink>
           <NavLink to='/about-me'><NavItem>About me</NavItem></NavLink>

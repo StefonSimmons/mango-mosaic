@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { getAllPosts } from './services/posts'
-import { loginUser } from './services/auth'
+import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
 import Home from './components/Home'
 import Blog from './components/Blog'
@@ -18,18 +18,34 @@ function App() {
   const [admin, updateAdmin] = useState(null)
 
   useEffect(() => {
-    const apiCall = async () => {
+    const getPosts = async () => {
       const res = await getAllPosts()
       console.log(res)
       updateAllPosts(res)
       console.log(res)
     }
-    apiCall()
+    getPosts()
   }, [])
 
+  useEffect(() => {
+    const verify = async () => {
+      const admin = await verifyUser()
+      updateAdmin(admin)
+    }
+    verify()
+  })
+
   const handleLoginSubmit = async (loginParams) => {
+    console.log('->',loginParams)
     const admin = await loginUser(loginParams);
     updateAdmin(admin)
+    console.log(admin)
+  }
+
+  const logOut = () => {
+    updateAdmin(null)
+    localStorage.clear();
+    removeToken();
   }
 
   function toggleLogInModal() {
@@ -38,7 +54,9 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header
+        admin={admin}
+      />
 
       <Switch>
 
@@ -75,6 +93,8 @@ function App() {
       />
 
       <Footer
+        admin={admin}
+        logOut={logOut}
         showLogInModal={toggleLogInModal}
       />
     </>

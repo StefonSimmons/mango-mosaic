@@ -20,12 +20,16 @@ const AdminLogIn = styled.h6`
   letter-spacing: 5px;
   cursor: pointer;
 `
-export default function Footer({ showLogInModal }) {
+export default function Footer({ admin, logOut, showLogInModal }) {
   return (
     <>
       <Foot>
         <Bottom>
-          <AdminLogIn onClick={showLogInModal}>Admin Log-in</AdminLogIn>
+          {admin ?
+            <AdminLogIn onClick={logOut}>Log Out</AdminLogIn>
+            : 
+            <AdminLogIn onClick={showLogInModal}>Admin Log-in</AdminLogIn>
+          }
           <Text>Crafted By: Stefon Simmons</Text>
         </Bottom>
       </Foot>
