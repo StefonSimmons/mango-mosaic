@@ -43,10 +43,12 @@ const NavItem = styled.li`
   padding-left: 69px;
 `
 const WelcomeBack = styled.li`
+  align-self: center;
   padding-left: 69px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
-  letter-spacing: 0px;
+  color: #1831B5;
+  letter-spacing: 1px;
 `
 export default function Header({ admin }) {
   return (

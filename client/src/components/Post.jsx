@@ -18,7 +18,8 @@ const ContentContainer = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+
 `
 const Title = styled.div`
   width: 600px;
