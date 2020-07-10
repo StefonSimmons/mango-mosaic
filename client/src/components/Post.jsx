@@ -139,6 +139,7 @@ export default function Post({ allPosts, allComments }) {
           <PostInfo>
 
             <Wrapper>
+
               <ContentContainer>
                 <TitleWrapper>
                   <Title>
@@ -149,13 +150,16 @@ export default function Post({ allPosts, allComments }) {
                 <PostImg src={post.img_URL} alt={post.img_URL} />
                 <Content>{post.content}</Content>
               </ContentContainer>
+              
               <YellowSquare>
               </YellowSquare>
+
               <RecentPostsContainer>
                 <RPTitle>Most Recent Posts</RPTitle>
                 {recentPosts}
                 <SeeMore to='/blog'>See more posts...</SeeMore>
               </RecentPostsContainer>
+
             </Wrapper>
 
             <Background>
