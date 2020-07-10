@@ -13,7 +13,7 @@ const Divider = styled.hr`
   background: #706B6B;
 `
 const CommentContainer = styled.div`
-  background-color: #FAF7F7;
+  background-color: #E7E7EF;
   width: 700px;
   padding: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
@@ -21,7 +21,7 @@ const CommentContainer = styled.div`
   font-weight: 400
 `
 const CreatedAt = styled.h3`
-  padding: 10px 0;
+  padding: 10px 0 20px 0;
 `
 export default function Comment({ allComments }) {
 
@@ -35,9 +35,9 @@ export default function Comment({ allComments }) {
     if (comment !== undefined) {
       const milliseconds = Date.parse(comment.created_at)
       const dateObj = new Date(milliseconds)
-      const comment_datetime = dateObj.toLocaleString("en-US", { timeZoneName: "short" })
-      console.log(comment_datetime)
-      return comment_datetime
+      const comment_datetime = dateObj.toLocaleString("en-US")
+      const remove = comment_datetime.replace(',','')
+      return remove
     }
   }
 
@@ -60,7 +60,7 @@ export default function Comment({ allComments }) {
     <div>
       {comments !== undefined ?
         <>
-          <CommentCount>{`Comments (${commentCount})`}</CommentCount>
+          <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
           {comments}
         </>
         :

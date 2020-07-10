@@ -127,7 +127,9 @@ export default function Post({ allPosts, allComments }) {
   const recentPosts = allPosts.map((p, i) => {
     if (i < 5) {
       return (
-        <RPLink to={`/blog/${p.id}`}><RecentPost>{p.main_title}</RecentPost></RPLink>
+        <div key={i}>
+          <RPLink to={`/blog/${p.id}`}><RecentPost>{p.main_title}</RecentPost></RPLink>
+        </div>
       )
     }
   })
@@ -150,7 +152,7 @@ export default function Post({ allPosts, allComments }) {
                 <PostImg src={post.img_URL} alt={post.img_URL} />
                 <Content>{post.content}</Content>
               </ContentContainer>
-              
+
               <YellowSquare>
               </YellowSquare>
 
