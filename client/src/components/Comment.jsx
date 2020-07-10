@@ -35,9 +35,8 @@ export default function Comment({ allComments }) {
     if (comment !== undefined) {
       const milliseconds = Date.parse(comment.created_at)
       const dateObj = new Date(milliseconds)
-      const comment_datetime = dateObj.toLocaleString("en-US")
-      const remove = comment_datetime.replace(',','')
-      return remove
+      const comment_datetime = dateObj.toLocaleString("en-US").replace(',','')
+      return comment_datetime
     }
   }
 
