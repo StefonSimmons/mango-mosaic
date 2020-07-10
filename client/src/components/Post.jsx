@@ -127,7 +127,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments, admin }) {
+export default function Post({ allPosts, allComments, admin, showDeletionModal }) {
 
   console.log(allPosts)
 
@@ -165,7 +165,7 @@ export default function Post({ allPosts, allComments, admin }) {
                   {admin ?
                     <EditDelete>
                       <EditDeleteBtn>Edit</EditDeleteBtn>
-                      <EditDeleteBtn>Delete</EditDeleteBtn>
+                      <EditDeleteBtn onClick={showDeletionModal}>Delete</EditDeleteBtn>
 
                       {/* <i className="material-icons w3-xxxlarge">close</i> */}
                     </EditDelete>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { getAllPosts } from './services/posts'
+import { getAllComments } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
 import Home from './components/Home'
@@ -10,13 +11,14 @@ import Contact from './components/Contact'
 import Post from './components/Post'
 import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
-import { getAllComments } from './services/comments'
+import DeletionModal from './components/DeletionModal';
 
 function App() {
 
   const [allPosts, updateAllPosts] = useState([])
   const [allComments, updateAllComments] = useState([])
   const [logInModal, updateLoginModal] = useState(false)
+  const [deletionModal, updateDeletionModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
 
   useEffect(() => {
@@ -64,6 +66,9 @@ function App() {
     updateLoginModal(!logInModal)
   }
 
+  function toggleDeletionModal() {
+    updateDeletionModal(!deletionModal)
+  }
 
 
   return (
@@ -97,6 +102,7 @@ function App() {
             admin={admin}
             allPosts={allPosts}
             allComments={allComments}
+            showDeletionModal={toggleDeletionModal}
           />
         </Route>
 
@@ -108,6 +114,11 @@ function App() {
         hideLogInForm={toggleLogInModal}
       />
 
+      <DeletionModal
+        deleteClicked={deletionModal}
+        cancelDeletion={toggleDeletionModal}
+      />
+      
       <Footer
         admin={admin}
         logOut={logOut}
