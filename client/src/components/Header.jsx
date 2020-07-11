@@ -50,7 +50,7 @@ const WelcomeBack = styled.li`
   color: #1831B5;
   letter-spacing: 1px;
 `
-export default function Header({ admin }) {
+export default function Header({ admin, verifyEditModal }) {
   return (
     <HeaderContainer>
       <div>
@@ -63,10 +63,10 @@ export default function Header({ admin }) {
       <Nav>
         <List>
           {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack>: null}
-          <NavLink to='/'><NavItem>Home</NavItem></NavLink>
-          <NavLink to='/blog'><NavItem>Blog</NavItem></NavLink>
-          <NavLink to='/about-me'><NavItem>About me</NavItem></NavLink>
-          <NavLink to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
+          <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>
+          <NavLink onClick={verifyEditModal} to='/blog'><NavItem>Blog</NavItem></NavLink>
+          <NavLink onClick={verifyEditModal} to='/about-me'><NavItem>About me</NavItem></NavLink>
+          <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
         </List>
       </Nav>
     </HeaderContainer>

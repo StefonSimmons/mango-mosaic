@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Prompt } from 'react-router-dom'
 import styled from 'styled-components'
 
 const ContentContainer = styled.div`
@@ -50,7 +51,7 @@ const PostImg = styled.img`
   height: 500px
 `
 
-export default function EditForm({ hideEditForm, post, handleSaveEdit }) {
+export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
 
   const { main_title, subtitle, img_URL, content, user_id, id } = post
 
@@ -85,12 +86,10 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit }) {
       <ContentContainer>
         <ButtonWrapper>
           <SaveCancel>
-            <SaveCancelBtn onClick={(e) => {
+            <SaveCancelBtn onClick={() => {
               console.log('submittedtop-->', postData)
-              e.preventDefault();
               handleSaveEdit(id, postData);
               console.log('submitted-->', postData)
-              // window.location.reload()
               hideEditForm()
               updatePost({
                 main_title: '',

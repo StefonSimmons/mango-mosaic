@@ -12,6 +12,7 @@ import Post from './components/Post'
 import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
 import DeletionModal from './components/DeletionModal';
+import SaveEditModal from './components/SaveEditModal';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
   const [editForm, updateEditForm] = useState(true)
   const [logInModal, updateLoginModal] = useState(false)
   const [deletionModal, updateDeletionModal] = useState(false)
+  const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
 
   // BLOG HANDLERS
@@ -39,7 +41,7 @@ function App() {
       updateAllComments(res)
     }
     getComments()
-  },[])
+  }, [])
 
   // AUTHENTICATION HANDLERS
   useEffect(() => {
@@ -48,7 +50,7 @@ function App() {
       updateAdmin(admin)
     }
     verify()
-  },[])
+  }, [])
 
   const handleLoginSubmit = async (loginParams) => {
     console.log('->', loginParams)
@@ -67,7 +69,7 @@ function App() {
   function toggleEditForm() {
     updateEditForm(!editForm)
   }
-  
+
   const handleSaveEdit = async (id, postData) => {
     const updatedPost = await updatePost(id, postData)
     const posts = allPosts.map(post => post.id === id ? updatedPost : post)
@@ -83,11 +85,17 @@ function App() {
     updateDeletionModal(!deletionModal)
   }
 
+  function toggleEditFormModal() {
+    if (editForm) {
+      updateEditModal(!verifyEditModal)
+    }
+  }
 
   return (
     <>
       <Header
         admin={admin}
+        verifyEditModal={toggleEditFormModal}
       />
 
       <Switch>
@@ -120,6 +128,7 @@ function App() {
             hideEditForm={toggleEditForm}
             editClicked={editForm}
             handleSaveEdit={handleSaveEdit}
+            verifyEditModal={toggleEditFormModal}
           />
         </Route>
 
@@ -135,8 +144,13 @@ function App() {
         deleteClicked={deletionModal}
         cancelDeletion={toggleDeletionModal}
       />
-      
+      <SaveEditModal
+        verifyEditModal={verifyEditModal}
+        returnToEdit={toggleEditFormModal}
+      />
+
       <Footer
+        verifyEditModal={toggleEditFormModal}
         admin={admin}
         logOut={logOut}
         showLogInModal={toggleLogInModal}

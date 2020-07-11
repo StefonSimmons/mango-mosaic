@@ -128,7 +128,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit }) {
+export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal }) {
 
   console.log(allPosts)
 
@@ -143,7 +143,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
     if (i < 5) {
       return (
         <div key={i}>
-          <RPLink to={`/blog/${p.id}`}><RecentPost>{p.main_title}</RecentPost></RPLink>
+          <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}><RecentPost>{p.main_title}</RecentPost></RPLink>
         </div>
       )
     }
@@ -156,7 +156,13 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
           <PostInfo>
 
             <Wrapper>
-              {!editClicked ?
+              {editClicked ?
+                <EditForm
+                  post={post}
+                  hideEditForm={hideEditForm}
+                  handleSaveEdit={handleSaveEdit}
+                />
+                :
                 <ContentContainer>
                   <TitleWrapper>
                     <Title>
@@ -176,12 +182,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                   <PostImg src={post.img_URL} alt={post.img_URL} />
                   <Content>{post.content}</Content>
                 </ContentContainer>
-                :
-                <EditForm
-                  post={post}
-                  hideEditForm={hideEditForm}
-                  handleSaveEdit={handleSaveEdit}
-                />
+
               }
               <YellowSquare>
               </YellowSquare>
@@ -189,7 +190,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
               <RecentPostsContainer>
                 <RPTitle>Most Recent Posts</RPTitle>
                 {recentPosts}
-                <SeeMore to='/blog'>See more posts...</SeeMore>
+                <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
               </RecentPostsContainer>
 
             </Wrapper>
