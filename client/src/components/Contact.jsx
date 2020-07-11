@@ -7,8 +7,8 @@ import './SocialIcon.css'
 const Photo = styled.img`
   width: 500px;
   height: 500px;
-  top: 25%;
-  left: 15%;
+  // top: 25%;
+  // left: 10%;
 `
 const Content = styled.p`
   font-family: 'Open Sans Condensed', sans-serif;

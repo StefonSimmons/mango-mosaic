@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Comment from './Comment'
+import EditForm from './EditForm'
 
 const PostInfo = styled.div`
   height: 150vh;
@@ -127,7 +128,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments, admin, showDeletionModal }) {
+export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked }) {
 
   console.log(allPosts)
 
@@ -155,29 +156,33 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal }
           <PostInfo>
 
             <Wrapper>
+              {!editClicked ?
+                <ContentContainer>
+                  <TitleWrapper>
+                    <Title>
+                      <MainTitle>{post.main_title}</MainTitle>
+                      <SubTitle>{post.subtitle}</SubTitle>
+                    </Title>
+                    {admin ?
+                      <EditDelete>
+                        <EditDeleteBtn onClick={showEditForm}>Edit</EditDeleteBtn>
+                        <EditDeleteBtn onClick={showDeletionModal}>Delete</EditDeleteBtn>
 
-              <ContentContainer>
-                <TitleWrapper>
-                  <Title>
-                    <MainTitle>{post.main_title}</MainTitle>
-                    <SubTitle>{post.subtitle}</SubTitle>
-                  </Title>
-                  {admin ?
-                    <EditDelete>
-                      <EditDeleteBtn>Edit</EditDeleteBtn>
-                      <EditDeleteBtn onClick={showDeletionModal}>Delete</EditDeleteBtn>
+                        {/* <i className="material-icons w3-xxxlarge">close</i> */}
+                      </EditDelete>
+                      :
+                      null
+                    }
+                  </TitleWrapper>
 
-                      {/* <i className="material-icons w3-xxxlarge">close</i> */}
-                    </EditDelete>
-                    :
-                    null
-                  }
-                </TitleWrapper>
-
-                <PostImg src={post.img_URL} alt={post.img_URL} />
-                <Content>{post.content}</Content>
-              </ContentContainer>
-
+                  <PostImg src={post.img_URL} alt={post.img_URL} />
+                  <Content>{post.content}</Content>
+                </ContentContainer>
+                :
+                <EditForm
+                  hideEditForm={hideEditForm}
+                />
+              }
               <YellowSquare>
               </YellowSquare>
 

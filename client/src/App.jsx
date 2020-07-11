@@ -17,10 +17,12 @@ function App() {
 
   const [allPosts, updateAllPosts] = useState([])
   const [allComments, updateAllComments] = useState([])
+  const [editForm, updateEditForm] = useState(true)
   const [logInModal, updateLoginModal] = useState(false)
   const [deletionModal, updateDeletionModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
 
+  // BLOG HANDLERS
   useEffect(() => {
     const getPosts = async () => {
       const res = await getAllPosts()
@@ -39,6 +41,7 @@ function App() {
     getComments()
   },[])
 
+  // AUTHENTICATION HANDLERS
   useEffect(() => {
     const verify = async () => {
       const admin = await verifyUser()
@@ -60,8 +63,12 @@ function App() {
     removeToken();
   }
 
+  // EDIT AND CREATE FORM HANDLERS
+  function toggleEditForm() {
+    updateEditForm(!editForm)
+  }
 
-
+  // MODAL HANDLERS 
   function toggleLogInModal() {
     updateLoginModal(!logInModal)
   }
@@ -103,6 +110,9 @@ function App() {
             allPosts={allPosts}
             allComments={allComments}
             showDeletionModal={toggleDeletionModal}
+            showEditForm={toggleEditForm}
+            hideEditForm={toggleEditForm}
+            editClicked={editForm}
           />
         </Route>
 

@@ -22,8 +22,6 @@ const DeleteBtn = styled.button`
   border: 2px solid purple
 `
 
-
-
 export default function DeletionModal({ deleteClicked, cancelDeletion }) {
   return (
     <>
