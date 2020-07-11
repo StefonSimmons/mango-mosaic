@@ -14,10 +14,10 @@ const Title = styled.div`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
 `
-const MainTitle = styled.h1`
+const MainTitle = styled.input`
   font-size: 24px;
 `
-const SubTitle = styled.h2`
+const SubTitle = styled.input`
   font-size: 18px;
   padding: 12px 0;
   text-align: center;
@@ -40,7 +40,7 @@ const SaveCancelBtn = styled.button`
 const PostImg = styled.img`
   width: 900px
 `
-const Content = styled.p`
+const Content = styled.input`
   width: 900px;
   margin-top: 20px;
   padding: 0 5px;
@@ -51,25 +51,44 @@ const Content = styled.p`
   line-height: 1.75;
 `
 
-export default function EditForm({hideEditForm}) {
+export default function EditForm({ hideEditForm, post }) {
   return (
     <div>
       <ContentContainer>
         <TitleWrapper>
-          <Title>
-            <MainTitle>title</MainTitle>
-            <SubTitle>subtitle</SubTitle>
-          </Title>
-            <SaveCancel>
-              <SaveCancelBtn>Save</SaveCancelBtn>
-              <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
-
-              {/* <i className="material-icons w3-xxxlarge">close</i> */}
-            </SaveCancel>
+          <SaveCancel>
+            <SaveCancelBtn>Save</SaveCancelBtn>
+            <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
+          </SaveCancel>
         </TitleWrapper>
+        <PostImg src='https://imgur.com/TK6W9lt.png' alt='something' />
+        <Title>
+          <MainTitle
+            id="main_title"
+            type="text"
+            name="main_title"
+            // value={email}
+            placeholder={post.main_title}
+          // onChange={handleChange}
+          />
+          <SubTitle
+            id="subtitle"
+            type="text"
+            name="subtitle"
+            // value={email}
+            placeholder={post.subtitle}
+          // onChange={handleChange}
+          />
+          <Content
+            id="content"
+            type="text"
+            name="content"
+            // value={email}
+            placeholder={post.content}
+          // onChange={handleChange}
+          />
+        </Title>
 
-        <PostImg src='' alt='' />
-        <Content>postcontent</Content>
       </ContentContainer>
     </div>
   )

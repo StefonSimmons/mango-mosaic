@@ -167,8 +167,6 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                       <EditDelete>
                         <EditDeleteBtn onClick={showEditForm}>Edit</EditDeleteBtn>
                         <EditDeleteBtn onClick={showDeletionModal}>Delete</EditDeleteBtn>
-
-                        {/* <i className="material-icons w3-xxxlarge">close</i> */}
                       </EditDelete>
                       :
                       null
@@ -180,6 +178,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                 </ContentContainer>
                 :
                 <EditForm
+                  post={post}
                   hideEditForm={hideEditForm}
                 />
               }
