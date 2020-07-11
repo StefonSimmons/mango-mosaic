@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const ContentContainer = styled.div`
@@ -50,7 +50,18 @@ const PostImg = styled.img`
 `
 
 export default function EditForm({ hideEditForm, post }) {
+
+  const { main_title, subtitle, img_URL, content, user_id } = post
+  const [formData, updatePost] = useState({ main_title: main_title, subtitle: subtitle, img_URL: '', content: content, user_id: '' })
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    updatePost({ ...formData, [name]: value })
+  }
+
   return (
+
     <div>
       <ContentContainer>
         <ButtonWrapper>
@@ -59,16 +70,16 @@ export default function EditForm({ hideEditForm, post }) {
             <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
           </SaveCancel>
         </ButtonWrapper>
-        <PostImg src={post.img_URL} alt={post.img_URL} />
+        <PostImg src={img_URL} alt={img_URL} />
         <Form>
           <div>
             <FileUpload
               id="img_URL"
               type="file"
-              name="main_title"
-              // value={email}
+              name="img_URL"
+              // value={img_URL}
               // placeholder={post.img_URL}
-            // onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -77,9 +88,8 @@ export default function EditForm({ hideEditForm, post }) {
               id="main_title"
               type="text"
               name="main_title"
-              // value={email}
-              placeholder={post.main_title}
-            // onChange={handleChange}
+              value={formData.main_title}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -88,9 +98,8 @@ export default function EditForm({ hideEditForm, post }) {
               id="subtitle"
               type="text"
               name="subtitle"
-              // value={email}
-              placeholder={post.subtitle}
-            // onChange={handleChange}
+              value={formData.subtitle}
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -99,9 +108,8 @@ export default function EditForm({ hideEditForm, post }) {
               id="content"
               type="text"
               name="content"
-              // value={email}
-              placeholder={post.content}
-            // onChange={handleChange}
+              value={formData.content}
+              onChange={handleChange}
             />
           </div>
         </Form>
