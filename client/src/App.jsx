@@ -18,7 +18,7 @@ function App() {
 
   const [allPosts, updateAllPosts] = useState([])
   const [allComments, updateAllComments] = useState([])
-  const [editForm, updateEditForm] = useState(true)
+  const [editForm, updateEditForm] = useState(false)
   const [logInModal, updateLoginModal] = useState(false)
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
