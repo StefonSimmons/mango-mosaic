@@ -91,7 +91,7 @@ export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInFo
               placeholder='Secret Letters'
               onChange={handleChange}
             />
-            <Btn><LogInLnk to="#">Log In</LogInLnk></Btn>
+            <Btn type='submit'><LogInLnk to="#">Log In</LogInLnk></Btn>
           </Form>
         </LogInModal>
       </div>

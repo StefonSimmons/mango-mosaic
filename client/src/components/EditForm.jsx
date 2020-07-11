@@ -50,9 +50,9 @@ const PostImg = styled.img`
   height: 500px
 `
 
-export default function EditForm({ hideEditForm, post }) {
+export default function EditForm({ hideEditForm, post, handleSaveEdit }) {
 
-  const { main_title, subtitle, img_URL, content, user_id } = post
+  const { main_title, subtitle, img_URL, content, user_id, id } = post
 
   const [postData, updatePost] = useState({
     main_title: main_title,
@@ -63,7 +63,7 @@ export default function EditForm({ hideEditForm, post }) {
   })
 
   const handleChange = (e) => {
-    const { name, value} = e.target;
+    const { name, value } = e.target;
     updatePost({
       ...postData,
       [name]: value
@@ -71,7 +71,7 @@ export default function EditForm({ hideEditForm, post }) {
   }
 
   const handleFileChange = (e) => {
-    const { name, files} = e.target;
+    const { name, files } = e.target;
     updatePost({
       ...postData,
       [name]: URL.createObjectURL(files[0])
@@ -85,11 +85,26 @@ export default function EditForm({ hideEditForm, post }) {
       <ContentContainer>
         <ButtonWrapper>
           <SaveCancel>
-            <SaveCancelBtn>Save</SaveCancelBtn>
+            <SaveCancelBtn onClick={(e) => {
+              console.log('submittedtop-->', postData)
+              e.preventDefault();
+              handleSaveEdit(id, postData);
+              console.log('submitted-->', postData)
+              // window.location.reload()
+              hideEditForm()
+              updatePost({
+                main_title: '',
+                subtitle: '',
+                img_URL: '',
+                content: '',
+                user_id: ''
+              })
+            }}>Save</SaveCancelBtn>
             <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
           </SaveCancel>
         </ButtonWrapper>
         <PostImg src={postData.img_URL} alt={img_URL} />
+
         <Form>
           <div>
             <FileUpload

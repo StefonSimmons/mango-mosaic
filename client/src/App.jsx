@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import { getAllPosts } from './services/posts'
+import { getAllPosts, updatePost } from './services/posts'
 import { getAllComments } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
@@ -67,6 +67,12 @@ function App() {
   function toggleEditForm() {
     updateEditForm(!editForm)
   }
+  
+  const handleSaveEdit = async (id, postData) => {
+    const updatedPost = await updatePost(id, postData)
+    const posts = allPosts.map(post => post.id === id ? updatedPost : post)
+    updateAllPosts(posts)
+  }
 
   // MODAL HANDLERS 
   function toggleLogInModal() {
@@ -113,6 +119,7 @@ function App() {
             showEditForm={toggleEditForm}
             hideEditForm={toggleEditForm}
             editClicked={editForm}
+            handleSaveEdit={handleSaveEdit}
           />
         </Route>
 
