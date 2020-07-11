@@ -9,18 +9,28 @@ const TitleWrapper = styled.div`
   justify-content: center;
 
 `
-const Title = styled.div`
-  width: 600px;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 700px;
   font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 700;
 `
 const MainTitle = styled.input`
-  font-size: 24px;
+  margin: 5px;
+  font-size: 15px;
+  width: 500px;
 `
 const SubTitle = styled.input`
-  font-size: 18px;
-  padding: 12px 0;
-  text-align: center;
+  margin: 5px;
+  font-size: 15px;
+  width: 500px;
+`
+const Content = styled.textarea`
+  margin: 5px;
+  font-size: 15px;
+  width: 500px;
+  height: 300px
 `
 const SaveCancel = styled.div`
   display: flex;
@@ -40,16 +50,6 @@ const SaveCancelBtn = styled.button`
 const PostImg = styled.img`
   width: 900px
 `
-const Content = styled.input`
-  width: 900px;
-  margin-top: 20px;
-  padding: 0 5px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 2px;
-  line-height: 1.75;
-`
 
 export default function EditForm({ hideEditForm, post }) {
   return (
@@ -62,32 +62,41 @@ export default function EditForm({ hideEditForm, post }) {
           </SaveCancel>
         </TitleWrapper>
         <PostImg src='https://imgur.com/TK6W9lt.png' alt='something' />
-        <Title>
-          <MainTitle
-            id="main_title"
-            type="text"
-            name="main_title"
-            // value={email}
-            placeholder={post.main_title}
-          // onChange={handleChange}
-          />
-          <SubTitle
-            id="subtitle"
-            type="text"
-            name="subtitle"
-            // value={email}
-            placeholder={post.subtitle}
-          // onChange={handleChange}
-          />
-          <Content
-            id="content"
-            type="text"
-            name="content"
-            // value={email}
-            placeholder={post.content}
-          // onChange={handleChange}
-          />
-        </Title>
+        <Form>
+          <div>
+            <label for="main_title">Main Title:</label>
+            <MainTitle
+              id="main_title"
+              type="text"
+              name="main_title"
+              // value={email}
+              placeholder={post.main_title}
+            // onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label for="subtitle">Subtitle:</label>
+            <SubTitle
+              id="subtitle"
+              type="text"
+              name="subtitle"
+              // value={email}
+              placeholder={post.subtitle}
+            // onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label for="subtitle">Content:</label>
+            <Content
+              id="content"
+              type="text"
+              name="content"
+              // value={email}
+              placeholder={post.content}
+            // onChange={handleChange}
+            />
+          </div>
+        </Form>
 
       </ContentContainer>
     </div>
