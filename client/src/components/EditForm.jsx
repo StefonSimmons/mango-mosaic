@@ -46,20 +46,39 @@ const SaveCancelBtn = styled.button`
   border: 2px solid purple
 `
 const PostImg = styled.img`
-  width: 900px
+  width: 900px;
+  height: 500px
 `
 
 export default function EditForm({ hideEditForm, post }) {
 
   const { main_title, subtitle, img_URL, content, user_id } = post
-  const [formData, updatePost] = useState({ main_title: main_title, subtitle: subtitle, img_URL: '', content: content, user_id: '' })
 
+  const [postData, updatePost] = useState({
+    main_title: main_title,
+    subtitle: subtitle,
+    img_URL: img_URL,
+    content: content,
+    user_id: user_id
+  })
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    updatePost({ ...formData, [name]: value })
+    const { name, value} = e.target;
+    updatePost({
+      ...postData,
+      [name]: value
+    })
   }
 
+  const handleFileChange = (e) => {
+    const { name, files} = e.target;
+    updatePost({
+      ...postData,
+      [name]: URL.createObjectURL(files[0])
+    })
+  }
+
+  console.log(postData)
   return (
 
     <div>
@@ -70,45 +89,45 @@ export default function EditForm({ hideEditForm, post }) {
             <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
           </SaveCancel>
         </ButtonWrapper>
-        <PostImg src={img_URL} alt={img_URL} />
+        <PostImg src={postData.img_URL} alt={img_URL} />
         <Form>
           <div>
             <FileUpload
               id="img_URL"
               type="file"
               name="img_URL"
-              // value={img_URL}
-              // placeholder={post.img_URL}
-              onChange={handleChange}
+              accept=".png, .jpg, .jpeg"
+              files={postData.img_URL}
+              onChange={handleFileChange}
             />
           </div>
           <div>
-            <label for="main_title">Main Title:</label>
+            <label htmlFor="main_title">Main Title:</label>
             <Title
               id="main_title"
               type="text"
               name="main_title"
-              value={formData.main_title}
+              value={postData.main_title}
               onChange={handleChange}
             />
           </div>
           <div>
-            <label for="subtitle">Subtitle:</label>
+            <label htmlFor="subtitle">Subtitle:</label>
             <Title
               id="subtitle"
               type="text"
               name="subtitle"
-              value={formData.subtitle}
+              value={postData.subtitle}
               onChange={handleChange}
             />
           </div>
           <div>
-            <label for="subtitle">Content:</label>
+            <label htmlFor="subtitle">Content:</label>
             <Content
               id="content"
               type="text"
               name="content"
-              value={formData.content}
+              value={postData.content}
               onChange={handleChange}
             />
           </div>
