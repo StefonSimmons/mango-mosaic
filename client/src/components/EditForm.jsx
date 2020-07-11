@@ -3,25 +3,23 @@ import styled from 'styled-components'
 
 const ContentContainer = styled.div`
 `
-const TitleWrapper = styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-
+  justify-content: space-evenly;
 `
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 700px;
+  width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
 `
-const MainTitle = styled.input`
-  margin: 5px;
-  font-size: 15px;
-  width: 500px;
+const FileUpload = styled.input`
+  margin: 5px 0;
+  width: 590px;
 `
-const SubTitle = styled.input`
+const Title = styled.input`
   margin: 5px;
   font-size: 15px;
   width: 500px;
@@ -30,13 +28,13 @@ const Content = styled.textarea`
   margin: 5px;
   font-size: 15px;
   width: 500px;
-  height: 300px
+  height: 450px
 `
 const SaveCancel = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 200px;
-  margin-right: 5px
+  width: 210px;
+  margin-bottom: 10px
 `
 const SaveCancelBtn = styled.button`
   font-family: 'Dancing Script', cursive;
@@ -55,17 +53,27 @@ export default function EditForm({ hideEditForm, post }) {
   return (
     <div>
       <ContentContainer>
-        <TitleWrapper>
+        <ButtonWrapper>
           <SaveCancel>
             <SaveCancelBtn>Save</SaveCancelBtn>
             <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
           </SaveCancel>
-        </TitleWrapper>
-        <PostImg src='https://imgur.com/TK6W9lt.png' alt='something' />
+        </ButtonWrapper>
+        <PostImg src={post.img_URL} alt={post.img_URL} />
         <Form>
           <div>
+            <FileUpload
+              id="img_URL"
+              type="file"
+              name="main_title"
+              // value={email}
+              // placeholder={post.img_URL}
+            // onChange={handleChange}
+            />
+          </div>
+          <div>
             <label for="main_title">Main Title:</label>
-            <MainTitle
+            <Title
               id="main_title"
               type="text"
               name="main_title"
@@ -76,7 +84,7 @@ export default function EditForm({ hideEditForm, post }) {
           </div>
           <div>
             <label for="subtitle">Subtitle:</label>
-            <SubTitle
+            <Title
               id="subtitle"
               type="text"
               name="subtitle"
