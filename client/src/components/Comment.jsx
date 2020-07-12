@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-
+import CreateComment from './CreateComment'
 
 const CommentHeader = styled.div`
   display: flex;
@@ -24,10 +24,9 @@ const AddCommentBtn = styled.button`
   color: white;
   background-color: rgb(26,26,26);
   border-radius: 10px;
-  border: 2px solid rgb(26,26,26);
-  padding: 3px
+  border: 1px solid rgb(26,26,26);
 `
-const Divider = styled.hr`
+export const Divider = styled.hr`
   height: 1px;
   width: 700px;
   background: #706B6B;
@@ -74,7 +73,7 @@ export default function Comment({ allComments }) {
       )
     }
   })
-
+  // FOR DISPLAY ANIMATION ON COMMENT BTN
   const [display, updateDisplay] = useState(false)
 
 
@@ -95,6 +94,9 @@ export default function Comment({ allComments }) {
               }
             </AddCommentContainer>
           </CommentHeader>
+
+          <CreateComment
+          />
           {comments}
         </>
         :

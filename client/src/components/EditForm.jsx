@@ -136,7 +136,7 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
             />
           </div>
           <div>
-            <label htmlFor="subtitle">Content:</label>
+            <label htmlFor="content">Content:</label>
             <Content
               id="content"
               type="text"
