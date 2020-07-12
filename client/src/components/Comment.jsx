@@ -47,7 +47,9 @@ export default function Comment({ allComments, handleCreateComment }) {
   const { postId } = useParams()
 
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
-  const commentCount = allComments.filter(c => c.id === parseInt(postId)).length
+  console.log('allcomments-->',allComments, 'AND =>' ,postId)
+  const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
+  console.log('count ==>',commentCount)
 
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
@@ -60,7 +62,7 @@ export default function Comment({ allComments, handleCreateComment }) {
   }
 
   const comments = allComments.map(c => {
-    if (c.id === parseInt(postId)) {
+    if (c.post_id === parseInt(postId)) {
       return (
         <div key={c.id}>
           <Divider />
@@ -73,11 +75,12 @@ export default function Comment({ allComments, handleCreateComment }) {
       )
     }
   })
-  // FOR DISPLAY ANIMATION ON COMMENT BTN
+  // FOR COMMENT BTN DISPLAY ANIMATION
   const [cBtnDisplay, updatebtnDisplay] = useState(false)
 
-  // FOR COMMENT CREATION
-  const [commentClicked, updateCommentClicked] = useState(true)
+  // FOR COMMENT CREATION FORM
+  const [commentClicked, updateCommentClicked] = useState(false)
+
   return (
     <div>
       {comments !== undefined ?
@@ -92,7 +95,7 @@ export default function Comment({ allComments, handleCreateComment }) {
               {cBtnDisplay ?
                 <AddCommentBtn onClick={() => { updateCommentClicked(true) }}>Comment</AddCommentBtn>
                 :
-                <i class="material-icons w3-xxlarge">add_comment</i>
+                <i className="material-icons w3-xxlarge">add_comment</i>
               }
             </AddCommentContainer>
 
@@ -102,6 +105,7 @@ export default function Comment({ allComments, handleCreateComment }) {
             <CreateComment
               handleCreateComment={handleCreateComment}
               postId={postId}
+              updateCommentClicked={updateCommentClicked}
             />
             : 
             null

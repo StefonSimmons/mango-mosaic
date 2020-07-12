@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Prompt } from 'react-router-dom'
 import styled from 'styled-components'
 
 const ContentContainer = styled.div`

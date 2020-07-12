@@ -28,9 +28,7 @@ function App() {
   useEffect(() => {
     const getPosts = async () => {
       const res = await getAllPosts()
-      console.log(res)
       updateAllPosts(res)
-      console.log(res)
     }
     getPosts()
   }, [])
@@ -53,10 +51,8 @@ function App() {
   }, [])
 
   const handleLoginSubmit = async (loginParams) => {
-    console.log('->', loginParams)
     const admin = await loginUser(loginParams);
     updateAdmin(admin)
-    console.log(admin)
   }
 
   const logOut = () => {
@@ -77,8 +73,10 @@ function App() {
   }
 
   const handleCreateComment = async (commentData) => {
+    console.log('HELLO, Im in App(comment)', commentData)
     const newComment = await createComment(commentData)
-    updateAllComments([allComments, ...newComment])
+    console.log('HELLO, After API call(comment)', commentData)
+    updateAllComments([ ...allComments, { ...newComment } ])
   }
 
   // MODAL HANDLERS 

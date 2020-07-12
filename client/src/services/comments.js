@@ -8,7 +8,10 @@ export const getAllComments = async () => {
 }
 
 export const createComment = async (commentParams) => {
-  const resp = await api.post('/comments', {comment: commentParams})
+  console.log('HELLO, services Comment1', commentParams)
+  const resp = await api.post('/comments', { comment: commentParams })
+  console.log('HELLO, services Comment2', commentParams)
+
   const newComment = resp.data
 
   return newComment

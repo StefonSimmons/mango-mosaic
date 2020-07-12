@@ -130,13 +130,9 @@ const RedSquare = styled.div`
 
 export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal, handleCreateComment }) {
 
-  console.log(allPosts)
-
   const { postId } = useParams()
-  console.log(postId)
 
   const post = allPosts.filter(p => p.id === parseInt(postId))[0]
-  console.log(post)
 
 
   const recentPosts = allPosts.map((p, i) => {

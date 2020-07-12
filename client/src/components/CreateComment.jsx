@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { Divider } from './Comment'
 import styled from 'styled-components'
 
@@ -44,14 +45,16 @@ const SubmitBtn = styled.button`
   border-radius: 10px;
   border: 1px solid rgb(26,26,26);
 `
-export default function CreateComment({ handleCreateComment, postId }) {
+export default function CreateComment({ handleCreateComment, updateCommentClicked }) {
+
+  const { postId } = useParams()
 
   const [commentData, trackCommentData] = useState({
     commenter: '',
     email: '',
     social: '',
     comment: '',
-    postId: postId
+    post_id: parseInt(postId)
   })
 
   function handleChange(e) {
@@ -60,17 +63,31 @@ export default function CreateComment({ handleCreateComment, postId }) {
       ...commentData,
       [name]: value
     })
+    console.log('tracking', commentData)
+
   }
 
-  const { commenter, email, social, comment, post_id } = commentData
+  const { commenter, email, social, comment } = commentData
   
   return (
     <div>
       <Divider />
 
       <CommentForm
-        onSubmit={(e) => handleCreateComment(e)}
-      >
+        onSubmit={(e) => {
+          console.log('HELLO, Im comment submit', commentData)
+          e.preventDefault();
+          handleCreateComment(commentData)
+          console.log('HELLO, Im comment submit2', commentData)
+          updateCommentClicked(false)
+          trackCommentData({
+            commenter: '',
+            email: '',
+            social: '',
+            comment: '',
+            post_id: parseInt(postId)
+          })
+        }}>
         <InputWrapper>
           <NameEmailFields>
             <div>
