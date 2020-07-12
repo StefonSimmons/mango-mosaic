@@ -76,32 +76,40 @@ export default function Comment({ allComments }) {
   // FOR DISPLAY ANIMATION ON COMMENT BTN
   const [display, updateDisplay] = useState(false)
 
-
+  // FOR COMMENT CREATION
+  const [commentClicked, updateCommentClicked] = useState(false)
   return (
     <div>
       {comments !== undefined ?
         <>
           <CommentHeader>
+
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
             <AddCommentContainer
               onMouseLeave={() => updateDisplay(false)}
               onMouseEnter={() => updateDisplay(true)}
             >
               {display ?
-                <AddCommentBtn>Comment</AddCommentBtn>
+                <AddCommentBtn onClick={() => { updateCommentClicked(true) }}>Comment</AddCommentBtn>
                 :
                 <i class="material-icons w3-xxlarge">add_comment</i>
               }
             </AddCommentContainer>
+
           </CommentHeader>
 
-          <CreateComment
-          />
+          { commentClicked ?
+            <CreateComment
+            />
+            : 
+            null
+          }
           {comments}
         </>
         :
         'Reloading...'
       }
+
     </div>
   )
 }
