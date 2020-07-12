@@ -2,7 +2,23 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
+
+const CommentHeader = styled.div`
+  display: flex;
+  width: 700px;
+  justify-content: space-between
+`
 const CommentCount = styled.h1`
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700
+`
+const AddCommentContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+const AddCommentBtn = styled.button`
+  margin-left: 10px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
   font-weight: 700
@@ -35,7 +51,7 @@ export default function Comment({ allComments }) {
     if (comment !== undefined) {
       const milliseconds = Date.parse(comment.created_at)
       const dateObj = new Date(milliseconds)
-      const comment_datetime = dateObj.toLocaleString("en-US").replace(',','')
+      const comment_datetime = dateObj.toLocaleString("en-US").replace(',', '')
       return comment_datetime
     }
   }
@@ -44,7 +60,7 @@ export default function Comment({ allComments }) {
     if (c.id === parseInt(postId)) {
       return (
         <div key={c.id}>
-          <Divider/>
+          <Divider />
           <CommentContainer>
             <h2>{c.commenter}</h2>
             <CreatedAt>{formatDate(c)}</CreatedAt>
@@ -59,7 +75,13 @@ export default function Comment({ allComments }) {
     <div>
       {comments !== undefined ?
         <>
-          <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
+          <CommentHeader>
+            <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
+            <AddCommentContainer>
+              <i class="material-icons w3-xxlarge">comment</i>
+              <AddCommentBtn>Comment</AddCommentBtn>
+            </AddCommentContainer>
+          </CommentHeader>
           {comments}
         </>
         :
