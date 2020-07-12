@@ -128,7 +128,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal }) {
+export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal, handleCreateComment }) {
 
   console.log(allPosts)
 
@@ -205,6 +205,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
           </PostInfo>
 
           <Comment
+            handleCreateComment={handleCreateComment}
             allComments={allComments}
           />
 

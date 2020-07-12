@@ -42,7 +42,7 @@ const CommentContainer = styled.div`
 const CreatedAt = styled.h3`
   padding: 10px 0 20px 0;
 `
-export default function Comment({ allComments }) {
+export default function Comment({ allComments, handleCreateComment }) {
 
   const { postId } = useParams()
 
@@ -74,10 +74,10 @@ export default function Comment({ allComments }) {
     }
   })
   // FOR DISPLAY ANIMATION ON COMMENT BTN
-  const [display, updateDisplay] = useState(false)
+  const [cBtnDisplay, updatebtnDisplay] = useState(false)
 
   // FOR COMMENT CREATION
-  const [commentClicked, updateCommentClicked] = useState(false)
+  const [commentClicked, updateCommentClicked] = useState(true)
   return (
     <div>
       {comments !== undefined ?
@@ -86,10 +86,10 @@ export default function Comment({ allComments }) {
 
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
             <AddCommentContainer
-              onMouseLeave={() => updateDisplay(false)}
-              onMouseEnter={() => updateDisplay(true)}
+              onMouseLeave={() => updatebtnDisplay(false)}
+              onMouseEnter={() => updatebtnDisplay(true)}
             >
-              {display ?
+              {cBtnDisplay ?
                 <AddCommentBtn onClick={() => { updateCommentClicked(true) }}>Comment</AddCommentBtn>
                 :
                 <i class="material-icons w3-xxlarge">add_comment</i>
@@ -100,6 +100,8 @@ export default function Comment({ allComments }) {
 
           { commentClicked ?
             <CreateComment
+              handleCreateComment={handleCreateComment}
+              postId={postId}
             />
             : 
             null

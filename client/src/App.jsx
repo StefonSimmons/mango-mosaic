@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { getAllPosts, updatePost } from './services/posts'
-import { getAllComments } from './services/comments'
+import { getAllComments, createComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
 import Home from './components/Home'
@@ -76,6 +76,11 @@ function App() {
     updateAllPosts(posts)
   }
 
+  const handleCreateComment = async (commentData) => {
+    const newComment = await createComment(commentData)
+    updateAllComments([allComments, ...newComment])
+  }
+
   // MODAL HANDLERS 
   function toggleLogInModal() {
     updateLoginModal(!logInModal)
@@ -129,6 +134,7 @@ function App() {
             editClicked={editForm}
             handleSaveEdit={handleSaveEdit}
             verifyEditModal={toggleEditFormModal}
+            handleCreateComment={handleCreateComment}
           />
         </Route>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Divider } from './Comment'
 import styled from 'styled-components'
 
@@ -32,34 +32,92 @@ const NameEmailFields = styled.div`
 
 `
 const CommentArea = styled.textarea`
-  margin-top: 5px;
+  margin: 5px 0;
   height: 77px
 `
-export default function CreateComment() {
+const SubmitBtn = styled.button`
+  width: fit-content;
+  margin-top: 5px;
+  color: white;
+  padding: 0 10px;
+  background-color: rgb(26,26,26);
+  border-radius: 10px;
+  border: 1px solid rgb(26,26,26);
+`
+export default function CreateComment({ handleCreateComment, postId }) {
 
+  const [commentData, trackCommentData] = useState({
+    commenter: '',
+    email: '',
+    social: '',
+    comment: '',
+    postId: postId
+  })
+
+  function handleChange(e) {
+    const { name, value } = e.target
+    trackCommentData({
+      ...commentData,
+      [name]: value
+    })
+  }
+
+  const { commenter, email, social, comment, post_id } = commentData
+  
   return (
     <div>
       <Divider />
 
-      <CommentForm>
+      <CommentForm
+        onSubmit={(e) => handleCreateComment(e)}
+      >
         <InputWrapper>
           <NameEmailFields>
             <div>
               <label htmlFor="name">Name:</label>
-              <Input id="name" type="text" placeholder="Your Name" />
+              <Input
+                id="name"
+                type="text"
+                name="commenter"
+                value={commenter}
+                placeholder="Your Name"
+                onChange={handleChange}
+              />
             </div>
             <div>
               <label htmlFor="email">Email:</label>
-              <Input id="email" type="text" placeholder="(Not published)" />
+              <Input
+                id="email"
+                type="text"
+                name="email"
+                value={email}
+                placeholder="(Not published)"
+                onChange={handleChange}
+              />
             </div>
           </NameEmailFields>
           <div>
             <label htmlFor="social">Social:</label>
-            <Input id="social" type="text" placeholder="@Instagram or @Twitter" />
+            <Input
+              id="social"
+              type="text"
+              name="social"
+              value={social}
+              placeholder="@Instagram or @Twitter"
+              onChange={handleChange}
+            />
           </div>
         </InputWrapper>
-        <CommentArea type="text" placeholder='Write Your Comment Here...' />
+        <CommentArea
+          type="text"
+          name="comment"
+          value={comment}
+          placeholder='Write Your Comment Here...'
+          onChange={handleChange}
+        />
+        <SubmitBtn type="submit">Submit</SubmitBtn>
       </CommentForm>
     </div>
   )
 }
+
