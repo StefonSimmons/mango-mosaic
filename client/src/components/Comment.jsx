@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -10,18 +10,22 @@ const CommentHeader = styled.div`
 `
 const CommentCount = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700
 `
 const AddCommentContainer = styled.div`
-  display: flex;
-  align-items: center;
+  height: 36px
 `
 const AddCommentBtn = styled.button`
   margin-left: 10px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
-  font-weight: 700
+  font-weight: 700;
+  color: white;
+  background-color: rgb(26,26,26);
+  border-radius: 10px;
+  border: 2px solid rgb(26,26,26);
+  padding: 3px
 `
 const Divider = styled.hr`
   height: 1px;
@@ -71,15 +75,24 @@ export default function Comment({ allComments }) {
     }
   })
 
+  const [display, updateDisplay] = useState(false)
+
+
   return (
     <div>
       {comments !== undefined ?
         <>
           <CommentHeader>
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
-            <AddCommentContainer>
-              <i class="material-icons w3-xxlarge">comment</i>
-              <AddCommentBtn>Comment</AddCommentBtn>
+            <AddCommentContainer
+              onMouseLeave={() => updateDisplay(false)}
+              onMouseEnter={() => updateDisplay(true)}
+            >
+              {display ?
+                <AddCommentBtn>Comment</AddCommentBtn>
+                :
+                <i class="material-icons w3-xxlarge">add_comment</i>
+              }
             </AddCommentContainer>
           </CommentHeader>
           {comments}
