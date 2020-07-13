@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Foot = styled.footer`
@@ -15,22 +16,44 @@ const Bottom = styled.div`
 const Text = styled.h6`
   letter-spacing: 3px;
 `
+const CreatePost = styled.button`
+  letter-spacing: 3px;
+  color: white;
+  background-color: rgb(26,26,26);
+  border-radius: 10px;
+  border: 1px solid rgb(26,26,26);
+
+  &:hover{
+    border: 1px solid #2B791E;
+    background: rgba(43,121,30, .5);
+    color: black
+  }
+`
 const AdminLogIn = styled.h6`
   font-weight: 700;
   letter-spacing: 5px;
   cursor: pointer;
 `
+const AdminLogOut = styled(AdminLogIn)`
+`
+
 export default function Footer({ admin, logOut, showLogInModal, verifyEditModal }) {
   return (
     <>
       <Foot>
         <Bottom>
           {admin ?
-            <AdminLogIn onClick={() => { logOut(); verifyEditModal() }}>Log Out</AdminLogIn>
-            : 
-            <AdminLogIn onClick={showLogInModal}>Admin Log-in</AdminLogIn>
+            <>
+              <AdminLogOut onClick={() => { logOut(); verifyEditModal() }}>Log Out</AdminLogOut>
+              <Link to='/new-post'><CreatePost>Create New Post</CreatePost></Link>
+            </>
+            :
+            <>
+              <AdminLogIn onClick={showLogInModal}>Admin Log-in</AdminLogIn>
+              <Text>Crafted By: Stefon Simmons</Text>
+            </>
           }
-          <Text>Crafted By: Stefon Simmons</Text>
+
         </Bottom>
       </Foot>
     </>

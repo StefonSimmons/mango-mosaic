@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
 import DeletionModal from './components/DeletionModal';
 import SaveEditModal from './components/SaveEditModal';
+import CreatePost from './components/CreatePost'
 
 function App() {
 
@@ -134,6 +135,10 @@ function App() {
             verifyEditModal={toggleEditFormModal}
             handleCreateComment={handleCreateComment}
           />
+        </Route>
+
+        <Route exact path='/new-post'>
+          <CreatePost />
         </Route>
 
       </Switch>
