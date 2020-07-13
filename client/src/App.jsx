@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import { getAllPosts, updatePost, createPost } from './services/posts'
+import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
 import { getAllComments, createComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
@@ -11,7 +11,7 @@ import Contact from './components/Contact'
 import Post from './components/Post'
 import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
-import DeletionModal from './components/DeletionModal';
+// import DeletionModal from './components/DeletionModal';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
 
@@ -23,7 +23,6 @@ function App() {
   const [logInModal, updateLoginModal] = useState(false)
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
-  const [newPost, updateNewPost] = useState(null)
   const [admin, updateAdmin] = useState(null)
 
   // BLOG HANDLERS
@@ -47,7 +46,7 @@ function App() {
   useEffect(() => {
     const verify = async () => {
       const admin = await verifyUser()
-      console.log('admin->',admin.id)
+      console.log('admin->', admin.id)
       updateAdmin(admin)
     }
     verify()
@@ -72,7 +71,6 @@ function App() {
   const handleCreatePost = async (postData) => {
     const newPost = await createPost(postData)
     updateAllPosts([...allPosts, { ...newPost }])
-    updateNewPost(newPost)
   }
 
   const handleSaveEdit = async (id, postData) => {
@@ -83,7 +81,13 @@ function App() {
 
   const handleCreateComment = async (commentData) => {
     const newComment = await createComment(commentData)
-    updateAllComments([ ...allComments, { ...newComment } ])
+    updateAllComments([...allComments, { ...newComment }])
+  }
+
+  const deletePost = async (postId) => {
+    await destroyPost(postId)
+    const posts = allPosts.filter(post => post.id !== postId)
+    updateAllPosts(posts)
   }
 
   // MODAL HANDLERS 
@@ -100,6 +104,7 @@ function App() {
       updateEditModal(!verifyEditModal)
     }
   }
+
 
   return (
     <>
@@ -140,6 +145,9 @@ function App() {
             handleSaveEdit={handleSaveEdit}
             verifyEditModal={toggleEditFormModal}
             handleCreateComment={handleCreateComment}
+            deletePost={deletePost}
+            deleteClicked={deletionModal}
+            cancelDeletion={toggleDeletionModal}
           />
         </Route>
 
@@ -147,7 +155,6 @@ function App() {
           <CreatePost
             admin={admin}
             handleCreatePost={handleCreatePost}
-            newPostId={newPost}
           />
         </Route>
 
@@ -159,10 +166,11 @@ function App() {
         hideLogInForm={toggleLogInModal}
       />
 
-      <DeletionModal
+      {/* <DeletionModal
+        deletePost={deletePost}
         deleteClicked={deletionModal}
         cancelDeletion={toggleDeletionModal}
-      />
+      /> */}
       <SaveEditModal
         verifyEditModal={verifyEditModal}
         returnToEdit={toggleEditFormModal}

@@ -29,7 +29,7 @@ export const updatePost = async (id ,postParams) => {
 }
 
 export const destroyPost = async (id) => {
-  const resp = await api.destroy(`/posts/${id}`)
+  const resp = await api.delete(`/posts/${id}`)
   
   return resp
 }

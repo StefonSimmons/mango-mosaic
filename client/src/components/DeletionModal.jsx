@@ -1,5 +1,7 @@
 import React from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+
 
 const DialogueBox = styled.div`
   width: 300px;
@@ -22,15 +24,22 @@ const DeleteBtn = styled.button`
   border: 2px solid purple
 `
 
-export default function DeletionModal({ deleteClicked, cancelDeletion }) {
+export default function DeletionModal({ deleteClicked, cancelDeletion, deletePost }) {
+
+  const { postId } = useParams()
+  const history = useHistory()
+
   return (
     <>
 
       <div className="w3-modal" style={deleteClicked ? { display: "block" } : { display: "none" }}>
         <DialogueBox className="w3-modal-content">
-          <span className="w3-button w3-large w3-round w3-hover-purple w3-display-topright" style={{borderRadius: "10px"}} onClick={cancelDeletion}>&times;</span>
-            <Question>Are you sure you want to delete this post?</Question>
-            <DeleteBtn>Yes, Delete!</DeleteBtn>
+          <span className="w3-button w3-large w3-round w3-hover-purple w3-display-topright" style={{ borderRadius: "10px" }} onClick={cancelDeletion}>&times;</span>
+          <Question>Are you sure you want to delete this post?</Question>
+          <DeleteBtn onClick={() => {
+            deletePost(parseInt(postId))
+            history.push('/blog')
+          }}>Yes, Delete!</DeleteBtn>
         </DialogueBox>
       </div>
 

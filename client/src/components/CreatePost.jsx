@@ -51,7 +51,7 @@ const PostImg = styled.img`
   height: 500px
 `
 
-export default function CreatePost({ admin, handleCreatePost, newPost }) {
+export default function CreatePost({ admin, handleCreatePost}) {
 
   const history = useHistory()
 

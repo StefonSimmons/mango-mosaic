@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Comment from './Comment'
 import EditForm from './EditForm'
+import DeletionModal from './DeletionModal';
 
 const PostInfo = styled.div`
   height: 150vh;
@@ -128,7 +129,7 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal, handleCreateComment }) {
+export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal, handleCreateComment, deletePost, deleteClicked, cancelDeletion }) {
 
   const { postId } = useParams()
 
@@ -147,6 +148,11 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
 
   return (
     <>
+      <DeletionModal
+        deletePost={deletePost}
+        deleteClicked={deleteClicked}
+        cancelDeletion={cancelDeletion}
+      />
       {post !== undefined ?
         <>
           <PostInfo>
