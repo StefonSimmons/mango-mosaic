@@ -54,7 +54,7 @@ const EditDeleteBtn = styled.button`
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
-  object-fit: scale-down
+  object-fit: contain
 `
 const Content = styled.p`
   width: 900px;
