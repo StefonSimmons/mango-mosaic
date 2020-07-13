@@ -45,6 +45,12 @@ const SubmitBtn = styled.button`
   border-radius: 10px;
   border: 1px solid rgb(26,26,26);
 `
+const CancelBtn = styled(SubmitBtn)`
+  margin-left: 15px;
+  background: red;
+  border: 1px solid red;
+
+`
 export default function CreateComment({ handleCreateComment, updateCommentClicked }) {
 
   const { postId } = useParams()
@@ -68,7 +74,7 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
   }
 
   const { commenter, email, social, comment } = commentData
-  
+
   return (
     <div>
       <Divider />
@@ -132,7 +138,10 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
           placeholder='Write Your Comment Here...'
           onChange={handleChange}
         />
-        <SubmitBtn type="submit">Submit</SubmitBtn>
+        <div>
+          <SubmitBtn type="submit">Add Comment</SubmitBtn>
+          <CancelBtn onClick={() => { updateCommentClicked(false) }}>Cancel</CancelBtn>
+        </div>
       </CommentForm>
     </div>
   )
