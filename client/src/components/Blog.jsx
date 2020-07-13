@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
-// const Main = styled.div`
-//   display: grid;
-//   justify-items: center;
-// `
 const PostsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -21,7 +17,7 @@ const Post = styled.div`
   height: 300px;
   width: 300px; 
 `
-const Item1 = styled.div`
+const IDandImage = styled.div`
   grid-column: 1 / span 10;
   grid-row: 1 / span 8;
 `
@@ -32,7 +28,8 @@ const BlogID = styled.p`
 `
 const PostImg = styled.img`
   width: 250px;
-  height: 137px
+  height: 137px;
+  object-fit: scale-down
 `
 const PostLink = styled(Link)`
   text-decoration: none;
@@ -68,10 +65,10 @@ export default function Blog({ allPosts }) {
 
   const posts = allPosts.map(post =>
     <Post key={post.id}>
-      <Item1>
+      <IDandImage>
         <BlogID>{`#${post.id}`}</BlogID>
         <PostImg src={post.img_URL} alt={post.img_URL} />
-      </Item1>
+      </IDandImage>
       <ColorSquare>
       </ColorSquare>
       <TitleWrapper>
@@ -86,11 +83,8 @@ export default function Blog({ allPosts }) {
   )
 
   return (
-    // <Main>
       <PostsWrapper>
         {posts}
       </PostsWrapper>
-
-    // </Main>
   )
 }

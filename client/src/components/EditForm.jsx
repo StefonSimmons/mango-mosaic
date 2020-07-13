@@ -47,7 +47,8 @@ const SaveCancelBtn = styled.button`
 `
 const PostImg = styled.img`
   width: 900px;
-  height: 500px
+  height: 500px;
+  object-fit: scale-down
 `
 
 export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
