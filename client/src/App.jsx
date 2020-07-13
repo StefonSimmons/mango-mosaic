@@ -11,7 +11,6 @@ import Contact from './components/Contact'
 import Post from './components/Post'
 import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
-// import DeletionModal from './components/DeletionModal';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
 
@@ -165,12 +164,7 @@ function App() {
         logInClicked={logInModal}
         hideLogInForm={toggleLogInModal}
       />
-
-      {/* <DeletionModal
-        deletePost={deletePost}
-        deleteClicked={deletionModal}
-        cancelDeletion={toggleDeletionModal}
-      /> */}
+      
       <SaveEditModal
         verifyEditModal={verifyEditModal}
         returnToEdit={toggleEditFormModal}

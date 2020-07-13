@@ -58,7 +58,8 @@ export default function Header({ admin, verifyEditModal }) {
           <Mango>Mango</Mango>
           <Mosaic>Mosaic</Mosaic>
         </MMWrapper>
-        <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />
+        <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" />
+        {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
       <Nav>
         <List>
