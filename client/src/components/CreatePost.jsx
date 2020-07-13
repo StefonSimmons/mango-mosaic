@@ -31,13 +31,13 @@ const Content = styled.textarea`
   width: 500px;
   height: 450px
 `
-const SaveCancel = styled.div`
+const PostCancel = styled.div`
   display: flex;
   justify-content: space-between;
   width: 210px;
   margin-bottom: 10px
 `
-const SaveCancelBtn = styled.button`
+const PostCancelBtn = styled.button`
   font-family: 'Dancing Script', cursive;
   font-size: 28px;
   letter-spacing: 2px;
@@ -53,7 +53,7 @@ const PostImg = styled.img`
 
 export default function CreatePost({ admin, handleCreatePost, newPost }) {
 
-  const { history } = useHistory()
+  const history = useHistory()
 
   const [postData, createPost] = useState({
     main_title: '',
@@ -79,15 +79,21 @@ export default function CreatePost({ admin, handleCreatePost, newPost }) {
     })
   }
 
+  function refreshMe() {
+    history.push(`/blog`);
+    window.location.reload();
+  }
+
   return (
 
     <div>
       <ContentContainer>
         <ButtonWrapper>
-          <SaveCancel>
-            <SaveCancelBtn onClick={() => {
+          <PostCancel>
+            <PostCancelBtn onClick={(e) => {
+              e.preventDefault();
               handleCreatePost(postData);
-              history.push(`/blog/${newPost.id}`)
+              refreshMe();
               createPost({
                 main_title: '',
                 subtitle: '',
@@ -95,8 +101,8 @@ export default function CreatePost({ admin, handleCreatePost, newPost }) {
                 content: '',
                 user_id: ''
               })
-            }}>Post</SaveCancelBtn>
-            <SaveCancelBtn onClick={() => {
+            }}>Post</PostCancelBtn>
+            <PostCancelBtn onClick={() => {
               history.push(`/blog`)
               createPost({
                 main_title: '',
@@ -105,8 +111,8 @@ export default function CreatePost({ admin, handleCreatePost, newPost }) {
                 content: '',
                 user_id: ''
               })
-            }}>Cancel</SaveCancelBtn>
-          </SaveCancel>
+            }}>Cancel</PostCancelBtn>
+          </PostCancel>
         </ButtonWrapper>
         <PostImg src={postData.img_URL} alt={postData.img_URL} />
 

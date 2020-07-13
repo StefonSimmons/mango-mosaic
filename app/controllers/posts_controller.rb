@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @new_post = Post.create(post_params)
-    render json: @new_post
+    render json: @new_post, status: :created
   end
 
   def update
