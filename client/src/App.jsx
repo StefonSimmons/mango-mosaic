@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import { getAllPosts, updatePost } from './services/posts'
+import { getAllPosts, updatePost, createPost } from './services/posts'
 import { getAllComments, createComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
@@ -23,6 +23,7 @@ function App() {
   const [logInModal, updateLoginModal] = useState(false)
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
+  const [newPost, updateNewPost] = useState(null)
   const [admin, updateAdmin] = useState(null)
 
   // BLOG HANDLERS
@@ -46,6 +47,7 @@ function App() {
   useEffect(() => {
     const verify = async () => {
       const admin = await verifyUser()
+      console.log('admin->',admin.id)
       updateAdmin(admin)
     }
     verify()
@@ -67,6 +69,12 @@ function App() {
     updateEditForm(!editForm)
   }
 
+  const handleCreatePost = async (postData) => {
+    const newPost = await createPost(postData)
+    updateAllPosts([...allPosts, { ...newPost }])
+    updateNewPost(newPost)
+  }
+
   const handleSaveEdit = async (id, postData) => {
     const updatedPost = await updatePost(id, postData)
     const posts = allPosts.map(post => post.id === id ? updatedPost : post)
@@ -74,9 +82,7 @@ function App() {
   }
 
   const handleCreateComment = async (commentData) => {
-    console.log('HELLO, Im in App(comment)', commentData)
     const newComment = await createComment(commentData)
-    console.log('HELLO, After API call(comment)', commentData)
     updateAllComments([ ...allComments, { ...newComment } ])
   }
 
@@ -138,7 +144,11 @@ function App() {
         </Route>
 
         <Route exact path='/new-post'>
-          <CreatePost />
+          <CreatePost
+            admin={admin}
+            handleCreatePost={handleCreatePost}
+            newPostId={newPost}
+          />
         </Route>
 
       </Switch>
