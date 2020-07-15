@@ -58,7 +58,6 @@ const ColorSquare = styled.div`
   grid-column: 2 / span 8;
   grid-row: 3 / span 13;
   z-index: -1
-
 `
 
 export default function Blog({ allPosts }) {
@@ -83,8 +82,8 @@ export default function Blog({ allPosts }) {
   )
 
   return (
-      <PostsWrapper>
-        {posts}
-      </PostsWrapper>
+    <PostsWrapper>
+      {posts}
+    </PostsWrapper>
   )
 }

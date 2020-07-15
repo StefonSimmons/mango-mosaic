@@ -114,14 +114,17 @@ const SeeMore = styled(Link)`
 const Background = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 50px
+  margin-top: 50px;
+  position: sticky;
+  top: 50px
 `
 const GreenSquare = styled.div`
   background-color: #2B791E;
   width: 500px;
   height: 500px;
   opacity: .2;
-  z-index: -1
+  z-index: -1;
+
 `
 const RedSquare = styled.div`
   background-color: #972309;
