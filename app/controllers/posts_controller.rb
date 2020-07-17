@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     render json: "post has been deleted"
   end
 
+
   private
 
   def post_params
