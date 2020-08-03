@@ -45,3 +45,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Hiding credentials from GitHub
 gem 'figaro'
+
+#  AWS S3 gems
+gem 'aws-sdk-s3'

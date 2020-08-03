@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
@@ -58,10 +58,12 @@ export default function CreatePost({ admin, handleCreatePost}) {
   const [postData, createPost] = useState({
     main_title: '',
     subtitle: '',
-    img_URL: '',
     content: '',
-    user_id: admin.id
+    user_id: admin.id,
+    img_URL: {}
   })
+
+  const form = useRef(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -75,7 +77,7 @@ export default function CreatePost({ admin, handleCreatePost}) {
     const { name, files } = e.target;
     createPost({
       ...postData,
-      [name]: URL.createObjectURL(files[0])
+      [name]: files[0]
     })
   }
 
@@ -90,10 +92,11 @@ export default function CreatePost({ admin, handleCreatePost}) {
       <ContentContainer>
         <ButtonWrapper>
           <PostCancel>
-            <PostCancelBtn onClick={(e) => {
-              e.preventDefault();
-              handleCreatePost(postData);
-              refreshMe();
+            <PostCancelBtn onClick={() => {
+              const data = new FormData(form.current)
+              console.log(data)
+              handleCreatePost(data);
+              // refreshMe();
               createPost({
                 main_title: '',
                 subtitle: '',
@@ -116,7 +119,7 @@ export default function CreatePost({ admin, handleCreatePost}) {
         </ButtonWrapper>
         <PostImg src={postData.img_URL} alt={postData.img_URL} />
 
-        <Form>
+        <Form ref={form}>
           <div>
             <FileUpload
               id="img_URL"
