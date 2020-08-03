@@ -1,8 +1,9 @@
+
 class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: :desc)
     render json: @posts
   end
 
@@ -13,7 +14,14 @@ class PostsController < ApplicationController
 
   def create
     @new_post = Post.create(post_params)
-    render json: @new_post
+    puts 'Stefon -->'
+    puts post_params["img_URL"]
+    if @new_post.save
+      render json: @new_post, status: :created
+    else
+      render json: @new_post.errors, status: :unprocessable_entity
+    end
+    
   end
 
   def update
@@ -28,9 +36,10 @@ class PostsController < ApplicationController
     render json: "post has been deleted"
   end
 
+
   private
 
   def post_params
-    params.require(:post).permit(:main_title, :subtitle, :img_URL, :content, :user_id)
+    params.require(:post).permit(:main_title, :subtitle, :content, :user_id, img_URL: {})
   end
 end
