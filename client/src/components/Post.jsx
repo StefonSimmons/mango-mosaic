@@ -52,6 +52,11 @@ const EditDeleteBtn = styled.button`
   border-radius: 10px;
   border: 2px solid purple
 `
+const ImageContainer = styled.div`
+  width: 900px;
+  height: 500px;
+  background: lightgrey
+`
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
@@ -187,7 +192,9 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                     }
                   </TitleWrapper>
 
-                  <PostImg src={post.img_URL} alt={post.img_URL} />
+                  <ImageContainer>
+                    <PostImg src={post.img_URL} alt={post.img_URL} />
+                  </ImageContainer>
                   <Content>{post.content}</Content>
                 </ContentContainer>
 
