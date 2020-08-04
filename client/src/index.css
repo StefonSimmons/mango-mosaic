@@ -4,4 +4,15 @@ body{
   background-color: #EEF4FB
 }
 
+.textEditorWrapper .rich-editor {
+  padding: 10rem;
+}
+.rich-editor .rdw-editor-main {
+  background-color: #fff;
+}
+.rich-editor .DraftEditor-editorContainer {
+  padding: .5rem;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed&display=swap');

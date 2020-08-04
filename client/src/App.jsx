@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
+import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
 import { getAllComments, createComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
@@ -13,6 +14,7 @@ import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
+import { MyEditor } from './components/MyEditor'
 
 function App() {
 
@@ -164,11 +166,16 @@ function App() {
         logInClicked={logInModal}
         hideLogInForm={toggleLogInModal}
       />
-      
+
       <SaveEditModal
         verifyEditModal={verifyEditModal}
         returnToEdit={toggleEditFormModal}
       />
+      <div className='textEditorWrapper'>
+        <MyEditor
+        />
+      </div>
+
 
       <Footer
         verifyEditModal={toggleEditFormModal}
