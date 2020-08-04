@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
@@ -48,10 +48,11 @@ const PostCancelBtn = styled.button`
 `
 const PostImg = styled.img`
   width: 900px;
-  height: 500px
+  height: 500px;
+  object-fit: contain
 `
 
-export default function CreatePost({ admin, handleCreatePost}) {
+export default function CreatePost({ admin, handleCreatePost }) {
 
   const history = useHistory()
 
@@ -60,10 +61,10 @@ export default function CreatePost({ admin, handleCreatePost}) {
     subtitle: '',
     content: '',
     user_id: admin.id,
-    img_URL: {}
+    img_URL: '',
+    temp_Img_URL: ''
   })
 
-  // const form = useRef(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -77,14 +78,15 @@ export default function CreatePost({ admin, handleCreatePost}) {
     const { name, files } = e.target;
     createPost({
       ...postData,
-      [name]: files[0]
+      [name]: files[0],
+      temp_Img_URL: URL.createObjectURL(files[0])
     })
   }
 
-  // function refreshMe() {
-  //   history.push(`/blog`);
-  //   window.location.reload();
-  // }
+  function refreshMe() {
+    history.push(`/blog`);
+    window.location.reload();
+  }
 
   return (
 
@@ -93,10 +95,8 @@ export default function CreatePost({ admin, handleCreatePost}) {
         <ButtonWrapper>
           <PostCancel>
             <PostCancelBtn onClick={() => {
-              // const data = new FormData(form.current)
-              // console.log(data)
               handleCreatePost(postData);
-              // refreshMe();
+              refreshMe();
               createPost({
                 main_title: '',
                 subtitle: '',
@@ -117,7 +117,7 @@ export default function CreatePost({ admin, handleCreatePost}) {
             }}>Cancel</PostCancelBtn>
           </PostCancel>
         </ButtonWrapper>
-        <PostImg src={postData.img_URL} alt={postData.img_URL} />
+        <PostImg src={postData.temp_Img_URL} alt={postData.temp_Img_URL} />
 
         <Form>
           <div>

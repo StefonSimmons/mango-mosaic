@@ -47,9 +47,3 @@ export const destroyPost = async (id) => {
 
   return resp
 }
-
-export const uploadImg = async () => {
-
-
-
-}
