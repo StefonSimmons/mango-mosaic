@@ -63,7 +63,7 @@ export default function CreatePost({ admin, handleCreatePost}) {
     img_URL: {}
   })
 
-  const form = useRef(null)
+  // const form = useRef(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -81,10 +81,10 @@ export default function CreatePost({ admin, handleCreatePost}) {
     })
   }
 
-  function refreshMe() {
-    history.push(`/blog`);
-    window.location.reload();
-  }
+  // function refreshMe() {
+  //   history.push(`/blog`);
+  //   window.location.reload();
+  // }
 
   return (
 
@@ -93,9 +93,9 @@ export default function CreatePost({ admin, handleCreatePost}) {
         <ButtonWrapper>
           <PostCancel>
             <PostCancelBtn onClick={() => {
-              const data = new FormData(form.current)
-              console.log(data)
-              handleCreatePost(data);
+              // const data = new FormData(form.current)
+              // console.log(data)
+              handleCreatePost(postData);
               // refreshMe();
               createPost({
                 main_title: '',
@@ -119,7 +119,7 @@ export default function CreatePost({ admin, handleCreatePost}) {
         </ButtonWrapper>
         <PostImg src={postData.img_URL} alt={postData.img_URL} />
 
-        <Form ref={form}>
+        <Form>
           <div>
             <FileUpload
               id="img_URL"
