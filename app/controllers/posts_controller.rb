@@ -24,8 +24,11 @@ class PostsController < ApplicationController
   end
 
   def update
+    puts '-<<<Stefonn'
     @updated_post = Post.find(params[:id])
+    puts '-<<<Stefon2'
     @updated_post.update(post_params)
+    puts '--<< Stefonn3'
     render json: @updated_post
   end
 
