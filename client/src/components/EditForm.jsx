@@ -60,7 +60,8 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
     subtitle: subtitle,
     img_URL: img_URL,
     content: content,
-    user_id: user_id
+    user_id: user_id,
+    preview_Img: ''
   })
 
   const handleChange = (e) => {
@@ -75,7 +76,8 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
     const { name, files } = e.target;
     updatePost({
       ...postData,
-      [name]: URL.createObjectURL(files[0])
+      [name]: files[0],
+      preview_Img: URL.createObjectURL(files[0])
     })
   }
 
@@ -87,23 +89,27 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
         <ButtonWrapper>
           <SaveCancel>
             <SaveCancelBtn onClick={() => {
-              console.log('submittedtop-->', postData)
+              // console.log('submittedtop-->', postData)
               handleSaveEdit(id, postData);
-              console.log('submitted-->', postData)
+              // console.log('submitted-->', postData)
               hideEditForm()
               updatePost({
                 main_title: '',
                 subtitle: '',
                 img_URL: '',
                 content: '',
-                user_id: ''
+                user_id: '',
+                preview_Img: ''
               })
             }}>Save</SaveCancelBtn>
             <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
           </SaveCancel>
         </ButtonWrapper>
-        <PostImg src={postData.img_URL} alt={img_URL} />
-
+        { postData.preview_Img !== '' ?
+          <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
+          :
+          <PostImg src={postData.img_URL} alt={postData.img_URL} />
+        }
         <Form>
           <div>
             <FileUpload

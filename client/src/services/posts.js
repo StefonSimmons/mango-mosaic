@@ -36,7 +36,17 @@ export const createPost = async (postParams) => {
 }
 
 export const updatePost = async (id, postParams) => {
-  const resp = await api.put(`/posts/${id}`, { post: postParams })
+  const config = {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }
+  const formData = new FormData();
+  console.log(postParams)
+  formData.append('post[main_title]', postParams.main_title)
+  formData.append('post[subtitle]', postParams.subtitle)
+  formData.append('post[content]', postParams.content)
+  formData.append('post[user_id]', postParams.user_id)
+  formData.append('post[img_URL]', postParams.img_URL)
+  const resp = await api.put(`/posts/${id}`, formData, config)
   const updatedPost = resp.data
 
   return updatedPost
