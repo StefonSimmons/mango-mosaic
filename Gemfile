@@ -48,3 +48,5 @@ gem 'figaro'
 
 #  AWS S3 gems
 gem 'aws-sdk-s3'
+# Rails Serializer. Allows me to format my newPost JSON without my doing extra labor on the frontend
+gem 'active_model_serializers'
