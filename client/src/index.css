@@ -13,6 +13,23 @@ body{
 .rich-editor .DraftEditor-editorContainer {
   padding: .5rem;
 }
+.html-view {
+  background-color: #fff;
+  color: #000;
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 2rem;
+}
+h4 {
+  color: #fff;
+}
+.modal-content{
+  width: 900px;
+  background: yellow
+}
+.hide-toolbar { display:none !important; }
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed&display=swap');
