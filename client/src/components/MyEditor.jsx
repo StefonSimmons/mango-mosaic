@@ -52,9 +52,6 @@ class MyEditor extends Component {
             wrapperClassName="rich-editor demo-wrapper"
             editorClassName="demo-editor"
             onEditorStateChange={this.onEditorStateChange}
-          // toolbarClassName='hide-toolbar'
-          // toolbarHidden={true}
-          // readOnly={true}
             />
             :
             <Editor
