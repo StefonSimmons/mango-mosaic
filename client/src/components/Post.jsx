@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Comment from './Comment'
 import EditForm from './EditForm'
 import DeletionModal from './DeletionModal';
+import { DisplayEditor } from './DisplayEditor'
 
 const PostInfo = styled.div`
   height: 150vh;
@@ -195,7 +196,13 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                   <ImageContainer>
                     <PostImg src={post.img_URL} alt={post.img_URL} />
                   </ImageContainer>
-                  <Content>{post.content}</Content>
+                  {post.content.substring(0, 2) !== '{"' ?
+                    <Content>{post.content}</Content>
+                    :
+                    <DisplayEditor
+                      content={post.content}
+                    />
+                  }
                 </ContentContainer>
 
               }

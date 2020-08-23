@@ -14,7 +14,6 @@ import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
-import { MyEditor } from './components/MyEditor'
 
 function App() {
 
@@ -171,11 +170,6 @@ function App() {
         verifyEditModal={verifyEditModal}
         returnToEdit={toggleEditFormModal}
       />
-      <div className='textEditorWrapper'>
-        <MyEditor
-        />
-      </div>
-
 
       <Footer
         verifyEditModal={toggleEditFormModal}

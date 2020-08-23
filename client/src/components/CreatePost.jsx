@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import {verifyUser} from '../services/auth'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { CreationEditor } from './CreationEditor'
 
 const ContentContainer = styled.div`
 `
@@ -12,7 +14,7 @@ const ButtonWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
 `
@@ -56,14 +58,17 @@ export default function CreatePost({ admin, handleCreatePost }) {
 
   const history = useHistory()
 
+  // const [toolBar, toggleToolBar] = useState(true)
+
   const [postData, createPost] = useState({
     main_title: '',
     subtitle: '',
-    content: '',
+    content: localStorage.getItem('rawContent'),
     user_id: admin.id,
     img_URL: '',
-    temp_Img_URL: ''
+    preview_Img: '',
   })
+
 
 
   const handleChange = (e) => {
@@ -79,9 +84,13 @@ export default function CreatePost({ admin, handleCreatePost }) {
     createPost({
       ...postData,
       [name]: files[0],
-      temp_Img_URL: URL.createObjectURL(files[0])
+      preview_Img: URL.createObjectURL(files[0])
     })
   }
+
+  // const hideToolBar = () => {
+  //   toggleToolBar(!toolBar)
+  // }
 
   function refreshMe() {
     history.push(`/blog`);
@@ -93,8 +102,11 @@ export default function CreatePost({ admin, handleCreatePost }) {
     <div>
       <ContentContainer>
         <ButtonWrapper>
+          {console.log(postData.content)}
+          {console.log(postData)}
           <PostCancel>
             <PostCancelBtn onClick={() => {
+              // hideToolBar()
               handleCreatePost(postData);
               refreshMe();
               createPost({
@@ -117,7 +129,7 @@ export default function CreatePost({ admin, handleCreatePost }) {
             }}>Cancel</PostCancelBtn>
           </PostCancel>
         </ButtonWrapper>
-        <PostImg src={postData.temp_Img_URL} alt={postData.temp_Img_URL} />
+        <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
 
         <Form>
           <div>
@@ -151,13 +163,16 @@ export default function CreatePost({ admin, handleCreatePost }) {
             />
           </div>
           <div>
-            <label htmlFor="content">Content:</label>
-            <Content
+            {/* <label htmlFor="content">Content:</label> */}
+            {/* <Content
               id="content"
               type="text"
               name="content"
               value={postData.content}
               onChange={handleChange}
+            /> */}
+            <CreationEditor
+              
             />
           </div>
         </Form>
