@@ -10,8 +10,12 @@ body{
   height: 700px;
 }
 .editor-field{
-  border: 2px solid black
+  border: 2px solid grey;
+  border-radius: 5px
 }
+/* .rich-editor .rdw-editor-main {
+  background-color: #fff;
+} */
 
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed&display=swap');

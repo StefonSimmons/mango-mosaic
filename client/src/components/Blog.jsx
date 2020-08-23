@@ -54,7 +54,7 @@ const PostSubTitle = styled.h2`
   letter-spacing: 2px; 
 `
 const ColorSquare = styled.div`
-  background-color: #EF7218;
+  // background-color: #EF7218;
   grid-column: 2 / span 8;
   grid-row: 3 / span 13;
   z-index: -1
@@ -62,13 +62,19 @@ const ColorSquare = styled.div`
 
 export default function Blog({ allPosts }) {
 
-  const posts = allPosts.map(post =>
+  function setColor(id) {
+    const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
+    const selector = id % 6
+    return colors[selector]
+  }
+  const posts = allPosts.map((post, id, posts) =>
+
     <Post key={post.id}>
       <IDandImage>
-        <BlogID>{`#${post.id}`}</BlogID>
+        <BlogID>{`#${posts.length - id}`}</BlogID>
         <PostImg src={post.img_URL} alt={post.img_URL} />
       </IDandImage>
-      <ColorSquare>
+      <ColorSquare style={{ backgroundColor: `${setColor(id)}`,opacity:'.7' }}>
       </ColorSquare>
       <TitleWrapper>
         <PostLink to={`/blog/${post.id}`}>
