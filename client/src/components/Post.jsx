@@ -7,7 +7,7 @@ import DeletionModal from './DeletionModal';
 import { DisplayEditor } from './DisplayEditor'
 
 const PostInfo = styled.div`
-  height: 150vh;
+
 `
 const Wrapper = styled.div`
   position: absolute;
@@ -203,6 +203,11 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                       content={post.content}
                     />
                   }
+                  <Comment
+                    handleCreateComment={handleCreateComment}
+                    allComments={allComments}
+                  />
+
                 </ContentContainer>
 
               }
@@ -226,10 +231,10 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
 
           </PostInfo>
 
-          <Comment
+          {/* <Comment
             handleCreateComment={handleCreateComment}
             allComments={allComments}
-          />
+          /> */}
 
         </>
         :

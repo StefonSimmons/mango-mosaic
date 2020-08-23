@@ -85,6 +85,7 @@ export default function Comment({ allComments, handleCreateComment }) {
 
   return (
     <div>
+      <Divider />
       <Twitter solid small link="https://github.com" />
       <Linkedin solid small link="https://github.com" />
       <Facebook solid small link="https://github.com" />
