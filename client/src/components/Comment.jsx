@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import CreateComment from './CreateComment'
+import { Twitter, Linkedin, Facebook, Mail, Whatsapp, Pinterest } from 'react-social-sharing'
 
 const CommentHeader = styled.div`
   display: flex;
   width: 700px;
+  margin-top: 10px;
   justify-content: space-between
 `
 const CommentCount = styled.h1`
@@ -83,6 +85,13 @@ export default function Comment({ allComments, handleCreateComment }) {
 
   return (
     <div>
+      <Twitter solid small link="https://github.com" />
+      <Linkedin solid small link="https://github.com" />
+      <Facebook solid small link="https://github.com" />
+      <Whatsapp solid small link="https://github.com" />
+      <Pinterest solid small link="https://github.com" />
+      <Mail solid small link="https://github.com" />
+
       {comments !== undefined ?
         <>
           <CommentHeader>
