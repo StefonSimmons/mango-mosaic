@@ -3,45 +3,15 @@ body{
   margin: 0px 20px;
   background-color: #EEF4FB
 }
-
-/* .rich-editor {
-  padding: 10rem;
-} */
-.rich-editor .rdw-editor-main {
-  background-color: #fff;
-}
 .rich-editor .DraftEditor-editorContainer {
   padding: .5rem;
 }
-
 .DraftEditor-root{
-  border: 1px solid black;
-  /* background-color: beige; */
   height: 700px;
-  /* overflow-y: auto; */
 }
-.DraftEditor-editorContainer,
-.public-DraftEditor-content {
-  /* height: 700px; */
+.editor-field{
+  border: 2px solid black
 }
-
-.html-view {
-  background-color: #fff;
-  color: #000;
-  margin: auto;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 2rem;
-}
-h4 {
-  color: #fff;
-}
-.modal-content{
-  width: 900px;
-  background: yellow
-}
-.hide-toolbar { display:none !important; }
-
 
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed&display=swap');
