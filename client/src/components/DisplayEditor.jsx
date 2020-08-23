@@ -8,32 +8,31 @@ import { Editor } from 'react-draft-wysiwyg';
 
 
 
-function DisplayEditor({ content }) {
-  
+function DisplayEditor({ content, editClicked }) {
+
   const [editorState, updateEditor] = useState('')
 
   useEffect(() => {
     const parsedContent = JSON.parse(content)
     const convertedContent = convertFromRaw(parsedContent)
     updateEditor(EditorState.createWithContent(convertedContent))
-  },[content])
+  }, [content])
 
+  const onEditorStateChange = editorState => {
+    const raw = convertToRaw(editorState.getCurrentContent())
+    storeContent(raw)
 
+    updateEditor(editorState);
+  };
+
+  const storeContent = rawContent => {
+    localStorage.setItem('rawContent', JSON.stringify(rawContent));
+  }
 
   return (
     <>
-    {/* <div className='textEditorWrapper'> */}
-        {console.log(typeof content)}
-        {/* {console.log(editorState.getCurrentContent())} */}
-        {/* {console.log(stateToHTML(editorState.getCurrentContent()))} */}
-        {/* {console.log(convertFromRaw(convertToRaw(editorState.getCurrentContent())))} */}
-        {/* {console.log(JSON.stringify(convertFromRaw(convertToRaw(editorState.getCurrentContent()))))} */}
-        {/* {console.log(stateToHTML(convertFromRaw(rawText)))} */}
-        {/* {console.log(parse(stateToHTML(editorState.getCurrentContent())))} */}
-        {/* {console.log(htmlParsed)} */}
-        {/* {console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))} */}
-        {/* {console.log(typeof parse(html))} */}
-
+      {console.log(typeof content)}
+      {!editClicked ?
         <Editor
           editorState={editorState}
           wrapperClassName="rich-editor demo-wrapper"
@@ -41,9 +40,15 @@ function DisplayEditor({ content }) {
           toolbarHidden={true}
           readOnly={true}
         />
-
-      {/* </div> */}
-      </>
+        :
+        <Editor
+          editorState={editorState}
+          wrapperClassName="rich-editor demo-wrapper"
+          editorClassName="editor"
+          onEditorStateChange={onEditorStateChange}
+        />
+      }
+    </>
   );
 }
 export { DisplayEditor };

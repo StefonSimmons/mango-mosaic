@@ -171,6 +171,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                 post={post}
                 hideEditForm={hideEditForm}
                 handleSaveEdit={handleSaveEdit}
+                editClicked={editClicked}
               />
               :
               <ContentContainer>

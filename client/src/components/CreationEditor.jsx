@@ -34,16 +34,6 @@ class CreationEditor extends Component {
     return (
       <div className='text-editor-wrapper'>
         <div>
-          {/* {console.log(editorState.getCurrentContent())} */}
-          {/* {console.log(stateToHTML(editorState.getCurrentContent()))} */}
-          {/* {console.log(convertFromRaw(convertToRaw(editorState.getCurrentContent())))} */}
-
-          {/* {console.log(JSON.stringify(convertFromRaw(convertToRaw(editorState.getCurrentContent()))))} */}
-          {/* {console.log(stateToHTML(convertFromRaw(rawText)))} */}
-          {/* {console.log(parse(stateToHTML(editorState.getCurrentContent())))} */}
-          {/* {console.log(htmlParsed)} */}
-          {/* {console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))} */}
-          {/* {console.log(typeof parse(html))} */}
 
           <Editor
             editorState={editorState}

@@ -27,12 +27,13 @@ const Title = styled.input`
   font-size: 15px;
   width: 500px;
 `
-const Content = styled.textarea`
-  margin: 5px;
-  font-size: 15px;
-  width: 500px;
-  height: 450px
-`
+// const Content = styled.textarea`
+//   margin: 5px;
+//   font-size: 15px;
+//   width: 500px;
+//   height: 450px
+// `
+
 const PostCancel = styled.div`
   display: flex;
   justify-content: space-between;
@@ -58,7 +59,6 @@ export default function CreatePost({ admin, handleCreatePost }) {
 
   const history = useHistory()
 
-  // const [toolBar, toggleToolBar] = useState(true)
 
   const [postData, createPost] = useState({
     main_title: '',
@@ -88,9 +88,6 @@ export default function CreatePost({ admin, handleCreatePost }) {
     })
   }
 
-  // const hideToolBar = () => {
-  //   toggleToolBar(!toolBar)
-  // }
 
   function refreshMe() {
     history.push(`/blog`);
@@ -106,8 +103,8 @@ export default function CreatePost({ admin, handleCreatePost }) {
           {console.log(postData)}
           <PostCancel>
             <PostCancelBtn onClick={() => {
-              // hideToolBar()
               handleCreatePost(postData);
+              localStorage.setItem('rawContent', '')
               refreshMe();
               createPost({
                 main_title: '',
@@ -116,6 +113,7 @@ export default function CreatePost({ admin, handleCreatePost }) {
                 content: '',
                 user_id: ''
               })
+
             }}>Post</PostCancelBtn>
             <PostCancelBtn onClick={() => {
               history.push(`/blog`)
@@ -163,16 +161,7 @@ export default function CreatePost({ admin, handleCreatePost }) {
             />
           </div>
           <div>
-            {/* <label htmlFor="content">Content:</label> */}
-            {/* <Content
-              id="content"
-              type="text"
-              name="content"
-              value={postData.content}
-              onChange={handleChange}
-            /> */}
-            <CreationEditor
-              
+            <CreationEditor     
             />
           </div>
         </Form>

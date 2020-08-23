@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { DisplayEditor } from './DisplayEditor'
 
 const ContentContainer = styled.div`
 `
@@ -11,7 +12,7 @@ const ButtonWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
 `
@@ -23,12 +24,6 @@ const Title = styled.input`
   margin: 5px;
   font-size: 15px;
   width: 500px;
-`
-const Content = styled.textarea`
-  margin: 5px;
-  font-size: 15px;
-  width: 500px;
-  height: 450px
 `
 const SaveCancel = styled.div`
   display: flex;
@@ -51,7 +46,7 @@ const PostImg = styled.img`
   object-fit: contain
 `
 
-export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
+export default function EditForm({ hideEditForm, post, handleSaveEdit, editClicked}) {
 
   const { main_title, subtitle, img_URL, content, user_id, id } = post
 
@@ -59,7 +54,7 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
     main_title: main_title,
     subtitle: subtitle,
     img_URL: img_URL,
-    content: content,
+    content: localStorage.getItem('rawContent'),
     user_id: user_id,
     preview_Img: ''
   })
@@ -89,9 +84,8 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
         <ButtonWrapper>
           <SaveCancel>
             <SaveCancelBtn onClick={() => {
-              // console.log('submittedtop-->', postData)
+              console.log(postData)
               handleSaveEdit(id, postData);
-              // console.log('submitted-->', postData)
               hideEditForm()
               updatePost({
                 main_title: '',
@@ -142,14 +136,19 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
             />
           </div>
           <div>
-            <label htmlFor="content">Content:</label>
+            {/* <label htmlFor="content">Content:</label>
             <Content
               id="content"
               type="text"
               name="content"
               value={postData.content}
               onChange={handleChange}
-            />
+            /> */}
+            {console.log(editClicked)}
+            <DisplayEditor
+              content={content}
+              editClicked={editClicked}
+            />            
           </div>
         </Form>
 
