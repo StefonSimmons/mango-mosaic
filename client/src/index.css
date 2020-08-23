@@ -8,6 +8,7 @@ body{
 }
 .DraftEditor-root{
   height: 700px;
+  width: 900px;
 }
 .editor-field{
   border: 2px solid grey;

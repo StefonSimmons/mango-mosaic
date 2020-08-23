@@ -9,14 +9,15 @@ import { Editor } from 'react-draft-wysiwyg';
 
 
 function DisplayEditor({ content }) {
-  const [rawContent, updateContent] = useState(content)
+  
   const [editorState, updateEditor] = useState('')
 
   useEffect(() => {
-    const parsedContent = JSON.parse(rawContent)
+    const parsedContent = JSON.parse(content)
     const convertedContent = convertFromRaw(parsedContent)
     updateEditor(EditorState.createWithContent(convertedContent))
-  },[])
+  },[content])
+
 
 
   return (
