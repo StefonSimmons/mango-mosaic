@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { aboutBlog } from './abouts.js'
 
 const Main = styled.div`
   display: flex;
@@ -31,10 +32,13 @@ const ContentTitle = styled.h1`
   padding-left: 15px;
 `
 const Content = styled.p`
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: cursive;
+  // font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
+  font-weight: 700;
+  margin-left: 15px
 `
 const RedSquare = styled.div`
   background-color: #972309;
@@ -50,6 +54,7 @@ const GreenSquare = styled.div`
   width: 500px;
   height: 500px;
   position: relative;
+  z-index: -1;
   top: -9%;
   left: -5%;
   opacity: .2;
@@ -66,7 +71,7 @@ export default function Home() {
         <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
         <ContentWrapper>
           <ContentTitle>This blog...</ContentTitle>
-          <Content>Lorem IContentsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</Content>
+          <Content>{aboutBlog}</Content>
         </ContentWrapper>
       </Wrapper>
       <RedSquare>
