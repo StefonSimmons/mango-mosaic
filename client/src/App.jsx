@@ -14,6 +14,7 @@ import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
+import AdminDashboard from './components/AdminDashboard'
 
 function App() {
 
@@ -160,6 +161,10 @@ function App() {
           />
         </Route>
 
+        <Route exact path='/admin-dashboard'>
+          <AdminDashboard
+          />
+        </Route>
       </Switch>
 
       <LogInForm
