@@ -69,8 +69,6 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
       ...commentData,
       [name]: value
     })
-    console.log('tracking', commentData)
-
   }
 
   const { commenter, email, social, comment } = commentData
@@ -81,10 +79,8 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
 
       <CommentForm
         onSubmit={(e) => {
-          console.log('HELLO, Im comment submit', commentData)
           e.preventDefault();
           handleCreateComment(commentData)
-          console.log('HELLO, Im comment submit2', commentData)
           updateCommentClicked(false)
           trackCommentData({
             commenter: '',

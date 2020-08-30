@@ -4,17 +4,14 @@ import styled from 'styled-components'
 import Comment from './Comment'
 import EditForm from './EditForm'
 import DeletionModal from './DeletionModal';
+import { DisplayEditor } from './DisplayEditor'
 
-const PostInfo = styled.div`
-  height: 150vh;
-`
 const Wrapper = styled.div`
-  position: absolute;
   width: 100vw;
   display: flex;
   justify-content: space-around;
   padding: 20px 0px;
-  z-index: 1
+  z-index: 2
 `
 const ContentContainer = styled.div`
 `
@@ -52,6 +49,11 @@ const EditDeleteBtn = styled.button`
   border-radius: 10px;
   border: 2px solid purple
 `
+const ImageContainer = styled.div`
+  width: 900px;
+  height: 500px;
+  background: lightgrey
+`
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
@@ -75,8 +77,8 @@ const YellowSquare = styled.div`
 `
 const RecentPostsContainer = styled.div`
   position: absolute;
-  right: 6.9%;
-  top: 4.5%;
+  right: 5%;
+  top: 23%;
   display: flex;
   flex-direction: column;
 `
@@ -114,15 +116,16 @@ const SeeMore = styled(Link)`
 `
 const Background = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
-  position: sticky;
-  top: 50px
+  margin: 50px;
+  position: fixed;
+  top: 20%;
+  z-index: -1
 `
 const GreenSquare = styled.div`
   background-color: #2B791E;
   width: 500px;
   height: 500px;
+  margin-right: 200px;
   opacity: .2;
   z-index: -1;
 
@@ -161,61 +164,68 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
       />
       {post !== undefined ?
         <>
-          <PostInfo>
 
-            <Wrapper>
-              {editClicked ?
-                <EditForm
-                  post={post}
-                  hideEditForm={hideEditForm}
-                  handleSaveEdit={handleSaveEdit}
-                />
-                :
-                <ContentContainer>
-                  <TitleWrapper>
-                    <Title>
-                      <MainTitle>{post.main_title}</MainTitle>
-                      <SubTitle>{post.subtitle}</SubTitle>
-                    </Title>
-                    {admin ?
-                      <EditDelete>
-                        <EditDeleteBtn onClick={showEditForm}>Edit</EditDeleteBtn>
-                        <EditDeleteBtn onClick={showDeletionModal}>Delete</EditDeleteBtn>
-                      </EditDelete>
-                      :
-                      null
-                    }
-                  </TitleWrapper>
+          <Wrapper>
+            {editClicked ?
+              <EditForm
+                post={post}
+                hideEditForm={hideEditForm}
+                handleSaveEdit={handleSaveEdit}
+                editClicked={editClicked}
+              />
+              :
+              <ContentContainer>
+                <TitleWrapper>
+                  <Title>
+                    <MainTitle>{post.main_title}</MainTitle>
+                    <SubTitle>{post.subtitle}</SubTitle>
+                  </Title>
+                  {admin ?
+                    <EditDelete>
+                      <EditDeleteBtn onClick={showEditForm}>Edit</EditDeleteBtn>
+                      <EditDeleteBtn onClick={showDeletionModal}>Delete</EditDeleteBtn>
+                    </EditDelete>
+                    :
+                    null
+                  }
+                </TitleWrapper>
 
+                <ImageContainer>
                   <PostImg src={post.img_URL} alt={post.img_URL} />
+                </ImageContainer>
+                {/* TERENARY CHECKS FOR JSON/EDITOR TEXT OR PLAIN TEXT */}
+                {post.content.substring(0, 2) !== '{"' ?
                   <Content>{post.content}</Content>
-                </ContentContainer>
+                  :
+                  <DisplayEditor
+                    content={post.content}
+                  />
+                }
+                <Comment
+                  handleCreateComment={handleCreateComment}
+                  allComments={allComments}
+                />
 
-              }
-              <YellowSquare>
-              </YellowSquare>
+              </ContentContainer>
 
-              <RecentPostsContainer>
-                <RPTitle>Most Recent Posts</RPTitle>
-                {recentPosts}
-                <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
-              </RecentPostsContainer>
+            }
+            <YellowSquare>
+            </YellowSquare>
 
-            </Wrapper>
+            <RecentPostsContainer>
+              <RPTitle>Most Recent Posts</RPTitle>
+              {recentPosts}
+              <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
+            </RecentPostsContainer>
 
-            <Background>
-              <GreenSquare>
-              </GreenSquare>
-              <RedSquare>
-              </RedSquare>
-            </Background>
+          </Wrapper>
 
-          </PostInfo>
-
-          <Comment
-            handleCreateComment={handleCreateComment}
-            allComments={allComments}
-          />
+          <Background>
+            <GreenSquare>
+            </GreenSquare>
+            <RedSquare>
+            </RedSquare>
+          </Background>
 
         </>
         :

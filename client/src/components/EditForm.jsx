@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { DisplayEditor } from './DisplayEditor'
 
 const ContentContainer = styled.div`
 `
@@ -11,7 +12,7 @@ const ButtonWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
 `
@@ -23,12 +24,6 @@ const Title = styled.input`
   margin: 5px;
   font-size: 15px;
   width: 500px;
-`
-const Content = styled.textarea`
-  margin: 5px;
-  font-size: 15px;
-  width: 500px;
-  height: 450px
 `
 const SaveCancel = styled.div`
   display: flex;
@@ -50,8 +45,17 @@ const PostImg = styled.img`
   height: 500px;
   object-fit: contain
 `
-
-export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
+const Content = styled.p`
+  width: 900px;
+  margin-top: 20px;
+  padding: 0 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1.75;
+`
+export default function EditForm({ hideEditForm, post, handleSaveEdit, editClicked }) {
 
   const { main_title, subtitle, img_URL, content, user_id, id } = post
 
@@ -60,7 +64,8 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
     subtitle: subtitle,
     img_URL: img_URL,
     content: content,
-    user_id: user_id
+    user_id: user_id,
+    preview_Img: ''
   })
 
   const handleChange = (e) => {
@@ -75,7 +80,8 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
     const { name, files } = e.target;
     updatePost({
       ...postData,
-      [name]: URL.createObjectURL(files[0])
+      [name]: files[0],
+      preview_Img: URL.createObjectURL(files[0])
     })
   }
 
@@ -86,24 +92,22 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
       <ContentContainer>
         <ButtonWrapper>
           <SaveCancel>
-            <SaveCancelBtn onClick={() => {
-              console.log('submittedtop-->', postData)
-              handleSaveEdit(id, postData);
-              console.log('submitted-->', postData)
-              hideEditForm()
-              updatePost({
-                main_title: '',
-                subtitle: '',
-                img_URL: '',
-                content: '',
-                user_id: ''
-              })
-            }}>Save</SaveCancelBtn>
-            <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
+            <SaveCancelBtn
+              onClick={() => {
+                handleSaveEdit(id, postData);
+                hideEditForm()
+              }}
+            >Save</SaveCancelBtn>
+            <SaveCancelBtn
+              onClick={hideEditForm}
+            >Cancel</SaveCancelBtn>
           </SaveCancel>
         </ButtonWrapper>
-        <PostImg src={postData.img_URL} alt={img_URL} />
-
+        {postData.preview_Img !== '' ?
+          <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
+          :
+          <PostImg src={postData.img_URL} alt={postData.img_URL} />
+        }
         <Form>
           <div>
             <FileUpload
@@ -136,14 +140,17 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit}) {
             />
           </div>
           <div>
-            <label htmlFor="content">Content:</label>
-            <Content
-              id="content"
-              type="text"
-              name="content"
-              value={postData.content}
-              onChange={handleChange}
-            />
+            {post.content.substring(0, 2) !== '{"' ?
+              <Content>{post.content}</Content>
+              :
+              <DisplayEditor
+                content={content}
+                editClicked={editClicked}
+                updatePost={updatePost}
+                postData={postData}
+              />
+            }
+
           </div>
         </Form>
 

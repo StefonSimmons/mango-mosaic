@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { CreationEditor } from './CreationEditor'
 
 const ContentContainer = styled.div`
 `
@@ -12,7 +13,7 @@ const ButtonWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
 `
@@ -25,12 +26,7 @@ const Title = styled.input`
   font-size: 15px;
   width: 500px;
 `
-const Content = styled.textarea`
-  margin: 5px;
-  font-size: 15px;
-  width: 500px;
-  height: 450px
-`
+
 const PostCancel = styled.div`
   display: flex;
   justify-content: space-between;
@@ -48,22 +44,24 @@ const PostCancelBtn = styled.button`
 `
 const PostImg = styled.img`
   width: 900px;
-  height: 500px
+  height: 500px;
+  object-fit: contain
 `
 
-export default function CreatePost({ admin, handleCreatePost}) {
+export default function CreatePost({ admin, handleCreatePost }) {
 
   const history = useHistory()
+
 
   const [postData, createPost] = useState({
     main_title: '',
     subtitle: '',
     content: '',
+    // content: localStorage.getItem('rawCreatedContent'),
     user_id: admin.id,
-    img_URL: {}
+    img_URL: '',
+    preview_Img: '',
   })
-
-  const form = useRef(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -77,14 +75,11 @@ export default function CreatePost({ admin, handleCreatePost}) {
     const { name, files } = e.target;
     createPost({
       ...postData,
-      [name]: files[0]
+      [name]: files[0],
+      preview_Img: URL.createObjectURL(files[0])
     })
   }
 
-  function refreshMe() {
-    history.push(`/blog`);
-    window.location.reload();
-  }
 
   return (
 
@@ -93,10 +88,8 @@ export default function CreatePost({ admin, handleCreatePost}) {
         <ButtonWrapper>
           <PostCancel>
             <PostCancelBtn onClick={() => {
-              const data = new FormData(form.current)
-              console.log(data)
-              handleCreatePost(data);
-              // refreshMe();
+              handleCreatePost(postData);
+              history.push(`/blog`);
               createPost({
                 main_title: '',
                 subtitle: '',
@@ -104,6 +97,7 @@ export default function CreatePost({ admin, handleCreatePost}) {
                 content: '',
                 user_id: ''
               })
+
             }}>Post</PostCancelBtn>
             <PostCancelBtn onClick={() => {
               history.push(`/blog`)
@@ -117,9 +111,9 @@ export default function CreatePost({ admin, handleCreatePost}) {
             }}>Cancel</PostCancelBtn>
           </PostCancel>
         </ButtonWrapper>
-        <PostImg src={postData.img_URL} alt={postData.img_URL} />
+        <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
 
-        <Form ref={form}>
+        <Form>
           <div>
             <FileUpload
               id="img_URL"
@@ -151,13 +145,9 @@ export default function CreatePost({ admin, handleCreatePost}) {
             />
           </div>
           <div>
-            <label htmlFor="content">Content:</label>
-            <Content
-              id="content"
-              type="text"
-              name="content"
-              value={postData.content}
-              onChange={handleChange}
+            <CreationEditor
+              postData={postData}
+              createPost={createPost}
             />
           </div>
         </Form>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { aboutMe, aboutMeLink, aboutMeRef, aboutMeQuote } from './abouts.js'
 
 export const Main = styled.div`
   display: flex;
@@ -30,7 +31,8 @@ export const ContentTitle = styled.h1`
   padding-left: 15px;
 `
 const Content = styled.p`
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: cursive;
+  // font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
@@ -50,14 +52,37 @@ export const YellowSquare = styled.div`
   z-index: -1;
 `
 
+const Quote = styled.q`
+  font-family: cursive;
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1.75;
+  font-weight: 700;
+`
+const From = styled.span`
+  font-family: cursive;
+  font-size: 15px;
+  letter-spacing: 2px;
+`
+const Reference = styled.a`
+  font-family: cursive;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: blue;
+  line-height: 1.75;
+`
 export default function About() {
   return (
     <Main>
       <Wrapper>
         <Photo src='https://imgur.com/s9JH7E3.png' alt='ashlea' />
         <ContentWrapper>
-          <ContentTitle>I am...</ContentTitle>
-          <Content>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Content>
+          <ContentTitle>"My story...</ContentTitle>
+          <Quote cite={aboutMeLink}>{aboutMeQuote}</Quote><From> -from </From>
+          <Reference href={aboutMeLink} target="_blank" rel="noopener">{aboutMeRef}</Reference>
+          <br />
+          <br/>
+          <Content>{aboutMe}</Content>
         </ContentWrapper>
       </Wrapper>
       <RedSquare>

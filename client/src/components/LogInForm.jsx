@@ -68,7 +68,6 @@ export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInFo
           <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={hideLogInForm}>&times;</span>
 
           <Form onSubmit={(e) => {
-            console.log(admin)
             e.preventDefault();
             handleLoginSubmit(admin);
             hideLogInForm()

@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import CreateComment from './CreateComment'
+import { Twitter, Linkedin, Facebook, Mail, Whatsapp, Pinterest } from 'react-social-sharing'
 
 const CommentHeader = styled.div`
   display: flex;
   width: 700px;
+  margin-top: 10px;
   justify-content: space-between
 `
 const CommentCount = styled.h1`
@@ -47,9 +49,7 @@ export default function Comment({ allComments, handleCreateComment }) {
   const { postId } = useParams()
 
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
-  console.log('allcomments-->',allComments, 'AND =>' ,postId)
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
-  console.log('count ==>',commentCount)
 
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
@@ -83,6 +83,14 @@ export default function Comment({ allComments, handleCreateComment }) {
 
   return (
     <div>
+      <Divider />
+      <Twitter solid small link="https://github.com" />
+      <Linkedin solid small link="https://github.com" />
+      <Facebook solid small link="https://github.com" />
+      <Whatsapp solid small link="https://github.com" />
+      <Pinterest solid small link="https://github.com" />
+      <Mail solid small link="https://github.com" />
+
       {comments !== undefined ?
         <>
           <CommentHeader>
