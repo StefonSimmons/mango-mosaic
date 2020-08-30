@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import {verifyUser} from '../services/auth'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { CreationEditor } from './CreationEditor'
@@ -27,12 +26,6 @@ const Title = styled.input`
   font-size: 15px;
   width: 500px;
 `
-// const Content = styled.textarea`
-//   margin: 5px;
-//   font-size: 15px;
-//   width: 500px;
-//   height: 450px
-// `
 
 const PostCancel = styled.div`
   display: flex;
@@ -63,13 +56,12 @@ export default function CreatePost({ admin, handleCreatePost }) {
   const [postData, createPost] = useState({
     main_title: '',
     subtitle: '',
-    content: localStorage.getItem('rawContent'),
+    content: '',
+    // content: localStorage.getItem('rawCreatedContent'),
     user_id: admin.id,
     img_URL: '',
     preview_Img: '',
   })
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,23 +81,15 @@ export default function CreatePost({ admin, handleCreatePost }) {
   }
 
 
-  function refreshMe() {
-    history.push(`/blog`);
-    window.location.reload();
-  }
-
   return (
 
     <div>
       <ContentContainer>
         <ButtonWrapper>
-          {console.log(postData.content)}
-          {console.log(postData)}
           <PostCancel>
             <PostCancelBtn onClick={() => {
               handleCreatePost(postData);
-              localStorage.setItem('rawContent', '')
-              refreshMe();
+              history.push(`/blog`);
               createPost({
                 main_title: '',
                 subtitle: '',
@@ -161,7 +145,9 @@ export default function CreatePost({ admin, handleCreatePost }) {
             />
           </div>
           <div>
-            <CreationEditor     
+            <CreationEditor
+              postData={postData}
+              createPost={createPost}
             />
           </div>
         </Form>

@@ -45,8 +45,17 @@ const PostImg = styled.img`
   height: 500px;
   object-fit: contain
 `
-
-export default function EditForm({ hideEditForm, post, handleSaveEdit, editClicked}) {
+const Content = styled.p`
+  width: 900px;
+  margin-top: 20px;
+  padding: 0 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1.75;
+`
+export default function EditForm({ hideEditForm, post, handleSaveEdit, editClicked }) {
 
   const { main_title, subtitle, img_URL, content, user_id, id } = post
 
@@ -54,7 +63,7 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
     main_title: main_title,
     subtitle: subtitle,
     img_URL: img_URL,
-    content: localStorage.getItem('rawContent'),
+    content: content,
     user_id: user_id,
     preview_Img: ''
   })
@@ -83,23 +92,18 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
       <ContentContainer>
         <ButtonWrapper>
           <SaveCancel>
-            <SaveCancelBtn onClick={() => {
-              console.log(postData)
-              handleSaveEdit(id, postData);
-              hideEditForm()
-              updatePost({
-                main_title: '',
-                subtitle: '',
-                img_URL: '',
-                content: '',
-                user_id: '',
-                preview_Img: ''
-              })
-            }}>Save</SaveCancelBtn>
-            <SaveCancelBtn onClick={hideEditForm}>Cancel</SaveCancelBtn>
+            <SaveCancelBtn
+              onClick={() => {
+                handleSaveEdit(id, postData);
+                hideEditForm()
+              }}
+            >Save</SaveCancelBtn>
+            <SaveCancelBtn
+              onClick={hideEditForm}
+            >Cancel</SaveCancelBtn>
           </SaveCancel>
         </ButtonWrapper>
-        { postData.preview_Img !== '' ?
+        {postData.preview_Img !== '' ?
           <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
           :
           <PostImg src={postData.img_URL} alt={postData.img_URL} />
@@ -136,19 +140,17 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
             />
           </div>
           <div>
-            {/* <label htmlFor="content">Content:</label>
-            <Content
-              id="content"
-              type="text"
-              name="content"
-              value={postData.content}
-              onChange={handleChange}
-            /> */}
-            {console.log(editClicked)}
-            <DisplayEditor
-              content={content}
-              editClicked={editClicked}
-            />            
+            {post.content.substring(0, 2) !== '{"' ?
+              <Content>{post.content}</Content>
+              :
+              <DisplayEditor
+                content={content}
+                editClicked={editClicked}
+                updatePost={updatePost}
+                postData={postData}
+              />
+            }
+
           </div>
         </Form>
 

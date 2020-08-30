@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-// import { stateToHTML } from 'draft-js-export-html';
-// import draftToHtml from 'draftjs-to-html'
-// import parse from 'html-react-parser';
 
 
 
-function DisplayEditor({ content, editClicked }) {
+
+function DisplayEditor({ content, editClicked, updatePost, postData }) {
 
   const [editorState, updateEditor] = useState('')
 
@@ -18,20 +16,24 @@ function DisplayEditor({ content, editClicked }) {
     updateEditor(EditorState.createWithContent(convertedContent))
   }, [content])
 
+  // ONLY FOR EDIT FORM
   const onEditorStateChange = editorState => {
     const raw = convertToRaw(editorState.getCurrentContent())
     storeContent(raw)
-
     updateEditor(editorState);
-  };
+  }; 
 
+  // STORES THE EDITOR CONTENT IN postData State
   const storeContent = rawContent => {
-    localStorage.setItem('rawContent', JSON.stringify(rawContent));
+    updatePost({
+      ...postData,
+      content: JSON.stringify(rawContent),
+    })
   }
+
 
   return (
     <>
-      {console.log(typeof content)}
       {!editClicked ?
         <Editor
           editorState={editorState}

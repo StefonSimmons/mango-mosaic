@@ -193,7 +193,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                 <ImageContainer>
                   <PostImg src={post.img_URL} alt={post.img_URL} />
                 </ImageContainer>
-                {console.log(`${parseInt(postId) === post.id}, ${post.id}`)}
+                {/* TERENARY CHECKS FOR JSON/EDITOR TEXT OR PLAIN TEXT */}
                 {post.content.substring(0, 2) !== '{"' ?
                   <Content>{post.content}</Content>
                   :

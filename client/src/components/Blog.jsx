@@ -54,7 +54,6 @@ const PostSubTitle = styled.h2`
   letter-spacing: 2px; 
 `
 const ColorSquare = styled.div`
-  // background-color: #EF7218;
   grid-column: 2 / span 8;
   grid-row: 3 / span 13;
   z-index: -1

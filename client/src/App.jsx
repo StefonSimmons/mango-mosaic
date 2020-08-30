@@ -17,6 +17,7 @@ import CreatePost from './components/CreatePost'
 
 function App() {
 
+  const [submitted, toggleSubmitted] = useState(false)
   const [allPosts, updateAllPosts] = useState([])
   const [allComments, updateAllComments] = useState([])
   const [editForm, updateEditForm] = useState(false)
@@ -32,7 +33,7 @@ function App() {
       updateAllPosts(res)
     }
     getPosts()
-  }, [])
+  }, [submitted])
 
   useEffect(() => {
     const getComments = async () => {
@@ -40,13 +41,12 @@ function App() {
       updateAllComments(res)
     }
     getComments()
-  }, [])
+  }, [submitted])
 
   // AUTHENTICATION HANDLERS
   useEffect(() => {
     const verify = async () => {
       const admin = await verifyUser()
-      console.log('admin->', admin.id)
       updateAdmin(admin)
     }
     verify()
@@ -71,12 +71,14 @@ function App() {
   const handleCreatePost = async (postData) => {
     const newPost = await createPost(postData)
     updateAllPosts([...allPosts, { ...newPost }])
+    toggleSubmitted(!submitted)
   }
 
   const handleSaveEdit = async (id, postData) => {
     const updatedPost = await updatePost(id, postData)
     const posts = allPosts.map(post => post.id === id ? updatedPost : post)
     updateAllPosts(posts)
+    toggleSubmitted(!submitted)
   }
 
   const handleCreateComment = async (commentData) => {

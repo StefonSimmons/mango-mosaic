@@ -49,9 +49,7 @@ export default function Comment({ allComments, handleCreateComment }) {
   const { postId } = useParams()
 
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
-  console.log('allcomments-->',allComments, 'AND =>' ,postId)
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
-  console.log('count ==>',commentCount)
 
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
