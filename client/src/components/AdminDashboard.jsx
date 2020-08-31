@@ -29,14 +29,18 @@ export default function AdminDashboard({ allPosts, allComments }) {
   const totalComments = allComments.length
   const [mostCommented, setMostCommented] = useState([])
   const [commentCount, setCommentCount] = useState(0)
+  const [commenterCount, setCommenterCount] = useState(0) 
+  const [topCommenter, setTopCommenter] = useState('')
+  const [topCommenterCount, setTopCommenterCount] = useState(0)
 
   useEffect(() => {
-    orderByPostsCount()
+    getMostCommented()
+    getUniqueCommenters()
+    getTopCommenter()
   })
 
-  const orderByPostsCount = () => {
+  const getMostCommented = () => {
     const obj = {}
-    const arr = []
     let lookupId
 
     allComments.forEach(c => {
@@ -44,9 +48,8 @@ export default function AdminDashboard({ allPosts, allComments }) {
       else return obj[c.post_id] += 1
     })
 
-    for (let id in obj) {
-      arr.push(obj[id])
-    }
+    const arr = Object.values(obj)
+
     arr.sort((a, b) => b - a)
     setCommentCount(arr[0])
 
@@ -56,6 +59,47 @@ export default function AdminDashboard({ allPosts, allComments }) {
     setMostCommented(allPosts.filter(p => p.id === parseInt(lookupId))[0])
   }
 
+  const commenters = allComments.map(c => {
+    return (
+      <tbody key={c.id}>
+        <tr>
+          <td>{c.commenter}</td>
+          <td>{c.email}</td>
+          <td>{c.social}</td>
+        </tr>
+      </tbody>
+    )
+  })
+
+  const getUniqueCommenters = () => {
+    const obj = {}
+    allComments.forEach(c => {
+      if (!obj[c.commenter]) return obj[c.commenter] = 1
+      else return obj[c.commenter] += 1
+    })
+    console.log(obj)
+    const numOfCommenters = Object.keys(obj).length
+    console.log(numOfCommenters)
+    setCommenterCount(numOfCommenters)
+  }
+  const getTopCommenter = () => {
+    const obj = {}
+    let commenter
+    allComments.forEach(c => {
+      if (!obj[c.commenter]) return obj[c.commenter] = 1
+      else return obj[c.commenter] += 1
+    })
+    console.log(obj)
+    const mostCommentsByCommenter = Object.values(obj)[0]
+    console.log(mostCommentsByCommenter)
+    setTopCommenterCount(mostCommentsByCommenter)
+    for (let name in obj) {
+      if(mostCommentsByCommenter === obj[name]) commenter = name
+    }
+    console.log(commenter)
+    setTopCommenter(commenter)
+  }
+    
   return (
     <div>
       <Title>My Dashboard</Title>
@@ -71,10 +115,23 @@ export default function AdminDashboard({ allPosts, allComments }) {
           </>
           :
           null
-          // <button onClick={orderByPostsCount}>Get Most Commented Post</button>
+          // <button onClick={getMostCommented}>Get Most Commented Post</button>
         }
         <hr />
-
+        <table>
+          {console.log(allComments)}
+          <thead>
+            <tr>
+              <th>Commenter</th>
+              <th>Email</th>
+              <th>Social</th>
+            </tr>
+          </thead>
+          {commenters}
+        </table>
+        {/* <button onClick={getTopCommenter}>most</button> */}
+        <h5>{`You Blog has ${commenterCount} unique commenters`}</h5>
+        <h5>{`${topCommenter} is your top commenter with ${topCommenterCount} comments`}</h5>
       </Dashboard>
     </div>
   )
