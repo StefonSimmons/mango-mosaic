@@ -5,11 +5,12 @@ import './SocialIcon.css'
 
 
 const Photo = styled.img`
-  width: 550px;
-  height: 500px;
+  width: 675px;
+  height: 560px;
 `
 const Content = styled.p`
-  font-family: 'Open Sans Condensed', sans-serif;
+  // font-family: 'Open Sans Condensed', sans-serif;
+  font-family: cursive;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
@@ -17,7 +18,8 @@ const Content = styled.p`
 `
 const Email = styled.a`
   text-decoration: none;
-  color: black
+  color: black;
+  font-family: cursive
 `
 const SocialLinks = styled.div`
   padding-left: 4.5%

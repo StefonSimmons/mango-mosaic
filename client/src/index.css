@@ -1,9 +1,12 @@
 body{
   height: 100vh;
   margin: 0px 20px;
-  background-color: #EEF4FB
+  background-color: #EEF4FB;
 }
 .rich-editor .DraftEditor-editorContainer {
+  /* background-color:rgba(255,255,255,.7); */
+  background-color: rgba(238, 244, 251, .7);
+  border-radius: 10px;
   padding: .5rem;
 }
 .DraftEditor-root{
@@ -19,4 +22,4 @@ body{
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed:wght@300;700&display=swap');

@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   position: absolute;
 `
 const Photo = styled.img`
-  width: 500px;
+  width: 550px;
   top: 25%;
   left: 15%;
 `
@@ -78,10 +78,12 @@ export default function About() {
         <Photo src='https://imgur.com/s9JH7E3.png' alt='ashlea' />
         <ContentWrapper>
           <ContentTitle>"My story...</ContentTitle>
-          <Quote cite={aboutMeLink}>{aboutMeQuote}</Quote><From> -from </From>
+          {/* <Quote cite={aboutMeLink}>{aboutMeQuote}</Quote><From> -from </From>
           <Reference href={aboutMeLink} target="_blank" rel="noopener">{aboutMeRef}</Reference>
           <br />
-          <br/>
+          <br />
+          <br />
+          <br /> */}
           <Content>{aboutMe}</Content>
         </ContentWrapper>
       </Wrapper>

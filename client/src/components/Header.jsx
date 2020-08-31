@@ -13,7 +13,8 @@ const Logo = styled.img`
 `
 const MMWrapper = styled.div`
   font-family: 'Dancing Script', cursive;
-  color: #1831B5;
+  // color: #1831B5;
+  color: black;
   position: absolute;
   top: 2.5%;
   left: 6.5%;

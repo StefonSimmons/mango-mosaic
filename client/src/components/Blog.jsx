@@ -23,7 +23,7 @@ const IDandImage = styled.div`
 `
 const BlogID = styled.p`
   font-family: 'Dancing Script', cursive;
-  font-size: 32px;
+  font-size: 24px;
   margin-bottom: 20px;
 `
 const PostImg = styled.img`
@@ -45,13 +45,13 @@ const PostTitle = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
   font-size: 18px;
-  letter-spacing: 2px;
+  // letter-spacing: 2px;
 `
 const PostSubTitle = styled.h2`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 16px;
-  letter-spacing: 2px; 
+  // letter-spacing: 2px; 
 `
 const ColorSquare = styled.div`
   grid-column: 2 / span 8;
@@ -62,7 +62,9 @@ const ColorSquare = styled.div`
 export default function Blog({ allPosts }) {
 
   function setColor(id) {
-    const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
+    // const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
+    const colors = ['rgba(239,114,24,.3)', 'rgba(29,157,65,.3)', 'rgba(201,13,13,.3)', 'rgba(133,107,123,.3)', 'rgba(235,183,45,.3)', 'rgba(54,70,209,.3)']
+
     const selector = id % 6
     return colors[selector]
   }

@@ -21,18 +21,18 @@ const TitleWrapper = styled.div`
   justify-content: center;
 
 `
-const Title = styled.div`
+const Titles = styled.div`
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
 `
 const MainTitle = styled.h1`
-  font-size: 24px;
+  font-size: 32px;
 `
 const SubTitle = styled.h2`
-  font-size: 18px;
+  font-size: 20px;
   padding: 12px 0;
-  text-align: center;
+  // text-align: center;
 `
 const EditDelete = styled.div`
   display: flex;
@@ -52,7 +52,8 @@ const EditDeleteBtn = styled.button`
 const ImageContainer = styled.div`
   width: 900px;
   height: 500px;
-  background: lightgrey
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 const PostImg = styled.img`
   width: 900px;
@@ -77,7 +78,7 @@ const YellowSquare = styled.div`
 `
 const RecentPostsContainer = styled.div`
   position: absolute;
-  right: 5%;
+  right: 9%;
   top: 23%;
   display: flex;
   flex-direction: column;
@@ -85,7 +86,7 @@ const RecentPostsContainer = styled.div`
 const RPTitle = styled.h3`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 18px;
   text-align: center;
   letter-spacing: 2px;
   margin-bottom: 15px
@@ -97,8 +98,8 @@ const RPLink = styled(Link)`
 const RecentPost = styled.h4`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
-  font-size: 15px;
-  padding: 18px 3px;
+  font-size: 18px;
+  padding: 13.5px 3px;
 
   &:hover{
     background-color: black;
@@ -108,32 +109,42 @@ const RecentPost = styled.h4`
   }
 `
 const SeeMore = styled(Link)`
-  align-self: center;
+  align-self: flex-start;
   margin-top: 50px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 15px;
   color: blue;
 `
 const Background = styled.div`
-  display: flex;
-  margin: 50px;
+  height: 789px;
+  width: 1200px;
+  margin-left: 30px;
+  display: grid;
   position: fixed;
-  top: 20%;
+  top: 18%;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(7,1fr);
   z-index: -1
 `
 const GreenSquare = styled.div`
   background-color: #2B791E;
-  width: 500px;
-  height: 500px;
-  margin-right: 200px;
+  // background: o;
+  grid-column: 1 / span 4;
+  grid-row: 3 / span 3;
   opacity: .2;
+  z-index: 0;
+`
+const GreySquare = styled.div`
+  background-color: grey;
+  grid-column: 2 / span 6;
+  grid-row: 2 / span 3;
+  opacity: .3;
   z-index: -1;
-
 `
 const RedSquare = styled.div`
   background-color: #972309;
-  width: 500px;
-  height: 500px;
+  grid-column: 7 / span 4;
+  grid-row: 1 / span 3;
   opacity: .2;
   z-index: -1;
 `
@@ -149,7 +160,13 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
     if (i < 5) {
       return (
         <div key={i}>
-          <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}><RecentPost>{p.main_title}</RecentPost></RPLink>
+          <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}>
+            { p.main_title.length > 19 ?
+              <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
+              :
+              <RecentPost>{p.main_title}</RecentPost>
+            }
+          </RPLink>
         </div>
       )
     }
@@ -176,10 +193,10 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
               :
               <ContentContainer>
                 <TitleWrapper>
-                  <Title>
+                  <Titles>
                     <MainTitle>{post.main_title}</MainTitle>
                     <SubTitle>{post.subtitle}</SubTitle>
-                  </Title>
+                  </Titles>
                   {admin ?
                     <EditDelete>
                       <EditDeleteBtn onClick={showEditForm}>Edit</EditDeleteBtn>
@@ -190,10 +207,11 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                   }
                 </TitleWrapper>
 
-                <ImageContainer>
+                <ImageContainer
+                >
                   <PostImg src={post.img_URL} alt={post.img_URL} />
                 </ImageContainer>
-                {/* TERENARY CHECKS FOR JSON/EDITOR TEXT OR PLAIN TEXT */}
+                {/* TERNARY CHECKS FOR JSON/EDITOR TEXT OR PLAIN TEXT */}
                 {post.content.substring(0, 2) !== '{"' ?
                   <Content>{post.content}</Content>
                   :
@@ -221,6 +239,8 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
           </Wrapper>
 
           <Background>
+            <GreySquare>
+            </GreySquare>
             <GreenSquare>
             </GreenSquare>
             <RedSquare>
@@ -234,3 +254,5 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
     </>
   )
 }
+
+// style={{backgroundImage: `linear-gradient(rgba(150,150,150,.5), rgba(150,150,150,.5)),url(${post.img_URL})`}}
