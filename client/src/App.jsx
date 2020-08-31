@@ -27,7 +27,7 @@ function App() {
   const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
 
-  // BLOG HANDLERS
+  // POST AND COMMENT HANDLERS
   useEffect(() => {
     const getPosts = async () => {
       const res = await getAllPosts()
@@ -163,6 +163,8 @@ function App() {
 
         <Route exact path='/admin-dashboard'>
           <AdminDashboard
+            allPosts={allPosts}
+            allComments={allComments}
           />
         </Route>
       </Switch>
