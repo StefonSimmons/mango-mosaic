@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { aboutMe, aboutMeLink, aboutMeRef, aboutMeQuote } from './abouts.js'
+import { aboutMe } from './abouts.js'
 
 export const Main = styled.div`
   display: flex;
@@ -28,7 +28,6 @@ export const ContentTitle = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
   margin-bottom: 15px;
-  padding-left: 15px;
 `
 const Content = styled.p`
   font-family: cursive;
@@ -51,39 +50,13 @@ export const YellowSquare = styled.div`
   opacity: .2;
   z-index: -1;
 `
-
-const Quote = styled.q`
-  font-family: cursive;
-  font-size: 18px;
-  letter-spacing: 2px;
-  line-height: 1.75;
-  font-weight: 700;
-`
-const From = styled.span`
-  font-family: cursive;
-  font-size: 15px;
-  letter-spacing: 2px;
-`
-const Reference = styled.a`
-  font-family: cursive;
-  font-size: 15px;
-  letter-spacing: 2px;
-  color: blue;
-  line-height: 1.75;
-`
 export default function About() {
   return (
     <Main>
       <Wrapper>
         <Photo src='https://imgur.com/s9JH7E3.png' alt='ashlea' />
         <ContentWrapper>
-          <ContentTitle>"My story...</ContentTitle>
-          {/* <Quote cite={aboutMeLink}>{aboutMeQuote}</Quote><From> -from </From>
-          <Reference href={aboutMeLink} target="_blank" rel="noopener">{aboutMeRef}</Reference>
-          <br />
-          <br />
-          <br />
-          <br /> */}
+          <ContentTitle>Hey !</ContentTitle>
           <Content>{aboutMe}</Content>
         </ContentWrapper>
       </Wrapper>

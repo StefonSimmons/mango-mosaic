@@ -135,10 +135,10 @@ const GreenSquare = styled.div`
   z-index: 0;
 `
 const GreySquare = styled.div`
-  background-color: grey;
+  background-color: lightgrey;
   grid-column: 2 / span 6;
   grid-row: 2 / span 3;
-  opacity: .3;
+  opacity: 1;
   z-index: -1;
 `
 const RedSquare = styled.div`
