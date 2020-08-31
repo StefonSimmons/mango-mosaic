@@ -34,17 +34,19 @@ export const createPost = async (postParams) => {
 }
 
 // ******* UPDATE POSTS ********
-export const updatePost = async (id, postParams) => {
+export const updatePost = async (id, postParams) => {  
   const config = {
     headers: { 'Content-Type': 'multipart/form-data' }
   }
   const formData = new FormData();
-  console.log('updates',postParams)
   formData.append('post[main_title]', postParams.main_title)
   formData.append('post[subtitle]', postParams.subtitle)
   formData.append('post[content]', postParams.content)
   formData.append('post[user_id]', postParams.user_id)
-  formData.append('post[img_URL]', postParams.img_URL)
+  // if img is already stored in aws, it will not be appended to formData
+  if (typeof postParams.img_URL !== 'string') { 
+    formData.append('post[img_URL]', postParams.img_URL)
+  }
   const resp = await api.put(`/posts/${id}`, formData, config)
   const updatedPost = resp.data
 
