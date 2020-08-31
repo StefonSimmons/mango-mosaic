@@ -57,7 +57,6 @@ export default function CreatePost({ admin, handleCreatePost }) {
     main_title: '',
     subtitle: '',
     content: '',
-    // content: localStorage.getItem('rawCreatedContent'),
     user_id: admin.id,
     img_URL: '',
     preview_Img: '',

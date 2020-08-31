@@ -14,6 +14,7 @@ import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
+import AdminDashboard from './components/AdminDashboard'
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
   const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
 
-  // BLOG HANDLERS
+  // POST AND COMMENT HANDLERS
   useEffect(() => {
     const getPosts = async () => {
       const res = await getAllPosts()
@@ -160,6 +161,12 @@ function App() {
           />
         </Route>
 
+        <Route exact path='/admin-dashboard'>
+          <AdminDashboard
+            allPosts={allPosts}
+            allComments={allComments}
+          />
+        </Route>
       </Switch>
 
       <LogInForm

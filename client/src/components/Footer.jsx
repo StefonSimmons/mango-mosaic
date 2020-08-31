@@ -30,6 +30,13 @@ const CreatePost = styled.button`
     color: black
   }
 `
+const DashBoard = styled(CreatePost)`
+  &:hover{
+    border: 1px solid #2B791E;
+    background: rgba(11,93,199, .5);
+    color: black
+  }
+`
 const AdminLogIn = styled.h6`
   font-weight: 700;
   letter-spacing: 5px;
@@ -47,6 +54,7 @@ export default function Footer({ admin, logOut, showLogInModal, verifyEditModal 
             <>
               <AdminLogOut onClick={() => { logOut(); verifyEditModal() }}>Log Out</AdminLogOut>
               <Link to='/new-post'><CreatePost>Create New Post</CreatePost></Link>
+              <Link to='/admin-dashboard'><DashBoard>Admin Dashboard</DashBoard></Link>
             </>
             :
             <>
