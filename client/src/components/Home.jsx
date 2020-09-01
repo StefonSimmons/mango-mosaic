@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { aboutBlog } from './abouts.js'
 
 const Main = styled.div`
@@ -18,10 +18,22 @@ const HomeImg = styled.img`
   height: 500px;
   margin-left: 55px;
   border-radius: 5px;
+  z-index: 1;
   box-shadow: 10px 10px 30px 3px #000000;
+`
+const slideIn = keyframes`
+{
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 `
 const ContentWrapper = styled.div`
   width: 450px;
+  animation: 1.65s ease-out 0s 1 ${slideIn};
   margin-left: 50px;
 `
 const ContentTitle = styled.h1`
@@ -33,7 +45,6 @@ const ContentTitle = styled.h1`
 `
 const Content = styled.p`
   font-family: cursive;
-  // font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
