@@ -155,13 +155,35 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
 
   const post = allPosts.filter(p => p.id === parseInt(postId))[0]
 
+  // FORMAT DATE FOR CREATED AT
+  const formatDate = () => {
+    if (post !== undefined) {
+      const milliseconds = Date.parse(post.created_at)
+      const dateObj = new Date(milliseconds)
+      const post_datetime = dateObj.toLocaleString("en-US").substring(0, 11).replace(',', '')
+      return post_datetime
+    }
+  }
 
+  // GETS READ TIME
+  const getReadTime = () => {
+    const parsedContentArr = JSON.parse(post.content).blocks
+    const textWordCountArr = parsedContentArr.map(c => {
+      return c.text.split(' ').length
+    });
+    const contentTextLength = textWordCountArr.reduce((acc, curr) => acc + curr)
+    const avgWPM = 170
+    const minutesToRead = Math.floor(contentTextLength / avgWPM)
+    return minutesToRead
+  }
+
+  //MAPPING W/ JSX FOR RECENT POSTS 
   const recentPosts = allPosts.map((p, i) => {
     if (i < 5) {
       return (
         <div key={i}>
           <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}>
-            { p.main_title.length > 19 ?
+            {p.main_title.length > 19 ?
               <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
               :
               <RecentPost>{p.main_title}</RecentPost>
@@ -196,6 +218,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                   <Titles>
                     <MainTitle>{post.main_title}</MainTitle>
                     <SubTitle>{post.subtitle}</SubTitle>
+                    <h5>{`${formatDate()} | ${getReadTime()} min. read`}</h5>
                   </Titles>
                   {admin ?
                     <EditDelete>
@@ -206,9 +229,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                     null
                   }
                 </TitleWrapper>
-
-                <ImageContainer
-                >
+                <ImageContainer>
                   <PostImg src={post.img_URL} alt={post.img_URL} />
                 </ImageContainer>
                 {/* TERNARY CHECKS FOR JSON/EDITOR TEXT OR PLAIN TEXT */}
