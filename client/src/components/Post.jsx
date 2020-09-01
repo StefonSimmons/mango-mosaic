@@ -31,8 +31,7 @@ const MainTitle = styled.h1`
 `
 const SubTitle = styled.h2`
   font-size: 20px;
-  padding: 12px 0;
-  // text-align: center;
+  padding: 12px 0 ;
 `
 const EditDelete = styled.div`
   display: flex;
