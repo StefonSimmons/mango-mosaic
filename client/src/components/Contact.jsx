@@ -2,11 +2,13 @@ import React from 'react'
 import { Main, Wrapper, ContentWrapper, ContentTitle } from './About'
 import styled from 'styled-components'
 import './SocialIcon.css'
-
+import photobooth from '../assets/ashlea-photobooth.jpg'
 
 const Photo = styled.img`
-  width: 675px;
+  width: 575px;
   height: 560px;
+  border-radius: 20px;
+  border: black solid 1px
 `
 const Content = styled.p`
   font-family: cursive;
@@ -47,7 +49,7 @@ export default function Contact() {
   return (
     <Main>
       <Wrapper>
-        <Photo src='https://imgur.com/TK6W9lt.png' alt='phone-booth' />
+        <Photo src={photobooth} alt='phone-booth' />
         <ContentWrapper>
           <ContentTitle>Contact</ContentTitle>
           <Content>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>

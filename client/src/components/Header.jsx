@@ -38,13 +38,16 @@ const List = styled.ul`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: black;
+  transition: transform .5s;
 
   &:hover{
     background-image: url(${brush});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    // color: rgba(133,107,123,.7)
+  }
+  &:active{
+    transform: scale(.96)
   }
 `
 const NavItem = styled.li`

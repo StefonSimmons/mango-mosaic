@@ -22,6 +22,8 @@ const Photo = styled.img`
   width: 550px;
   top: 25%;
   left: 15%;
+  border-radius: 20px;
+  border: black solid 1px
 `
 export const ContentWrapper = styled.div`
   width: 450px;
@@ -35,7 +37,6 @@ export const ContentTitle = styled.h1`
 `
 const Content = styled.p`
   font-family: cursive;
-  // font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
