@@ -27,11 +27,15 @@ const Titles = styled.div`
   font-weight: 700;
 `
 const MainTitle = styled.h1`
-  font-size: 32px;
+  font-size: 36px;
 `
 const SubTitle = styled.h2`
-  font-size: 20px;
-  padding: 12px 0 ;
+  font-size: 24px;
+  margin: 12px 0 ;
+`
+const DateNRead = styled.h5`
+  font-weight: 300;
+  margin-bottom: 12px
 `
 const EditDelete = styled.div`
   display: flex;
@@ -152,7 +156,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
 
   const { postId } = useParams()
 
-  const post = allPosts.filter(p => p.id === parseInt(postId))[0]
+  const post = allPosts.filter((p,id,arr) => arr.length - id === parseInt(postId))[0]
 
   // FORMAT DATE FOR CREATED AT
   const formatDate = () => {
@@ -217,7 +221,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
                   <Titles>
                     <MainTitle>{post.main_title}</MainTitle>
                     <SubTitle>{post.subtitle}</SubTitle>
-                    <h5>{`${formatDate()} | ${getReadTime()} min. read`}</h5>
+                    <DateNRead>{`${formatDate()} | ${getReadTime()} min. read`}</DateNRead>
                   </Titles>
                   {admin ?
                     <EditDelete>

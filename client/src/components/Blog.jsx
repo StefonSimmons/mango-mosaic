@@ -63,7 +63,7 @@ export default function Blog({ allPosts }) {
 
   function setColor(id) {
     // const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
-    const colors = ['rgba(239,114,24,.3)', 'rgba(29,157,65,.3)', 'rgba(201,13,13,.3)', 'rgba(133,107,123,.3)', 'rgba(235,183,45,.3)', 'rgba(54,70,209,.3)']
+    const colors = ['rgba(239,114,24,.2)', 'rgba(29,157,65,.2)', 'rgba(201,13,13,.2)', 'rgba(133,107,123,.2)', 'rgba(235,183,45,.2)', 'rgba(54,70,209,.2)']
 
     const selector = id % 6
     return colors[selector]
@@ -75,10 +75,10 @@ export default function Blog({ allPosts }) {
         <BlogID>{`#${posts.length - id}`}</BlogID>
         <PostImg src={post.img_URL} alt={post.img_URL} />
       </IDandImage>
-      <ColorSquare style={{ backgroundColor: `${setColor(id)}`,opacity:'.7' }}>
+      <ColorSquare style={{ backgroundColor: `${setColor(id)}` }}>
       </ColorSquare>
       <TitleWrapper>
-        <PostLink to={`/blog/${post.id}`}>
+        <PostLink to={`/blog/${posts.length - id}`}>
           <PostTitle>{post.main_title}</PostTitle>
           <PostSubTitle>{post.subtitle}</PostSubTitle>
         </PostLink>
