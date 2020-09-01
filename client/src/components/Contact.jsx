@@ -7,7 +7,7 @@ import photobooth from '../assets/ashlea-photobooth.jpg'
 
 const slideIn = keyframes`
 {
-  0% {transform: translateX(15%);}
+  0% {transform: translateX(16%);}
   100% {transform: translateX(0%);}
 }
 `
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   margin-top: 30px;
   position: absolute;
-  animation: 1s ease-out 0s 1 ${slideIn};
+  animation: 1.2s ease-out 0s 1 ${slideIn};
 `
 const Photo = styled.img`
   width: 575px;
