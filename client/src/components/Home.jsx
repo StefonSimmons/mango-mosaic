@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { aboutBlog } from './abouts.js'
+import {fadeIn} from './Blog'
 
 const Main = styled.div`
   display: flex;
@@ -8,18 +9,27 @@ const Main = styled.div`
   justify-content: flex-start;
   padding: 15px 75px ;
   height: 75vh;
+  animation: ${fadeIn} ease 1.2s;
 `
 const Wrapper = styled.div`
   display: flex;
   position: absolute;
 `
+const slideDwn = keyframes`
+{
+  0% {transform: translateY(-15%);}
+  100% {transform: translateY(0);}
+}
+`
 const HomeImg = styled.img`
   width: 400px;
   height: 500px;
   margin-left: 55px;
-  border-radius: 5px;
+  border-radius: 10px;
   z-index: 1;
-  box-shadow: 10px 10px 30px 3px #000000;
+  // box-shadow: 10px 10px 30px 3px #000000;
+  box-shadow: 5px 5px 30px 0px #000000;
+  animation: 1.3s ease-out 0s 1 ${slideDwn};
 `
 const slideIn = keyframes`
 {
@@ -29,7 +39,7 @@ const slideIn = keyframes`
 `
 const ContentWrapper = styled.div`
   width: 450px;
-  animation: 1.65s ease-out 0s 1 ${slideIn};
+  animation: 1.3s ease-out 0s 1 ${slideIn};
   margin-left: 50px;
 `
 const ContentTitle = styled.h1`

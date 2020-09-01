@@ -1,29 +1,36 @@
 import React from 'react'
-import styled from 'styled-components'
-import {fadeIn} from './Blog'
+import styled,{keyframes} from 'styled-components'
+import { fadeIn } from './Blog'
 import { aboutMe } from './abouts.js'
 
-
+const slideIn = keyframes`
+{
+  0% {transform: translateX(-15%);}
+  100% {transform: translateX(0);}
+}
+`
 export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   height: 75vh;
-  animation: ${fadeIn} ease 1s;
-
+  animation: ${fadeIn} ease 1.2s;
 `
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
   position: absolute;
+  animation: 1s ease-out 0s 1 ${slideIn};
 `
 const Photo = styled.img`
   width: 550px;
   top: 25%;
   left: 15%;
-  border-radius: 20px;
-  border: black solid 1px
+  border-radius: 10px;
+  // border: black solid 1px
+  box-shadow: 5px 5px 30px 0px #000000;
+
 `
 export const ContentWrapper = styled.div`
   width: 450px;

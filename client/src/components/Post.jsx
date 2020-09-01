@@ -1,17 +1,23 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import Comment from './Comment'
 import EditForm from './EditForm'
 import DeletionModal from './DeletionModal';
 import { DisplayEditor } from './DisplayEditor'
 
+
+const fadeIn = keyframes`
+  0% {opacity:0;}
+  100% {opacity:1;}
+`
 const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   justify-content: space-around;
   padding: 20px 0px;
-  z-index: 2
+  z-index: 2;
+  animation: ${fadeIn} ease 1.2s;
 `
 const ContentContainer = styled.div`
 `

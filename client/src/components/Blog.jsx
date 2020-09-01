@@ -6,13 +6,19 @@ export const fadeIn = keyframes`
   0% {opacity:0;}
   100% {opacity:1;}
 `
+const slideIn = keyframes`
+{
+  0% {transform: translateY(-10%);}
+  100% {transform: translateY(0);}
+}
+`
 const PostsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
   width: 70%;  
   justify-items: center;
-  animation: ${fadeIn} ease 1s;
+  animation: ${fadeIn} ease 1.2s;
 `
 const Post = styled.div`
   display: grid;
@@ -20,6 +26,7 @@ const Post = styled.div`
   grid-template-rows: repeat(17,1fr);
   height: 300px;
   width: 300px; 
+  animation: 1s ease-out 0s 1 ${slideIn};
 `
 const IDandImage = styled.div`
   grid-column: 1 / span 10;
@@ -33,7 +40,7 @@ const BlogID = styled.p`
 const PostImg = styled.img`
   width: 250px;
   height: 137px;
-  object-fit: scale-down
+  object-fit: scale-down;
 `
 const PostLink = styled(Link)`
   text-decoration: none;
@@ -60,7 +67,9 @@ const PostSubTitle = styled.h2`
 const ColorSquare = styled.div`
   grid-column: 2 / span 8;
   grid-row: 3 / span 13;
-  z-index: -1
+  z-index: -1;
+  border-radius: 5px;
+
 `
 
 export default function Blog({ allPosts }) {

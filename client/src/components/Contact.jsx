@@ -1,14 +1,29 @@
 import React from 'react'
-import { Main, Wrapper, ContentWrapper, ContentTitle } from './About'
-import styled from 'styled-components'
+import { Main, ContentWrapper, ContentTitle } from './About'
+import styled, { keyframes } from 'styled-components'
 import './SocialIcon.css'
 import photobooth from '../assets/ashlea-photobooth.jpg'
 
+
+const slideIn = keyframes`
+{
+  0% {transform: translateX(15%);}
+  100% {transform: translateX(0%);}
+}
+`
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  position: absolute;
+  animation: 1s ease-out 0s 1 ${slideIn};
+`
 const Photo = styled.img`
   width: 575px;
   height: 560px;
-  border-radius: 20px;
-  border: black solid 1px
+  border-radius: 10px;
+  // border: black solid 1px;
+  box-shadow: 5px 5px 30px 0px #000000;
 `
 const Content = styled.p`
   font-family: cursive;
