@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import {fadeIn} from './Blog'
 import { aboutMe } from './abouts.js'
+
 
 export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 75vh
+  height: 75vh;
+  animation: ${fadeIn} ease 1s;
+
 `
 export const Wrapper = styled.div`
   display: flex;

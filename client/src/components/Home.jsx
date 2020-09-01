@@ -23,12 +23,8 @@ const HomeImg = styled.img`
 `
 const slideIn = keyframes`
 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% {transform: translateX(-100%);}
+  100% {transform: translateX(0);}
 }
 `
 const ContentWrapper = styled.div`

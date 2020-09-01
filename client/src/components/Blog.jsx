@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
-
+export const fadeIn = keyframes`
+  0% {opacity:0;}
+  100% {opacity:1;}
+`
 const PostsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
   width: 70%;  
   justify-items: center;
+  animation: ${fadeIn} ease 1s;
 `
 const Post = styled.div`
   display: grid;

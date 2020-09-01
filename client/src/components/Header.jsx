@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-
+import brush from '../assets/brush-stroke.png'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -13,7 +13,6 @@ const Logo = styled.img`
 `
 const MMWrapper = styled.div`
   font-family: 'Dancing Script', cursive;
-  // color: #1831B5;
   color: black;
   position: absolute;
   top: 2.5%;
@@ -39,9 +38,17 @@ const List = styled.ul`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: black;
+
+  &:hover{
+    background-image: url(${brush});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    // color: rgba(133,107,123,.7)
+  }
 `
 const NavItem = styled.li`
-  padding-left: 69px;
+  padding: 0 38px;
 `
 const WelcomeBack = styled.li`
   align-self: center;

@@ -9,7 +9,6 @@ const Photo = styled.img`
   height: 560px;
 `
 const Content = styled.p`
-  // font-family: 'Open Sans Condensed', sans-serif;
   font-family: cursive;
   font-size: 18px;
   letter-spacing: 2px;
