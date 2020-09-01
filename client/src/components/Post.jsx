@@ -181,11 +181,11 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
   }
 
   //MAPPING W/ JSX FOR RECENT POSTS 
-  const recentPosts = allPosts.map((p, i) => {
-    if (i < 5) {
+  const recentPosts = allPosts.map((p, id, posts) => {
+    if (id < 5) {
       return (
-        <div key={i}>
-          <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}>
+        <div key={id}>
+          <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
             {p.main_title.length > 19 ?
               <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
               :
