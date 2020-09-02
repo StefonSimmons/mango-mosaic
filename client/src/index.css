@@ -20,5 +20,10 @@ body{
   background-color: #fff;
 }
 
+@media(max-width: 780px){
+  body{
+    margin: 0 0 0 20px
+  }
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed:wght@300;700&display=swap');

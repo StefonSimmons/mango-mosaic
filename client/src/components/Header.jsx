@@ -38,9 +38,29 @@ const Nav = styled.nav`
   @media(max-width: 845px){
     font-size: 32px;
   }
+  @media(max-width: 780px){
+    position: absolute;
+    right: 0;
+    background: white;
+    width: 50px;
+    height: 100vh;
+    justify-content: center
+  }
 `
 const List = styled.ul`
   display: flex;
+
+  @media(max-width: 780px){
+    display: none
+  }
+`
+const ListIcons = styled.ul`
+  display: none;
+
+  @media(max-width: 780px){
+    display: flex;
+    flex-direction: column;
+  }
 `
 const NavLink = styled(Link)`
   text-decoration: none;
@@ -55,6 +75,10 @@ const NavLink = styled(Link)`
   }
   &:active{
     transform: scale(.96);
+  }
+
+  @media(max-width: 780px){
+    margin: 50px 0
   }
 `
 const NavItem = styled.li`
@@ -94,6 +118,13 @@ export default function Header({ admin, verifyEditModal }) {
           <NavLink onClick={verifyEditModal} to='/about-me'><NavItem>About me</NavItem></NavLink>
           <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
         </List>
+        <ListIcons>
+          <NavLink onClick={verifyEditModal} to='/'><i class="material-icons">home</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/blog'><i class="material-icons">import_contacts</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/about-me'><i class="material-icons">face</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/contact-me'><i class="material-icons">contact_support</i></NavLink>
+        </ListIcons>
+        
       </Nav>
     </HeaderContainer>
   )
