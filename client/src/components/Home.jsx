@@ -29,6 +29,21 @@ const Wrapper = styled.div`
     transition: transform 1.2s;
     transform-style: preserve-3d
   }
+  @media(max-width: 675px){
+    left: 20%;
+  }
+  @media(max-width: 605px){
+    left: 15%;
+  }
+  @media(max-width: 590px){
+    left: 12%;
+  }
+  @media(max-width: 540px){
+    left: 8%;
+  }
+  @media(max-width: 460px){
+    left: 4%;
+  }
 `
 const slideDwn = keyframes`
 {
@@ -59,6 +74,18 @@ const HomeImg = styled.img`
     position: absolute;
     animation: none
   }
+  @media(max-width: 540px){
+    width: 350px;
+    height: 450px;
+  }
+  @media(max-width: 460px){
+    width: 300px;
+    height: 400px;
+  }
+  @media(max-width: 380px){
+    width: 275px;
+    height: 375px;
+  }
 `
 const slideIn = keyframes`
 {
@@ -86,6 +113,19 @@ const ContentWrapper = styled.div`
     border-radius: 10px;
     padding: 20px 10px
   }
+  @media(max-width: 540px){
+    width: 350px;
+    height: 450px;
+  }
+  @media(max-width: 460px){
+    width: 300px;
+    height: 400px;
+  }
+  @media(max-width: 380px){
+    width: 275px;
+    height: 375px;
+    padding: 10px
+  }
 `
 const ContentTitle = styled.h1`
   font-family: 'Dancing Script', cursive;
@@ -93,6 +133,15 @@ const ContentTitle = styled.h1`
   letter-spacing: 2px;
   margin-bottom: 15px;
   padding-left: 15px;
+
+  @media(max-width: 540px){
+    font-size: 36px;
+  }
+  @media(max-width: 380px){
+    font-size: 28px;
+    margin-bottom: 10px;
+    padding-left: 0px;
+  }
 `
 const Content = styled.p`
   font-family: cursive;
@@ -105,7 +154,18 @@ const Content = styled.p`
   @media(max-width: 1055px){
     font-size: 15px
   }
-
+  @media(max-width: 540px){
+    font-size: 15px;
+    line-height: 1.35;
+  }
+  @media(max-width: 460px){
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  @media(max-width: 380px){
+    margin-left: 0px;
+    line-height: 1.2;
+  }
 `
 const RedSquare = styled.div`
   background-color: #972309;
@@ -135,7 +195,6 @@ const GreenSquare = styled.div`
   }
 `
 const CardContainer = styled.div`
-  
   @media(min-width: 845px){
     position: absolute;
     top: 25%;

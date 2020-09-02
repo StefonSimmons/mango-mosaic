@@ -10,6 +10,11 @@ const HeaderContainer = styled.div`
 const Logo = styled.img`
   width: 150px;
   height: 139px;
+  
+  @media(max-width: 380px){
+    width: 129px;
+    height: 120px;
+  }
 `
 const MMWrapper = styled.div`
   font-family: 'Dancing Script', cursive;
@@ -21,6 +26,10 @@ const MMWrapper = styled.div`
 const Mango = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
+
+  @media(max-width: 380px){
+    font-size: 36px;
+  }
 `
 const Mosaic = styled(Mango)`
   padding-left: 40px;
@@ -41,10 +50,14 @@ const Nav = styled.nav`
   @media(max-width: 780px){
     position: absolute;
     right: 0;
-    background: white;
-    width: 50px;
+    background-color: rgb(255,255,255, .3);
+    width: 55px;
     height: 100vh;
     justify-content: center
+  }
+  @media(max-width: 380px){
+    background-color: rgb(255,255,255, .2);
+    width: 50px;
   }
 `
 const List = styled.ul`
@@ -79,6 +92,9 @@ const NavLink = styled(Link)`
 
   @media(max-width: 780px){
     margin: 50px 0
+  }
+  @media(max-width: 380px){
+    margin: 50px 5px;
   }
 `
 const NavItem = styled.li`
@@ -119,10 +135,10 @@ export default function Header({ admin, verifyEditModal }) {
           <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
         </List>
         <ListIcons>
-          <NavLink onClick={verifyEditModal} to='/'><i class="material-icons">home</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/blog'><i class="material-icons">import_contacts</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/about-me'><i class="material-icons">face</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/contact-me'><i class="material-icons">contact_support</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/'><i class="material-icons md-36">home</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/blog'><i class="material-icons md-36">import_contacts</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/about-me'><i class="material-icons md-36">face</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/contact-me'><i class="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
         
       </Nav>
