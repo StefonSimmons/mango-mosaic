@@ -26,6 +26,8 @@ const Wrapper = styled.div`
     flex-direction: column;
     top: 25%;
     left: 25%;
+    transition: transform 1.2s;
+    transform-style: preserve-3d
   }
 `
 const slideDwn = keyframes`
@@ -77,9 +79,12 @@ const ContentWrapper = styled.div`
     height: 500px;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    position: sticky;
     animation: none;
-    border: solid black 2px
+    border: solid black 1px;
+    box-shadow: 5px 5px 10px 0px #000000;
+    background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .1), rgba(238, 244, 251, 0));
+    border-radius: 10px;
+    padding: 20px 10px
   }
 `
 const ContentTitle = styled.h1`
@@ -130,8 +135,6 @@ const GreenSquare = styled.div`
   }
 `
 const CardContainer = styled.div`
-  // background-color: transparent;
-  // perspective: 1000px;
   
   @media(min-width: 845px){
     position: absolute;
@@ -149,7 +152,7 @@ export default function Home() {
       <CardContainer>
         <Wrapper
           onClick={() => window.screen.width <= 845 && toggleFlip(!flipCard)}
-          style={flipCard ? { transform: 'rotateY(180deg)', transition: 'transform 1.2s', transformStyle: 'preserve-3d', position: 'relative' } : null}
+          style={flipCard ? {transform: 'rotateY(180deg)'} : null}
         >
           {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
           <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
