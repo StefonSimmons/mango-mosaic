@@ -19,6 +19,23 @@ const PostsWrapper = styled.div`
   width: 70%;  
   justify-items: center;
   animation: ${fadeIn} ease 1.2s;
+
+  @media(max-width: 1100px){
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media(max-width: 780px){
+    margin: 40px 60px
+  }
+  @media(max-width: 780px){
+    grid-template-columns: repeat(1, 1fr);
+    margin: 40px 80px
+  }
+  @media(max-width: 480px){
+    margin: 40px 40px
+  }
+  @media(max-width: 380px){
+    margin: 40px 0px
+  }
 `
 const Post = styled.div`
   display: grid;
@@ -56,7 +73,6 @@ const PostTitle = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
   font-size: 18px;
-  // letter-spacing: 2px;
 `
 const PostSubTitle = styled.h2`
   font-family: 'Open Sans Condensed', sans-serif;

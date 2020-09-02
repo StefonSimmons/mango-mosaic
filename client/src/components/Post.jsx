@@ -84,6 +84,10 @@ const YellowSquare = styled.div`
   height: 400px;
   background-color: #CBB344;
   opacity: .5;
+
+  @media(max-width: 1390px){
+    
+  }
 `
 const RecentPostsContainer = styled.div`
   position: absolute;
