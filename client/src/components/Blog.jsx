@@ -62,7 +62,6 @@ const PostSubTitle = styled.h2`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 16px;
-  // letter-spacing: 2px; 
 `
 const ColorSquare = styled.div`
   grid-column: 2 / span 8;

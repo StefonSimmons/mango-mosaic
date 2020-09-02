@@ -137,7 +137,6 @@ const Background = styled.div`
 `
 const GreenSquare = styled.div`
   background-color: #2B791E;
-  // background: o;
   grid-column: 1 / span 4;
   grid-row: 3 / span 3;
   opacity: .2;

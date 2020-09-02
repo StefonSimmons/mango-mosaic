@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 const Foot = styled.footer`
   margin: 20px 0 10px 0
-  
 `
 const Bottom = styled.div`
   display: flex;

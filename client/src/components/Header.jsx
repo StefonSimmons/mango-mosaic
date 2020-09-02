@@ -31,6 +31,13 @@ const Nav = styled.nav`
   font-family: 'Dancing Script', cursive;
   font-size: 42px;
   letter-spacing: 2px;
+
+  @media(max-width: 960px){
+    font-size: 36px;
+  }
+  @media(max-width: 845px){
+    font-size: 32px;
+  }
 `
 const List = styled.ul`
   display: flex;
@@ -47,11 +54,18 @@ const NavLink = styled(Link)`
     background-position: center;
   }
   &:active{
-    transform: scale(.96)
+    transform: scale(.96);
   }
 `
 const NavItem = styled.li`
   padding: 0 38px;
+
+  @media(max-width: 1055px){
+    padding: 0 28px;
+  }
+  @media(max-width: 960px){
+    padding: 0 20px;
+  }
 `
 const WelcomeBack = styled.li`
   align-self: center;
