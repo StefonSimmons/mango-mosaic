@@ -34,10 +34,12 @@ const Titles = styled.div`
 `
 const MainTitle = styled.h1`
   font-size: 36px;
+  color: rgb(1, 12, 5);
 `
 const SubTitle = styled.h2`
   font-size: 24px;
   margin: 12px 0 ;
+  color: rgb(1, 12, 5);
 `
 const DateNRead = styled.h5`
   font-weight: 300;

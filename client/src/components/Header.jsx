@@ -11,9 +11,13 @@ const Logo = styled.img`
   width: 150px;
   height: 139px;
   
+  @media(max-width: 460px){
+    margin-left: 115px ;
+  }
   @media(max-width: 380px){
     width: 129px;
     height: 120px;
+    margin-left: 80px
   }
 `
 const MMWrapper = styled.div`
@@ -22,6 +26,13 @@ const MMWrapper = styled.div`
   position: absolute;
   top: 2.5%;
   left: 6.5%;
+
+  @media(max-width: 460px){
+    left: 35%;
+  }
+  @media(max-width: 380px){
+    left: 30%
+  }
 `
 const Mango = styled.h1`
   font-size: 48px;
@@ -137,10 +148,10 @@ export default function Header({ admin, verifyEditModal }) {
           <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
         </List>
         <ListIcons>
-          <NavLink onClick={verifyEditModal} to='/'><i class="material-icons md-36">home</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/blog'><i class="material-icons md-36">import_contacts</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/about-me'><i class="material-icons md-36">face</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/contact-me'><i class="material-icons md-36">contact_support</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/'><i className="material-icons md-36">home</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
+          <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
         
       </Nav>

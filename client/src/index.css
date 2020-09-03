@@ -19,9 +19,18 @@ body{
 .editor{
   background-color: #fff;
 }
+
+.fancyBlock{
+  font-style: italic;
+  color: rgb(73, 72, 72);
+}
+
+
+
+
 .material-icons.md-36 { 
   font-size: 36px; 
-  background-color: rgb(1, 12, 5)
+  color: rgb(1, 12, 5)
 }
 
 @media(max-width: 780px){

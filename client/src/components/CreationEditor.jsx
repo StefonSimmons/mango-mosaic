@@ -23,6 +23,7 @@ function CreationEditor({ postData, createPost }) {
   }
 
 
+
   return (
     <div className='text-editor-wrapper'>
       <div>

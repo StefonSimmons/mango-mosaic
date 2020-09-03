@@ -31,6 +31,12 @@ function DisplayEditor({ content, editClicked, updatePost, postData }) {
     })
   }
 
+  function myBlockStyleFn(contentBlock) {
+    const type = contentBlock.getType();
+    if (type === 'blockquote') {
+      return 'fancyBlock';
+    }
+  }
 
   return (
     <>
@@ -41,6 +47,7 @@ function DisplayEditor({ content, editClicked, updatePost, postData }) {
           editorClassName="demo-editor"
           toolbarHidden={true}
           readOnly={true}
+          blockStyleFn={myBlockStyleFn}
         />
         :
         <Editor
@@ -48,6 +55,7 @@ function DisplayEditor({ content, editClicked, updatePost, postData }) {
           wrapperClassName="rich-editor demo-wrapper"
           editorClassName="editor"
           onEditorStateChange={onEditorStateChange}
+          blockStyleFn={myBlockStyleFn}
         />
       }
     </>
