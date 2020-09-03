@@ -26,6 +26,7 @@ const MMWrapper = styled.div`
 const Mango = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
+  color: rgb(1, 12, 5);
 
   @media(max-width: 380px){
     font-size: 36px;
@@ -77,7 +78,8 @@ const ListIcons = styled.ul`
 `
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  // color: black;
+  color: rgb(1, 12, 5);
   transition: transform .5s;
 
   &:hover{

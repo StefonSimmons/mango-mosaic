@@ -97,6 +97,8 @@ const ContentWrapper = styled.div`
   width: 450px;
   animation: 1.3s ease-out 0s 1 ${slideIn};
   margin-left: 50px;
+  background: rgba(255, 255, 255,.1);
+  box-shadow: 0px 0px 70px 70px rgba(255,255,255,.1);
 
   @media(max-width: 1055px){
     width: 350px
@@ -133,23 +135,26 @@ const ContentTitle = styled.h1`
   letter-spacing: 2px;
   margin-bottom: 15px;
   padding-left: 15px;
+  color: rgb(1, 12, 5);
 
   @media(max-width: 540px){
     font-size: 36px;
   }
   @media(max-width: 380px){
-    font-size: 28px;
+    font-size: 32px;
     margin-bottom: 10px;
     padding-left: 0px;
   }
 `
 const Content = styled.p`
   font-family: cursive;
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 2px;
-  line-height: 1.75;
+  line-height: 2;
   font-weight: 700;
   margin-left: 15px;
+  color: rgb(1, 12, 5);
+
 
   @media(max-width: 1055px){
     font-size: 15px
@@ -213,10 +218,10 @@ export default function Home() {
           onClick={() => window.screen.width <= 845 && toggleFlip(!flipCard)}
           style={flipCard ? {transform: 'rotateY(180deg)'} : null}
         >
-          {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
-          <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
+          <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' />
+          {/* <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' /> */}
           <ContentWrapper>
-            <ContentTitle>This blog...</ContentTitle>
+            <ContentTitle>Like eating a mango,</ContentTitle>
             <Content>{aboutBlog}</Content>
           </ContentWrapper>
         </Wrapper>

@@ -53,6 +53,8 @@ const BlogID = styled.p`
   font-family: 'Dancing Script', cursive;
   font-size: 24px;
   margin-bottom: 20px;
+  color: rgb(1, 12, 5);
+
 `
 const PostImg = styled.img`
   width: 250px;
@@ -61,7 +63,7 @@ const PostImg = styled.img`
 `
 const PostLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: rgb(1, 12, 5);
   display: hidden;
 `
 const TitleWrapper = styled.div`
@@ -84,7 +86,6 @@ const ColorSquare = styled.div`
   grid-row: 3 / span 13;
   z-index: -1;
   border-radius: 5px;
-
 `
 
 export default function Blog({ allPosts }) {

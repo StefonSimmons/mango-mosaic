@@ -21,6 +21,7 @@ body{
 }
 .material-icons.md-36 { 
   font-size: 36px; 
+  background-color: rgb(1, 12, 5)
 }
 
 @media(max-width: 780px){
