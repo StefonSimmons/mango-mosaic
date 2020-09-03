@@ -66,7 +66,8 @@ const Nav = styled.nav`
     background-color: rgb(255,255,255, .3);
     width: 55px;
     height: 100vh;
-    justify-content: center
+    justify-content: center;
+    z-index: 2
   }
   @media(max-width: 380px){
     background-color: rgb(255,255,255, .2);
