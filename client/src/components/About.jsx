@@ -18,15 +18,12 @@ export const Main = styled.div`
 `
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-  position: absolute;
+  margin-top: -30px;
+  // position: absolute;
   animation: 1s ease-out 0s 1 ${slideIn};
 `
 const Photo = styled.img`
   width: 550px;
-  top: 25%;
-  left: 15%;
   border-radius: 10px;
   box-shadow: 5px 5px 30px 0px #000000;
 
@@ -62,7 +59,10 @@ export const YellowSquare = styled.div`
   z-index: -1;
 `
 const CardContainer = styled.div`
-
+  @media(min-width: 845px){
+    position: absolute;
+    top: 25%;
+  }
 `
 
 export default function About() {
