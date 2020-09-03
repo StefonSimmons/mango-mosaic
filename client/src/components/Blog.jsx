@@ -34,7 +34,7 @@ const PostsWrapper = styled.div`
     margin: 40px 40px
   }
   @media(max-width: 380px){
-    margin: 40px 0px
+    margin: 20px 0px
   }
 `
 const Post = styled.div`
