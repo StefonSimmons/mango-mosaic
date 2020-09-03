@@ -1,5 +1,5 @@
 import React from 'react'
-import styled,{keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { fadeIn } from './Blog'
 import { aboutMe } from './abouts.js'
 
@@ -28,7 +28,6 @@ const Photo = styled.img`
   top: 25%;
   left: 15%;
   border-radius: 10px;
-  // border: black solid 1px
   box-shadow: 5px 5px 30px 0px #000000;
 
 `
@@ -62,16 +61,22 @@ export const YellowSquare = styled.div`
   opacity: .2;
   z-index: -1;
 `
+const CardContainer = styled.div`
+
+`
+
 export default function About() {
   return (
     <Main>
-      <Wrapper>
-        <Photo src='https://imgur.com/s9JH7E3.png' alt='ashlea' />
-        <ContentWrapper>
-          <ContentTitle>Hey !</ContentTitle>
-          <Content>{aboutMe}</Content>
-        </ContentWrapper>
-      </Wrapper>
+      <CardContainer>
+        <Wrapper>
+          <Photo src='https://imgur.com/s9JH7E3.png' alt='ashlea' />
+          <ContentWrapper>
+            <ContentTitle>Hey !</ContentTitle>
+            <Content>{aboutMe}</Content>
+          </ContentWrapper>
+        </Wrapper>
+      </CardContainer>
       <RedSquare>
       </RedSquare>
       <YellowSquare>

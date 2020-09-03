@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import brush from '../assets/brush-stroke.png'
+import mango from '../assets/mango-logo.png'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -89,7 +90,6 @@ const ListIcons = styled.ul`
 `
 const NavLink = styled(Link)`
   text-decoration: none;
-  // color: black;
   color: rgb(1, 12, 5);
   transition: transform .5s;
 
@@ -114,7 +114,7 @@ const NavItem = styled.li`
   padding: 0 38px;
 
   @media(max-width: 1055px){
-    padding: 0 28px;
+    padding: 0 24px;
   }
   @media(max-width: 960px){
     padding: 0 20px;
@@ -136,7 +136,8 @@ export default function Header({ admin, verifyEditModal }) {
           <Mango>Mango</Mango>
           <Mosaic>Mosaic</Mosaic>
         </MMWrapper>
-        <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" />
+        <Logo src={mango} alt="mango-mosaic-logo" />
+        {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
         {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
       <Nav>

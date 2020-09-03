@@ -128,7 +128,7 @@ const ContentWrapper = styled.div`
     height: 375px;
     padding: 10px
   }
-`
+` 
 const ContentTitle = styled.h1`
   font-family: 'Dancing Script', cursive;
   font-size: 48px;
@@ -218,8 +218,8 @@ export default function Home() {
           onClick={() => window.screen.width <= 845 && toggleFlip(!flipCard)}
           style={flipCard ? {transform: 'rotateY(180deg)'} : null}
         >
-          <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' />
-          {/* <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' /> */}
+          {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
+          <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
           <ContentWrapper>
             <ContentTitle>Like eating a mango,</ContentTitle>
             <Content>{aboutBlog}</Content>
