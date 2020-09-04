@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import brush from '../assets/brush-stroke.png'
 import mango from '../assets/mango-logo.png'
+import { useLocation } from 'react-router-dom'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -130,6 +131,9 @@ const WelcomeBack = styled.li`
   letter-spacing: 1px;
 `
 export default function Header({ admin, verifyEditModal }) {
+
+  const location = useLocation()
+  
   return (
     <HeaderContainer>
       <div>
@@ -143,7 +147,7 @@ export default function Header({ admin, verifyEditModal }) {
       </div>
       <Nav>
         <List>
-          {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack>: null}
+          {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
           <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>
           <NavLink onClick={verifyEditModal} to='/blog'><NavItem>Blog</NavItem></NavLink>
           <NavLink onClick={verifyEditModal} to='/about-me'><NavItem>About me</NavItem></NavLink>
@@ -151,11 +155,15 @@ export default function Header({ admin, verifyEditModal }) {
         </List>
         <ListIcons>
           <NavLink onClick={verifyEditModal} to='/'><i className="material-icons md-36">home</i></NavLink>
+          {location.pathname.match(/\d/) ?
+            <NavLink onClick={verifyEditModal} to='#'><i className="material-icons md-36">dynamic_feed</i></NavLink>
+            : null
+          }
           <NavLink onClick={verifyEditModal} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
           <NavLink onClick={verifyEditModal} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
           <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
-        
+
       </Nav>
     </HeaderContainer>
   )

@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     flex-direction: column-reverse
   }
   @media(max-width: 780px){
-    width: 70vw
+    width: 90vw
   }
 `
 const ContentContainer = styled.div`
@@ -79,6 +79,9 @@ const ImageContainer = styled.div`
   @media(max-width: 780px){
     width: 650px;
   }
+  @media(max-width: 730px){
+    width: 550px
+  }
 `
 const PostImg = styled.img`
   width: 900px;
@@ -90,6 +93,9 @@ const PostImg = styled.img`
   }
   @media(max-width: 780px){
     width: 650px;
+  }
+  @media(max-width: 730px){
+    width: 550px
   }
 `
 const Content = styled.p`
@@ -124,7 +130,9 @@ const YellowSquare = styled.div`
   @media(max-width: 780px){
     width: 650px;
   }
-
+  @media(max-width: 730px){
+    width: 550px
+  }
 `
 const RecentPostsContainer = styled.div`
   display: flex;
