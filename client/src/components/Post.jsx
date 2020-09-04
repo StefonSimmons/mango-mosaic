@@ -22,6 +22,9 @@ const Wrapper = styled.div`
   @media(max-width: 1150px){
     flex-direction: column-reverse
   }
+  @media(max-width: 780px){
+    width: 70vw
+  }
 `
 const ContentContainer = styled.div`
 `
@@ -70,11 +73,24 @@ const ImageContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
+  @media(max-width: 930px){
+    width: 800px;
+  }
+  @media(max-width: 780px){
+    width: 650px;
+  }
 `
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
-  object-fit: contain
+  object-fit: contain;
+
+  @media(max-width: 930px){
+    width: 800px;
+  }
+  @media(max-width: 780px){
+    width: 650px;
+  }
 `
 const Content = styled.p`
   width: 900px;
@@ -85,6 +101,7 @@ const Content = styled.p`
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
+
 `
 const YellowSquare = styled.div`
   width: 250px;
@@ -98,6 +115,16 @@ const YellowSquare = styled.div`
     border-radius: 45px;
     margin-bottom: 20px
   }
+  @media(max-width: 930px){
+    width: 800px;
+    height: 135px;
+    border-radius: 45px;
+    margin-bottom: 20px
+  }
+  @media(max-width: 780px){
+    width: 650px;
+  }
+
 `
 const RecentPostsContainer = styled.div`
   display: flex;
@@ -122,10 +149,9 @@ const RPWrapper = styled.div`
 
   @media(max-width: 1150px){
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-evenly;
   }
 `
-
 const RPLink = styled(Link)`
   color: black;
   text-decoration: none;
@@ -155,6 +181,12 @@ const RecentPost = styled.h4`
       color: white;
       border-radius: 45px;
     }
+  }
+  @media(max-width: 930px){
+    font-size: 15px
+  }
+  @media(max-width: 780px){
+    font-size: 14px
   }
 `
 const SeeMore = styled(Link)`
