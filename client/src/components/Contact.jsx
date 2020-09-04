@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Main, ContentWrapper, ContentTitle } from './About'
 import styled, { keyframes } from 'styled-components'
 import './SocialIcon.css'
@@ -13,17 +13,38 @@ const slideIn = keyframes`
 `
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-  position: absolute;
+  margin-top: -30px;
   animation: 1.2s ease-out 0s 1 ${slideIn};
-`
+
+  @media(max-width: 845px){
+    position: absolute;
+    flex-direction: column;
+    top: 25%;
+    left: 25%;
+    transition: transform 1.2s;
+    transform-style: preserve-3d
+  }
+  `
 const Photo = styled.img`
   width: 575px;
   height: 560px;
   border-radius: 10px;
-  // border: black solid 1px;
   box-shadow: 5px 5px 30px 0px #000000;
+
+  @media(max-width: 1055px){
+    width: 475px;
+    height: 460px;
+    margin-left: 20px
+  }
+  @media(max-width: 960px){
+    width: 425px;
+    height: 410px;
+    margin-left: 20px
+  }
+  @media(max-width: 845px){
+    backface-visibility: hidden;
+    position: absolute;
+  }
 `
 const Content = styled.p`
   font-family: cursive;
@@ -57,25 +78,38 @@ const RedSquare = styled.div`
   opacity: .2;
   z-index: -1;
 `
-
+const Container = styled.div`
+  @media(min-width: 845px){
+    position: absolute;
+    top: 25%;
+  }
+`
 
 
 export default function Contact() {
+
+  const [flipCard, toggleFlip] = useState(false)
+
   return (
     <Main>
-      <Wrapper>
-        <Photo src={photobooth} alt='phone-booth' />
-        <ContentWrapper>
-          <ContentTitle>Contact</ContentTitle>
-          <Content>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>
-          <ContentTitle2>Social</ContentTitle2>
-          <SocialLinks>
-            <a href="https://www.instagram.com/mango.mosaic/" rel="noopener noreferrer" target='_blank' className="fa fa-instagram"> </a>
-            <a href="https://www.twitter.com/ashleaamorgan1" rel="noopener noreferrer" target='_blank' className="fa fa-twitter"> </a>
-            <a href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" rel="noopener noreferrer" target='_blank' className="fa fa-linkedin"> </a>
-          </SocialLinks>
-        </ContentWrapper>
-      </Wrapper>
+      <Container>
+        <Wrapper
+          onClick={() => window.screen.width <= 845 && toggleFlip(!flipCard)}
+          style={flipCard ? { transform: 'rotateY(180deg)' } : null}
+        >
+          <Photo src={photobooth} alt='phone-booth' />
+          <ContentWrapper>
+            <ContentTitle>Contact</ContentTitle>
+            <Content>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>
+            <ContentTitle2>Social</ContentTitle2>
+            <SocialLinks>
+              <a href="https://www.instagram.com/mango.mosaic/" rel="noopener noreferrer" target='_blank' className="fa fa-instagram"> </a>
+              <a href="https://www.twitter.com/ashleaamorgan1" rel="noopener noreferrer" target='_blank' className="fa fa-twitter"> </a>
+              <a href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" rel="noopener noreferrer" target='_blank' className="fa fa-linkedin"> </a>
+            </SocialLinks>
+          </ContentWrapper>
+        </Wrapper>
+      </Container>
       <YellowSquare>
       </YellowSquare>
       <RedSquare>
