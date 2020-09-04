@@ -134,23 +134,26 @@ const RPWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 500px;
+  position: fixed;
+  right: 7%;
+  width: 450px;
   height: 100vh;
+  z-index: 3
 `
 const RPost = styled.div`
   display: none;
-  z-index: 3
 `
 const RPLink = styled(Link)`
   color: black;
   text-decoration: none;
 `
 const RPTitle = styled.h4`
-
+  font-size: 36px;
+  display: inline-block
 `
 export default function Header({ admin, verifyEditModal, allPosts }) {
 
-  const [recentTree, showTree] = useState(true)
+  const [recentTree, showTree] = useState(false)
 
   const location = useLocation()
 
@@ -158,10 +161,10 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
   const recentPosts = allPosts.map((p, id, posts) => {
     if (id < 5) {
       return (
-        <RPost key={id} style={recentTree ? { display: "block" } : null}>
+        <RPost key={id} style={recentTree ? { display: "block", width: '450px', zIndex: '3' } : null}>
           <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
             {p.main_title.length > 19 ?
-              <RPTitle>{`${p.main_title.substring(0, 19)}...`}</RPTitle>
+              <RPTitle>{`${p.main_title.substring(0, 24)}...`}</RPTitle>
               :
               <RPTitle>{p.main_title}</RPTitle>
             }
