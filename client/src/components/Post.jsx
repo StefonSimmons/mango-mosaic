@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import styled, {keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Comment from './Comment'
 import EditForm from './EditForm'
 import DeletionModal from './DeletionModal';
@@ -18,6 +18,8 @@ const Wrapper = styled.div`
   padding: 20px 0px;
   z-index: 2;
   animation: ${fadeIn} ease 1.2s;
+  
+
 `
 const ContentContainer = styled.div`
 `
@@ -85,18 +87,16 @@ const YellowSquare = styled.div`
   width: 250px;
   height: 400px;
   background-color: #CBB344;
-  opacity: .5;
+  opacity: .8;
 
   @media(max-width: 1390px){
     
   }
 `
 const RecentPostsContainer = styled.div`
-  position: absolute;
-  right: 9%;
-  top: 23%;
   display: flex;
   flex-direction: column;
+  margin-top: 20px
 `
 const RPTitle = styled.h3`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -114,8 +114,8 @@ const RecentPost = styled.h4`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 18px;
-  padding: 13.5px 3px;
-
+  padding: 13.5px 10px;
+  
   &:hover{
     background-color: black;
     color: white;
@@ -128,6 +128,7 @@ const SeeMore = styled(Link)`
   margin-top: 50px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 15px;
+  padding-left: 10px;
   color: blue;
 `
 const Background = styled.div`
@@ -167,7 +168,7 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
 
   const { postId } = useParams()
 
-  const post = allPosts.filter((p,id,arr) => arr.length - id === parseInt(postId))[0]
+  const post = allPosts.filter((p, id, arr) => arr.length - id === parseInt(postId))[0]
 
   // FORMAT DATE FOR CREATED AT
   const formatDate = () => {
@@ -263,14 +264,12 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
 
             }
             <YellowSquare>
+              <RecentPostsContainer>
+                <RPTitle>Most Recent Posts</RPTitle>
+                {recentPosts}
+                <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
+              </RecentPostsContainer>
             </YellowSquare>
-
-            <RecentPostsContainer>
-              <RPTitle>Most Recent Posts</RPTitle>
-              {recentPosts}
-              <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
-            </RecentPostsContainer>
-
           </Wrapper>
 
           <Background>
