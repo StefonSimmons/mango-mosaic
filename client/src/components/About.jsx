@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { fadeIn } from './Blog'
 import { aboutMe } from './abouts.js'
@@ -19,18 +19,51 @@ export const Main = styled.div`
 const Wrapper = styled.div`
   display: flex;
   margin-top: -30px;
-  // position: absolute;
   animation: 1s ease-out 0s 1 ${slideIn};
+
+  @media(max-width: 845px){
+    position: absolute;
+    flex-direction: column;
+    top: 25%;
+    left: 25%;
+    transition: transform 1.2s;
+    transform-style: preserve-3d
+  }
 `
 const Photo = styled.img`
   width: 550px;
   border-radius: 10px;
   box-shadow: 5px 5px 30px 0px #000000;
 
+  @media(max-width: 1055px){
+    width: 450px;
+  }
+  @media(max-width: 960px){
+    width: 400px;
+  }
+  @media(max-width: 845px){
+    backface-visibility: hidden;
+    position: absolute;
+  }
+
 `
 export const ContentWrapper = styled.div`
   width: 450px;
   margin-left: 50px;
+
+  @media(max-width: 960px){
+    width: 400px;
+    margin-left: 40px
+  }
+  @media(max-width: 845px){
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border: solid black 1px;
+    box-shadow: 5px 5px 10px 0px #000000;
+    background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .1), rgba(238, 244, 251, 0));
+    border-radius: 10px;
+    padding: 20px 10px
+  }
 `
 export const ContentTitle = styled.h1`
   font-family: 'Dancing Script', cursive;
@@ -50,6 +83,7 @@ export const RedSquare = styled.div`
   height: 500px;
   opacity: .2;
   z-index: -1;
+
 `
 export const YellowSquare = styled.div`
   background-color: #CBB334;
@@ -66,10 +100,16 @@ const CardContainer = styled.div`
 `
 
 export default function About() {
+
+  const [flipCard, toggleFlip] = useState(false)
+
   return (
     <Main>
       <CardContainer>
-        <Wrapper>
+        <Wrapper
+          onClick={() => window.screen.width <= 845 && toggleFlip(!flipCard)}
+          style={flipCard ? { transform: 'rotateY(180deg)' } : null}
+        >
           <Photo src='https://imgur.com/s9JH7E3.png' alt='ashlea' />
           <ContentWrapper>
             <ContentTitle>Hey !</ContentTitle>
