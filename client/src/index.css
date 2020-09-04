@@ -13,7 +13,7 @@ body{
   width: 900px;
 }
 .editor-field{
-  border: 2px solid grey;
+  border: 2px solid #808080;
   border-radius: 5px
 }
 .editor{

@@ -66,7 +66,7 @@ const Nav = styled.nav`
     right: 0;
     background-color: rgb(255,255,255, .3);
     width: 55px;
-    height: 100vh;
+    height: 105vh;
     justify-content: center;
     z-index: 2
   }
@@ -130,15 +130,22 @@ const WelcomeBack = styled.li`
   color: #1831B5;
   letter-spacing: 1px;
 `
+const rpWrapperStyle = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: 'space-evenly',
+  position: 'fixed',
+  right: '7%',
+  width: '450px',
+  height: '100vh',
+  zIndex: '3',
+  height: '105vh',
+  background: 'rgb(250,220,194)',
+  boxShadow: '1px 0px 2px 1px #808080 inset',
+  borderRadius: '3px'
+}
 const RPWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  position: fixed;
-  right: 7%;
-  width: 450px;
-  height: 100vh;
-  z-index: 3
+  display: none;
 `
 const RPost = styled.div`
   display: none;
@@ -149,7 +156,8 @@ const RPLink = styled(Link)`
 `
 const RPTitle = styled.h4`
   font-size: 36px;
-  display: inline-block
+  display: inline-block;
+  text-shadow: 1px 0px 2px #808080;
 `
 export default function Header({ admin, verifyEditModal, allPosts }) {
 
@@ -161,7 +169,9 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
   const recentPosts = allPosts.map((p, id, posts) => {
     if (id < 5) {
       return (
-        <RPost key={id} style={recentTree ? { display: "block", width: '450px', zIndex: '3' } : null}>
+        <RPost
+          key={id}
+          style={recentTree ? { display: "block", width: '445px', marginLeft: '15px', zIndex: '3' } : null}>
           <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
             {p.main_title.length > 19 ?
               <RPTitle>{`${p.main_title.substring(0, 24)}...`}</RPTitle>
@@ -195,17 +205,22 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         <ListIcons>
           <NavLink onClick={verifyEditModal} to='/'><i className="material-icons md-36">home</i></NavLink>
           {location.pathname.match(/\d/) && window.screen.width <= 730 ?
-            <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36">dynamic_feed</i></NavLink>
+            <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36" >dynamic_feed</i></NavLink>
             : null
           }
           <NavLink onClick={verifyEditModal} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
           <NavLink onClick={verifyEditModal} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
           <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
+        <RPWrapper
+          className="animate__animated animate__headShake"
+          style={recentTree ? rpWrapperStyle : null}
+        >
+          {recentPosts}
+        </RPWrapper>
       </Nav>
-      <RPWrapper>
-        {recentPosts}
-      </RPWrapper>
+
     </HeaderContainer>
   )
 }
+// className="animate__animated animate__bounce" 
