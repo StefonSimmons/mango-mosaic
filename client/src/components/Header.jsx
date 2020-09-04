@@ -194,7 +194,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
         {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
-      <Nav style={recentTree ? { width: "500px", justifyContent: "flex-end", marginRight: 9 } : null}>
+      <Nav >
         <List>
           {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
           <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>
@@ -204,7 +204,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         </List>
         <ListIcons>
           <NavLink onClick={verifyEditModal} to='/'><i className="material-icons md-36">home</i></NavLink>
-          {location.pathname.match(/\d/) && window.screen.width <= 730 ?
+          {location.pathname.match(/\d/) ?
             <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36" >dynamic_feed</i></NavLink>
             : null
           }
@@ -213,7 +213,8 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
           <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
         <RPWrapper
-          className="animate__animated animate__headShake"
+          onMouseLeave={() => showTree(false)}
+          className="animate__animated animate__backInRight"
           style={recentTree ? rpWrapperStyle : null}
         >
           {recentPosts}
