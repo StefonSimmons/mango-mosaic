@@ -140,8 +140,7 @@ const rpWrapperStyle = {
   height: '100vh',
   zIndex: '3',
   height: '105vh',
-  background: 'rgb(250,220,194)',
-  boxShadow: '1px 0px 2px 1px #808080 inset',
+  background: 'linear-gradient(to right,rgba(239,114,24,1),rgba(203, 179, 68, .95), rgba(250,220,194,.85))',
   borderRadius: '3px'
 }
 const RPWrapper = styled.div`
@@ -213,7 +212,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
           <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
         <RPWrapper
-          onMouseLeave={() => showTree(false)}
+          onMouseLeave={() => showTree(!recentTree)}
           className="animate__animated animate__backInRight"
           style={recentTree ? rpWrapperStyle : null}
         >
@@ -224,4 +223,3 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
     </HeaderContainer>
   )
 }
-// className="animate__animated animate__bounce" 
