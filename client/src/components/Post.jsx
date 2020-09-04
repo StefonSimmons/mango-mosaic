@@ -19,7 +19,9 @@ const Wrapper = styled.div`
   z-index: 2;
   animation: ${fadeIn} ease 1.2s;
   
-
+  @media(max-width: 1150px){
+    flex-direction: column-reverse
+  }
 `
 const ContentContainer = styled.div`
 `
@@ -67,6 +69,7 @@ const ImageContainer = styled.div`
   height: 500px;
   background-repeat: no-repeat;
   background-size: cover;
+
 `
 const PostImg = styled.img`
   width: 900px;
@@ -89,14 +92,18 @@ const YellowSquare = styled.div`
   background-color: #CBB344;
   opacity: .8;
 
-  @media(max-width: 1390px){
-    
+  @media(max-width: 1150px){
+    width: 900px;
+    height: 135px;
+    border-radius: 45px;
+    margin-bottom: 20px
   }
 `
 const RecentPostsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px
+  margin-top: 20px;
+
 `
 const RPTitle = styled.h3`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -104,11 +111,25 @@ const RPTitle = styled.h3`
   font-size: 18px;
   text-align: center;
   letter-spacing: 2px;
-  margin-bottom: 15px
+  margin-bottom: 15px;
+
+  @media(max-width: 1150px){
+    font-size: 20px;
+    margin-bottom: 10px
+  }
 `
+const RPWrapper = styled.div`
+
+  @media(max-width: 1150px){
+    display: flex;
+    justify-content: space-evenly
+  }
+`
+
 const RPLink = styled(Link)`
   color: black;
-  text-decoration: none
+  text-decoration: none;
+
 `
 const RecentPost = styled.h4`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -122,6 +143,19 @@ const RecentPost = styled.h4`
     border-radius: 5px;
     opacity: .7;
   }
+
+  @media(max-width: 1150px){
+    font-size: 20px;
+    font-weight: 700;
+    background: rgba(70,7,20,.4);
+    border-radius: 45px;
+
+    &:hover{
+      background: black;
+      color: white;
+      border-radius: 45px;
+    }
+  }
 `
 const SeeMore = styled(Link)`
   align-self: flex-start;
@@ -130,6 +164,12 @@ const SeeMore = styled(Link)`
   font-size: 15px;
   padding-left: 10px;
   color: blue;
+
+  @media(max-width: 1150px){
+    margin-top: 10px;
+    align-self: center;
+    font-size: 18px
+  }
 `
 const Background = styled.div`
   height: 789px;
@@ -265,8 +305,11 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
             }
             <YellowSquare>
               <RecentPostsContainer>
+
                 <RPTitle>Most Recent Posts</RPTitle>
-                {recentPosts}
+                <RPWrapper>
+                  {recentPosts}
+                </RPWrapper>
                 <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
               </RecentPostsContainer>
             </YellowSquare>
