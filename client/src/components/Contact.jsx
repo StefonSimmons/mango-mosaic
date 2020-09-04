@@ -24,7 +24,22 @@ const Wrapper = styled.div`
     transition: transform 1.2s;
     transform-style: preserve-3d
   }
-  `
+  @media(max-width: 675px){
+    left: 20%;
+  }
+  @media(max-width: 605px){
+    left: 15%;
+  }
+  @media(max-width: 590px){
+    left: 10%;
+  }
+  @media(max-width: 540px){
+    left: 8%;
+  }
+  @media(max-width: 480px){
+    left: 4%
+  }
+`
 const Photo = styled.img`
   width: 575px;
   height: 560px;
@@ -44,6 +59,18 @@ const Photo = styled.img`
   @media(max-width: 845px){
     backface-visibility: hidden;
     position: absolute;
+  }
+  @media(max-width: 540px){
+    width: 350px;
+    height: 335px;
+  }
+  @media(max-width: 440px){
+    width: 300px;
+    height: 275px
+  }
+  @media(max-width: 380px){
+    width: 275px;
+    height: 250px
   }
 `
 const Content = styled.p`
@@ -70,6 +97,13 @@ const YellowSquare = styled.div`
   height: 500px;
   opacity: .2;
   z-index: -1;
+
+  @media(max-width: 540px){
+    width: 400px
+  }
+  @media(max-width: 460px){
+    width: 300px;
+  }
 `
 const RedSquare = styled.div`
   background-color: #972309;
@@ -77,6 +111,10 @@ const RedSquare = styled.div`
   height: 500px;
   opacity: .2;
   z-index: -1;
+
+  @media(max-width: 540px){
+    display: none
+  }
 `
 const Container = styled.div`
   @media(min-width: 845px){

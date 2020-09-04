@@ -65,9 +65,6 @@ const Photo = styled.img`
     width: 350px;
   }
   @media(max-width: 440px){
-    width: 300px;
-  }
-  @media(max-width: 440px){
     width: 275px;
   }
 `
