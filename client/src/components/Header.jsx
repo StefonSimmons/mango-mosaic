@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import brush from '../assets/brush-stroke.png'
@@ -62,7 +62,7 @@ const Nav = styled.nav`
     font-size: 32px;
   }
   @media(max-width: 780px){
-    position: absolute;
+    position: fixed;
     right: 0;
     background-color: rgb(255,255,255, .3);
     width: 55px;
@@ -130,10 +130,46 @@ const WelcomeBack = styled.li`
   color: #1831B5;
   letter-spacing: 1px;
 `
-export default function Header({ admin, verifyEditModal }) {
+const RPWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 500px;
+  height: 100vh;
+`
+const RPost = styled.div`
+  display: none;
+  z-index: 3
+`
+const RPLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+`
+const RPTitle = styled.h4`
+
+`
+export default function Header({ admin, verifyEditModal, allPosts }) {
+
+  const [recentTree, showTree] = useState(true)
 
   const location = useLocation()
-  
+
+  //MAPPING W/ JSX FOR RECENT POSTS 
+  const recentPosts = allPosts.map((p, id, posts) => {
+    if (id < 5) {
+      return (
+        <RPost key={id} style={recentTree ? { display: "block" } : null}>
+          <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
+            {p.main_title.length > 19 ?
+              <RPTitle>{`${p.main_title.substring(0, 19)}...`}</RPTitle>
+              :
+              <RPTitle>{p.main_title}</RPTitle>
+            }
+          </RPLink>
+        </RPost>
+      )
+    }
+  })
   return (
     <HeaderContainer>
       <div>
@@ -145,7 +181,7 @@ export default function Header({ admin, verifyEditModal }) {
         {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
         {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
-      <Nav>
+      <Nav style={recentTree ? { width: "500px", justifyContent: "flex-end", marginRight: 9 } : null}>
         <List>
           {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
           <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>
@@ -155,16 +191,18 @@ export default function Header({ admin, verifyEditModal }) {
         </List>
         <ListIcons>
           <NavLink onClick={verifyEditModal} to='/'><i className="material-icons md-36">home</i></NavLink>
-          {location.pathname.match(/\d/) ?
-            <NavLink onClick={verifyEditModal} to='#'><i className="material-icons md-36">dynamic_feed</i></NavLink>
+          {location.pathname.match(/\d/) && window.screen.width <= 730 ?
+            <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36">dynamic_feed</i></NavLink>
             : null
           }
           <NavLink onClick={verifyEditModal} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
           <NavLink onClick={verifyEditModal} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
           <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
-
       </Nav>
+      <RPWrapper>
+        {recentPosts}
+      </RPWrapper>
     </HeaderContainer>
   )
 }

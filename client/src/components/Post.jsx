@@ -131,7 +131,7 @@ const YellowSquare = styled.div`
     width: 650px;
   }
   @media(max-width: 730px){
-    width: 550px
+    display: none
   }
 `
 const RecentPostsContainer = styled.div`
@@ -163,7 +163,6 @@ const RPWrapper = styled.div`
 const RPLink = styled(Link)`
   color: black;
   text-decoration: none;
-
 `
 const RecentPost = styled.h4`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -196,6 +195,7 @@ const RecentPost = styled.h4`
   @media(max-width: 780px){
     font-size: 14px
   }
+
 `
 const SeeMore = styled(Link)`
   align-self: flex-start;
@@ -244,10 +244,19 @@ const RedSquare = styled.div`
   z-index: -1;
 `
 
-export default function Post({ allPosts, allComments, admin, showDeletionModal, showEditForm, hideEditForm, editClicked, handleSaveEdit, verifyEditModal, handleCreateComment, deletePost, deleteClicked, cancelDeletion }) {
+export default function Post({
+  allPosts, allComments,
+  admin, showDeletionModal,
+  showEditForm, hideEditForm,
+  editClicked, handleSaveEdit,
+  verifyEditModal, handleCreateComment,
+  deletePost, deleteClicked,
+  cancelDeletion
+}) {
 
   const { postId } = useParams()
 
+  // FILTERS FOR MOST RECENT
   const post = allPosts.filter((p, id, arr) => arr.length - id === parseInt(postId))[0]
 
   // FORMAT DATE FOR CREATED AT
@@ -343,16 +352,18 @@ export default function Post({ allPosts, allComments, admin, showDeletionModal, 
               </ContentContainer>
 
             }
-            <YellowSquare>
-              <RecentPostsContainer>
+            
+              <YellowSquare>
+                <RecentPostsContainer>
 
-                <RPTitle>Most Recent Posts</RPTitle>
-                <RPWrapper>
-                  {recentPosts}
-                </RPWrapper>
-                <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
-              </RecentPostsContainer>
-            </YellowSquare>
+                  <RPTitle>Most Recent Posts</RPTitle>
+                  <RPWrapper>
+                    {recentPosts}
+                  </RPWrapper>
+                  <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
+                </RecentPostsContainer>
+              </YellowSquare>
+              
           </Wrapper>
 
           <Background>

@@ -26,7 +26,7 @@ function App() {
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
-
+  
   // POST AND COMMENT HANDLERS
   useEffect(() => {
     const getPosts = async () => {
@@ -114,6 +114,7 @@ function App() {
       <Header
         admin={admin}
         verifyEditModal={toggleEditFormModal}
+        allPosts={allPosts}
       />
 
       <Switch>
