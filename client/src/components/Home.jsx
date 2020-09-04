@@ -72,7 +72,7 @@ const HomeImg = styled.img`
     height: 500px;
     backface-visibility: hidden;
     position: absolute;
-    animation: none
+    // animation: none
   }
   @media(max-width: 540px){
     width: 350px;
@@ -108,7 +108,7 @@ const ContentWrapper = styled.div`
     height: 500px;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    animation: none;
+    // animation: none;
     border: solid black 1px;
     box-shadow: 5px 5px 10px 0px #000000;
     background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .1), rgba(238, 244, 251, 0));
@@ -169,7 +169,6 @@ const Content = styled.p`
   }
   @media(max-width: 380px){
     margin-left: 0px;
-    line-height: 1.2;
   }
 `
 const RedSquare = styled.div`

@@ -29,6 +29,22 @@ const Wrapper = styled.div`
     transition: transform 1.2s;
     transform-style: preserve-3d
   }
+  @media(max-width: 675px){
+    left: 20%;
+  }
+  @media(max-width: 605px){
+    left: 15%;
+  }
+  @media(max-width: 590px){
+    left: 12%;
+  }
+  @media(max-width: 540px){
+    left: 8%;
+  }
+  @media(max-width: 480px){
+    left: 4%
+  }
+
 `
 const Photo = styled.img`
   width: 550px;
@@ -45,7 +61,15 @@ const Photo = styled.img`
     backface-visibility: hidden;
     position: absolute;
   }
-
+  @media(max-width: 540px){
+    width: 350px;
+  }
+  @media(max-width: 440px){
+    width: 300px;
+  }
+  @media(max-width: 440px){
+    width: 275px;
+  }
 `
 export const ContentWrapper = styled.div`
   width: 450px;
@@ -60,9 +84,16 @@ export const ContentWrapper = styled.div`
     transform: rotateY(180deg);
     border: solid black 1px;
     box-shadow: 5px 5px 10px 0px #000000;
-    background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .1), rgba(238, 244, 251, 0));
+    background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .2), rgba(238, 244, 251, 0));
     border-radius: 10px;
     padding: 20px 10px
+  }
+  @media(max-width: 460px){
+    width: 300px;
+    margin-left: 25px;
+  }
+  @media(max-width: 380px){
+    width: 275px;
   }
 `
 export const ContentTitle = styled.h1`
@@ -70,12 +101,24 @@ export const ContentTitle = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
   margin-bottom: 15px;
+
+  @media(max-width: 460px){
+    font-size: 36px
+  }
 `
 const Content = styled.p`
   font-family: cursive;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 1.75;
+
+  @media(max-width: 460px){
+    font-size: 15px;
+    line-height: 1.4
+  }
+  @media(max-width: 380px){
+    font-size: 14px;
+  }
 `
 export const RedSquare = styled.div`
   background-color: #972309;
@@ -84,6 +127,12 @@ export const RedSquare = styled.div`
   opacity: .2;
   z-index: -1;
 
+  @media(max-width: 540px){
+    width: 400px
+  }
+  @media(max-width: 460px){
+    width: 300px;
+  }
 `
 export const YellowSquare = styled.div`
   background-color: #CBB334;
@@ -91,6 +140,11 @@ export const YellowSquare = styled.div`
   height: 500px;
   opacity: .2;
   z-index: -1;
+
+  @media(max-width: 540px){
+    display: none
+  }
+
 `
 const CardContainer = styled.div`
   @media(min-width: 845px){
