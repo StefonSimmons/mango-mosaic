@@ -72,7 +72,6 @@ const HomeImg = styled.img`
     height: 500px;
     backface-visibility: hidden;
     position: absolute;
-    // animation: none
   }
   @media(max-width: 540px){
     width: 350px;

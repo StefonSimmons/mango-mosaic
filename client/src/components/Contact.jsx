@@ -65,8 +65,8 @@ const Photo = styled.img`
     height: 335px;
   }
   @media(max-width: 440px){
-    width: 300px;
-    height: 275px
+    width: 325px;
+    height: 300px
   }
   @media(max-width: 380px){
     width: 275px;
@@ -138,12 +138,12 @@ export default function Contact() {
           <Photo src={photobooth} alt='phone-booth' />
           <ContentWrapper>
             <ContentTitle>Contact</ContentTitle>
-            <Content>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>
+            <Content onClick={(e) => e.stopPropagation()}>Email | <Email href='mailto:ashleam2013@gmail.com'>ashleam2013@gmail.com</Email></Content>
             <ContentTitle2>Social</ContentTitle2>
             <SocialLinks>
-              <a href="https://www.instagram.com/mango.mosaic/" rel="noopener noreferrer" target='_blank' className="fa fa-instagram"> </a>
-              <a href="https://www.twitter.com/ashleaamorgan1" rel="noopener noreferrer" target='_blank' className="fa fa-twitter"> </a>
-              <a href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" rel="noopener noreferrer" target='_blank' className="fa fa-linkedin"> </a>
+              <a onClick={(e) => e.stopPropagation()} href="https://www.instagram.com/mango.mosaic/" rel="noopener noreferrer" target='_blank' className="fa fa-instagram"> </a>
+              <a onClick={(e) => e.stopPropagation()} href="https://www.twitter.com/ashleaamorgan1" rel="noopener noreferrer" target='_blank' className="fa fa-twitter"> </a>
+              <a onClick={(e) => e.stopPropagation()} href="https://www.linkedin.com/in/ashlea-morgan-ma-29818a35/" rel="noopener noreferrer" target='_blank' className="fa fa-linkedin"> </a>
             </SocialLinks>
           </ContentWrapper>
         </Wrapper>

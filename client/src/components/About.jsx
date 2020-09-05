@@ -65,7 +65,8 @@ const Photo = styled.img`
     width: 350px;
   }
   @media(max-width: 440px){
-    width: 275px;
+    width: 300px;
+    margin-left: 15px
   }
 `
 export const ContentWrapper = styled.div`

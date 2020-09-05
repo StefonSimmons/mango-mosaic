@@ -176,7 +176,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         <RPost
           key={id}
           className='r-post'
-          style={recentTree ? { display: "block", width: '285px', marginLeft: '15px', zIndex: '3' } : null}
+          style={recentTree ? { display: "block", width: '285px', marginLeft: '45px', zIndex: '3' } : null}
         >
           <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
             {p.main_title.length > 19 ?
@@ -223,6 +223,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
           className="animate__animated animate__backInRight"
           style={recentTree ? rpWrapperStyle : null}
         >
+          {/* <h1 style={{background:"purple", color: 'white', textAlign: 'center'} }>Most Recent</h1> */}
           {recentPosts}
         </RPWrapper>
       </Nav>
