@@ -90,6 +90,8 @@ export const ContentWrapper = styled.div`
   @media(max-width: 460px){
     width: 300px;
     margin-left: 25px;
+    margin-top: 55px
+
   }
   @media(max-width: 380px){
     width: 275px;

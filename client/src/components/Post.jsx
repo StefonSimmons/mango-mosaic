@@ -34,7 +34,9 @@ const Wrapper = styled.div`
     width: 400px
   }
   @media(max-width: 475px){
-    width: 275px
+    width: 275px;
+    margin-left: 5px;
+
   }
 
 `
