@@ -136,12 +136,11 @@ const rpWrapperStyle = {
   justifyContent: 'space-evenly',
   position: 'fixed',
   right: '3.4rem',
-  // width: '450px',
   zIndex: '3',
   height: '105vh',
-  // background: 'linear-gradient(to right,rgba(239,114,24,1),rgba(203, 179, 68, .95), rgba(250,220,194,.85))',
   background: 'rgb(250,224,194',
-  borderRadius: '3px'
+  borderRadius: '3px',
+  borderLeft: 'rgb(219,221,224) 1px solid'
 }
 const RPWrapper = styled.div`
   display: none;
@@ -181,9 +180,9 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         >
           <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
             {p.main_title.length > 19 ?
-              <RPTitle>{`${p.main_title.substring(0, 15)}...`}</RPTitle>
+              <RPTitle onClick={() => showTree(false)}>{`${p.main_title.substring(0, 15)}...`}</RPTitle>
               :
-              <RPTitle>{p.main_title}</RPTitle>
+              <RPTitle onClick={() => showTree(false)}>{p.main_title}</RPTitle>
             }
           </RPLink>
         </RPost>
@@ -210,14 +209,14 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
           <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
         </List>
         <ListIcons>
-          <NavLink onClick={verifyEditModal} to='/'><i className="material-icons md-36">home</i></NavLink>
+          <NavLink onClick={() => showTree(false)} to='/'><i className="material-icons md-36">home</i></NavLink>
           {location.pathname.match(/\d/) ?
             <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36" >dynamic_feed</i></NavLink>
             : null
           }
-          <NavLink onClick={verifyEditModal} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
-          <NavLink onClick={verifyEditModal} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
+          <NavLink onClick={() => showTree(false)} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
+          <NavLink onClick={() => showTree(false)} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
+          <NavLink onClick={() => showTree(false)} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
         <RPWrapper
           onMouseLeave={() => showTree(!recentTree)}
