@@ -68,7 +68,7 @@ const Nav = styled.nav`
     width: 55px;
     height: 105vh;
     justify-content: center;
-    z-index: 2
+    z-index: 2;
   }
   @media(max-width: 380px){
     background-color: rgb(255,255,255, .2);
@@ -135,28 +135,34 @@ const rpWrapperStyle = {
   flexDirection: "column",
   justifyContent: 'space-evenly',
   position: 'fixed',
-  right: '7%',
-  width: '450px',
-  height: '100vh',
+  right: '3.4rem',
+  // width: '450px',
   zIndex: '3',
   height: '105vh',
-  background: 'linear-gradient(to right,rgba(239,114,24,1),rgba(203, 179, 68, .95), rgba(250,220,194,.85))',
+  // background: 'linear-gradient(to right,rgba(239,114,24,1),rgba(203, 179, 68, .95), rgba(250,220,194,.85))',
+  background: 'rgb(250,224,194',
   borderRadius: '3px'
 }
 const RPWrapper = styled.div`
   display: none;
+
 `
 const RPost = styled.div`
   display: none;
 `
 const RPLink = styled(Link)`
   color: black;
+  // color: rgb(29,157,65);
   text-decoration: none;
 `
 const RPTitle = styled.h4`
   font-size: 36px;
   display: inline-block;
   text-shadow: 1px 0px 2px #808080;
+
+  @media(max-width: 700px){
+    font-size: 28px;
+  }
 `
 export default function Header({ admin, verifyEditModal, allPosts }) {
 
@@ -170,10 +176,12 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
       return (
         <RPost
           key={id}
-          style={recentTree ? { display: "block", width: '445px', marginLeft: '15px', zIndex: '3' } : null}>
+          className='r-post'
+          style={recentTree ? { display: "block", width: '285px', marginLeft: '15px', zIndex: '3' } : null}
+        >
           <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
             {p.main_title.length > 19 ?
-              <RPTitle>{`${p.main_title.substring(0, 24)}...`}</RPTitle>
+              <RPTitle>{`${p.main_title.substring(0, 15)}...`}</RPTitle>
               :
               <RPTitle>{p.main_title}</RPTitle>
             }
@@ -193,7 +201,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
         {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
-      <Nav >
+      <Nav style={recentTree ? {backgroundColor: "#EEF4FB"} : null}>
         <List>
           {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
           <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>

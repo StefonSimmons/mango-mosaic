@@ -36,6 +36,26 @@ body{
   }
 }
 
+@media(max-width: 730px){
+  .DraftEditor-root{
+    width: 600px;
+  }
+}
+@media(max-width: 620px){
+  .DraftEditor-root{
+    width: 500px;
+  }
+}
+@media(max-width: 620px){
+  .DraftEditor-root{
+    width: 400px;
+  }
+}
+@media(max-width: 475px){
+  .DraftEditor-root{
+    width: 275px;
+  }
+}
 
 
 .material-icons.md-36 { 

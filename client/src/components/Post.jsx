@@ -23,8 +23,18 @@ const Wrapper = styled.div`
     flex-direction: column-reverse
   }
   @media(max-width: 780px){
-    width: 90vw
+    width: 600px
   }
+  @media(max-width: 680px){
+    width: 500px
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
+
 `
 const ContentContainer = styled.div`
 `
@@ -80,7 +90,21 @@ const ImageContainer = styled.div`
     width: 650px;
   }
   @media(max-width: 730px){
+    width: 600px;
+  }
+  @media(max-width: 700px){
     width: 550px
+  }
+  @media(max-width: 680px){
+    width: 500px;
+    height: 300px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+    height: 200px;    
   }
 `
 const PostImg = styled.img`
@@ -95,7 +119,18 @@ const PostImg = styled.img`
     width: 650px;
   }
   @media(max-width: 730px){
-    width: 550px
+    width: 600px
+  }
+  @media(max-width: 680px){
+    width: 500px;
+    height: 300px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+    height: 200px;
   }
 `
 const Content = styled.p`
@@ -133,6 +168,7 @@ const YellowSquare = styled.div`
   @media(max-width: 730px){
     display: none
   }
+
 `
 const RecentPostsContainer = styled.div`
   display: flex;
@@ -220,7 +256,14 @@ const Background = styled.div`
   top: 18%;
   grid-template-columns: repeat(10,1fr);
   grid-template-rows: repeat(7,1fr);
-  z-index: -1
+  z-index: -1;
+
+  @media(max-width: 730px){
+    width: 450px
+  }
+  @media(max-width: 420px){
+    width: 250px
+  }
 `
 const GreenSquare = styled.div`
   background-color: #2B791E;

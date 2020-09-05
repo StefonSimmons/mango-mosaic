@@ -8,7 +8,20 @@ const CommentHeader = styled.div`
   display: flex;
   width: 700px;
   margin-top: 10px;
-  justify-content: space-between
+  justify-content: space-between;
+
+  @media(max-width: 700px){
+    width: 600px;
+  }
+  @media(max-width: 620px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
 `
 const CommentCount = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -32,6 +45,19 @@ export const Divider = styled.hr`
   height: 1px;
   width: 700px;
   background: #706B6B;
+
+  @media(max-width: 700px){
+    width: 600px;
+  }
+  @media(max-width: 620px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
 `
 const CommentContainer = styled.div`
   background-color: #E7E7EF;
@@ -39,7 +65,20 @@ const CommentContainer = styled.div`
   padding: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
-  font-weight: 400
+  font-weight: 400;
+
+  @media(max-width: 700px){
+    width: 600px;
+  }
+  @media(max-width: 620px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
 `
 const CreatedAt = styled.h3`
   padding: 10px 0 20px 0;
