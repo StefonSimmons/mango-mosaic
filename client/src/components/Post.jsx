@@ -48,6 +48,8 @@ const Titles = styled.div`
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
+
+
 `
 const MainTitle = styled.h1`
   font-size: 36px;
@@ -66,7 +68,11 @@ const EditDelete = styled.div`
   display: flex;
   justify-content: space-between;
   width: 200px;
-  margin-right: 5px
+  margin-right: 5px;
+
+  @media(max-width: 475px){
+    flex-direction: column;
+  }
 `
 const EditDeleteBtn = styled.button`
   font-family: 'Dancing Script', cursive;
@@ -75,7 +81,11 @@ const EditDeleteBtn = styled.button`
   padding: 3px 15px;
   background-color: #E3D1E2;
   border-radius: 10px;
-  border: 2px solid purple
+  border: 2px solid purple;
+
+  @media(max-width: 475px){
+    margin: 10px
+  }
 `
 const ImageContainer = styled.div`
   width: 900px;
