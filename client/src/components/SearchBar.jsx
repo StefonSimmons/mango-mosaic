@@ -24,10 +24,16 @@ const Bar = styled.input`
   background-size: contain; 
 
 `
-export default function SearchBar() {
+export default function SearchBar({ allPosts, updateAllPosts }) {
+  
+
+
   return (
     <Search>
-      <Bar type='text' />
+      <Bar
+        type='text'
+        // name={}
+      />
     </Search>
   )
 }

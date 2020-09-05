@@ -126,6 +126,7 @@ function App() {
         <Route exact path='/blog'>
           <Blog
             allPosts={allPosts}
+            updateAllPosts={updateAllPosts}
           />
         </Route>
 

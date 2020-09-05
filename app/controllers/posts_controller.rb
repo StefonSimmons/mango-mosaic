@@ -35,6 +35,17 @@ class PostsController < ApplicationController
     render json: "post has been deleted"
   end
 
+  # CUSTOM CONTROLLER
+  # SEARCH
+  def search
+    @posts = Post.where(
+      "LOWER(main_title) LIKE ? 
+      OR LOWER(subtitle) LIKE ?", 
+      "%#{params[:chars]}%", 
+      "%#{params[:chars]}%"
+    )
+    render json: @posts
+  end
 
   private
 

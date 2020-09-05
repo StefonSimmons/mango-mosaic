@@ -93,7 +93,7 @@ const ColorSquare = styled.div`
   border-radius: 5px;
 `
 
-export default function Blog({ allPosts }) {
+export default function Blog({ allPosts, updateAllPosts }) {
 
   function setColor(id) {
     // const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
@@ -123,7 +123,7 @@ export default function Blog({ allPosts }) {
 
   return (
     <>
-      <SearchBar/>
+      <SearchBar allPosts={allPosts} updateAllPosts={updateAllPosts}/>
       <PostsWrapper>
         {posts}
       </PostsWrapper>
