@@ -170,6 +170,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
   const location = useLocation()
 
   //MAPPING W/ JSX FOR RECENT POSTS 
+  // eslint-disable-next-line
   const recentPosts = allPosts.map((p, id, posts) => {
     if (id < 5) {
       return (
@@ -200,7 +201,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
         {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
-      <Nav style={recentTree ? {backgroundColor: "#EEF4FB"} : null}>
+      <Nav style={recentTree ? { backgroundColor: "#EEF4FB" } : null}>
         <List>
           {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
           <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>

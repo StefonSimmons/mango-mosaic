@@ -93,13 +93,17 @@ export default function Comment({ allComments, handleCreateComment }) {
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
     if (comment !== undefined) {
+      console.log('at_', comment.created_at)
       const milliseconds = Date.parse(comment.created_at)
+      console.log('ms_', milliseconds)
       const dateObj = new Date(milliseconds)
+      console.log('obj_', dateObj)
       const comment_datetime = dateObj.toLocaleString("en-US").replace(',', '')
       return comment_datetime
     }
   }
 
+  // eslint-disable-next-line
   const comments = allComments.map(c => {
     if (c.post_id === parseInt(postId)) {
       return (
@@ -148,13 +152,13 @@ export default function Comment({ allComments, handleCreateComment }) {
 
           </CommentHeader>
 
-          { commentClicked ?
+          {commentClicked ?
             <CreateComment
               handleCreateComment={handleCreateComment}
               postId={postId}
               updateCommentClicked={updateCommentClicked}
             />
-            : 
+            :
             null
           }
           {comments}

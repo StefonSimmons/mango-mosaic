@@ -14,7 +14,9 @@ const fadeIn = keyframes`
 const Wrapper = styled.div`
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
+  margin-left: 50px;
+  justify-content: flex-start;
   padding: 20px 0px;
   z-index: 2;
   animation: ${fadeIn} ease 1.2s;
@@ -37,6 +39,7 @@ const Wrapper = styled.div`
 
 `
 const ContentContainer = styled.div`
+  
 `
 const TitleWrapper = styled.div`
   display: flex;
@@ -166,6 +169,8 @@ const YellowSquare = styled.div`
   height: 400px;
   background-color: #CBB344;
   opacity: .8;
+  position: fixed;
+  right: 7%;
 
   @media(max-width: 1150px){
     width: 900px;
@@ -351,6 +356,7 @@ export default function Post({
   }
 
   //MAPPING W/ JSX FOR RECENT POSTS 
+  // eslint-disable-next-line
   const recentPosts = allPosts.map((p, id, posts) => {
     if (id < 5) {
       return (
@@ -445,7 +451,7 @@ export default function Post({
         </>
         :
         <Loading>
-          <h1 style={{fontSize:'36px'}}>Loading Content...</h1>
+          <h1 style={{ fontSize: '36px' }}>Loading Content...</h1>
           <img src='https://media.giphy.com/media/elhHndVfpU1621gcEJ/giphy.gif' alt='girl flipping pages' />
         </Loading>
       }
