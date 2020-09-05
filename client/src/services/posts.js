@@ -58,3 +58,9 @@ export const destroyPost = async (id) => {
 
   return resp
 }
+
+export const searchPosts = async (chars) => {
+  const resp = await api.get(`/posts/search/${chars}`)
+  
+  return resp
+}

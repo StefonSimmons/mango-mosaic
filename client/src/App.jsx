@@ -29,13 +29,14 @@ function App() {
   
   // POST AND COMMENT HANDLERS
   useEffect(() => {
-    const getPosts = async () => {
-      const res = await getAllPosts()
-      updateAllPosts(res)
-    }
     getPosts()
   }, [submitted])
 
+  const getPosts = async () => {
+    const res = await getAllPosts()
+    updateAllPosts(res)
+  }
+  
   useEffect(() => {
     const getComments = async () => {
       const res = await getAllComments()
@@ -126,6 +127,7 @@ function App() {
         <Route exact path='/blog'>
           <Blog
             allPosts={allPosts}
+            getPosts={getPosts}
             updateAllPosts={updateAllPosts}
           />
         </Route>

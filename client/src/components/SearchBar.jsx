@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { searchPosts } from '../services/posts'
 import styled from 'styled-components'
 import mangoMagnifyIcon from '../assets/mango-magnify-icon.png'
 
@@ -24,15 +25,31 @@ const Bar = styled.input`
   background-size: contain; 
 
 `
-export default function SearchBar({ allPosts, updateAllPosts }) {
-  
+export default function SearchBar({ getPosts, updateAllPosts }) {
 
+  const [characters, updateCharacters] = useState('')
+
+  const search = async (e) => {
+    const { value } = e.target
+    updateCharacters(value)
+    if (value !== '') {
+      const response = await searchPosts(value.toLowerCase())
+      console.log('value-> ', typeof value.toLowerCase())
+      console.log('searching-> ', response.data)
+      const searchRes = response.data
+      updateAllPosts(searchRes)
+    }
+    if (value === '') {
+      getPosts()
+    }
+  }
 
   return (
     <Search>
       <Bar
         type='text'
-        // name={}
+        name={characters}
+        onChange={(e) => search(e)}
       />
     </Search>
   )
