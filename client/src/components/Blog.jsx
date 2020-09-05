@@ -65,6 +65,10 @@ const PostLink = styled(Link)`
   text-decoration: none;
   color: rgb(1, 12, 5);
   display: hidden;
+
+  &:active{
+    transform: scale(.95);
+  }
 `
 const TitleWrapper = styled.div`
   grid-column: 3 / 11;
@@ -98,23 +102,22 @@ export default function Blog({ allPosts }) {
     return colors[selector]
   }
   const posts = allPosts.map((post, id, posts) =>
-
-    <Post key={post.id}>
-      <IDandImage>
-        <BlogID>{`#${posts.length - id}`}</BlogID>
-        <PostImg src={post.img_URL} alt={post.img_URL} />
-      </IDandImage>
-      <ColorSquare style={{ backgroundColor: `${setColor(id)}` }}>
-      </ColorSquare>
-      <TitleWrapper>
-        <PostLink to={`/blog/${posts.length - id}`}>
+    <PostLink to={`/blog/${posts.length - id}`}>
+      <Post key={post.id}>
+        <IDandImage>
+          <BlogID>{`#${posts.length - id}`}</BlogID>
+          <PostImg src={post.img_URL} alt={post.img_URL} />
+        </IDandImage>
+        <ColorSquare style={{ backgroundColor: `${setColor(id)}` }}>
+        </ColorSquare>
+        <TitleWrapper>
           <PostTitle>{post.main_title}</PostTitle>
           <PostSubTitle>{post.subtitle}</PostSubTitle>
-        </PostLink>
-      </TitleWrapper>
-      <ColorSquare>
-      </ColorSquare>
-    </Post >
+        </TitleWrapper>
+        <ColorSquare>
+        </ColorSquare>
+      </Post >
+    </PostLink>
   )
 
   return (

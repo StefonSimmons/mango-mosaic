@@ -222,7 +222,9 @@ const RecentPost = styled.h4`
     border-radius: 5px;
     opacity: .7;
   }
-
+  &:active{
+    transform: scale(.95);
+  }
   @media(max-width: 1150px){
     font-size: 20px;
     font-weight: 700;
@@ -338,15 +340,13 @@ export default function Post({
   const recentPosts = allPosts.map((p, id, posts) => {
     if (id < 5) {
       return (
-        <div key={id}>
-          <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
-            {p.main_title.length > 19 ?
-              <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
-              :
-              <RecentPost>{p.main_title}</RecentPost>
-            }
-          </RPLink>
-        </div>
+        <RPLink key={id} onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
+          {p.main_title.length > 19 ?
+            <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
+            :
+            <RecentPost>{p.main_title}</RecentPost>
+          }
+        </RPLink>
       )
     }
   })
@@ -405,18 +405,18 @@ export default function Post({
               </ContentContainer>
 
             }
-            
-              <YellowSquare>
-                <RecentPostsContainer>
 
-                  <RPTitle>Most Recent Posts</RPTitle>
-                  <RPWrapper>
-                    {recentPosts}
-                  </RPWrapper>
-                  <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
-                </RecentPostsContainer>
-              </YellowSquare>
-              
+            <YellowSquare>
+              <RecentPostsContainer>
+
+                <RPTitle>Most Recent Posts</RPTitle>
+                <RPWrapper>
+                  {recentPosts}
+                </RPWrapper>
+                <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
+              </RecentPostsContainer>
+            </YellowSquare>
+
           </Wrapper>
 
           <Background>
