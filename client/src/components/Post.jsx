@@ -48,8 +48,6 @@ const Titles = styled.div`
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
-
-
 `
 const MainTitle = styled.h1`
   font-size: 36px;
@@ -73,6 +71,8 @@ const EditDelete = styled.div`
   @media(max-width: 475px){
     flex-direction: column;
   }
+
+
 `
 const EditDeleteBtn = styled.button`
   font-family: 'Dancing Script', cursive;
@@ -80,9 +80,16 @@ const EditDeleteBtn = styled.button`
   letter-spacing: 2px;
   padding: 3px 15px;
   background-color: #E3D1E2;
-  border-radius: 10px;
-  border: 2px solid purple;
+  border-radius: 45px;
+  border: 1px solid #E3D1E2;
 
+  &:hover{
+    background: #D2C0D1;
+    border: 1px solid #D2C0D1;
+  }
+  &:active{
+    transform: scale(.95);
+  }
   @media(max-width: 475px){
     margin: 10px
   }
@@ -298,6 +305,13 @@ const RedSquare = styled.div`
   opacity: .2;
   z-index: -1;
 `
+const Loading = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px
+`
 
 export default function Post({
   allPosts, allComments,
@@ -430,7 +444,10 @@ export default function Post({
 
         </>
         :
-        'Reloading...'
+        <Loading>
+          <h1 style={{fontSize:'36px'}}>Loading Content...</h1>
+          <img src='https://media.giphy.com/media/elhHndVfpU1621gcEJ/giphy.gif' alt='girl flipping pages' />
+        </Loading>
       }
     </>
   )

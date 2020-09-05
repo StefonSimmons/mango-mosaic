@@ -64,8 +64,16 @@ const SaveCancelBtn = styled.button`
   letter-spacing: 2px;
   padding: 3px 15px;
   background-color: #E3D1E2;
-  border-radius: 10px;
-  border: 2px solid purple
+  border-radius: 45px;
+  border: 2px solid #E3D1E2;
+
+  &:hover{
+    background: #D2C0D1;
+    border: 1px solid #D2C0D1;
+  }
+  &:active{
+    transform: scale(.95);
+  }
 `
 const PostImg = styled.img`
   width: 900px;
