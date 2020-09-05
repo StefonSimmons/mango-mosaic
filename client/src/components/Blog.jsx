@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
+import SearchBar from './SearchBar'
 
 export const fadeIn = keyframes`
   0% {opacity:0;}
@@ -121,8 +122,11 @@ export default function Blog({ allPosts }) {
   )
 
   return (
-    <PostsWrapper>
-      {posts}
-    </PostsWrapper>
+    <>
+      <SearchBar/>
+      <PostsWrapper>
+        {posts}
+      </PostsWrapper>
+    </>
   )
 }
