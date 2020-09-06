@@ -93,6 +93,7 @@ export default function Comment({ allComments, handleCreateComment }) {
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
     if (comment !== undefined) {
+      console.log('cmnt_', comment)
       console.log('at_', comment.created_at)
       const milliseconds = Date.parse(comment.created_at)
       console.log('ms_', milliseconds)

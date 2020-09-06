@@ -332,8 +332,9 @@ export default function Post({
 
   const { postId } = useParams()
 
-  // FILTERS FOR MOST RECENT
-  const post = allPosts.filter((p, id, arr) => arr.length - id === parseInt(postId))[0]
+  // FILTERS FOR SELECTED POST
+  // const post = allPosts.filter((p, id, arr) => arr.length - id === parseInt(postId))[0]
+  const post = allPosts.filter((p, id, arr) => p.id === parseInt(postId))[0]
 
   // FORMAT DATE FOR CREATED AT
   const formatDate = () => {

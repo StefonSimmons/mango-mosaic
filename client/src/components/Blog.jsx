@@ -103,7 +103,8 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
     return colors[selector]
   }
   const posts = allPosts.map((post, id, posts) =>
-    <PostLink to={`/blog/${posts.length - id}`} key={post.id}>
+    // <PostLink to={`/blog/${posts.length - id}`} key={post.id}>
+    <PostLink to={`/blog/${post.id}`} key={post.id}>
       <Post>
         <IDandImage>
           <BlogID>{`#${posts.length - id}`}</BlogID>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { searchPosts } from '../services/posts'
 import styled from 'styled-components'
 import mangoMagnifyIcon from '../assets/mango-magnify-icon.png'
@@ -18,7 +18,7 @@ const Bar = styled.input`
   border-radius: 15px;
   border: 1px solid grey;
   color: grey;
-  padding-left: 50px;
+  padding-left: 52px;
   display: block;
   margin: 35px auto;
   font-size: 18px;
@@ -40,6 +40,13 @@ export default function SearchBar({ getPosts, updateAllPosts }) {
 
   const [characters, updateCharacters] = useState('')
 
+  useEffect(() => {
+    return () => {
+      getPosts()
+    }
+    // eslint-disable-next-line
+  }, [])
+
   const search = async (e) => {
     const { value } = e.target
     updateCharacters(value)
@@ -47,7 +54,7 @@ export default function SearchBar({ getPosts, updateAllPosts }) {
       const response = await searchPosts(value.toLowerCase())
       const searchRes = response.data
       updateAllPosts(searchRes)
-    } else{
+    } else {
       getPosts()
     }
   }
@@ -57,6 +64,7 @@ export default function SearchBar({ getPosts, updateAllPosts }) {
       <Bar
         type='text'
         name={characters}
+        placeholder='Search'
         onChange={(e) => search(e)}
       />
     </Search>
