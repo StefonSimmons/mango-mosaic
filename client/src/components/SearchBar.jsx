@@ -45,12 +45,9 @@ export default function SearchBar({ getPosts, updateAllPosts }) {
     updateCharacters(value)
     if (value !== '') {
       const response = await searchPosts(value.toLowerCase())
-      console.log('value-> ', typeof value.toLowerCase())
-      console.log('searching-> ', response.data)
       const searchRes = response.data
       updateAllPosts(searchRes)
-    }
-    if (value === '') {
+    } else{
       getPosts()
     }
   }
