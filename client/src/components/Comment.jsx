@@ -67,6 +67,14 @@ const DeleteCmnt = styled.button`
   font-weight: 700;
   margin-bottom: 10px
 `
+const YesNoBtns = styled.button`
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-weight: 700;
+  margin: 10px 50px; 
+  font-size: 20px;
+`
 const CommentContainer = styled.div`
   background-color: #E7E7EF;
   width: 700px;
@@ -91,9 +99,12 @@ const CommentContainer = styled.div`
 const CreatedAt = styled.h3`
   padding: 10px 0 20px 0;
 `
-export default function Comment({ allComments, handleCreateComment, admin }) {
+export default function Comment({ allComments, handleCreateComment, admin, deleteComment }) {
 
   const { postId } = useParams()
+
+  const [deleteMsg, confirmDelete] = useState(false)
+  const [deleteBtnId, updateID] = useState(null)
 
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
@@ -118,7 +129,19 @@ export default function Comment({ allComments, handleCreateComment, admin }) {
       return (
         <div key={c.id}>
           <Divider />
-          {admin && <DeleteCmnt>Delete Comment</DeleteCmnt>}
+          {admin &&
+            <DeleteCmnt onClick={() => {
+              confirmDelete(true)
+              updateID(c.id)
+            }}>Delete Comment</DeleteCmnt>
+          }
+          {deleteMsg && c.id === deleteBtnId &&
+            <>
+              <h5>Are you sure you want to delete this comment?</h5>
+              <YesNoBtns onClick={() => deleteComment(c.id)}>Yes</YesNoBtns>
+              <YesNoBtns onClick={() => confirmDelete(false)}>No</YesNoBtns>
+            </>
+          }
           <CommentContainer>
             <h2>{c.commenter}</h2>
             <CreatedAt>{formatDate(c)}</CreatedAt>

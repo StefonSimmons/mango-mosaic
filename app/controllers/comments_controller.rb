@@ -10,6 +10,12 @@ class CommentsController < ApplicationController
     render json: @new_comment, status: :created
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy()
+    render json: "comment deleted"
+  end
+
   private
 
   def comment_params 

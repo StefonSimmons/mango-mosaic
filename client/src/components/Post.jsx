@@ -326,8 +326,8 @@ export default function Post({
   showEditForm, hideEditForm,
   editClicked, handleSaveEdit,
   verifyEditModal, handleCreateComment,
-  deletePost, deleteClicked,
-  cancelDeletion
+  deletePost, deleteComment,
+  deleteClicked, cancelDeletion
 }) {
 
   const { postId } = useParams()
@@ -424,6 +424,7 @@ export default function Post({
                   handleCreateComment={handleCreateComment}
                   allComments={allComments}
                   admin={admin}
+                  deleteComment={deleteComment}
                 />
 
               </ContentContainer>

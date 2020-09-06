@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
-import { getAllComments, createComment } from './services/comments'
+import { getAllComments, createComment, destroyComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
 import Home from './components/Home'
@@ -65,7 +65,7 @@ function App() {
     removeToken();
   }
 
-  // EDIT AND CREATE FORM HANDLERS
+  // DELETE, EDIT AND CREATE FORM HANDLERS
   function toggleEditForm() {
     updateEditForm(!editForm)
   }
@@ -92,6 +92,12 @@ function App() {
     await destroyPost(postId)
     const posts = allPosts.filter(post => post.id !== postId)
     updateAllPosts(posts)
+  }
+
+  const deleteComment = async (commentId) => {
+    await destroyComment(commentId)
+    const comments = allComments.filter(comment => comment.id !== commentId)
+    updateAllComments(comments)
   }
 
   // MODAL HANDLERS 
@@ -153,6 +159,7 @@ function App() {
             verifyEditModal={toggleEditFormModal}
             handleCreateComment={handleCreateComment}
             deletePost={deletePost}
+            deleteComment={deleteComment}
             deleteClicked={deletionModal}
             cancelDeletion={toggleDeletionModal}
           />
