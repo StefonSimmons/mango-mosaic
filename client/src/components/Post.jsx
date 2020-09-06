@@ -360,7 +360,7 @@ export default function Post({
 
   //MAPPING W/ JSX FOR RECENT POSTS 
   // eslint-disable-next-line
-  const recentPosts = allPosts.map((p, id, posts) => {
+  const recentPosts = allPosts.map((p, id) => {
     if (id < 5) {
       return (
         <RPLink key={id} onClick={verifyEditModal} to={`/blog/${p.id}`}>
@@ -423,6 +423,7 @@ export default function Post({
                 <Comment
                   handleCreateComment={handleCreateComment}
                   allComments={allComments}
+                  admin={admin}
                 />
 
               </ContentContainer>

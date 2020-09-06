@@ -59,6 +59,14 @@ export const Divider = styled.hr`
     width: 275px
   }
 `
+const DeleteCmnt = styled.button`
+  background-color: red;
+  border: 1px solid red;
+  color: rgb(26,26,26);
+  border-radius: 10px;
+  font-weight: 700;
+  margin-bottom: 10px
+`
 const CommentContainer = styled.div`
   background-color: #E7E7EF;
   width: 700px;
@@ -83,7 +91,7 @@ const CommentContainer = styled.div`
 const CreatedAt = styled.h3`
   padding: 10px 0 20px 0;
 `
-export default function Comment({ allComments, handleCreateComment }) {
+export default function Comment({ allComments, handleCreateComment, admin }) {
 
   const { postId } = useParams()
 
@@ -110,6 +118,7 @@ export default function Comment({ allComments, handleCreateComment }) {
       return (
         <div key={c.id}>
           <Divider />
+          {admin && <DeleteCmnt>Delete Comment</DeleteCmnt>}
           <CommentContainer>
             <h2>{c.commenter}</h2>
             <CreatedAt>{formatDate(c)}</CreatedAt>
@@ -165,7 +174,7 @@ export default function Comment({ allComments, handleCreateComment }) {
           {comments}
         </>
         :
-        'Reloading...'
+        'Loading Comments...'
       }
 
     </div>
