@@ -410,7 +410,7 @@ export default function Post({
                   }
                 </TitleWrapper>
                 <ImageContainer>
-                  <PostImg src={post.img_URL} alt={post.img_URL} />
+                  <PostImg src={post.img_URL} alt={`image for post ${post.id}`} />
                 </ImageContainer>
                 {/* TERNARY CHECKS FOR JSON/EDITOR TEXT OR PLAIN TEXT */}
                 {post.content.substring(0, 2) !== '{"' ?

@@ -108,7 +108,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
       <Post>
         <IDandImage>
           <BlogID>{`#${posts.length - id}`}</BlogID>
-          <PostImg src={post.img_URL} alt={post.img_URL} />
+          <PostImg src={post.img_URL} alt={`image for post ${post.id}`} />
         </IDandImage>
         <ColorSquare style={{ backgroundColor: `${setColor(id)}` }}>
         </ColorSquare>
