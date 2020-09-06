@@ -102,6 +102,7 @@ export const ContentTitle = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  color: rgb(1, 12, 5);
 
   @media(max-width: 460px){
     font-size: 36px
@@ -109,10 +110,15 @@ export const ContentTitle = styled.h1`
 `
 const Content = styled.p`
   font-family: cursive;
-  font-size: 18px;
+  font-size: 24px;
   letter-spacing: 2px;
   line-height: 1.75;
+  font-weight: 700;
+  color: rgb(1, 12, 5);
 
+  @media(max-width: 960px){
+    font-size: 18px;
+  }
   @media(max-width: 460px){
     font-size: 15px;
     line-height: 1.4

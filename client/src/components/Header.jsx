@@ -212,7 +212,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         <ListIcons>
           <NavLink onClick={() => showTree(false)} to='/'><i className="material-icons md-36">home</i></NavLink>
           {location.pathname.match(/\d/) ?
-            <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36" >dynamic_feed</i></NavLink>
+            <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36" >history</i></NavLink>
             : null
           }
           <NavLink onClick={() => showTree(false)} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>

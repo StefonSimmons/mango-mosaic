@@ -144,7 +144,7 @@ const ContentTitle = styled.h1`
     margin-bottom: 10px;
     padding-left: 0px;
   }
-`
+` 
 const Content = styled.p`
   font-family: cursive;
   font-size: 24px;
@@ -219,7 +219,7 @@ export default function Home() {
           {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
           <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
           <ContentWrapper>
-            <ContentTitle>Like eating a mango,</ContentTitle>
+            <ContentTitle>Like mangoes,</ContentTitle>
             <Content>{aboutBlog}</Content>
           </ContentWrapper>
         </Wrapper>

@@ -25,7 +25,9 @@ const Wrapper = styled.div`
     flex-direction: column-reverse
   }
   @media(max-width: 780px){
-    width: 600px
+    width: 600px;
+    margin-left: 30px;
+
   }
   @media(max-width: 680px){
     width: 500px

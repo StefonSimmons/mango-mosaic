@@ -112,12 +112,12 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
     if (comment !== undefined) {
-      console.log('cmnt_', comment)
-      console.log('at_', comment.created_at)
+      // console.log('cmnt_', comment)
+      // console.log('at_', comment.created_at)
       const milliseconds = Date.parse(comment.created_at)
-      console.log('ms_', milliseconds)
+      // console.log('ms_', milliseconds)
       const dateObj = new Date(milliseconds)
-      console.log('obj_', dateObj)
+      // console.log('obj_', dateObj)
       const comment_datetime = dateObj.toLocaleString("en-US").replace(',', '')
       return comment_datetime
     }
