@@ -179,7 +179,7 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
           className='r-post'
           style={recentTree ? { display: "block", width: '285px', marginLeft: '45px', zIndex: '3' } : null}
         >
-          <RPLink onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
+          <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}>
             {p.main_title.length > 19 ?
               <RPTitle onClick={() => showTree(false)}>{`${p.main_title.substring(0, 15)}...`}</RPTitle>
               :

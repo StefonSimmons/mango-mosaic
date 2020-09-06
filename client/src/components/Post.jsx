@@ -363,7 +363,7 @@ export default function Post({
   const recentPosts = allPosts.map((p, id, posts) => {
     if (id < 5) {
       return (
-        <RPLink key={id} onClick={verifyEditModal} to={`/blog/${posts.length - id}`}>
+        <RPLink key={id} onClick={verifyEditModal} to={`/blog/${p.id}`}>
           {p.main_title.length > 19 ?
             <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
             :
