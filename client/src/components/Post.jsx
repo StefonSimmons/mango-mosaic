@@ -38,7 +38,6 @@ const Wrapper = styled.div`
   @media(max-width: 475px){
     width: 275px;
     margin-left: 5px;
-
   }
 
 `
@@ -78,8 +77,6 @@ const EditDelete = styled.div`
   @media(max-width: 475px){
     flex-direction: column;
   }
-
-
 `
 const EditDeleteBtn = styled.button`
   font-family: 'Dancing Script', cursive;

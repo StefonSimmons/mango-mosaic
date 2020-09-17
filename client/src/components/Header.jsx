@@ -90,6 +90,14 @@ const ListIcons = styled.ul`
     flex-direction: column;
   }
 `
+const MoreIcon = styled.div`
+  display: none;
+
+  @media(max-width: 1150px) and (min-width: 781px){
+    display: flex;
+    align-items: flex-end;
+  }
+`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: rgb(1, 12, 5);
@@ -151,7 +159,6 @@ const RPost = styled.div`
 `
 const RPLink = styled(Link)`
   color: black;
-  // color: rgb(29,157,65);
   text-decoration: none;
 `
 const RPTitle = styled.h4`
@@ -165,25 +172,25 @@ const RPTitle = styled.h4`
 `
 export default function Header({ admin, verifyEditModal, allPosts }) {
 
-  const [recentTree, showTree] = useState(false)
+  const [showRP, updateRP] = useState(false)
 
   const location = useLocation()
 
   //MAPPING W/ JSX FOR RECENT POSTS 
   // eslint-disable-next-line
-  const recentPosts = allPosts.map((p, id, posts) => {
+  const recentPosts = allPosts.map((p, id) => {
     if (id < 5) {
       return (
         <RPost
           key={id}
           className='r-post'
-          style={recentTree ? { display: "block", width: '285px', marginLeft: '45px', zIndex: '3' } : null}
+          style={showRP ? { display: "block", width: '285px', marginLeft: '45px', zIndex: '3' } : null}
         >
           <RPLink onClick={verifyEditModal} to={`/blog/${p.id}`}>
             {p.main_title.length > 19 ?
-              <RPTitle onClick={() => showTree(false)}>{`${p.main_title.substring(0, 15)}...`}</RPTitle>
+              <RPTitle onClick={() => updateRP(false)}>{`${p.main_title.substring(0, 15)}...`}</RPTitle>
               :
-              <RPTitle onClick={() => showTree(false)}>{p.main_title}</RPTitle>
+              <RPTitle onClick={() => updateRP(false)}>{p.main_title}</RPTitle>
             }
           </RPLink>
         </RPost>
@@ -201,28 +208,29 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
         {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
         {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
       </div>
-      <Nav style={recentTree ? { backgroundColor: "#EEF4FB" } : null}>
+      <Nav style={showRP ? { backgroundColor: "#EEF4FB" } : null}>
         <List>
           {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
           <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>
           <NavLink onClick={verifyEditModal} to='/blog'><NavItem>Blog</NavItem></NavLink>
           <NavLink onClick={verifyEditModal} to='/about-me'><NavItem>About me</NavItem></NavLink>
           <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
+          {location.pathname.match(/\d/) && <MoreIcon><i onClick={() => updateRP(!showRP)} className="material-icons md-36">more_vert</i></MoreIcon>}
         </List>
         <ListIcons>
-          <NavLink onClick={() => showTree(false)} to='/'><i className="material-icons md-36">home</i></NavLink>
+          <NavLink onClick={() => updateRP(false)} to='/'><i className="material-icons md-36">home</i></NavLink>
           {location.pathname.match(/\d/) ?
-            <NavLink onClick={() => showTree(!recentTree)} to='#'><i className="material-icons md-36" >history</i></NavLink>
+            <NavLink onClick={() => updateRP(!showRP)} to='#'><i className="material-icons md-36" >history</i></NavLink>
             : null
           }
-          <NavLink onClick={() => showTree(false)} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
-          <NavLink onClick={() => showTree(false)} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
-          <NavLink onClick={() => showTree(false)} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
+          <NavLink onClick={() => updateRP(false)} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
+          <NavLink onClick={() => updateRP(false)} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
+          <NavLink onClick={() => updateRP(false)} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
         </ListIcons>
         <RPWrapper
-          onMouseLeave={() => showTree(!recentTree)}
+          onMouseLeave={() => updateRP(!showRP)}
           className="animate__animated animate__backInRight"
-          style={recentTree ? rpWrapperStyle : null}
+          style={showRP ? rpWrapperStyle : null}
         >
           {/* <h1 style={{background:"purple", color: 'white', textAlign: 'center'} }>Most Recent</h1> */}
           {recentPosts}
