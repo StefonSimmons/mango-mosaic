@@ -102,8 +102,8 @@ function App() {
   }
 
   // MODAL HANDLERS 
-  function toggleLogInModal() {
-    updateLoginModal(!logInModal)
+  function toggleLogInModal(boolean) {
+    updateLoginModal(boolean)
   }
 
   function toggleDeletionModal() {
@@ -185,7 +185,7 @@ function App() {
         updateAdmin={updateAdmin}
         handleLoginSubmit={handleLoginSubmit}
         logInClicked={logInModal}
-        hideLogInForm={toggleLogInModal}
+        showLogInForm={toggleLogInModal}
       />
 
       <SaveEditModal

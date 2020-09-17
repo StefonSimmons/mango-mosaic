@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 const LogInModal = styled.div`
@@ -46,7 +46,7 @@ const Btn = styled.input`
   letter-spacing: 1.26px;
   color: white;
 `
-export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logInClicked, hideLogInForm }) {
+export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logInClicked, showLogInForm }) {
 
   const [credentials, updateCredentials] = useState({ email: '', password: '' })
   const { email, password } = credentials;
@@ -56,6 +56,11 @@ export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logIn
     updateCredentials({ ...credentials, [name]: value })
   }
   
+  // Tracks the state of admin. When admin is changed to true, the login modal is hidden..
+  // This is in a useEffect because I needed to use the dependency array in order to wait for the admin state change in order to hide the form
+  useEffect(() => {
+    admin && showLogInForm(false)
+  }, [admin])
 
 
   return (
@@ -63,14 +68,13 @@ export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logIn
       <div className="w3-modal" style={logInClicked ? { display: "block" } : { display: "none" }}>
         <LogInModal className="w3-modal-content w3-card-4 w3-animate-zoom">
           <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={() => {
-            hideLogInForm()
+            showLogInForm(false)
             updateAdmin(null)
           }}>&times;</span>
 
           <Form onSubmit={(e) => {
             e.preventDefault();
             handleLoginSubmit(credentials);
-            hideLogInForm();
             updateCredentials({ email: '', password: '' })
           }}>
             { admin !== undefined ?
