@@ -46,7 +46,7 @@ const Btn = styled.input`
   letter-spacing: 1.26px;
   color: white;
 `
-export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logInClicked, showLogInForm }) {
+export default function LogInForm({ admin, updateAdmin, handleLoginSubmit, logInClicked, showLogInForm }) {
 
   const [credentials, updateCredentials] = useState({ email: '', password: '' })
   const { email, password } = credentials;
@@ -55,7 +55,7 @@ export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logIn
     const { name, value } = e.target;
     updateCredentials({ ...credentials, [name]: value })
   }
-  
+
   // Tracks the state of admin. When admin is changed to true, the login modal is hidden..
   // This is in a useEffect because I needed to use the dependency array in order to wait for the admin state change in order to hide the form
   useEffect(() => {
@@ -77,10 +77,14 @@ export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logIn
             handleLoginSubmit(credentials);
             updateCredentials({ email: '', password: '' })
           }}>
-            { admin !== undefined ?
+            {admin !== undefined ?
               <TitleLogIn>Ashlea Only</TitleLogIn>
               :
-              <h2>Unauthorized Buddy</h2>
+              <>
+                <h2>Unauthorized Access</h2>
+                <br/>
+                <h3>Invalid Username and/or Password</h3>
+              </>
             }
             <Input
               id="email"
@@ -89,7 +93,7 @@ export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logIn
               value={email}
               placeholder='Email'
               onChange={handleChange}
-              style={admin === undefined ? {border: 'red solid 3px'}: null}
+              style={admin === undefined ? { border: 'red solid 3px' } : null}
             />
             <Input
               id="password"
@@ -98,9 +102,9 @@ export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logIn
               value={password}
               placeholder='Secret Letters'
               onChange={handleChange}
-              style={admin === undefined ? {border: 'red solid 3px'}: null}
+              style={admin === undefined ? { border: 'red solid 3px' } : null}
             />
-            <Btn type='submit' value='Log-In'/>
+            <Btn type='submit' value='Log-In' />
           </Form>
         </LogInModal>
       </div>
