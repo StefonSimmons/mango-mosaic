@@ -167,7 +167,6 @@ function App() {
 
         <Route exact path='/new-post'>
           <CreatePost
-            admin={admin}
             handleCreatePost={handleCreatePost}
           />
         </Route>

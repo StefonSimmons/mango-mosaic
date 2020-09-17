@@ -2,6 +2,7 @@ import api from './apiConfig';
 
 export const getAllPosts = async () => {
   const resp = await api.get('/posts')
+  console.log(resp.data)
   const posts = resp.data
   return posts
 }
@@ -23,6 +24,7 @@ export const createPost = async (postParams) => {
   formData.append('post[subtitle]', postParams.subtitle)
   formData.append('post[content]', postParams.content)
   formData.append('post[user_id]', postParams.user_id)
+  formData.append('post[is_pinned]', postParams.is_pinned)
   formData.append('post[img_URL]', postParams.img_URL)
   // for (let pair of formData.entries()) {
   //   console.log(pair[0] + ': ' + pair[1]);
