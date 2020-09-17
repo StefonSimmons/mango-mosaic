@@ -77,7 +77,7 @@ const PostCancelBtn = styled.button`
     transform: scale(.95);
   }
 `
-const PinBox = styled.label`
+export const PinBox = styled.label`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,10 +85,9 @@ const PinBox = styled.label`
   letter-spacing: 2px;
   font-size: 28px;
 `
-const CheckBox = styled.input`
+export const CheckBox = styled.input`
   width: 40px;
   height: 40px;
-  // margin: 5px;
 `
 const PostImg = styled.img`
   width: 900px;

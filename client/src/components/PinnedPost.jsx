@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {getPinnedPost} from '../services/posts'
+import React, { useState, useEffect } from 'react'
+import { getPinnedPost } from '../services/posts'
 import { Post, IDandImage, PostImg, PostLink, TitleWrapper, PostTitle, PostSubTitle } from './Blog'
 import pin from '../assets/pin.png'
 import pinned from '../assets/pinned-bg.png'
@@ -15,26 +15,29 @@ const ColorSquare = styled.div`
   grid-row: 1 / span 16;
   z-index: -1;
   border-radius: 5px;
-  background-image: url(${ pinned });
+  background-image: url(${pinned});
   background-size: 275px 275px;
   background-repeat: no-repeat; 
 `
-export default function PinnedPost() {
-  const [pinnedPost, setPinnedPost] = useState()
-  
-  useEffect(() => {
-    const getPinned = async () => {
-      const pinned = await getPinnedPost()
-      setPinnedPost(pinned)
-    }
-    getPinned()
-  }, [])
+export default function PinnedPost({ allPosts }) {
+  // const [pinnedPost, setPinnedPost] = useState()
+
+  // useEffect(() => {
+  //   const getPinned = async () => {
+  //     const pinned = await getPinnedPost()
+  //     setPinnedPost(pinned)
+  //   }
+  //   getPinned()
+  // }, [])
+
+  const pinnedPost = allPosts.find(post => post.is_pinned)
+
 
   return (
     <>
       { pinnedPost &&
         <PostLink to={`/blog/${pinnedPost.id}`} key={pinnedPost.id}>
-          <Post style={{borderRadius: '10px'}}>
+          <Post style={{ borderRadius: '10px' }}>
             <IDandImage>
               <PinIcon src={pin} alt='pin' />
               <PostImg src={pinnedPost.img_URL} alt={`image for post ${pinnedPost.id}`} />

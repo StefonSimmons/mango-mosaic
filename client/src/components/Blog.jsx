@@ -127,7 +127,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
     <>
       <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts} />
       <PostsWrapper>
-        <PinnedPost/>
+        <PinnedPost allPosts={allPosts}/>
         {posts}
       </PostsWrapper>
     </>

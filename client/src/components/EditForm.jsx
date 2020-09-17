@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { PinBox, CheckBox } from './CreatePost'
 import { DisplayEditor } from './DisplayEditor'
 
 const ContentContainer = styled.div`
@@ -113,7 +114,7 @@ const Content = styled.p`
 `
 export default function EditForm({ hideEditForm, post, handleSaveEdit, editClicked }) {
 
-  const { main_title, subtitle, img_URL, content, user_id, id } = post
+  const { main_title, subtitle, img_URL, content, user_id, id, is_pinned } = post
 
   const [postData, updatePost] = useState({
     main_title: main_title,
@@ -121,6 +122,7 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
     img_URL: img_URL,
     content: content,
     user_id: user_id,
+    is_pinned: is_pinned,
     preview_Img: ''
   })
 
@@ -141,6 +143,13 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
     })
   }
 
+  const handleCheck = () => {
+    updatePost({
+      ...postData,
+      is_pinned: !postData.is_pinned
+    })
+  }
+
   console.log(postData)
   return (
 
@@ -158,6 +167,17 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
               onClick={hideEditForm}
             >Cancel</SaveCancelBtn>
           </SaveCancel>
+          <PinBox htmlFor='pinned'>
+            <span>Pin?</span>
+            <CheckBox
+              id="pinned"
+              type='checkbox'
+              name="is_pinned"
+              checked={postData.is_pinned} //if the value is truthy, it will apply the attribute 'checked'
+              value={postData.is_pinned}
+              onChange={handleCheck}
+            />
+          </PinBox>
         </ButtonWrapper>
         {postData.preview_Img !== '' ?
           <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
