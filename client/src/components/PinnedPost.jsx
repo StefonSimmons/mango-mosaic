@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {getPinnedPost} from '../services/posts'
 import { Post, IDandImage, PostImg, PostLink, TitleWrapper, PostTitle, PostSubTitle } from './Blog'
 import pin from '../assets/pin.png'
 import pinned from '../assets/pinned-bg.png'
@@ -18,11 +19,16 @@ const ColorSquare = styled.div`
   background-size: 275px 275px;
   background-repeat: no-repeat; 
 `
-export default function PinnedPost({ allPosts }) {
-  // console.log(allPosts)
-
-  const pinnedPost = allPosts.find(post => post.is_pinned)
-  // console.log(pinnedPost)
+export default function PinnedPost() {
+  const [pinnedPost, setPinnedPost] = useState()
+  
+  useEffect(() => {
+    const getPinned = async () => {
+      const pinned = await getPinnedPost()
+      setPinnedPost(pinned)
+    }
+    getPinned()
+  }, [])
 
   return (
     <>

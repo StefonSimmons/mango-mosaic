@@ -67,3 +67,9 @@ export const searchPosts = async (chars) => {
   return resp
 }
 
+export const getPinnedPost = async () => {
+  const resp = await api.get('/posts')
+  const posts = resp.data
+  const pinnedPost = posts.find(post => post.is_pinned)
+  return pinnedPost
+}
