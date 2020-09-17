@@ -46,30 +46,38 @@ const Btn = styled.input`
   letter-spacing: 1.26px;
   color: white;
 `
-export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInForm }) {
+export default function LogInForm({ admin, updateAdmin ,handleLoginSubmit, logInClicked, hideLogInForm }) {
 
-  const [admin, updateAdmin] = useState({ email: '', password: '' })
-  const { email, password } = admin;
+  const [credentials, updateCredentials] = useState({ email: '', password: '' })
+  const { email, password } = credentials;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    updateAdmin({ ...admin, [name]: value })
+    updateCredentials({ ...credentials, [name]: value })
   }
+  
 
 
   return (
     <>
       <div className="w3-modal" style={logInClicked ? { display: "block" } : { display: "none" }}>
         <LogInModal className="w3-modal-content w3-card-4 w3-animate-zoom">
-          <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={hideLogInForm}>&times;</span>
+          <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={() => {
+            hideLogInForm()
+            updateAdmin(null)
+          }}>&times;</span>
 
           <Form onSubmit={(e) => {
             e.preventDefault();
-            handleLoginSubmit(admin);
-            hideLogInForm()
-            updateAdmin({ email: '', password: '' })
+            handleLoginSubmit(credentials);
+            hideLogInForm();
+            updateCredentials({ email: '', password: '' })
           }}>
-            <TitleLogIn>Ashlea Only</TitleLogIn>
+            { admin !== undefined ?
+              <TitleLogIn>Ashlea Only</TitleLogIn>
+              :
+              <h2>Unauthorized Buddy</h2>
+            }
             <Input
               id="email"
               type="text"
@@ -77,6 +85,7 @@ export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInFo
               value={email}
               placeholder='Email'
               onChange={handleChange}
+              style={admin === undefined ? {border: 'red solid 3px'}: null}
             />
             <Input
               id="password"
@@ -85,6 +94,7 @@ export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInFo
               value={password}
               placeholder='Secret Letters'
               onChange={handleChange}
+              style={admin === undefined ? {border: 'red solid 3px'}: null}
             />
             <Btn type='submit' value='Log-In'/>
           </Form>

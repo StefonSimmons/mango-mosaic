@@ -56,6 +56,7 @@ function App() {
 
   const handleLoginSubmit = async (loginParams) => {
     const admin = await loginUser(loginParams);
+    console.log(admin)
     updateAdmin(admin)
   }
 
@@ -180,6 +181,8 @@ function App() {
       </Switch>
 
       <LogInForm
+        admin={admin}
+        updateAdmin={updateAdmin}
         handleLoginSubmit={handleLoginSubmit}
         logInClicked={logInModal}
         hideLogInForm={toggleLogInModal}

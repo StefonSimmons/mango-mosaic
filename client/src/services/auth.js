@@ -4,16 +4,12 @@ import api from './apiConfig';
 export const loginUser = async (loginParams) => {
   const resp = await api.post('/auth/login', { auth: loginParams })
 
-  if (resp.data.token) {
     const token = resp.data.token
     const admin = resp.data.user
     localStorage.setItem('authToken', token);
     api.defaults.headers.common.authorization = `Bearer ${token}`
+    console.log('admin=>',admin)
     return admin
-  } else {
-    const unauthorized = resp.data.errors
-    return unauthorized
-  }
 }
 
 export const verifyUser = async () => {
