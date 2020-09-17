@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const LogInModal = styled.div`
@@ -36,19 +35,16 @@ const Input = styled.input`
   border: rgb(216,224,233) solid 2px;
   border-radius: 3px;
 `
-const LogInLnk = styled(Link)`
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 15px
-  letter-spacing: 1.26px;
-  color: white;
-`
-const Btn = styled.button`
+const Btn = styled.input`
   margin: 20px 0;
   padding: 6px 12px;
   background-color: purple;
   border-radius: 5px;
-  border: 1px solid purple
+  border: 1px solid purple;
+  font-weight: 500;
+  font-size: 15px
+  letter-spacing: 1.26px;
+  color: white;
 `
 export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInForm }) {
 
@@ -90,7 +86,7 @@ export default function LogInForm({ handleLoginSubmit, logInClicked, hideLogInFo
               placeholder='Secret Letters'
               onChange={handleChange}
             />
-            <Btn type='submit'><LogInLnk to="#">Log In</LogInLnk></Btn>
+            <Btn type='submit' value='Log-In'/>
           </Form>
         </LogInModal>
       </div>
