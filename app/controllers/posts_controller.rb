@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:main_title, :subtitle, :content, :user_id, :img_URL)
+    params.require(:post).permit(:main_title, :subtitle, :content, :user_id, :is_pinned, :img_URL)
   end
 
   def checkImg

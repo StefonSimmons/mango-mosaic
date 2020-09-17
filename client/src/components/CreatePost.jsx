@@ -54,10 +54,10 @@ const Title = styled.input`
   }
 `
 
-const PostCancel = styled.div`
+const PostCancelPin = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 210px;
+  width: 350px;
   margin-bottom: 10px
 `
 const PostCancelBtn = styled.button`
@@ -77,13 +77,25 @@ const PostCancelBtn = styled.button`
     transform: scale(.95);
   }
 `
+export const PinBox = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 2px;
+  font-size: 28px;
+`
+export const CheckBox = styled.input`
+  width: 40px;
+  height: 40px;
+`
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
   object-fit: contain
 `
 
-export default function CreatePost({ admin, handleCreatePost }) {
+export default function CreatePost({ handleCreatePost }) {
 
   const history = useHistory()
 
@@ -92,12 +104,14 @@ export default function CreatePost({ admin, handleCreatePost }) {
     subtitle: '',
     content: '',
     user_id: 1, //hard coded id because admin is undefined on refresh
+    is_pinned: false,
     img_URL: '',
     preview_Img: '',
   })
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name,'->',value)
     createPost({
       ...postData,
       [name]: value
@@ -113,13 +127,19 @@ export default function CreatePost({ admin, handleCreatePost }) {
     })
   }
 
+  const handleCheck = () => {
+    createPost({
+      ...postData,
+      is_pinned: !postData.is_pinned
+    })
+  }
 
   return (
 
     <div>
       <ContentContainer>
         <ButtonWrapper>
-          <PostCancel>
+          <PostCancelPin>
             <PostCancelBtn onClick={() => {
               handleCreatePost(postData);
               history.push(`/blog`);
@@ -142,7 +162,17 @@ export default function CreatePost({ admin, handleCreatePost }) {
                 user_id: ''
               })
             }}>Cancel</PostCancelBtn>
-          </PostCancel>
+            <PinBox htmlFor='pinned'>
+              <span>Pin?</span>
+              <CheckBox
+                id="pinned"
+                type='checkbox'
+                name="is_pinned"
+                value={postData.is_pinned}
+                onChange={handleCheck}
+              />
+            </PinBox>
+          </PostCancelPin>
         </ButtonWrapper>
         <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
 
