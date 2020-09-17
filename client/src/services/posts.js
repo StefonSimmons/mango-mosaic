@@ -66,3 +66,4 @@ export const searchPosts = async (chars) => {
   
   return resp
 }
+

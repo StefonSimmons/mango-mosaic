@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import SearchBar from './SearchBar'
+import PinnedPost from './PinnedPost'
 
 export const fadeIn = keyframes`
   0% {opacity:0;}
@@ -38,7 +39,7 @@ const PostsWrapper = styled.div`
     margin: 20px 0px
   }
 `
-const Post = styled.div`
+export const Post = styled.div`
   display: grid;
   grid-template-columns: repeat(10,1fr);
   grid-template-rows: repeat(17,1fr);
@@ -46,7 +47,7 @@ const Post = styled.div`
   width: 300px; 
   animation: 1s ease-out 0s 1 ${slideIn};
 `
-const IDandImage = styled.div`
+export const IDandImage = styled.div`
   grid-column: 1 / span 10;
   grid-row: 1 / span 8;
 `
@@ -55,14 +56,13 @@ const BlogID = styled.p`
   font-size: 24px;
   margin-bottom: 20px;
   color: rgb(1, 12, 5);
-
 `
-const PostImg = styled.img`
+export const PostImg = styled.img`
   width: 250px;
   height: 137px;
   object-fit: scale-down;
 `
-const PostLink = styled(Link)`
+export const PostLink = styled(Link)`
   text-decoration: none;
   color: rgb(1, 12, 5);
   display: hidden;
@@ -71,22 +71,22 @@ const PostLink = styled(Link)`
     transform: scale(.95);
   }
 `
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   grid-column: 3 / 11;
   grid-row: 13 / span 2;
   z-index: 2
 `
-const PostTitle = styled.h1`
+export const PostTitle = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700;
   font-size: 18px;
 `
-const PostSubTitle = styled.h2`
+export const PostSubTitle = styled.h2`
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 16px;
 `
-const ColorSquare = styled.div`
+export const ColorSquare = styled.div`
   grid-column: 2 / span 8;
   grid-row: 3 / span 13;
   z-index: -1;
@@ -94,6 +94,8 @@ const ColorSquare = styled.div`
 `
 
 export default function Blog({ allPosts, updateAllPosts, getPosts }) {
+
+
 
   function setColor(id) {
     // const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
@@ -103,7 +105,6 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
     return colors[selector]
   }
   const posts = allPosts.map((post, id, posts) =>
-    // <PostLink to={`/blog/${posts.length - id}`} key={post.id}>
     <PostLink to={`/blog/${post.id}`} key={post.id}>
       <Post>
         <IDandImage>
@@ -124,8 +125,9 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
 
   return (
     <>
-      <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts}/>
+      <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts} />
       <PostsWrapper>
+        <PinnedPost allPosts={allPosts}/>
         {posts}
       </PostsWrapper>
     </>
