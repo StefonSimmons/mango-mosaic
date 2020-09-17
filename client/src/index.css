@@ -1,22 +1,77 @@
 body{
   height: 100vh;
   margin: 0px 20px;
-  background-color: #EEF4FB
+  background-color: #EEF4FB;
 }
 .rich-editor .DraftEditor-editorContainer {
+  background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .7),rgba(238, 244, 251, .7), rgba(238, 244, 251, 0));
+  border-radius: 10px;
   padding: .5rem;
-}
+} 
 .DraftEditor-root{
   height: 700px;
   width: 900px;
 }
 .editor-field{
-  border: 2px solid grey;
+  border: 2px solid #808080;
   border-radius: 5px
 }
 .editor{
   background-color: #fff;
 }
 
+.fancyBlock{
+  font-style: italic;
+  color: rgb(73, 72, 72);
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed&display=swap');
+@media(max-width: 930px){
+  .DraftEditor-root{
+    width: 800px;
+  }
+}
+@media(max-width: 820px){
+  .DraftEditor-root{
+    width: 650px;
+  }
+}
+
+@media(max-width: 730px){
+  .DraftEditor-root{
+    width: 600px;
+  }
+  .rich-editor{
+    width: 600px
+  }
+}
+
+@media(max-width: 675px){
+  .DraftEditor-root{
+    width: 400px;
+  }
+  .rich-editor{
+    width: 400px
+  }
+}
+@media(max-width: 475px){
+  .DraftEditor-root{
+    width: 275px;
+  }
+  .rich-editor{
+    width: 275px
+  }
+}
+
+
+.material-icons.md-36 { 
+  font-size: 36px; 
+  color: rgb(1, 12, 5)
+}
+
+@media(max-width: 780px){
+  body{
+    margin: 0 0 0 20px
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Open+Sans+Condensed:wght@300;700&display=swap');

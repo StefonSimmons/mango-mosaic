@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
-import { getAllComments, createComment } from './services/comments'
+import { getAllComments, createComment, destroyComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
 import Home from './components/Home'
@@ -26,16 +26,17 @@ function App() {
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
-
+  
   // POST AND COMMENT HANDLERS
   useEffect(() => {
-    const getPosts = async () => {
-      const res = await getAllPosts()
-      updateAllPosts(res)
-    }
     getPosts()
   }, [submitted])
 
+  const getPosts = async () => {
+    const res = await getAllPosts()
+    updateAllPosts(res)
+  }
+  
   useEffect(() => {
     const getComments = async () => {
       const res = await getAllComments()
@@ -64,7 +65,7 @@ function App() {
     removeToken();
   }
 
-  // EDIT AND CREATE FORM HANDLERS
+  // DELETE, EDIT AND CREATE FORM HANDLERS
   function toggleEditForm() {
     updateEditForm(!editForm)
   }
@@ -93,6 +94,12 @@ function App() {
     updateAllPosts(posts)
   }
 
+  const deleteComment = async (commentId) => {
+    await destroyComment(commentId)
+    const comments = allComments.filter(comment => comment.id !== commentId)
+    updateAllComments(comments)
+  }
+
   // MODAL HANDLERS 
   function toggleLogInModal() {
     updateLoginModal(!logInModal)
@@ -114,6 +121,7 @@ function App() {
       <Header
         admin={admin}
         verifyEditModal={toggleEditFormModal}
+        allPosts={allPosts}
       />
 
       <Switch>
@@ -125,6 +133,8 @@ function App() {
         <Route exact path='/blog'>
           <Blog
             allPosts={allPosts}
+            getPosts={getPosts}
+            updateAllPosts={updateAllPosts}
           />
         </Route>
 
@@ -149,6 +159,7 @@ function App() {
             verifyEditModal={toggleEditFormModal}
             handleCreateComment={handleCreateComment}
             deletePost={deletePost}
+            deleteComment={deleteComment}
             deleteClicked={deletionModal}
             cancelDeletion={toggleDeletionModal}
           />

@@ -136,7 +136,7 @@ export default function AdminDashboard({ allPosts, allComments }) {
           null
         }
         <hr />
-        <h5>{`You Blog has ${commenterCount} unique commenters`}</h5>
+        <h5>{`Your Blog has ${commenterCount} unique commenters`}</h5>
         <h5>{`${topCommenter} is your top commenter (${topCommenterCount} comments)`}</h5>
         <Table>
           <thead>

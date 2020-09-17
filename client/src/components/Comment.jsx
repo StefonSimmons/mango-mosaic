@@ -8,7 +8,20 @@ const CommentHeader = styled.div`
   display: flex;
   width: 700px;
   margin-top: 10px;
-  justify-content: space-between
+  justify-content: space-between;
+
+  @media(max-width: 700px){
+    width: 600px;
+  }
+  @media(max-width: 620px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
 `
 const CommentCount = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -32,6 +45,35 @@ export const Divider = styled.hr`
   height: 1px;
   width: 700px;
   background: #706B6B;
+
+  @media(max-width: 700px){
+    width: 600px;
+  }
+  @media(max-width: 620px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
+`
+const DeleteCmnt = styled.button`
+  background-color: red;
+  border: 1px solid red;
+  color: rgb(26,26,26);
+  border-radius: 10px;
+  font-weight: 700;
+  margin-bottom: 10px
+`
+const YesNoBtns = styled.button`
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-weight: 700;
+  margin: 10px 50px; 
+  font-size: 20px;
 `
 const CommentContainer = styled.div`
   background-color: #E7E7EF;
@@ -39,14 +81,30 @@ const CommentContainer = styled.div`
   padding: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
-  font-weight: 400
+  font-weight: 400;
+
+  @media(max-width: 700px){
+    width: 600px;
+  }
+  @media(max-width: 620px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px
+  }
 `
 const CreatedAt = styled.h3`
   padding: 10px 0 20px 0;
 `
-export default function Comment({ allComments, handleCreateComment }) {
+export default function Comment({ allComments, handleCreateComment, admin, deleteComment }) {
 
   const { postId } = useParams()
+
+  const [deleteMsg, confirmDelete] = useState(false)
+  const [deleteBtnId, updateID] = useState(null)
 
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
@@ -54,18 +112,36 @@ export default function Comment({ allComments, handleCreateComment }) {
   // FORMATS UTC DATE FOR DISPLAY
   function formatDate(comment) {
     if (comment !== undefined) {
+      // console.log('cmnt_', comment)
+      // console.log('at_', comment.created_at)
       const milliseconds = Date.parse(comment.created_at)
+      // console.log('ms_', milliseconds)
       const dateObj = new Date(milliseconds)
+      // console.log('obj_', dateObj)
       const comment_datetime = dateObj.toLocaleString("en-US").replace(',', '')
       return comment_datetime
     }
   }
 
+  // eslint-disable-next-line
   const comments = allComments.map(c => {
     if (c.post_id === parseInt(postId)) {
       return (
         <div key={c.id}>
           <Divider />
+          {admin &&
+            <DeleteCmnt onClick={() => {
+              confirmDelete(true)
+              updateID(c.id)
+            }}>Delete Comment</DeleteCmnt>
+          }
+          {deleteMsg && c.id === deleteBtnId &&
+            <>
+              <h5>Are you sure you want to delete this comment?</h5>
+              <YesNoBtns onClick={() => deleteComment(c.id)}>Yes</YesNoBtns>
+              <YesNoBtns onClick={() => confirmDelete(false)}>No</YesNoBtns>
+            </>
+          }
           <CommentContainer>
             <h2>{c.commenter}</h2>
             <CreatedAt>{formatDate(c)}</CreatedAt>
@@ -109,19 +185,19 @@ export default function Comment({ allComments, handleCreateComment }) {
 
           </CommentHeader>
 
-          { commentClicked ?
+          {commentClicked ?
             <CreateComment
               handleCreateComment={handleCreateComment}
               postId={postId}
               updateCommentClicked={updateCommentClicked}
             />
-            : 
+            :
             null
           }
           {comments}
         </>
         :
-        'Reloading...'
+        'Loading Comments...'
       }
 
     </div>

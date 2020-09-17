@@ -13,17 +13,44 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 600px;
+  width: 600px; 
   font-family: 'Open Sans Condensed', sans-serif;
+  
+
+  @media(max-width: 680px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+  }
+
 `
 const FileUpload = styled.input`
   margin: 5px 0;
   width: 590px;
+
+  @media(max-width: 675px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+  }
 `
 const Title = styled.input`
   margin: 5px;
   font-size: 15px;
   width: 500px;
+
+
+  @media(max-width: 675px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+  }
 `
 const SaveCancel = styled.div`
   display: flex;
@@ -37,13 +64,42 @@ const SaveCancelBtn = styled.button`
   letter-spacing: 2px;
   padding: 3px 15px;
   background-color: #E3D1E2;
-  border-radius: 10px;
-  border: 2px solid purple
+  border-radius: 45px;
+  border: 2px solid #E3D1E2;
+
+  &:hover{
+    background: #D2C0D1;
+    border: 1px solid #D2C0D1;
+  }
+  &:active{
+    transform: scale(.95);
+  }
 `
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
-  object-fit: contain
+  object-fit: contain;
+
+  @media(max-width: 930px){
+    width: 800px;
+  }
+  @media(max-width: 780px){
+    width: 650px;
+  }
+  @media(max-width: 730px){
+    width: 600px
+  }
+  @media(max-width: 680px){
+    width: 500px;
+    height: 300px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+    height: 200px;
+  }
 `
 const Content = styled.p`
   width: 900px;

@@ -16,15 +16,42 @@ const Form = styled.form`
   align-items: flex-start;
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
+
+  @media(max-width: 680px){
+    width: 500px;
+  }
+  @media(max-width: 575px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+  }
 `
 const FileUpload = styled.input`
   margin: 5px 0;
   width: 590px;
+
+  @media(max-width: 675px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+  }
 `
 const Title = styled.input`
   margin: 5px;
   font-size: 15px;
   width: 500px;
+
+  @media(max-width: 675px){
+    width: 400px
+  }
+  @media(max-width: 475px){
+    width: 275px;
+  }
+  @media(max-width: 380px){
+    margin-bottom: 10px
+  }
 `
 
 const PostCancel = styled.div`
@@ -39,8 +66,16 @@ const PostCancelBtn = styled.button`
   letter-spacing: 2px;
   padding: 3px 15px;
   background-color: #E3D1E2;
-  border-radius: 10px;
-  border: 2px solid purple
+  border-radius: 45px;
+  border: 2px solid #E3D1E2;
+
+  &:hover{
+    background: #D2C0D1;
+    border: 1px solid #D2C0D1;
+  }
+  &:active{
+    transform: scale(.95);
+  }
 `
 const PostImg = styled.img`
   width: 900px;
@@ -52,12 +87,11 @@ export default function CreatePost({ admin, handleCreatePost }) {
 
   const history = useHistory()
 
-
   const [postData, createPost] = useState({
     main_title: '',
     subtitle: '',
     content: '',
-    user_id: admin.id,
+    user_id: 1, //hard coded id because admin is undefined on refresh
     img_URL: '',
     preview_Img: '',
   })
