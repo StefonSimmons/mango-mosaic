@@ -57,7 +57,7 @@ export default function Footer({ admin, logOut, showLogInModal, verifyEditModal 
             </>
             :
             <>
-              <AdminLogIn onClick={showLogInModal}>Admin Log-in</AdminLogIn>
+              <AdminLogIn onClick={() => showLogInModal(true)}>Admin Log-in</AdminLogIn>
               <Text>Crafted By: Stefon Simmons</Text>
             </>
           }

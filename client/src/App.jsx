@@ -56,6 +56,7 @@ function App() {
 
   const handleLoginSubmit = async (loginParams) => {
     const admin = await loginUser(loginParams);
+    console.log(admin)
     updateAdmin(admin)
   }
 
@@ -101,8 +102,8 @@ function App() {
   }
 
   // MODAL HANDLERS 
-  function toggleLogInModal() {
-    updateLoginModal(!logInModal)
+  function toggleLogInModal(boolean) {
+    updateLoginModal(boolean)
   }
 
   function toggleDeletionModal() {
@@ -180,9 +181,11 @@ function App() {
       </Switch>
 
       <LogInForm
+        admin={admin}
+        updateAdmin={updateAdmin}
         handleLoginSubmit={handleLoginSubmit}
         logInClicked={logInModal}
-        hideLogInForm={toggleLogInModal}
+        showLogInForm={toggleLogInModal}
       />
 
       <SaveEditModal

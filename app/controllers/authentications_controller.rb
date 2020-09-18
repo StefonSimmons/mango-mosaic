@@ -5,12 +5,13 @@ class AuthenticationsController < ApplicationController
   def login
     @user = User.find_by_email(login_params[:email])
     # authenticate method provided by Bcrypt. Compares password credentials entered with data in the User db where user.email is the email entered.
-    if @user.authenticate(login_params[:password])
+    
+    if @user and @user.authenticate(login_params[:password])
       # generates an encryted token for authorized requests from the users specific browser (upon browser refresh)
       @token = encode({ user_id: @user.id })
       render json: { user: @user, token: @token }, status: :ok
     else
-      render json: { errors: 'unauthorized' }, status: :unauthorized
+      render json: { errors: 'unauthorized' } #, status: :unauthorized
     end
   end
 
