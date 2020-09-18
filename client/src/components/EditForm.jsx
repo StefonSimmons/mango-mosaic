@@ -150,7 +150,6 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
     })
   }
 
-  console.log(postData)
   return (
 
     <div>

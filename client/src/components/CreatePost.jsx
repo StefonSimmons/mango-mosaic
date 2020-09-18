@@ -111,7 +111,6 @@ export default function CreatePost({ handleCreatePost }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name,'->',value)
     createPost({
       ...postData,
       [name]: value

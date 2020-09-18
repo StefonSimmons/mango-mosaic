@@ -38,6 +38,7 @@ export default function DeletionModal({ deleteClicked, cancelDeletion, deletePos
           <Question>Are you sure you want to delete this post?</Question>
           <DeleteBtn onClick={() => {
             deletePost(parseInt(postId))
+            cancelDeletion()
             history.push('/blog')
           }}>Yes, Delete!</DeleteBtn>
         </DialogueBox>

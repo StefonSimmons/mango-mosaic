@@ -8,7 +8,6 @@ export const loginUser = async (loginParams) => {
     const admin = resp.data.user
     localStorage.setItem('authToken', token);
     api.defaults.headers.common.authorization = `Bearer ${token}`
-    console.log('admin=>',admin)
     return admin
 }
 

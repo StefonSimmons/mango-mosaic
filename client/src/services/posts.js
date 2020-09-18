@@ -2,7 +2,6 @@ import api from './apiConfig';
 
 export const getAllPosts = async () => {
   const resp = await api.get('/posts')
-  console.log(resp.data)
   const posts = resp.data
   return posts
 }

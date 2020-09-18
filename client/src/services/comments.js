@@ -16,8 +16,6 @@ export const createComment = async (commentParams) => {
 }
 
 export const destroyComment = async (id) => {
-  console.log('before delete')
   const resp = await api.delete(`/comments/${id}`)
-  console.log('after delete')
   return resp
 }
