@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Foot = styled.footer`
@@ -45,6 +45,9 @@ const AdminLogOut = styled(AdminLogIn)`
 `
 
 export default function Footer({ admin, logOut, showLogInModal, verifyEditModal }) {
+
+  const location = useLocation()
+
   return (
     <>
       <Foot>
@@ -52,7 +55,9 @@ export default function Footer({ admin, logOut, showLogInModal, verifyEditModal 
           {admin ?
             <>
               <AdminLogOut onClick={() => { logOut(); verifyEditModal() }}>Log Out</AdminLogOut>
-              <Link to='/new-post'><CreatePost>Create New Post</CreatePost></Link>
+              {location.pathname !== '/new-post' &&
+                < Link to='/new-post'><CreatePost>Create New Post</CreatePost></Link>
+              }
               <Link to='/admin-dashboard'><DashBoard>Admin Dashboard</DashBoard></Link>
             </>
             :
