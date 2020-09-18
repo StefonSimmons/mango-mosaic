@@ -119,16 +119,33 @@ export default function AdminDashboard({ allPosts, allComments }) {
     )
   })
 
+  // *********
+  // Pinned Post(s)
+  // *********
+  const pinnedPosts = allPosts.filter(post => post.is_pinned)
+  const pinnedPostsJSX = pinnedPosts.map(post => {
+    return (
+      <div key={post.id}>
+        <input style={{marginRight: '10px'}} type="checkbox" name="pinned" id="pinned" checked readOnly/>
+        <Link to={`/blog/${post.id}`}><label htmlFor="pinned">{post.main_title}</label></Link>
+      </div>
+    )
+  })
+
   return (
     <div>
       <Title>My Dashboard</Title>
       <Dashboard>
         <h5>Total Posts: {totalPosts}</h5>
         <h5>Total Comments: {totalComments}</h5>
-        <hr />
+        <br />
+        <h5>Pinned Posts:</h5>
+        <br/>
+        {pinnedPostsJSX}
+        <br />
         {mostCommented !== undefined ?
           <>
-            <h5>Most Commented Post {`(${commentCount} comments)`}:</h5>
+            <h5>Most Commented Post {`(${commentCount} comment(s))`}:</h5>
             <Img src={mostCommented.img_URL} />
             <Link to={`/blog/${mostCommented.id}`}>{mostCommented.main_title}: {mostCommented.subtitle}</Link>
           </>
@@ -136,8 +153,8 @@ export default function AdminDashboard({ allPosts, allComments }) {
           null
         }
         <hr />
-        <h5>{`Your Blog has ${commenterCount} unique commenters`}</h5>
-        <h5>{`${topCommenter} is your top commenter (${topCommenterCount} comments)`}</h5>
+        <h5>{`Your Blog has ${commenterCount} unique commenter(s)`}</h5>
+        <h5>{`${topCommenter} is your top commenter (${topCommenterCount} comment(s))`}</h5>
         <Table>
           <thead>
             <tr>

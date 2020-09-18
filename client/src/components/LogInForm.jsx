@@ -60,7 +60,7 @@ export default function LogInForm({ admin, updateAdmin, handleLoginSubmit, logIn
   // This is in a useEffect because I needed to use the dependency array in order to wait for the admin state change in order to hide the form
   useEffect(() => {
     admin && showLogInForm(false)
-  }, [admin])
+  }, [admin, showLogInForm])
 
 
   return (
