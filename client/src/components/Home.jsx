@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { aboutBlog } from './abouts.js'
 import { fadeIn } from './Blog'
+import mangoHome from '../assets/mango-home.jpg'
 
 const Main = styled.div`
   display: flex;
@@ -53,7 +54,7 @@ const slideDwn = keyframes`
 `
 const HomeImg = styled.img`
   width: 400px;
-  height: 500px;
+  height: 478px;
   margin-left: 55px;
   border-radius: 10px;
   z-index: 1;
@@ -217,7 +218,8 @@ export default function Home() {
           style={flipCard ? {transform: 'rotateY(180deg)'} : null}
         >
           {/* <HomeImg src='https://imgur.com/KrfGjBX.png' alt='mango-home' /> */}
-          <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' />
+          {/* <HomeImg src='https://imgur.com/X80Z4RF.png' alt='mango-home' /> */}
+          <HomeImg src={mangoHome} alt='mango-home' />
           <ContentWrapper>
             <ContentTitle>Like mangoes,</ContentTitle>
             <Content>{aboutBlog}</Content>
