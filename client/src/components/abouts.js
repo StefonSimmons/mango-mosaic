@@ -1,3 +1,3 @@
-export const aboutBlog = "...green with spots and scars; brimming with sweet possibilities within. Would it be fair to judge this fruit by it's skin? We are complex in our appearances, experiences, and hues. Bite into it, cut it first, maybe grab a spoon?"
+export const aboutBlog = "...green with spots and scars; brimming with sweet possibilities within. Would it be fair to judge this fruit by its skin? We are complex in our appearances, experiences, and hues. Bite into it, cut it first, maybe grab a spoon?"
 
 export const aboutMe = "I'm Ashlea Morgan, scientist and writer. As a doctoral candidate in Neurobiology & Behavior at Columbia University, I study how neural signaling drives our ability to regulate emotions and behave flexibly. As a writer, I compose articles on scientific research for both scientific and general audiences, and integrate those stories into other topics involving identity and what makes us unique."
