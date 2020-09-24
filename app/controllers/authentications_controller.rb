@@ -9,9 +9,11 @@ class AuthenticationsController < ApplicationController
     puts @user
     puts ENV["admin_password"]
     puts '<--->'
-    puts login_params[:password] 
+    puts login_params[:password]
     puts '=='
     puts login_params[:password] == ENV["admin_password"]
+    @pass = User.select(:password_digest)
+    puts @pass
     puts @user.authenticate(login_params[:password])
     if @user and @user.authenticate(login_params[:password])
       puts 'it works here. strange'
