@@ -2,7 +2,6 @@
 import api from './apiConfig';
 
 export const loginUser = async (loginParams) => {
-  console.log(loginParams)
   const resp = await api.post('/auth/login', { auth: loginParams })
   console.log(resp)
     const token = resp.data.token
