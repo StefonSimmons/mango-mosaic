@@ -7,6 +7,9 @@ class AuthenticationsController < ApplicationController
     # authenticate method provided by Bcrypt. Compares password credentials entered with data in the User db where user.email is the email entered.
     puts 'user here-->'
     puts @user
+    puts :password
+    puts '<--->'
+    puts login_params[:password]
     puts @user.authenticate(login_params[:password])
     if @user and @user.authenticate(login_params[:password])
       puts 'it works here. strange'
