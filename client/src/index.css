@@ -11,6 +11,7 @@ body{
 .DraftEditor-root{
   height: 700px;
   width: 900px;
+  line-height: 2
 }
 .editor-field{
   border: 2px solid #808080;
@@ -23,6 +24,7 @@ body{
 .fancyBlock{
   font-style: italic;
   color: rgb(73, 72, 72);
+  border-left: black solid 2px;
 }
 
 @media(max-width: 930px){

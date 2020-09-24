@@ -22,7 +22,12 @@ function CreationEditor({ postData, createPost }) {
     })
   }
 
-
+  function myBlockStyleFn(contentBlock) {
+    const type = contentBlock.getType();
+    if (type === 'blockquote') {
+      return 'fancyBlock';
+    }
+  }
 
   return (
     <div className='text-editor-wrapper'>
@@ -32,6 +37,7 @@ function CreationEditor({ postData, createPost }) {
           wrapperClassName="rich-editor"
           editorClassName="editor-field "
           onEditorStateChange={onEditorStateChange}
+          blockStyleFn={myBlockStyleFn}
         />
       </div>
     </div>
