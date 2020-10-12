@@ -31,6 +31,7 @@ Create a full-stack app with CRUD functionality and user authentication
 |  JSON Web Tokens     | _Used to encode and decode payload for user authentication_ |
 |  Styled Components   | _Used for writing CSS in react components vs a seperate stylesheet _|
 |   bcrypt             | _Used to hash passwords on the backend._|
+|   draft.js            |_Used for long-form text area of the blog. Allows for rich-text editing_|
 
 <br>
 
@@ -38,12 +39,12 @@ Create a full-stack app with CRUD functionality and user authentication
 
 #### Wireframes
 
-Desktop View (via figma)
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHmRVuKinIM0ms8avVeL25t%2FMango-Mosaic%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION" allowfullscreen></iframe>
+
+<a href="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHmRVuKinIM0ms8avVeL25t%2FMango-Mosaic%3Fnode-id%3D0%253A1&chrome=DOCUMENTATION">Desktop View (via figma)</a>
 
 #### Component Tree
 
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://app.lucidchart.com/documents/embeddedchart/b3c2af2f-9fdd-41b2-b054-b3cdc7c82b2d" id="lIy~cGt5FMlH"></iframe></div>
+<a href="https://app.lucidchart.com/documents/embeddedchart/b3c2af2f-9fdd-41b2-b054-b3cdc7c82b2d">Component Tree</a>
 
 
 <br>
@@ -52,7 +53,7 @@ Desktop View (via figma)
 
 #### ERD Model
 
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://app.lucidchart.com/documents/embeddedchart/81a28913-32a8-46ad-9cf9-f0b99834d4b2" id="WJy~mFkl~cDk"></iframe></div>
+<a href="https://app.lucidchart.com/documents/embeddedchart/81a28913-32a8-46ad-9cf9-f0b99834d4b2">ERD</a>
 <br>
 
 
