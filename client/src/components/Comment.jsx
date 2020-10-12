@@ -160,12 +160,12 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
   return (
     <div>
       <Divider />
-      <Twitter solid small link="https://github.com" />
-      <Linkedin solid small link="https://github.com" />
-      <Facebook solid small link="https://github.com" />
-      <Whatsapp solid small link="https://github.com" />
-      <Pinterest solid small link="https://github.com" />
-      <Mail solid small link="https://github.com" />
+      <Twitter solid small link={`https://mango-mosaic.netlify.app/blog/${postId}`} />
+      <Linkedin solid small link={`https://mango-mosaic.netlify.app/blog/${postId}`} />
+      <Facebook solid small link={`https://mango-mosaic.netlify.app/blog/${postId}`} />
+      <Whatsapp solid small link={`https://mango-mosaic.netlify.app/blog/${postId}`} />
+      <Pinterest solid small link={`https://mango-mosaic.netlify.app/blog/${postId}`} />
+      <Mail solid small link={`https://mango-mosaic.netlify.app/blog/${postId}`} />
 
       {comments !== undefined ?
         <>
