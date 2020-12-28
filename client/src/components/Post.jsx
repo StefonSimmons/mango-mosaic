@@ -26,12 +26,11 @@ const Wrapper = styled.div`
     flex-direction: column-reverse
   }
   @media(max-width: 930px){
-    margin: 0;
+    margin: 0 auto;
+    width: 95vw;
   }
   @media(max-width: 780px){
     width: 90vw;
-    margin: 0px auto;
-
   }
   @media(max-width: 680px){
     width: 500px
@@ -152,7 +151,6 @@ export default function Post({
                 showDeletionModal={showDeletionModal}
                 handleCreateComment={handleCreateComment}
                 allComments={allComments}
-                admin={admin}
                 deleteClicked={deleteComment}
               />
             }

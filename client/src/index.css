@@ -3,11 +3,7 @@ html{
 }
 body{
   height: 100vh;
-  /* background: rgba(234, 115, 50, .6); */
-  /* background: #997E57; */
-  /* background: #5C5698; */
   background: #102467;
-  /* color: #c79c24 */
 }
 
 .rich-editor .DraftEditor-editorContainer {
@@ -36,6 +32,9 @@ body{
 @media(max-width: 930px){
   .DraftEditor-root{
     width: 800px;
+  }
+  .rich-editor{
+    width: 800px
   }
 }
 

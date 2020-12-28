@@ -3,14 +3,14 @@ import { ThemeProvider } from 'styled-components'
 
 export default function ColorThemeProvider({ children }) {
 
-  const bright = {
-    orange: 'rgb(239,114,24)',
-    green: 'rgb(29,157,65)',
-    red: 'rgb(201,13,13)',
-    purple: 'rgb(133,107,123)',
-    yellow: 'rgb(235,183,45)',
-    blue: 'rgb(54,70,209)'
-  }
+  // const bright = {
+  //   orange: 'rgb(239,114,24)',
+  //   green: 'rgb(29,157,65)',
+  //   red: 'rgb(201,13,13)',
+  //   purple: 'rgb(133,107,123)',
+  //   yellow: 'rgb(235,183,45)',
+  //   blue: 'rgb(54,70,209)'
+  // }
 
   const tetradic = {
     purple: '#671050',

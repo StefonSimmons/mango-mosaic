@@ -87,8 +87,8 @@ export default function LogInForm({ admin, updateAdmin, handleLoginSubmit, logIn
               </>
             }
             <Input
-              id="email"
               type="text"
+              autoComplete="username"
               name="email"
               value={email}
               placeholder='Email'
@@ -96,8 +96,8 @@ export default function LogInForm({ admin, updateAdmin, handleLoginSubmit, logIn
               style={admin === undefined ? { border: 'red solid 3px' } : null}
             />
             <Input
-              id="password"
               type="password"
+              autoComplete="current-password"
               name="password"
               value={password}
               placeholder='Secret Letters'

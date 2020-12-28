@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import {getPinnedPost} from '../services/posts'
 
-import { Post, IDandImage, PostImg, PostLink, TitleWrapper, PostTitle, PostSubTitle } from './Blog'
+import { Post, IDandImage, PostImg, PostLink, PostTitle, PostSubTitle } from './Blog'
 import pin from '../assets/pin-lg.png'
 import pinned from '../assets/pinned-bg-copy.png'
 import styled from 'styled-components'
@@ -30,7 +30,7 @@ const PinnedTitleWrapper = styled.div`
   padding: 0 5px;
   color: #102467;
 `
-export default function PinnedPost({ allPosts }) {
+export default function PinnedPost() {
 
   // ====== USED TO DISABLE SEARCHING OF THE PINNED POST ====== //
   const [pinnedPost, setPinnedPost] = useState()
