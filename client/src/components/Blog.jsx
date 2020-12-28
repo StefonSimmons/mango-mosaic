@@ -56,7 +56,7 @@ const BlogID = styled.p`
   font-family: 'Dancing Script', cursive;
   font-size: 24px;
   margin-bottom: 20px;
-  color: rgb(1, 12, 5);
+  color: rgb(10, 22, 15);
 `
 export const PostImg = styled.img`
   width: 250px;

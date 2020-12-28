@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom'
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 5px 15px 15px 15px;
   // position: sticky;
   // top: 0%;
   // background-color: rgba(103, 138, 74, .25)
@@ -31,7 +31,6 @@ const Logo = styled.img`
   }
 `
 const MMWrapper = styled.div`
-  font-family: 'Dancing Script', cursive;
   color: black;
   position: relative;
   // top: 2.5%;

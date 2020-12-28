@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { CreationEditor } from './CreationEditor'
 
 const ContentContainer = styled.div`
+margin: 0 30px;
 `
 const ButtonWrapper = styled.div`
   display: flex;
@@ -61,7 +62,7 @@ const PostCancelPin = styled.div`
   margin-bottom: 10px
 `
 const PostCancelBtn = styled.button`
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   font-size: 28px;
   letter-spacing: 2px;
   padding: 3px 15px;
@@ -81,7 +82,7 @@ export const PinBox = styled.label`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   letter-spacing: 2px;
   font-size: 28px;
 `
@@ -92,7 +93,8 @@ export const CheckBox = styled.input`
 const PostImg = styled.img`
   width: 900px;
   height: 500px;
-  object-fit: contain
+  object-fit: contain;
+  background: white;
 `
 
 export default function CreatePost({ handleCreatePost }) {
@@ -124,8 +126,6 @@ export default function CreatePost({ handleCreatePost }) {
     // img_URL get's updated in State inorder to be delivered to the ___?
     // URL.createObjectURL(files[0]) will create a local URL string representing the
     // file object
-    console.log(files)
-    console.log('previewImg--> ',URL.createObjectURL(files[0]))
     createPost({
       ...postData,
       [name]: files[0],

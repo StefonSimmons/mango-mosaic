@@ -60,7 +60,7 @@ const SaveCancel = styled.div`
   margin-bottom: 10px
 `
 const SaveCancelBtn = styled.button`
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   font-size: 28px;
   letter-spacing: 2px;
   padding: 3px 15px;

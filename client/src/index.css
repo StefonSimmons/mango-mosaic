@@ -1,14 +1,13 @@
+html{
+  scroll-behavior: smooth;
+}
 body{
   height: 100vh;
-  /* margin: 0px 20px; */
-  /* background-color: #EEF4FB; */
-  /* background-color: rgba(103, 138, 74, .25) */
   background: rgba(234, 115, 50, .3);
 }
+
 .rich-editor .DraftEditor-editorContainer {
-  /* background: linear-gradient(rgba(238, 244, 251, 0),rgba(238, 244, 251, .7),rgba(238, 244, 251, .7), rgba(238, 244, 251, 0)); */
-  background: #fff;
-  border-radius: 10px;
+  background: rgba(255,255,255,.75);
   padding: .5rem;
 } 
 .DraftEditor-root{

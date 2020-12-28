@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import Comment from './Comment'
@@ -14,10 +14,9 @@ const fadeIn = keyframes`
 const Wrapper = styled.div`
   width: 100vw;
   display: flex;
-  // justify-content: space-around;
   margin-left: 50px;
   justify-content: flex-start;
-  padding: 20px 0px;
+  padding: 50px 0px;
   z-index: 2;
   animation: ${fadeIn} ease 1.2s;
   
@@ -79,7 +78,7 @@ const EditDelete = styled.div`
   }
 `
 const EditDeleteBtn = styled.button`
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   font-size: 28px;
   letter-spacing: 2px;
   padding: 3px 15px;
@@ -103,6 +102,7 @@ const ImageContainer = styled.div`
   height: 500px;
   background-repeat: no-repeat;
   background-size: cover;
+  background: rgba(133,107,123,.3);
 
   @media(max-width: 930px){
     width: 800px;
@@ -330,6 +330,10 @@ export default function Post({
 }) {
 
   const { postId } = useParams()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [postId])
 
   // FILTERS FOR SELECTED POST
   // const post = allPosts.filter((p, id, arr) => arr.length - id === parseInt(postId))[0]

@@ -17,7 +17,7 @@ const Bar = styled.input`
   width: 350px;
   border-radius: 15px;
   border: 1px solid grey;
-  color: grey;
+  color: rgb(10, 22, 15);
   padding-left: 52px;
   display: block;
   margin: 35px auto;
