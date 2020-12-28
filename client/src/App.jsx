@@ -121,10 +121,7 @@ function App() {
     <>
       <Header
         admin={admin}
-        verifyEditModal={toggleEditFormModal}
-        allPosts={allPosts}
       />
-
 
       <Switch>
 

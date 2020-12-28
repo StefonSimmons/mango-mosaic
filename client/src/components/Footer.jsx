@@ -67,7 +67,7 @@ export default function Footer({ admin, logOut, showLogInModal, verifyEditModal 
             :
             <>
               <AdminLogIn onClick={() => showLogInModal(true)}>Admin Log-in</AdminLogIn>
-              <Text>Ashlea A. Morgan</Text>
+              <Text>&#169; Ashlea A. Morgan</Text>
               <Text>Crafted By: Stefon Simmons</Text>
             </>
           }
