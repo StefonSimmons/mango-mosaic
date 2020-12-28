@@ -38,12 +38,15 @@ body{
     width: 800px;
   }
 }
-@media(max-width: 820px){
+
+@media(max-width: 780px){
   .DraftEditor-root{
     width: 650px;
   }
+  .rich-editor{
+    width: 650px
+  }
 }
-
 @media(max-width: 730px){
   .DraftEditor-root{
     width: 600px;
@@ -53,7 +56,15 @@ body{
   }
 }
 
-@media(max-width: 675px){
+@media(max-width: 680px){
+  .DraftEditor-root{
+    width: 500px;
+  }
+  .rich-editor{
+    width: 500px
+  }
+}
+@media(max-width: 500px){
   .DraftEditor-root{
     width: 400px;
   }
@@ -61,12 +72,12 @@ body{
     width: 400px
   }
 }
-@media(max-width: 475px){
+@media(max-width: 400px){
   .DraftEditor-root{
-    width: 275px;
+    width: 350px;
   }
   .rich-editor{
-    width: 275px
+    width: 350px
   }
 }
 

@@ -10,17 +10,20 @@ const CommentHeader = styled.div`
   margin-top: 10px;
   justify-content: space-between;
 
-  @media(max-width: 700px){
+  @media(max-width: 780px){
+    width: 650px;
+  }
+  @media(max-width: 730px){
     width: 600px;
   }
-  @media(max-width: 620px){
-    width: 500px;
+  @media(max-width: 680px){
+    width: 500px
   }
-  @media(max-width: 575px){
+  @media(max-width: 500px){
     width: 400px
   }
-  @media(max-width: 475px){
-    width: 275px
+  @media(max-width: 400px){
+    width: 350px
   }
 `
 const CommentCount = styled.h1`
@@ -47,17 +50,20 @@ export const Divider = styled.hr`
   width: 700px;
   background: #706B6B;
 
-  @media(max-width: 700px){
+  @media(max-width: 780px){
+    width: 650px;
+  }
+  @media(max-width: 730px){
     width: 600px;
   }
-  @media(max-width: 620px){
-    width: 500px;
+  @media(max-width: 680px){
+    width: 500px
   }
-  @media(max-width: 575px){
+  @media(max-width: 500px){
     width: 400px
   }
-  @media(max-width: 475px){
-    width: 275px
+  @media(max-width: 400px){
+    width: 350px
   }
 `
 const DeleteCmnt = styled.button`
@@ -84,17 +90,20 @@ const CommentContainer = styled.div`
   font-size: 16px;
   font-weight: 400;
 
-  @media(max-width: 700px){
+  @media(max-width: 780px){
+    width: 650px;
+  }
+  @media(max-width: 730px){
     width: 600px;
   }
-  @media(max-width: 620px){
-    width: 500px;
+  @media(max-width: 680px){
+    width: 500px
   }
-  @media(max-width: 575px){
+  @media(max-width: 500px){
     width: 400px
   }
-  @media(max-width: 475px){
-    width: 275px
+  @media(max-width: 400px){
+    width: 350px
   }
 `
 const CreatedAt = styled.h3`

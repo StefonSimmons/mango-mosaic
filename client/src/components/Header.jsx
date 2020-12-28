@@ -12,15 +12,6 @@ const HeaderContainer = styled.div`
 const Logo = styled.img`
   width: 140px;
   height: 125px;
-
-  @media(max-width: 460px){
-    margin-left: 115px ;
-  }
-  @media(max-width: 380px){
-    width: 129px;
-    height: 120px;
-    margin-left: 80px
-  }
 `
 const MMWrapper = styled.div`
   position: relative;

@@ -12,18 +12,46 @@ const CommentForm = styled.form`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: 2px
+  letter-spacing: 2px;
+
+  @media(max-width: 780px){
+    width: 650px;
+  }
+  @media(max-width: 730px){
+    width: 600px;
+  }
+  @media(max-width: 680px){
+    width: 500px
+  }
+  @media(max-width: 500px){
+    width: 400px
+  }
+  @media(max-width: 400px){
+    width: 350px
+  }
 `
 const InputWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end
-  width: 500px
+  width: 500px;
+  @media(max-width: 500px){
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`
+const Label = styled.label`
+  @media(max-width: 500px){
+    display: none;
+  }
 `
 const Input = styled.input`
   margin: 5px;
   width: 220px;
-  height: 33px
+  height: 33px;
+  @media(max-width: 500px){
+    margin: 5px 0;
+  }
 `
 const NameEmailFields = styled.div`
   display: flex;
@@ -93,7 +121,7 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
         <InputWrapper>
           <NameEmailFields>
             <div>
-              <label htmlFor="name">Name:</label>
+              <Label htmlFor="name">Name:</Label>
               <Input
                 id="name"
                 type="text"
@@ -104,7 +132,7 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
               />
             </div>
             <div>
-              <label htmlFor="email">Email:</label>
+              <Label htmlFor="email">Email:</Label>
               <Input
                 id="email"
                 type="text"
@@ -116,7 +144,7 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
             </div>
           </NameEmailFields>
           <div>
-            <label htmlFor="social">Social:</label>
+            <Label htmlFor="social">Social:</Label>
             <Input
               id="social"
               type="text"

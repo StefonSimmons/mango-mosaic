@@ -23,22 +23,23 @@ const Wrapper = styled.div`
   @media(max-width: 1150px){
     flex-direction: column-reverse
   }
+  @media(max-width: 930px){
+    margin: 0;
+  }
   @media(max-width: 780px){
-    width: 600px;
-    margin-left: 30px;
+    width: 90vw;
+    margin: 0px auto;
 
   }
   @media(max-width: 680px){
     width: 500px
   }
-  @media(max-width: 575px){
-    width: 400px
+  @media(max-width: 500px){
+    width: 400px;
   }
-  @media(max-width: 475px){
-    width: 275px;
-    margin-left: 5px;
+  @media(max-width: 400px){
+    width: 350px;
   }
-
 `
 const ContentContainer = styled.div`
   
@@ -48,21 +49,27 @@ const TitleWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media(max-width: 475px){
+    flex-direction: column-reverse;
+  }
 `
 const Titles = styled.div`
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 700; 
+
+  @media(max-width: 475px){
+    text-align: center;
+    width: 350px;
+  }
 `
 const MainTitle = styled.h1`
   font-size: 36px;
-  // color: rgb(1, 12, 5);
   color: lightgrey;
 `
 const SubTitle = styled.h2`
   font-size: 24px;
   margin: 12px 0 ;
-  // color: rgb(1, 12, 5);
   color: lightgrey;
 `
 const DateNRead = styled.h5`
@@ -97,7 +104,7 @@ const EditDeleteBtn = styled.button`
     transform: scale(.95);
   }
   @media(max-width: 475px){
-    margin: 10px
+    margin: 10px;
   }
 `
 const ImageContainer = styled.div`
@@ -116,19 +123,16 @@ const ImageContainer = styled.div`
   @media(max-width: 730px){
     width: 600px;
   }
-  @media(max-width: 700px){
-    width: 550px
-  }
   @media(max-width: 680px){
     width: 500px;
     height: 300px;
   }
-  @media(max-width: 575px){
-    width: 400px
-  }
-  @media(max-width: 475px){
-    width: 275px;
+  @media(max-width: 500px){
+    width: 400px;
     height: 200px;    
+  }
+  @media(max-width: 400px){
+    width: 350px;
   }
 `
 const PostImg = styled.img`
@@ -149,12 +153,13 @@ const PostImg = styled.img`
     width: 500px;
     height: 300px;
   }
-  @media(max-width: 575px){
-    width: 400px
-  }
-  @media(max-width: 475px){
-    width: 275px;
+
+  @media(max-width: 500px){
+    width: 400px;
     height: 200px;
+  }
+  @media(max-width: 400px){
+    width: 350px;
   }
 `
 const Content = styled.p`
