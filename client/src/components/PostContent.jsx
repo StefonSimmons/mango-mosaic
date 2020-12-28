@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { formatDate, getReadTime } from '../utilities/postMethods'
+import { formatDate, getReadTime } from '../utilities/helperMethods'
 
 import { DisplayEditor } from './DisplayEditor'
 import Comment from './Comment'
@@ -130,7 +130,7 @@ export default function PostContent(
         <Titles>
           <MainTitle>{post.main_title}</MainTitle>
           <SubTitle>{post.subtitle}</SubTitle>
-          <DateNRead>{`${formatDate(post)} | ${getReadTime(post)} min. read`}</DateNRead>
+          <DateNRead>{`${formatDate(post, 'post')} | ${getReadTime(post)} min. read`}</DateNRead>
         </Titles>
         {admin ?
           <EditDelete>

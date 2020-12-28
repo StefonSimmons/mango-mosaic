@@ -1,10 +1,14 @@
 // FORMAT DATE FOR CREATED AT
-export const formatDate = (post) => {
-  if (post !== undefined) {
-    const milliseconds = Date.parse(post.created_at)
+export const formatDate = (object, origin) => {
+  if (object !== undefined) {
+    console.log(object)
+    const milliseconds = Date.parse(object.created_at)
     const dateObj = new Date(milliseconds)
-    const post_datetime = dateObj.toLocaleString("en-US").substring(0, 11).replace(',', '')
-    return post_datetime
+    const createdAtDateFormat =
+      origin === 'post'
+        ? dateObj.toLocaleString("en-US").substring(0, 11).replace(',', '') 
+        : dateObj.toLocaleString("en-US").replace(',', '')
+    return createdAtDateFormat
   }
 }
 

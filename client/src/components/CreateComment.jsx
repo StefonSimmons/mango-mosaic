@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Divider } from './Comment'
 import styled from 'styled-components'
@@ -165,6 +165,7 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
         <div>
           <SubmitBtn type="submit">Add Comment</SubmitBtn>
           <CancelBtn onClick={() => { updateCommentClicked(false) }}>Cancel</CancelBtn>
+          <button>FB LogIn</button>
         </div>
       </CommentForm>
     </div>

@@ -4,11 +4,16 @@ import styled from 'styled-components'
 import CreateComment from './CreateComment'
 import { Twitter, Linkedin, Facebook, Mail, Whatsapp, Pinterest } from 'react-social-sharing'
 
+import { formatDate } from '../utilities/helperMethods'
+
+import like from '../assets/like-icon.png'
+
 const CommentHeader = styled.div`
   display: flex;
   width: 700px;
   margin-top: 10px;
   justify-content: space-between;
+  align-items: center;
 
   @media(max-width: 780px){
     width: 650px;
@@ -31,19 +36,6 @@ const CommentCount = styled.h1`
   font-size: 18px;
   font-weight: 700;
   color: lightgrey;
-`
-const AddCommentContainer = styled.div`
-  height: 36px
-`
-const AddCommentBtn = styled.button`
-  margin-left: 10px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #102467;
-  background-color: lightgrey;
-  border-radius: 10px;
-  border: 1px solid lightgrey;
 `
 export const Divider = styled.hr`
   height: 1px;
@@ -115,23 +107,12 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
 
   const [deleteMsg, confirmDelete] = useState(false)
   const [deleteBtnId, updateID] = useState(null)
-
+  // FOR COMMENT CREATION FORM
+  const [commentClicked, updateCommentClicked] = useState(false)
+  
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
 
-  // FORMATS UTC DATE FOR DISPLAY
-  function formatDate(comment) {
-    if (comment !== undefined) {
-      // console.log('cmnt_', comment)
-      // console.log('at_', comment.created_at)
-      const milliseconds = Date.parse(comment.created_at)
-      // console.log('ms_', milliseconds)
-      const dateObj = new Date(milliseconds)
-      // console.log('obj_', dateObj)
-      const comment_datetime = dateObj.toLocaleString("en-US").replace(',', '')
-      return comment_datetime
-    }
-  }
 
   // eslint-disable-next-line
   const comments = allComments.map(c => {
@@ -154,18 +135,13 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
           }
           <CommentContainer>
             <h2>{c.commenter}</h2>
-            <CreatedAt>{formatDate(c)}</CreatedAt>
+            <CreatedAt>{formatDate(c, 'comment')}</CreatedAt>
             <p>{c.comment}</p>
           </CommentContainer>
         </div>
       )
     }
   })
-  // FOR COMMENT BTN DISPLAY ANIMATION
-  const [cBtnDisplay, updatebtnDisplay] = useState(false)
-
-  // FOR COMMENT CREATION FORM
-  const [commentClicked, updateCommentClicked] = useState(false)
 
   return (
     <div>
@@ -181,17 +157,12 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
         <>
           <CommentHeader>
 
+            <img src={like} alt="like"/>
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
-            <AddCommentContainer
-              onMouseLeave={() => updatebtnDisplay(false)}
-              onMouseEnter={() => updatebtnDisplay(true)}
-            >
-              {cBtnDisplay ?
-                <AddCommentBtn onClick={() => { updateCommentClicked(true) }}>Comment</AddCommentBtn>
-                :
-                <i className="material-icons w3-xxlarge w3-text-light-grey">add_comment</i>
-              }
-            </AddCommentContainer>
+            <i
+              onClick={() => { updateCommentClicked(true) }}
+              style={{ cursor: 'pointer' }}
+              className="material-icons w3-xxlarge w3-text-light-grey">add_comment</i>
 
           </CommentHeader>
 
