@@ -15,6 +15,8 @@ const Bottom = styled.div`
 `
 const Text = styled.h6`
   letter-spacing: 3px;
+  color: lightgrey;
+  font-weight: 700;
 `
 const CreatePost = styled.button`
   letter-spacing: 3px;
@@ -65,6 +67,7 @@ export default function Footer({ admin, logOut, showLogInModal, verifyEditModal 
             :
             <>
               <AdminLogIn onClick={() => showLogInModal(true)}>Admin Log-in</AdminLogIn>
+              <Text>Ashlea A. Morgan</Text>
               <Text>Crafted By: Stefon Simmons</Text>
             </>
           }
