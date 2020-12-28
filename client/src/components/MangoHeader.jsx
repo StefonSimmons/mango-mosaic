@@ -1,5 +1,7 @@
 import React from 'react'
 import mangoHeader from '../assets/blog-header.webp'
+import mangoHeaderCropped from '../assets/blog-header-crop.webp'
+
 
 import styled from 'styled-components'
 
@@ -11,6 +13,9 @@ const BackgroundHeader = styled.div`
   background-position: center;
   width: 100vw;
   height: 80vh;
+  @media(max-width: 1024px){
+    background-image: url(${mangoHeaderCropped});
+  }
 `
 const Overlay = styled.div`
   background-color: rgba(0,0,0,.3);
@@ -19,11 +24,9 @@ const Overlay = styled.div`
 `
 export default function MangoHeader() {
   return (
-    // <div>
-      <BackgroundHeader>
-        <Overlay>
-        </Overlay>
-      </BackgroundHeader>
-    // </div>
+    <BackgroundHeader>
+      <Overlay>
+      </Overlay>
+    </BackgroundHeader>
   )
 }

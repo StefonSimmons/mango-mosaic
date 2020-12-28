@@ -12,6 +12,12 @@ const Bottom = styled.div`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 12px;
   color: black;
+
+  @media(max-width: 500px){
+    flex-direction: column;
+    padding: 0 15px;
+    height: 80px
+  }
 `
 const Text = styled.h6`
   letter-spacing: 3px;

@@ -8,6 +8,10 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 15px;
+
+  @media(max-width: 575px){
+    
+  }
 `
 const Logo = styled.img`
   width: 140px;

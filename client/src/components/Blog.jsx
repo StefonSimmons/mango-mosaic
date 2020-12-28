@@ -19,7 +19,7 @@ const PostsWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
   width: 70%; 
-  height: 100vh; 
+  height: fit-content;
   justify-items: center;
   color: lightgrey;
   animation: ${fadeIn} ease 1.2s;
@@ -28,17 +28,9 @@ const PostsWrapper = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
   @media(max-width: 780px){
-    margin: 40px 60px
-  }
-  @media(max-width: 780px){
     grid-template-columns: repeat(1, 1fr);
-    margin: 40px 80px
-  }
-  @media(max-width: 480px){
-    margin: 40px 40px
-  }
-  @media(max-width: 380px){
-    margin: 20px 0px
+    margin: 40px auto;
+    
   }
 `
 export const Post = styled.div`
@@ -95,19 +87,20 @@ export const ColorSquare = styled.div`
   grid-row: 3 / span 13;
   z-index: -1;
   border-radius: 5px;
+  background-color: ${({theme, color}) => theme[color]}
 `
 
 export default function Blog({ allPosts, updateAllPosts, getPosts }) {
 
 
-
   function setColor(id) {
-    // const colors = ['#EF7218', '#1D9D41', '#C90D0D', '#856B7B', '#EBB72D', '#3646D1']
-    const colors = ['rgba(239,114,24,.2)', 'rgba(29,157,65,.2)', 'rgba(201,13,13,.2)', 'rgba(133,107,123,.2)', 'rgba(235,183,45,.2)', 'rgba(54,70,209,.2)']
+    // const colors = ['rgb(239,114,24)', 'rgb(29,157,65)', 'rgb(201,13,13)', 'rgb(133,107,123)', 'rgb(235,183,45)', 'rgb(54,70,209)']
+    const colors = ['orange', 'green', 'red', 'purple', 'yellow', 'blue']
 
-    const selector = id % 6
-    return colors[selector]
+    const colordIdx = id % 6
+    return colors[colordIdx]
   }
+
   const posts = allPosts.map((post, id, posts) =>
     <PostLink to={`/blog/${post.id}`} key={post.id}>
       <Post>
@@ -115,7 +108,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
           <BlogID>{`#${posts.length - id}`}</BlogID>
           <PostImg src={post.img_URL} alt={`image for post ${post.id}`} />
         </IDandImage>
-        <ColorSquare style={{ backgroundColor: `${setColor(id)}` }}>
+        <ColorSquare color={setColor(id)}>
         </ColorSquare>
         <TitleWrapper>
           <PostTitle>{post.main_title}</PostTitle>
@@ -131,7 +124,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
     <>
       <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts} />
       <PostsWrapper>
-        <PinnedPost allPosts={allPosts}/>
+        <PinnedPost allPosts={allPosts} />
         {posts.length ? posts : <h4>No Results</h4>}
       </PostsWrapper>
     </>

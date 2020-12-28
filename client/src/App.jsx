@@ -5,10 +5,7 @@ import { getAllPosts, updatePost, createPost, destroyPost } from './services/pos
 import { getAllComments, createComment, destroyComment } from './services/comments'
 import { loginUser, verifyUser, removeToken } from './services/auth'
 import Header from './components/Header'
-import Home from './components/Home'
 import Blog from './components/Blog'
-import About from './components/About'
-import Contact from './components/Contact'
 import Post from './components/Post'
 import Footer from './components/Footer'
 import LogInForm from './components/LogInForm';
@@ -16,6 +13,8 @@ import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
 import AdminDashboard from './components/AdminDashboard'
 import MangoHeader from './components/MangoHeader';
+
+import ColorThemeProvider from './components/style-theme/ColorThemeProvider';
 
 function App() {
 
@@ -119,86 +118,79 @@ function App() {
 
   return (
     <>
-      <Header
-        admin={admin}
-      />
+      <ColorThemeProvider>
+        <Header
+          admin={admin}
+        />
 
-      <Switch>
+        <Switch>
 
-        <Route exact path='/'>
-          {/* <Home /> */}
-          <Redirect to="/blog" />
-        </Route>
+          <Route exact path='/'>
+            <Redirect to="/blog" />
+          </Route>
 
-        <Route exact path='/blog'>
-          <MangoHeader/>
-          <Blog
-            allPosts={allPosts}
-            getPosts={getPosts}
-            updateAllPosts={updateAllPosts}
-          />
-        </Route>
+          <Route exact path='/blog'>
+            <MangoHeader />
+            <Blog
+              allPosts={allPosts}
+              getPosts={getPosts}
+              updateAllPosts={updateAllPosts}
+            />
+          </Route>
 
-        {/* <Route path='/about-me'>
-          <About />
-        </Route> */}
+          <Route exact path={`/blog/:postId`}>
+            <Post
+              admin={admin}
+              allPosts={allPosts}
+              allComments={allComments}
+              showDeletionModal={toggleDeletionModal}
+              showEditForm={toggleEditForm}
+              hideEditForm={toggleEditForm}
+              editClicked={editForm}
+              handleSaveEdit={handleSaveEdit}
+              verifyEditModal={toggleEditFormModal}
+              handleCreateComment={handleCreateComment}
+              deletePost={deletePost}
+              deleteComment={deleteComment}
+              deleteClicked={deletionModal}
+              cancelDeletion={toggleDeletionModal}
+            />
+          </Route>
 
-        {/* <Route path='/contact-me'>
-          <Contact />
-        </Route> */}
+          <Route exact path='/new-post'>
+            <CreatePost
+              handleCreatePost={handleCreatePost}
+            />
+          </Route>
 
-        <Route exact path={`/blog/:postId`}>
-          <Post
-            admin={admin}
-            allPosts={allPosts}
-            allComments={allComments}
-            showDeletionModal={toggleDeletionModal}
-            showEditForm={toggleEditForm}
-            hideEditForm={toggleEditForm}
-            editClicked={editForm}
-            handleSaveEdit={handleSaveEdit}
-            verifyEditModal={toggleEditFormModal}
-            handleCreateComment={handleCreateComment}
-            deletePost={deletePost}
-            deleteComment={deleteComment}
-            deleteClicked={deletionModal}
-            cancelDeletion={toggleDeletionModal}
-          />
-        </Route>
+          <Route exact path='/admin-dashboard'>
+            <AdminDashboard
+              allPosts={allPosts}
+              allComments={allComments}
+            />
+          </Route>
+        </Switch>
 
-        <Route exact path='/new-post'>
-          <CreatePost
-            handleCreatePost={handleCreatePost}
-          />
-        </Route>
+        <LogInForm
+          admin={admin}
+          updateAdmin={updateAdmin}
+          handleLoginSubmit={handleLoginSubmit}
+          logInClicked={logInModal}
+          showLogInForm={toggleLogInModal}
+        />
 
-        <Route exact path='/admin-dashboard'>
-          <AdminDashboard
-            allPosts={allPosts}
-            allComments={allComments}
-          />
-        </Route>
-      </Switch>
+        <SaveEditModal
+          verifyEditModal={verifyEditModal}
+          returnToEdit={toggleEditFormModal}
+        />
 
-      <LogInForm
-        admin={admin}
-        updateAdmin={updateAdmin}
-        handleLoginSubmit={handleLoginSubmit}
-        logInClicked={logInModal}
-        showLogInForm={toggleLogInModal}
-      />
-
-      <SaveEditModal
-        verifyEditModal={verifyEditModal}
-        returnToEdit={toggleEditFormModal}
-      />
-
-      <Footer
-        verifyEditModal={toggleEditFormModal}
-        admin={admin}
-        logOut={logOut}
-        showLogInModal={toggleLogInModal}
-      />
+        <Footer
+          verifyEditModal={toggleEditFormModal}
+          admin={admin}
+          logOut={logOut}
+          showLogInModal={toggleLogInModal}
+        />
+      </ColorThemeProvider>
     </>
   )
 }

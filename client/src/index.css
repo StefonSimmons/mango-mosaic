@@ -7,10 +7,10 @@ body{
   /* background: #997E57; */
   /* background: #5C5698; */
   background: #102467;
+  /* color: #c79c24 */
 }
 
 .rich-editor .DraftEditor-editorContainer {
-  /* background: rgba(255,255,255,.75); */
   background: rgba(211, 211, 211,1);
   padding: .5rem;
 } 
@@ -25,12 +25,12 @@ body{
 }
 .editor{
   background-color: #fff;
+  color: black;
 }
 
 .fancyBlock{
   font-style: italic;
   color: rgb(73, 72, 72);
-  border-left: black solid 2px;
 }
 
 @media(max-width: 930px){
@@ -81,16 +81,10 @@ body{
   }
 }
 
-
 .material-icons.md-36 { 
   font-size: 36px; 
   color: rgb(1, 12, 5)
 }
 
-@media(max-width: 780px){
-  /* body{
-    margin: 0 0 0 20px
-  } */
-}
 
 @import url('https://fonts.googleapis.com/css2?family=Redressed&family=Dancing+Script&family=Manrope&family=Open+Sans+Condensed:wght@300;700&display=swap');

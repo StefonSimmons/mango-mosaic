@@ -6,11 +6,6 @@ import mangoMagnifyIcon from '../assets/mango-magnify-icon-lt.png'
 const Search = styled.div`
   width: 85%;
   margin: 0 auto;
-
-  @media(max-width: 445px){
-    width: 75%;
-    margin-left: 20px 
-  }
 `
 const Bar = styled.input`
   height: 40px;
@@ -24,7 +19,6 @@ const Bar = styled.input`
   display: block;
   margin: 35px auto;
   font-size: 18px;
-  // background-color: rgba(133,107,123,.2);
   background: rgba(234, 115, 50, 0);
   background-image: url(${mangoMagnifyIcon});
   background-repeat: no-repeat;
@@ -33,7 +27,6 @@ const Bar = styled.input`
 
   &::placeholder{
     color: lightgrey;
-    // font-family: 'Redressed', cursive;
     font-family: 'Open Sans Condensed', sans-serif;
   }
 
