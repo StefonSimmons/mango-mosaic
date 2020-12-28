@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
 import { getAllComments, createComment, destroyComment } from './services/comments'
@@ -15,6 +15,7 @@ import LogInForm from './components/LogInForm';
 import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
 import AdminDashboard from './components/AdminDashboard'
+import MangoHeader from './components/MangoHeader';
 
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
-  
+
   // POST AND COMMENT HANDLERS
   useEffect(() => {
     getPosts()
@@ -36,7 +37,7 @@ function App() {
     const res = await getAllPosts()
     updateAllPosts(res)
   }
-  
+
   useEffect(() => {
     const getComments = async () => {
       const res = await getAllComments()
@@ -124,13 +125,16 @@ function App() {
         allPosts={allPosts}
       />
 
+
       <Switch>
 
         <Route exact path='/'>
-          <Home />
+          {/* <Home /> */}
+          <Redirect to="/blog" />
         </Route>
 
         <Route exact path='/blog'>
+          <MangoHeader/>
           <Blog
             allPosts={allPosts}
             getPosts={getPosts}
@@ -138,13 +142,13 @@ function App() {
           />
         </Route>
 
-        <Route path='/about-me'>
+        {/* <Route path='/about-me'>
           <About />
-        </Route>
+        </Route> */}
 
-        <Route path='/contact-me'>
+        {/* <Route path='/contact-me'>
           <Contact />
-        </Route>
+        </Route> */}
 
         <Route exact path={`/blog/:postId`}>
           <Post

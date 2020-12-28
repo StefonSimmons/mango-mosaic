@@ -119,6 +119,13 @@ export default function CreatePost({ handleCreatePost }) {
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
+    // previewImg allows me a temporary solution 
+    // to view the image on the DOM before uploading.
+    // img_URL get's updated in State inorder to be delivered to the ___?
+    // URL.createObjectURL(files[0]) will create a local URL string representing the
+    // file object
+    console.log(files)
+    console.log('previewImg--> ',URL.createObjectURL(files[0]))
     createPost({
       ...postData,
       [name]: files[0],
@@ -175,6 +182,7 @@ export default function CreatePost({ handleCreatePost }) {
         </ButtonWrapper>
         <PostImg src={postData.preview_Img} alt={postData.preview_Img} />
 
+        {/* CREATE FORM  */}
         <Form>
           <div>
             <FileUpload
@@ -207,6 +215,7 @@ export default function CreatePost({ handleCreatePost }) {
             />
           </div>
           <div>
+            {/* COMPONENT for DRAFT.JS RICH-TEXT EDITING */}
             <CreationEditor
               postData={postData}
               createPost={createPost}

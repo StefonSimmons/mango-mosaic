@@ -25,6 +25,7 @@ export const createPost = async (postParams) => {
   formData.append('post[user_id]', postParams.user_id)
   formData.append('post[is_pinned]', postParams.is_pinned)
   formData.append('post[img_URL]', postParams.img_URL)
+  // console.log('formData--> ', formData)
   // for (let pair of formData.entries()) {
   //   console.log(pair[0] + ': ' + pair[1]);
   // }
@@ -46,9 +47,9 @@ export const updatePost = async (id, postParams) => {
   formData.append('post[user_id]', postParams.user_id)
   formData.append('post[is_pinned]', postParams.is_pinned)
   // if img is already stored in aws, it will not be appended to formData
-  if (typeof postParams.img_URL !== 'string') { 
-    formData.append('post[img_URL]', postParams.img_URL)
-  }
+  // if (typeof postParams.img_URL !== 'string') { 
+  //   formData.append('post[img_URL]', postParams.img_URL)
+  // }
   const resp = await api.put(`/posts/${id}`, formData, config)
   const updatedPost = resp.data
 
@@ -68,9 +69,9 @@ export const searchPosts = async (chars) => {
 }
 
 // Will make another api call if for pinned post
-// export const getPinnedPost = async () => {
-//   const resp = await api.get('/posts')
-//   const posts = resp.data
-//   const pinnedPost = posts.find(post => post.is_pinned)
-//   return pinnedPost
-// }
+export const getPinnedPost = async () => {
+  const resp = await api.get('/posts')
+  const posts = resp.data
+  const pinnedPost = posts.find(post => post.is_pinned)
+  return pinnedPost
+}

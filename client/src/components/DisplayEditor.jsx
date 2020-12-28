@@ -10,10 +10,14 @@ function DisplayEditor({ content, editClicked, updatePost, postData }) {
 
   const [editorState, updateEditor] = useState('')
 
+  // editorState is initialized as an empty string and updated on component mounting
   useEffect(() => {
     const parsedContent = JSON.parse(content)
+    // console.log('parsedJSON--> ',parsedContent)
     const convertedContent = convertFromRaw(parsedContent)
+    // console.log('convertFromRaw--> ',convertedContent)
     updateEditor(EditorState.createWithContent(convertedContent))
+    // console.log('rich-text--> ',EditorState.createWithContent(convertedContent))
   }, [content])
 
   // ONLY FOR EDIT FORM

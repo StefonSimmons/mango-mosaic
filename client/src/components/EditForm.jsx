@@ -218,6 +218,7 @@ export default function EditForm({ hideEditForm, post, handleSaveEdit, editClick
             {post.content.substring(0, 2) !== '{"' ?
               <Content>{post.content}</Content>
               :
+              // COMPONENT for DRAFT.JS RICH-TEXT EDITING
               <DisplayEditor
                 content={content}
                 editClicked={editClicked}

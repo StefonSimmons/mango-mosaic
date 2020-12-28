@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+import {getPinnedPost} from '../services/posts'
+
 import { Post, IDandImage, PostImg, PostLink, TitleWrapper, PostTitle, PostSubTitle } from './Blog'
 import pin from '../assets/pin.png'
 import pinned from '../assets/pinned-bg.png'
@@ -19,20 +22,21 @@ const ColorSquare = styled.div`
   background-repeat: no-repeat; 
 `
 export default function PinnedPost({ allPosts }) {
-  
+
   // ====== USED TO DISABLE SEARCHING OF THE PINNED POST ====== //
+  const [pinnedPost, setPinnedPost] = useState()
 
-  // const [pinnedPost, setPinnedPost] = useState()
+  useEffect(() => {
+    const getPinned = async () => {
+      const pinned = await getPinnedPost()
+      setPinnedPost(pinned)
+    }
+    getPinned()
+  }, [])
+  
 
-  // useEffect(() => {
-  //   const getPinned = async () => {
-  //     const pinned = await getPinnedPost()
-  //     setPinnedPost(pinned)
-  //   }
-  //   getPinned()
-  // }, [])
-
-  const pinnedPost = allPosts.find(post => post.is_pinned)
+  // ====== USED TO ENABLE SEARCHING OF THE PINNED POST ====== //
+  // const pinnedPost = allPosts.find(post => post.is_pinned)
 
 
   return (

@@ -18,7 +18,8 @@ const PostsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
-  width: 70%;  
+  width: 70%; 
+  height: 100vh; 
   justify-items: center;
   animation: ${fadeIn} ease 1.2s;
 
@@ -128,7 +129,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts }) {
       <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts} />
       <PostsWrapper>
         <PinnedPost allPosts={allPosts}/>
-        {posts}
+        {posts.length ? posts : <h4>No Results</h4>}
       </PostsWrapper>
     </>
   )

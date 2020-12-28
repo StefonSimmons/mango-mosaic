@@ -2,17 +2,25 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import brush from '../assets/brush-stroke.png'
-import mango from '../assets/mango-logo.png'
+import mango from '../assets/mango-logo-new.png'
 import { useLocation } from 'react-router-dom'
+
 
 const HeaderContainer = styled.div`
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+  padding: 15px;
+  // position: sticky;
+  // top: 0%;
+  // background-color: rgba(103, 138, 74, .25)
+  // background: rgba(234, 115, 50, .25);
+  // background-color: #EEF4FB;
 `
 const Logo = styled.img`
   width: 150px;
   height: 139px;
-  
+  // position: absolute;
+
   @media(max-width: 460px){
     margin-left: 115px ;
   }
@@ -25,9 +33,9 @@ const Logo = styled.img`
 const MMWrapper = styled.div`
   font-family: 'Dancing Script', cursive;
   color: black;
-  position: absolute;
-  top: 2.5%;
-  left: 6.5%;
+  position: relative;
+  // top: 2.5%;
+  // left: 6.5%;
 
   @media(max-width: 460px){
     left: 35%;
@@ -36,10 +44,17 @@ const MMWrapper = styled.div`
     left: 30%
   }
 `
+const TitleWrapper = styled.div`
+  position: absolute;
+  right: -55%;
+  bottom: -5%;
+`
 const Mango = styled.h1`
   font-size: 48px;
   letter-spacing: 2px;
-  color: rgb(1, 12, 5);
+  color: rgb(10, 22, 15);
+  // color: rgb(34,41,33);
+  font-family: 'Redressed', cursive;
 
   @media(max-width: 380px){
     font-size: 36px;
@@ -133,10 +148,13 @@ const NavItem = styled.li`
 const WelcomeBack = styled.li`
   align-self: center;
   padding-left: 69px;
-  font-family: 'Open Sans Condensed', sans-serif;
+  // font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
-  color: #1831B5;
-  letter-spacing: 1px;
+  // color: #1831B5;
+  color: black;
+  letter-spacing: 5px;
+  font-family: 'Redressed', cursive;
+  // letter-spacing: 1px;
 `
 const rpWrapperStyle = {
   display: "flex",
@@ -199,44 +217,48 @@ export default function Header({ admin, verifyEditModal, allPosts }) {
   })
   return (
     <HeaderContainer>
-      <div>
-        <MMWrapper>
-          <Mango>Mango</Mango>
-          <Mosaic>Mosaic</Mosaic>
-        </MMWrapper>
-        <Logo src={mango} alt="mango-mosaic-logo" />
-        {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
-        {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
-      </div>
-      <Nav style={showRP ? { backgroundColor: "#EEF4FB" } : null}>
-        <List>
-          {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
-          <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink>
-          <NavLink onClick={verifyEditModal} to='/blog'><NavItem>Blog</NavItem></NavLink>
-          <NavLink onClick={verifyEditModal} to='/about-me'><NavItem>About me</NavItem></NavLink>
-          <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink>
-          {location.pathname.match(/\d/) && <MoreIcon><i onClick={() => updateRP(!showRP)} className="material-icons md-36">more_vert</i></MoreIcon>}
-        </List>
-        <ListIcons>
-          <NavLink onClick={() => updateRP(false)} to='/'><i className="material-icons md-36">home</i></NavLink>
-          {location.pathname.match(/\d/) ?
-            <NavLink onClick={() => updateRP(!showRP)} to='#'><i className="material-icons md-36" >history</i></NavLink>
-            : null
-          }
-          <NavLink onClick={() => updateRP(false)} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
-          <NavLink onClick={() => updateRP(false)} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
-          <NavLink onClick={() => updateRP(false)} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink>
-        </ListIcons>
-        <RPWrapper
-          onMouseLeave={() => updateRP(!showRP)}
-          className="animate__animated animate__backInRight"
-          style={showRP ? rpWrapperStyle : null}
-        >
-          {/* <h1 style={{background:"purple", color: 'white', textAlign: 'center'} }>Most Recent</h1> */}
-          {recentPosts}
-        </RPWrapper>
-      </Nav>
+        <div>
+          <Link to='/'>
+            <MMWrapper>
+              <TitleWrapper>
+                <Mango>Mango</Mango>
+                <Mosaic>Mosaic</Mosaic>
+              </TitleWrapper>
+              <Logo src={mango} alt="mango-mosaic-logo" />
+            </MMWrapper>
+          </Link>
 
+          {/* <Logo src="https://imgur.com/Jjz5gfJ.png" alt="mango-mosaic-logo" /> */}
+          {/* <Logo src="https://imgur.com/DMBxMaA.png" alt="mango-mosaic-logo" />         */}
+        </div>
+        <Nav style={showRP ? { backgroundColor: "#EEF4FB" } : null}>
+          <List>
+            {admin ? <WelcomeBack>Welcome Back, Ashlea</WelcomeBack> : null}
+            {/* <NavLink onClick={verifyEditModal} to='/'><NavItem>Home</NavItem></NavLink> */}
+            {/* <NavLink onClick={verifyEditModal} to='/blog'><NavItem>Blog</NavItem></NavLink>
+          <NavLink onClick={verifyEditModal} to='/about-me'><NavItem>About me</NavItem></NavLink>
+          <NavLink onClick={verifyEditModal} to='/contact-me'><NavItem>Contact me</NavItem></NavLink> */}
+            {location.pathname.match(/\d/) && <MoreIcon><i onClick={() => updateRP(!showRP)} className="material-icons md-36">more_vert</i></MoreIcon>}
+          </List>
+          <ListIcons>
+            <NavLink onClick={() => updateRP(false)} to='/'><i className="material-icons md-36">home</i></NavLink>
+            {location.pathname.match(/\d/) ?
+              <NavLink onClick={() => updateRP(!showRP)} to='#'><i className="material-icons md-36" >history</i></NavLink>
+              : null
+            }
+            {/* <NavLink onClick={() => updateRP(false)} to='/blog'><i className="material-icons md-36">import_contacts</i></NavLink>
+          <NavLink onClick={() => updateRP(false)} to='/about-me'><i className="material-icons md-36">face</i></NavLink>
+          <NavLink onClick={() => updateRP(false)} to='/contact-me'><i className="material-icons md-36">contact_support</i></NavLink> */}
+          </ListIcons>
+          <RPWrapper
+            onMouseLeave={() => updateRP(!showRP)}
+            className="animate__animated animate__backInRight"
+            style={showRP ? rpWrapperStyle : null}
+          >
+            {/* <h1 style={{background:"purple", color: 'white', textAlign: 'center'} }>Most Recent</h1> */}
+            {recentPosts}
+          </RPWrapper>
+        </Nav>
     </HeaderContainer>
   )
 }

@@ -22,7 +22,7 @@ const Bar = styled.input`
   display: block;
   margin: 35px auto;
   font-size: 18px;
-  background-color: rgba(235,183,45,.075);
+  background-color: rgba(133,107,123,.2);
   background-image: url(${mangoMagnifyIcon});
   background-repeat: no-repeat;
   background-position: 3% 63%;
