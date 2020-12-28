@@ -5,12 +5,12 @@ import styled from 'styled-components'
 
 const BackgroundHeader = styled.div`
   background-image: url(${mangoHeader});
-  // background-attachment: fixed;
-  background-cover: contain;
+  background-attachment: fixed;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   width: 100vw;
   height: 80vh;
-  // position: relative;
 `
 const Overlay = styled.div`
   background-color: rgba(0,0,0,.3);
@@ -19,11 +19,11 @@ const Overlay = styled.div`
 `
 export default function MangoHeader() {
   return (
-    <div>
+    // <div>
       <BackgroundHeader>
         <Overlay>
         </Overlay>
       </BackgroundHeader>
-    </div>
+    // </div>
   )
 }

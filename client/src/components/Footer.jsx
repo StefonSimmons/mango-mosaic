@@ -18,10 +18,10 @@ const Text = styled.h6`
 `
 const CreatePost = styled.button`
   letter-spacing: 3px;
-  color: white;
-  background-color: rgb(26,26,26);
+  color: #102467;
+  background-color: lightgrey;
   border-radius: 10px;
-  border: 1px solid rgb(26,26,26);
+  border: 1px solid lightgrey;
 
   &:hover{
     border: 1px solid #2B791E;
@@ -40,6 +40,8 @@ const AdminLogIn = styled.h6`
   font-weight: 700;
   letter-spacing: 5px;
   cursor: pointer;
+  color: lightgrey
+
 `
 const AdminLogOut = styled(AdminLogIn)`
 `

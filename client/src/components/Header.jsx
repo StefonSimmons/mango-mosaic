@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import brush from '../assets/brush-stroke.png'
-import mango from '../assets/mango-logo-new.png'
+import mango from '../assets/mango-logo.png'
 import { useLocation } from 'react-router-dom'
 
 
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 5px 15px 15px 15px;
+  padding: 10px 15px;
+  // padding: 5px 15px 15px 15px;
   // position: sticky;
   // top: 0%;
   // background-color: rgba(103, 138, 74, .25)
@@ -17,8 +18,8 @@ const HeaderContainer = styled.div`
   // background-color: #EEF4FB;
 `
 const Logo = styled.img`
-  width: 150px;
-  height: 139px;
+  width: 140px;
+  height: 125px;
   // position: absolute;
 
   @media(max-width: 460px){
@@ -31,7 +32,6 @@ const Logo = styled.img`
   }
 `
 const MMWrapper = styled.div`
-  color: black;
   position: relative;
   // top: 2.5%;
   // left: 6.5%;
@@ -49,10 +49,12 @@ const TitleWrapper = styled.div`
   bottom: -5%;
 `
 const Mango = styled.h1`
-  font-size: 48px;
+  font-size: 42px;
   letter-spacing: 2px;
-  color: rgb(10, 22, 15);
+  // color: rgb(10, 22, 15);
   // color: rgb(34,41,33);
+  // color: #102467;
+  color: lightgrey;
   font-family: 'Redressed', cursive;
 
   @media(max-width: 380px){
@@ -150,7 +152,7 @@ const WelcomeBack = styled.li`
   // font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   // color: #1831B5;
-  color: black;
+  color: lightgrey;
   letter-spacing: 5px;
   font-family: 'Redressed', cursive;
   // letter-spacing: 1px;

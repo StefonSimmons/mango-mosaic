@@ -52,19 +52,22 @@ const TitleWrapper = styled.div`
 const Titles = styled.div`
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 700;
+  font-weight: 700; 
 `
 const MainTitle = styled.h1`
   font-size: 36px;
-  color: rgb(1, 12, 5);
+  // color: rgb(1, 12, 5);
+  color: lightgrey;
 `
 const SubTitle = styled.h2`
   font-size: 24px;
   margin: 12px 0 ;
-  color: rgb(1, 12, 5);
+  // color: rgb(1, 12, 5);
+  color: lightgrey;
 `
 const DateNRead = styled.h5`
-  font-weight: 300;
+  font-weight: 300;;
+  color: lightgrey;
   margin-bottom: 12px
 `
 const EditDelete = styled.div`
@@ -132,7 +135,7 @@ const PostImg = styled.img`
   width: 900px;
   height: 500px;
   object-fit: contain;
-
+  
   @media(max-width: 930px){
     width: 800px;
   }
@@ -298,7 +301,7 @@ const GreenSquare = styled.div`
   z-index: 0;
 `
 const GreySquare = styled.div`
-  background-color: lightgrey;
+  background-color: #675310;
   grid-column: 2 / span 6;
   grid-row: 2 / span 3;
   opacity: 1;

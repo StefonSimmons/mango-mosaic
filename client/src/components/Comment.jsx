@@ -26,7 +26,8 @@ const CommentHeader = styled.div`
 const CommentCount = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
-  font-weight: 700
+  font-weight: 700;
+  color: lightgrey;
 `
 const AddCommentContainer = styled.div`
   height: 36px
@@ -36,10 +37,10 @@ const AddCommentBtn = styled.button`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 20px;
   font-weight: 700;
-  color: white;
-  background-color: rgb(26,26,26);
+  color: #102467;
+  background-color: lightgrey;
   border-radius: 10px;
-  border: 1px solid rgb(26,26,26);
+  border: 1px solid lightgrey;
 `
 export const Divider = styled.hr`
   height: 1px;
@@ -179,7 +180,7 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
               {cBtnDisplay ?
                 <AddCommentBtn onClick={() => { updateCommentClicked(true) }}>Comment</AddCommentBtn>
                 :
-                <i className="material-icons w3-xxlarge">add_comment</i>
+                <i className="material-icons w3-xxlarge w3-text-light-grey">add_comment</i>
               }
             </AddCommentContainer>
 

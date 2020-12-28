@@ -16,7 +16,7 @@ const Form = styled.form`
   align-items: flex-start;
   width: 600px; 
   font-family: 'Open Sans Condensed', sans-serif;
-  
+  color: lightgrey;
 
   @media(max-width: 680px){
     width: 500px;

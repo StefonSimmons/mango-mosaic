@@ -47,9 +47,9 @@ export const updatePost = async (id, postParams) => {
   formData.append('post[user_id]', postParams.user_id)
   formData.append('post[is_pinned]', postParams.is_pinned)
   // if img is already stored in aws, it will not be appended to formData
-  // if (typeof postParams.img_URL !== 'string') { 
-  //   formData.append('post[img_URL]', postParams.img_URL)
-  // }
+  if (typeof postParams.img_URL !== 'string') { 
+    formData.append('post[img_URL]', postParams.img_URL)
+  }
   const resp = await api.put(`/posts/${id}`, formData, config)
   const updatedPost = resp.data
 

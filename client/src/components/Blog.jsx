@@ -21,6 +21,7 @@ const PostsWrapper = styled.div`
   width: 70%; 
   height: 100vh; 
   justify-items: center;
+  color: lightgrey;
   animation: ${fadeIn} ease 1.2s;
 
   @media(max-width: 1100px){
@@ -53,10 +54,11 @@ export const IDandImage = styled.div`
   grid-row: 1 / span 8;
 `
 const BlogID = styled.p`
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   font-size: 24px;
   margin-bottom: 20px;
-  color: rgb(10, 22, 15);
+  // color: rgb(10, 22, 15);
+  color: lightgrey;
 `
 export const PostImg = styled.img`
   width: 250px;
@@ -72,10 +74,11 @@ export const PostLink = styled(Link)`
     transform: scale(.95);
   }
 `
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   grid-column: 3 / 11;
   grid-row: 13 / span 2;
-  z-index: 2
+  z-index: 2;
+  color: lightgrey;
 `
 export const PostTitle = styled.h1`
   font-family: 'Open Sans Condensed', sans-serif;

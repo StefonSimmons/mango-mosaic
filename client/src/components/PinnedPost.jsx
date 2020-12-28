@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 import {getPinnedPost} from '../services/posts'
 
 import { Post, IDandImage, PostImg, PostLink, TitleWrapper, PostTitle, PostSubTitle } from './Blog'
-import pin from '../assets/pin.png'
-import pinned from '../assets/pinned-bg.png'
+import pin from '../assets/pin-lg.png'
+import pinned from '../assets/pinned-bg-copy.png'
 import styled from 'styled-components'
 
 const PinIcon = styled.img`
@@ -20,6 +20,15 @@ const ColorSquare = styled.div`
   background-image: url(${pinned});
   background-size: 275px 275px;
   background-repeat: no-repeat; 
+`
+const PinnedTitleWrapper = styled.div`
+  grid-column: 3 / 11;
+  grid-row: 13 / span 2;
+  z-index: 2;
+  background: lightgrey;
+  border: 10px;
+  padding: 0 5px;
+  color: #102467;
 `
 export default function PinnedPost({ allPosts }) {
 
@@ -50,10 +59,10 @@ export default function PinnedPost({ allPosts }) {
             </IDandImage>
             <ColorSquare>
             </ColorSquare>
-            <TitleWrapper>
+            <PinnedTitleWrapper>
               <PostTitle>{pinnedPost.main_title}</PostTitle>
               <PostSubTitle>{pinnedPost.subtitle}</PostSubTitle>
-            </TitleWrapper>
+            </PinnedTitleWrapper>
             <ColorSquare>
             </ColorSquare>
           </Post >

@@ -19,7 +19,7 @@ const Form = styled.form`
 `
 const TitleLogIn = styled.h4`
   font-size: 42px;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   font-weight: 700;
   margin-bottom: 12px;
   letter-spacing: 2px;
@@ -27,7 +27,7 @@ const TitleLogIn = styled.h4`
 `
 const Input = styled.input`
   font-size: 32px;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Redressed', cursive;
   letter-spacing: 2px;
   margin: 12px 0;
   padding: 15px 10px;

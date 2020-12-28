@@ -17,6 +17,7 @@ const Form = styled.form`
   align-items: flex-start;
   width: 600px;
   font-family: 'Open Sans Condensed', sans-serif;
+  color: lightgrey;
 
   @media(max-width: 680px){
     width: 500px;
@@ -31,6 +32,10 @@ const Form = styled.form`
 const FileUpload = styled.input`
   margin: 5px 0;
   width: 590px;
+
+  &::placeholder{
+    color: lightgrey
+  }
 
   @media(max-width: 675px){
     width: 400px
@@ -85,6 +90,7 @@ export const PinBox = styled.label`
   font-family: 'Redressed', cursive;
   letter-spacing: 2px;
   font-size: 28px;
+  color: lightgrey;
 `
 export const CheckBox = styled.input`
   width: 40px;

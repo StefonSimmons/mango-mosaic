@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { searchPosts } from '../services/posts'
 import styled from 'styled-components'
-import mangoMagnifyIcon from '../assets/mango-magnify-icon.png'
+import mangoMagnifyIcon from '../assets/mango-magnify-icon-lt.png'
 
 const Search = styled.div`
   width: 85%;
@@ -17,16 +17,25 @@ const Bar = styled.input`
   width: 350px;
   border-radius: 15px;
   border: 1px solid grey;
-  color: rgb(10, 22, 15);
-  padding-left: 52px;
+  color: lightgrey;
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 2.5px;
+  padding-left: 55px;
   display: block;
   margin: 35px auto;
   font-size: 18px;
-  background-color: rgba(133,107,123,.2);
+  // background-color: rgba(133,107,123,.2);
+  background: rgba(234, 115, 50, 0);
   background-image: url(${mangoMagnifyIcon});
   background-repeat: no-repeat;
   background-position: 3% 63%;
   background-size: contain; 
+
+  &::placeholder{
+    color: lightgrey;
+    // font-family: 'Redressed', cursive;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
 
   @media(max-width: 780px){
     margin-bottom: 5px;
