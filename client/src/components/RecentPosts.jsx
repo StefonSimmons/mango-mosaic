@@ -57,13 +57,52 @@ const RPWrapper = styled.div`
     justify-content: space-evenly;
   }
 `
+const RPLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+`
+const RecentPost = styled.h4`
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 13.5px 10px;
+  
+  &:hover{
+    background-color: ${({theme}) => theme.purple};
+    color: white;
+    opacity: .7;
+  }
+  &:active{
+    transform: scale(.95);
+  }
+  @media(max-width: 1150px){
+    font-size: 20px;
+    font-weight: 700;
+    background: rgba(70,7,20,.4);
+    border-radius: 45px;
+
+    &:hover{
+      background: black;
+      color: white;
+      border-radius: 45px;
+    }
+  }
+  @media(max-width: 930px){
+    font-size: 15px
+  }
+  @media(max-width: 780px){
+    font-size: 14px
+  }
+`
 const SeeMore = styled(Link)`
   align-self: flex-start;
   margin-top: 50px;
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 700;
   padding-left: 10px;
-  color: blue;
+  color: ${({theme}) => theme.blue};
+
 
   @media(max-width: 1150px){
     margin-top: 10px;
@@ -71,8 +110,21 @@ const SeeMore = styled(Link)`
     font-size: 18px
   }
 `
+export default function RecentPosts({ allPosts, verifyEditModal }) {
 
-export default function RecentPosts({ recentPosts, verifyEditModal }) {
+  const recentPosts = allPosts.map((p, id) => {
+    if (id < 5) {
+      return (
+        <RPLink key={id} onClick={verifyEditModal} to={`/blog/${p.id}`}>
+          {p.main_title.length > 19 ?
+            <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
+            :
+            <RecentPost>{p.main_title}</RecentPost>
+          }
+        </RPLink>
+      )
+    }
+  })
 
   return (
     <YellowSquare>

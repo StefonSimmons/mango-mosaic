@@ -42,45 +42,6 @@ const Wrapper = styled.div`
     width: 350px;
   }
 `
-const RPLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-`
-const RecentPost = styled.h4`
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  padding: 13.5px 10px;
-  
-  &:hover{
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    opacity: .7;
-  }
-  &:active{
-    transform: scale(.95);
-  }
-  @media(max-width: 1150px){
-    font-size: 20px;
-    font-weight: 700;
-    background: rgba(70,7,20,.4);
-    border-radius: 45px;
-
-    &:hover{
-      background: black;
-      color: white;
-      border-radius: 45px;
-    }
-  }
-  @media(max-width: 930px){
-    font-size: 15px
-  }
-  @media(max-width: 780px){
-    font-size: 14px
-  }
-
-`
 const Loading = styled.div`
   display: flex;
   flex-direction: column;
@@ -108,22 +69,6 @@ export default function Post({
 
   // FILTERS FOR SELECTED POST
   const post = allPosts.filter((p) => p.id === parseInt(postId))[0]
-
-  //MAPPING W/ JSX FOR RECENT POSTS 
-  // eslint-disable-next-line
-  const recentPosts = allPosts.map((p, id) => {
-    if (id < 5) {
-      return (
-        <RPLink key={id} onClick={verifyEditModal} to={`/blog/${p.id}`}>
-          {p.main_title.length > 19 ?
-            <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
-            :
-            <RecentPost>{p.main_title}</RecentPost>
-          }
-        </RPLink>
-      )
-    }
-  })
 
   return (
     <>
@@ -156,7 +101,7 @@ export default function Post({
             }
 
             <RecentPosts
-              recentPosts={recentPosts}
+              allPosts={allPosts}
               verifyEditModal={verifyEditModal}
             />
           </Wrapper>
