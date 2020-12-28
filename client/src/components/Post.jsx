@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import EditForm from './EditForm'
 import DeletionModal from './DeletionModal';
 import RecentPosts from './RecentPosts'

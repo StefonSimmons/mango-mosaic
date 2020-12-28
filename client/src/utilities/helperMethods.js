@@ -1,7 +1,6 @@
 // FORMAT DATE FOR CREATED AT
 export const formatDate = (object, origin) => {
   if (object !== undefined) {
-    console.log(object)
     const milliseconds = Date.parse(object.created_at)
     const dateObj = new Date(milliseconds)
     const createdAtDateFormat =

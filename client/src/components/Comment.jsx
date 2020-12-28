@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import CreateComment from './CreateComment'
+import FacebookAuth from './FacebookAuth'
+
 import { Twitter, Linkedin, Facebook, Mail, Whatsapp, Pinterest } from 'react-social-sharing'
 
 import { formatDate } from '../utilities/helperMethods'
@@ -109,7 +111,7 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
   const [deleteBtnId, updateID] = useState(null)
   // FOR COMMENT CREATION FORM
   const [commentClicked, updateCommentClicked] = useState(false)
-  
+
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
 
@@ -157,7 +159,8 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
         <>
           <CommentHeader>
 
-            <img src={like} alt="like"/>
+            <img src={like} alt="like" />
+            <FacebookAuth/>
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
             <i
               onClick={() => { updateCommentClicked(true) }}
