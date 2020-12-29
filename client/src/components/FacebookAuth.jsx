@@ -20,6 +20,7 @@ const Close = styled.span`
   font-size: 36px;
   position: relative;
   right: -13%;
+  cursor: pointer
 `
 const FBBox = styled.div`
   width: 350px;
@@ -39,11 +40,15 @@ const Text = styled.h3`
   font-weight: 700;	
 `
 
-export default function FacebookAuth() {
+export default function FacebookAuth({ setFBLogIn, setFB }) {
 
   const responseFacebook = (response) => {
     console.log('render?')
     console.log(response)
+    if (response.status !== 'unknown') {
+      setFBLogIn(true)
+      setFB(false)
+    }
   }
   const clicked = () => {
     console.log('clicked')
@@ -51,13 +56,16 @@ export default function FacebookAuth() {
 
   return (
     <ModalBackground>
-      <Close onClick={''}>&times;</Close>
+      <Close onClick={() => {
+        setFBLogIn(false)
+        setFB(false)
+      }}>&times;</Close>
       <FBBox>
-        <Text> Login with Facebook to Like and/or Comment</Text>
+        <Text> Login with Facebook to Like or Comment</Text>
         <FacebookLogin
           appId="3385132244929365"
-          autoLoad={true}
-          fields="name,email,picture"
+          autoLoad={false}
+          fields="name, email"
           onClick={clicked}
           callback={responseFacebook} />
       </FBBox>

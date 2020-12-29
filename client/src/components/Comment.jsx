@@ -33,7 +33,21 @@ const CommentHeader = styled.div`
     width: 350px
   }
 `
-const CommentCount = styled.h1`
+const LikeContainer = styled.section`
+  display: flex;
+  align-items: center;
+`
+const Like = styled.img`
+  cursor: pointer;
+  margin: 0 5px;
+`
+const LikeCount = styled.h6`
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: red;
+`
+const CommentCount = styled.h6`
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -112,6 +126,10 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
   // FOR COMMENT CREATION FORM
   const [commentClicked, updateCommentClicked] = useState(false)
 
+  // FOR LIKING AND COMMENTING - FB
+  const [fbLoggedIn, setFBLogIn] = useState(false)
+  const [FB, setFB] = useState(false)
+
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
 
@@ -159,8 +177,20 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
         <>
           <CommentHeader>
 
-            <img src={like} alt="like" />
-            <FacebookAuth/>
+            <LikeContainer>
+              <Like
+                onClick={() => {
+                  setFB(true)
+                }}
+                src={like} alt="like"
+              />
+              <LikeCount>{`( 0 )`}</LikeCount>
+            </LikeContainer>
+            {console.log(FB, !fbLoggedIn)}
+            {!fbLoggedIn && FB
+              ? <FacebookAuth setFBLogIn={setFBLogIn} setFB={setFB} />
+              : null
+            }
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
             <i
               onClick={() => { updateCommentClicked(true) }}
@@ -174,6 +204,7 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
               handleCreateComment={handleCreateComment}
               postId={postId}
               updateCommentClicked={updateCommentClicked}
+              setFB={setFB}
             />
             :
             null
