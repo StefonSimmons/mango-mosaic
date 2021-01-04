@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Foot = styled.footer`
-  margin: 20px 0 10px 0
+  margin: 20px 0 10px 0;
+  background: #102467;
 `
 const Bottom = styled.div`
   display: flex;

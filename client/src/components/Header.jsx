@@ -68,7 +68,7 @@ export default function Header({ admin, scrollToBlog, setScroll, setBrowsing }) 
 
   const location = useLocation()
   const path = location.pathname
-  console.log(path)
+
   return (
     <HeaderContainer>
       <Link to='/blog' onClick={() => {

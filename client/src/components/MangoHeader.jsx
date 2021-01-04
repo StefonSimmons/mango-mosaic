@@ -16,6 +16,9 @@ const BackgroundHeader = styled.div`
   @media(max-width: 1024px){
     background-image: url(${mangoHeaderCropped});
   }
+  @media(max-width: 450px){
+    background-attachment: initial;
+  }
 `
 const Overlay = styled.div`
   background-color: rgba(0,0,0,.3);

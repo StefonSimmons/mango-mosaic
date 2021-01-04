@@ -1,6 +1,7 @@
 .rich-editor .DraftEditor-editorContainer {
   background: rgba(211, 211, 211,1);
   padding: .5rem;
+  height: auto;
 } 
 .DraftEditor-root{
   height: 700px;
