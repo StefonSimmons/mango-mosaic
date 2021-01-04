@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
 import { getAllComments, createComment, destroyComment } from './services/comments'
-import { loginUser, verifyUser, removeToken } from './services/auth'
+import { loginUser, verifyAdmin, removeToken } from './services/auth'
 import Header from './components/Header'
 import Blog from './components/Blog'
 import Post from './components/Post'
@@ -49,7 +49,7 @@ function App() {
   // AUTHENTICATION HANDLERS
   useEffect(() => {
     const verify = async () => {
-      const admin = await verifyUser()
+      const admin = await verifyAdmin()
       updateAdmin(admin)
     }
     verify()

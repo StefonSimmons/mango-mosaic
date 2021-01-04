@@ -2,13 +2,11 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import CreateComment from './CreateComment'
-import FacebookAuth from './FacebookAuth'
 
 import { Twitter, Linkedin, Facebook, Mail, Whatsapp, Pinterest } from 'react-social-sharing'
 
 import { formatDate } from '../utilities/helperMethods'
 
-import like from '../assets/like-icon.png'
 
 const CommentHeader = styled.div`
   display: flex;
@@ -32,20 +30,6 @@ const CommentHeader = styled.div`
   @media(max-width: 400px){
     width: 350px
   }
-`
-const LikeContainer = styled.section`
-  display: flex;
-  align-items: center;
-`
-const Like = styled.img`
-  cursor: pointer;
-  margin: 0 5px;
-`
-const LikeCount = styled.h6`
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: red;
 `
 const CommentCount = styled.h6`
   font-family: 'Open Sans Condensed', sans-serif;
@@ -126,14 +110,10 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
   // FOR COMMENT CREATION FORM
   const [commentClicked, updateCommentClicked] = useState(false)
 
-  // FOR LIKING AND COMMENTING - FB
-  const [fbLoggedIn, setFBLogIn] = useState(false)
-  const [FB, setFB] = useState(false)
-
   // NUMBER OF COMMENTS FOR THE ACCESSED POST
   const commentCount = allComments.filter(c => c.post_id === parseInt(postId)).length
 
-
+  // Comments JSX
   // eslint-disable-next-line
   const comments = allComments.map(c => {
     if (c.post_id === parseInt(postId)) {
@@ -177,20 +157,6 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
         <>
           <CommentHeader>
 
-            <LikeContainer>
-              <Like
-                onClick={() => {
-                  setFB(true)
-                }}
-                src={like} alt="like"
-              />
-              <LikeCount>{`( 0 )`}</LikeCount>
-            </LikeContainer>
-            {console.log(FB, !fbLoggedIn)}
-            {!fbLoggedIn && FB
-              ? <FacebookAuth setFBLogIn={setFBLogIn} setFB={setFB} />
-              : null
-            }
             <CommentCount>{`Comments ( ${commentCount} )`}</CommentCount>
             <i
               onClick={() => { updateCommentClicked(true) }}
@@ -204,7 +170,6 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
               handleCreateComment={handleCreateComment}
               postId={postId}
               updateCommentClicked={updateCommentClicked}
-              setFB={setFB}
             />
             :
             null

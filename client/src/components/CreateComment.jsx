@@ -79,7 +79,7 @@ const CancelBtn = styled(SubmitBtn)`
   border: 1px solid red;
 
 `
-export default function CreateComment({ handleCreateComment, updateCommentClicked, setFB }) {
+export default function CreateComment({ handleCreateComment, updateCommentClicked }) {
 
   const { postId } = useParams()
 
@@ -129,7 +129,6 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
                 value={commenter}
                 placeholder="Your Name"
                 onChange={handleChange}
-                onClick={() => setFB(true)}
               />
             </div>
             <div>
@@ -141,7 +140,6 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
                 value={email}
                 placeholder="(Not published)"
                 onChange={handleChange}
-                onClick={() => setFB(true)}
               />
             </div>
           </NameEmailFields>
@@ -154,7 +152,6 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
               value={social}
               placeholder="@Instagram or @Twitter"
               onChange={handleChange}
-              onClick={() => setFB(true)}
             />
           </div>
         </InputWrapper>
@@ -164,7 +161,6 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
           value={comment}
           placeholder='Write Your Comment Here...'
           onChange={handleChange}
-          onClick={() => setFB(true)}
         />
         <div>
           <SubmitBtn type="submit">Add Comment</SubmitBtn>

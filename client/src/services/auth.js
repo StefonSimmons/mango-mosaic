@@ -10,7 +10,7 @@ export const loginUser = async (loginParams) => {
     return admin
 }
 
-export const verifyUser = async () => {
+export const verifyAdmin = async () => {
   const token = localStorage.getItem('authToken');
   if (token) {
     api.defaults.headers.common.authorization = `Bearer ${token}`
@@ -21,6 +21,9 @@ export const verifyUser = async () => {
   return false
 }
 
+// export const verifyCommenter = async () => {
+  
+// }
 // logging out
 export const removeToken = () => {
   api.defaults.headers.common.authorization = null;
