@@ -164,6 +164,9 @@ function App() {
               deleteComment={deleteComment}
               deleteClicked={deletionModal}
               cancelDeletion={toggleDeletionModal}
+              scrollToBlog={scrollToBlog}
+              setScroll = {setScroll}
+              setBrowsing = {setBrowsing}
             />
           </Route>
 

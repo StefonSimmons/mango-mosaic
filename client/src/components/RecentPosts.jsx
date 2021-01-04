@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -110,7 +110,10 @@ const SeeMore = styled(Link)`
     font-size: 18px
   }
 `
-export default function RecentPosts({ allPosts, verifyEditModal }) {
+export default function RecentPosts({ allPosts, verifyEditModal, scrollToBlog, setScroll, setBrowsing }) {
+
+  const location = useLocation()
+  const { pathname } = location
 
   const recentPosts = allPosts.filter((post, id) => id < 5).map((p, id) => {
     return (
@@ -131,7 +134,13 @@ export default function RecentPosts({ allPosts, verifyEditModal }) {
         <RPWrapper>
           {recentPosts}
         </RPWrapper>
-        <SeeMore onClick={verifyEditModal} to='/blog'>See more posts...</SeeMore>
+        <SeeMore onClick={() => {
+          verifyEditModal()
+          setScroll(!scrollToBlog)
+          if (pathname !== '/blog') {
+            setBrowsing(true);
+          }
+        }} to='/blog'>See more posts...</SeeMore>
       </RecentPostsContainer>
     </YellowSquare>
   )

@@ -58,7 +58,8 @@ export default function Post({
   editClicked, handleSaveEdit,
   verifyEditModal, handleCreateComment,
   deletePost, deleteComment,
-  deleteClicked, cancelDeletion
+  deleteClicked, cancelDeletion,
+  scrollToBlog, setScroll, setBrowsing
 }) {
 
   const { postId } = useParams()
@@ -103,6 +104,9 @@ export default function Post({
             <RecentPosts
               allPosts={allPosts}
               verifyEditModal={verifyEditModal}
+              scrollToBlog={scrollToBlog}
+              setScroll = {setScroll}
+              setBrowsing = {setBrowsing}
             />
           </Wrapper>
           <PostBackground />
