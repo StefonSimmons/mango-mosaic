@@ -49,6 +49,9 @@ const Input = styled.input`
   margin: 5px;
   width: 220px;
   height: 33px;
+  border-radius: 15px;
+  border: 1px lightgrey solid;
+  padding: 0px 10px;
   @media(max-width: 500px){
     margin: 5px 0;
   }
@@ -58,11 +61,13 @@ const NameEmailFields = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-right: 10px
-
 `
 const CommentArea = styled.textarea`
   margin: 5px 0;
-  height: 77px
+  height: 77px;
+  border-radius: 5px;
+  border: 1px lightgrey solid;
+  padding: 10px;
 `
 const SubmitBtn = styled.button`
   width: fit-content;
@@ -70,13 +75,16 @@ const SubmitBtn = styled.button`
   color: white;
   padding: 0 10px;
   background-color: rgb(26,26,26);
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgb(26,26,26);
+  font-weight: 700;
+  letter-spacing: 2px;
 `
 const CancelBtn = styled(SubmitBtn)`
   margin-left: 15px;
   background: red;
   border: 1px solid red;
+  
 
 `
 export default function CreateComment({ handleCreateComment, updateCommentClicked }) {

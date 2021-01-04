@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
+
 import CreateComment from './CreateComment'
 
 import { Twitter, Linkedin, Facebook, Mail, Whatsapp, Pinterest } from 'react-social-sharing'
@@ -75,9 +76,9 @@ const YesNoBtns = styled.button`
   font-size: 20px;
 `
 const CommentContainer = styled.div`
-  background-color: #E7E7EF;
-  width: 700px;
+  background-color: rgba(231, 231, 239,1);
   padding: 20px;
+  width: 700px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -134,9 +135,9 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
             </>
           }
           <CommentContainer>
-            <h2>{c.commenter}</h2>
-            <CreatedAt>{formatDate(c, 'comment')}</CreatedAt>
-            <p>{c.comment}</p>
+              <h2>{c.commenter}</h2>
+              <CreatedAt>{formatDate(c, 'comment')}</CreatedAt>
+              <p>{c.comment}</p>
           </CommentContainer>
         </div>
       )
@@ -165,7 +166,7 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
 
           </CommentHeader>
 
-          {commentClicked ?
+          {!commentClicked ?
             <CreateComment
               handleCreateComment={handleCreateComment}
               postId={postId}
