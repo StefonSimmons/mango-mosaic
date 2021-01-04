@@ -166,7 +166,7 @@ export default function Comment({ allComments, handleCreateComment, admin, delet
 
           </CommentHeader>
 
-          {!commentClicked ?
+          {commentClicked ?
             <CreateComment
               handleCreateComment={handleCreateComment}
               postId={postId}

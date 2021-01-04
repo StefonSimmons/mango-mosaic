@@ -68,7 +68,7 @@ const RecentPost = styled.h4`
   padding: 13.5px 10px;
   
   &:hover{
-    background-color: ${({theme}) => theme.purple};
+    background-color: ${({ theme }) => theme.purple};
     color: white;
     opacity: .7;
   }
@@ -101,7 +101,7 @@ const SeeMore = styled(Link)`
   font-size: 18px;
   font-weight: 700;
   padding-left: 10px;
-  color: ${({theme}) => theme.blue};
+  color: ${({ theme }) => theme.blue};
 
 
   @media(max-width: 1150px){
@@ -112,18 +112,16 @@ const SeeMore = styled(Link)`
 `
 export default function RecentPosts({ allPosts, verifyEditModal }) {
 
-  const recentPosts = allPosts.map((p, id) => {
-    if (id < 5) {
-      return (
-        <RPLink key={id} onClick={verifyEditModal} to={`/blog/${p.id}`}>
-          {p.main_title.length > 19 ?
-            <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
-            :
-            <RecentPost>{p.main_title}</RecentPost>
-          }
-        </RPLink>
-      )
-    }
+  const recentPosts = allPosts.filter((post, id) => id < 5).map((p, id) => {
+    return (
+      <RPLink key={id} onClick={verifyEditModal} to={`/blog/${p.id}`}>
+        {p.main_title.length > 19 ?
+          <RecentPost>{`${p.main_title.substring(0, 19)}...`}</RecentPost>
+          :
+          <RecentPost>{p.main_title}</RecentPost>
+        }
+      </RPLink>
+    )
   })
 
   return (

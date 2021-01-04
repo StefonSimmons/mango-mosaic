@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import {setColor} from '../utilities/helperMethods'
 import styled, { keyframes } from 'styled-components'
 import SearchBar from './SearchBar'
 import PinnedPost from './PinnedPost'
@@ -90,16 +91,15 @@ export const ColorSquare = styled.div`
   background-color: ${({theme, color}) => theme[color]}
 `
 
-export default function Blog({ allPosts, updateAllPosts, getPosts }) {
+export default function Blog({ allPosts, updateAllPosts, getPosts, scrollToBlog, browsing, setBrowsing }) {
 
-
-  function setColor(id) {
-    // const colors = ['rgb(239,114,24)', 'rgb(29,157,65)', 'rgb(201,13,13)', 'rgb(133,107,123)', 'rgb(235,183,45)', 'rgb(54,70,209)']
-    const colors = ['orange', 'green', 'red', 'purple', 'yellow', 'blue']
-
-    const colordIdx = id % 6
-    return colors[colordIdx]
-  }
+  useEffect(() => {
+    if (browsing) {
+      window.scrollTo(0, 1000)
+    }
+    setTimeout(() => setBrowsing(false), 2000);
+    // eslint-disable-next-line
+  }, [scrollToBlog])
 
   const posts = allPosts.map((post, id, posts) =>
     <PostLink to={`/blog/${post.id}`} key={post.id}>

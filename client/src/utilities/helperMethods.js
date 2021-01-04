@@ -22,3 +22,12 @@ export const getReadTime = (post) => {
   const minutesToRead = Math.floor(contentTextLength / avgWPM)
   return minutesToRead
 }
+
+// SET COLOR FOR BLOG POSTS
+export const setColor = (id) => {
+  // const colors = ['rgb(239,114,24)', 'rgb(29,157,65)', 'rgb(201,13,13)', 'rgb(133,107,123)', 'rgb(235,183,45)', 'rgb(54,70,209)']
+  const colors = ['orange', 'green', 'red', 'purple', 'yellow', 'blue']
+
+  const colordIdx = id % 6
+  return colors[colordIdx]
+}

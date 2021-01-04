@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import mango from '../assets/mango-logo.png'
 
@@ -64,12 +64,19 @@ const WelcomeBack = styled.li`
   font-family: 'Redressed', cursive;
 `
 
-export default function Header({ admin }) {
+export default function Header({ admin, scrollToBlog, setScroll, setBrowsing }) {
 
-
+  const location = useLocation()
+  const path = location.pathname
+  console.log(path)
   return (
     <HeaderContainer>
-      <Link to='/blog'>
+      <Link to='/blog' onClick={() => {
+        setScroll(!scrollToBlog)
+        if (path !== '/blog') {
+          setBrowsing(true);
+        }
+      }}>
         <MMWrapper>
           <TitleWrapper>
             <Mango>Mango</Mango>

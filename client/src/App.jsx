@@ -27,6 +27,8 @@ function App() {
   const [deletionModal, updateDeletionModal] = useState(false)
   const [verifyEditModal, updateEditModal] = useState(false)
   const [admin, updateAdmin] = useState(null)
+  const [scrollToBlog, setScroll] = useState(false)
+  const [browsing, setBrowsing] = useState(false)
 
   // POST AND COMMENT HANDLERS
   useEffect(() => {
@@ -117,11 +119,15 @@ function App() {
   }
 
 
+
   return (
     <>
       <ColorThemeProvider>
         <Header
           admin={admin}
+          scrollToBlog={scrollToBlog}
+          setScroll={setScroll}
+          setBrowsing={setBrowsing}
         />
 
         <Switch>
@@ -136,6 +142,9 @@ function App() {
               allPosts={allPosts}
               getPosts={getPosts}
               updateAllPosts={updateAllPosts}
+              scrollToBlog={scrollToBlog}
+              browsing={browsing}
+              setBrowsing={setBrowsing}
             />
           </Route>
 
