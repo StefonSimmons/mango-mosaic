@@ -7,7 +7,7 @@ const LogInModal = styled.div`
   width: 550px;
   height: 400px;
   border: rgb(216,224,233) solid 2px;
-  font-family: 'Pathway Gothic One', sans-serif; 
+  font-family: 'Redressed', cursive;
   text-align: center;
   background-color: #E3D1E2;
 `
@@ -38,9 +38,9 @@ const Input = styled.input`
 const Btn = styled.input`
   margin: 20px 0;
   padding: 6px 12px;
-  background-color: purple;
+  background-color: blue;
   border-radius: 5px;
-  border: 1px solid purple;
+  border: 1px solid blue;
   font-weight: 500;
   font-size: 15px
   letter-spacing: 1.26px;
@@ -67,7 +67,7 @@ export default function LogInForm({ admin, updateAdmin, handleLoginSubmit, logIn
     <>
       <div className="w3-modal" style={logInClicked ? { display: "block" } : { display: "none" }}>
         <LogInModal className="w3-modal-content w3-card-4 w3-animate-zoom">
-          <span className="w3-button w3-xlarge w3-round w3-hover-purple w3-display-center" onClick={() => {
+          <span className="w3-button w3-xlarge w3-round w3-hover-red w3-display-center" onClick={() => {
             showLogInForm(false)
             updateAdmin(null)
           }}>&times;</span>

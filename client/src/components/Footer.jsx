@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 const Foot = styled.footer`
   margin: 20px 0 10px 0;
-  background: #102467;
+  // background: #102467;
+  background: lightgrey;
 `
 const Bottom = styled.div`
   display: flex;
@@ -22,13 +23,14 @@ const Bottom = styled.div`
 `
 const Text = styled.h6`
   letter-spacing: 3px;
-  color: lightgrey;
+  // color: lightgrey;
+  color: #102467;
   font-weight: 700;
 `
 const CreatePost = styled.button`
   letter-spacing: 3px;
-  color: #102467;
-  background-color: lightgrey;
+  color: lightgrey;
+  background-color: #102467;
   border-radius: 10px;
   border: 1px solid lightgrey;
 
@@ -49,7 +51,7 @@ const AdminLogIn = styled.h6`
   font-weight: 700;
   letter-spacing: 5px;
   cursor: pointer;
-  color: lightgrey
+  color: #102467;
 
 `
 const AdminLogOut = styled(AdminLogIn)`

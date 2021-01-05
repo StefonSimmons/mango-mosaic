@@ -36,6 +36,7 @@ const spin = keyframes`
   }
 `
 const Loader = styled.div`
+  margin: 25vh auto;
   border-top: solid 3px lightgrey;
   border-right: solid 3px blue;
   border-left: solid 3px green;

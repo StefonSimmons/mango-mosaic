@@ -142,7 +142,8 @@ function App() {
           <Route exact path='/blog'>
             <MangoHeader />
             {loading
-              ? <Loading/> 
+              ?
+              <Loading /> 
               : <Blog
                 allPosts={allPosts}
                 getPosts={getPosts}
