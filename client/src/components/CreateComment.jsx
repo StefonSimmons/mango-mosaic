@@ -146,7 +146,7 @@ export default function CreateComment({ handleCreateComment, updateCommentClicke
                 type="text"
                 name="email"
                 value={email}
-                placeholder="(Not published)"
+                placeholder="Your Email (Not published)"
                 onChange={handleChange}
               />
             </div>
