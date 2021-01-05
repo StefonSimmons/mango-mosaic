@@ -13,6 +13,7 @@ import SaveEditModal from './components/SaveEditModal';
 import CreatePost from './components/CreatePost'
 import AdminDashboard from './components/AdminDashboard'
 import MangoHeader from './components/MangoHeader';
+import Loading from './components/Loading';
 
 import ColorThemeProvider from './components/style-theme/ColorThemeProvider';
 
@@ -29,6 +30,7 @@ function App() {
   const [admin, updateAdmin] = useState(null)
   const [scrollToBlog, setScroll] = useState(false)
   const [browsing, setBrowsing] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   // POST AND COMMENT HANDLERS
   useEffect(() => {
@@ -44,6 +46,7 @@ function App() {
     const getComments = async () => {
       const res = await getAllComments()
       updateAllComments(res)
+      setLoading(false)
     }
     getComments()
   }, [submitted])
@@ -138,14 +141,18 @@ function App() {
 
           <Route exact path='/blog'>
             <MangoHeader />
-            <Blog
-              allPosts={allPosts}
-              getPosts={getPosts}
-              updateAllPosts={updateAllPosts}
-              scrollToBlog={scrollToBlog}
-              browsing={browsing}
-              setBrowsing={setBrowsing}
-            />
+            {loading
+              ? <Loading/> 
+              : <Blog
+                allPosts={allPosts}
+                getPosts={getPosts}
+                updateAllPosts={updateAllPosts}
+                scrollToBlog={scrollToBlog}
+                browsing={browsing}
+                setBrowsing={setBrowsing}
+                loading={loading}
+              />
+            }
           </Route>
 
           <Route exact path={`/blog/:postId`}>

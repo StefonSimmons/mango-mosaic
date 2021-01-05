@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import {setColor} from '../utilities/helperMethods'
+import { setColor } from '../utilities/helperMethods'
 import styled, { keyframes } from 'styled-components'
 import SearchBar from './SearchBar'
 import PinnedPost from './PinnedPost'
@@ -50,7 +50,6 @@ const BlogID = styled.p`
   font-family: 'Redressed', cursive;
   font-size: 24px;
   margin-bottom: 20px;
-  // color: rgb(10, 22, 15);
   color: lightgrey;
 `
 export const PostImg = styled.img`
@@ -88,10 +87,12 @@ export const ColorSquare = styled.div`
   grid-row: 3 / span 13;
   z-index: -1;
   border-radius: 5px;
-  background-color: ${({theme, color}) => theme[color]}
+  background-color: ${({ theme, color }) => theme[color]}
 `
 
-export default function Blog({ allPosts, updateAllPosts, getPosts, scrollToBlog, browsing, setBrowsing }) {
+export default function Blog({ allPosts, updateAllPosts, getPosts,
+  scrollToBlog, browsing, setBrowsing, loading
+}) {
 
   useEffect(() => {
     if (browsing) {
@@ -125,7 +126,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts, scrollToBlog,
       <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts} />
       <PostsWrapper>
         <PinnedPost allPosts={allPosts} />
-        {posts.length ? posts : <h4>No Results</h4>}
+        {posts.length ? posts : <h4>No Results</h4> }
       </PostsWrapper>
     </>
   )
