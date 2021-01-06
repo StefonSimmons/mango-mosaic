@@ -14,7 +14,6 @@ class PostsController < ApplicationController
 
   def create
     @new_post = Post.create(post_params)
-    puts 'Stefon -->'
     if @new_post.save
       render json: @new_post, status: :created
     else
@@ -53,8 +52,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:main_title, :subtitle, :content, :user_id, :is_pinned, :img_URL)
   end
 
-  def checkImg
-    
-  end
   
 end

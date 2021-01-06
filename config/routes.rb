@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   post '/auth/login', to: 'authentications#login'
   get '/auth/verify', to: 'authentications#verify'
+
+  resources :locations, only: [:index, :create]
 end

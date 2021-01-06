@@ -4,6 +4,7 @@ import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
 import { getAllComments, createComment, destroyComment } from './services/comments'
 import { loginUser, verifyAdmin, removeToken } from './services/auth'
+import {getLocationInfo} from './services/location'
 import Header from './components/Header'
 import Blog from './components/Blog'
 import Post from './components/Post'
@@ -31,11 +32,22 @@ function App() {
   const [scrollToBlog, setScroll] = useState(false)
   const [browsing, setBrowsing] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [location, setLocation] = useState({})
 
   // POST AND COMMENT HANDLERS
   useEffect(() => {
     getPosts()
+    getLocation()
   }, [submitted])
+
+  const getLocation = async () => {
+    const data = await getLocationInfo()
+    setLocation({
+      city: data.city,
+      state: data.state,
+      country: data.country
+    })
+  }
 
   const getPosts = async () => {
     const res = await getAllPosts()
