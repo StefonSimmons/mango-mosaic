@@ -91,7 +91,7 @@ export const ColorSquare = styled.div`
 `
 
 export default function Blog({ allPosts, updateAllPosts, getPosts,
-  scrollToBlog, browsing, setBrowsing, loading
+  scrollToBlog, browsing, setBrowsing, handlePostLocation
 }) {
 
   useEffect(() => {
@@ -103,7 +103,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts,
   }, [scrollToBlog])
 
   const posts = allPosts.map((post, id, posts) =>
-    <PostLink to={`/blog/${post.id}`} key={post.id}>
+    <PostLink to={`/blog/${post.id}`} key={post.id} onClick={handlePostLocation}>
       <Post>
         <IDandImage>
           <BlogID>{`#${posts.length - id}`}</BlogID>
@@ -126,7 +126,7 @@ export default function Blog({ allPosts, updateAllPosts, getPosts,
       <SearchBar getPosts={getPosts} updateAllPosts={updateAllPosts} />
       <PostsWrapper>
         <PinnedPost allPosts={allPosts} />
-        {posts.length ? posts : <h4>No Results</h4> }
+        {posts.length ? posts : <h4>No Results</h4>}
       </PostsWrapper>
     </>
   )

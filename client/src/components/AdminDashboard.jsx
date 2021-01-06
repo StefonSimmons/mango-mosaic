@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getAllLocations } from '../services/location'
 import styled from 'styled-components'
 
 const Title = styled.h1`
@@ -50,7 +51,9 @@ export default function AdminDashboard({ allPosts, allComments }) {
     getMostCommentedPost()
     getUniqueCommenters()
     getTopCommenter()
-  })
+    getLocations()
+    // eslint-disable-next-line
+  }, [])
 
   // *********
   // GETTER HANDLERS
@@ -104,6 +107,13 @@ export default function AdminDashboard({ allPosts, allComments }) {
     setTopCommenter(commenter)
   }
 
+  // ======================================
+
+  const getLocations = async () => {
+    const res = await getAllLocations()
+    console.log(res)
+  }
+
   // *********
   // JSX Render for TABLE
   // *********
@@ -126,7 +136,7 @@ export default function AdminDashboard({ allPosts, allComments }) {
   const pinnedPostsJSX = pinnedPosts.map(post => {
     return (
       <div key={post.id}>
-        <input style={{marginRight: '10px'}} type="checkbox" name="pinned" id="pinned" checked readOnly/>
+        <input style={{ marginRight: '10px' }} type="checkbox" name="pinned" id="pinned" checked readOnly />
         <Link to={`/blog/${post.id}`}><label htmlFor="pinned">{post.main_title}</label></Link>
       </div>
     )
@@ -140,7 +150,7 @@ export default function AdminDashboard({ allPosts, allComments }) {
         <h5>Total Comments: {totalComments}</h5>
         <br />
         <h5>Pinned Posts:</h5>
-        <br/>
+        <br />
         {pinnedPostsJSX}
         <br />
         {mostCommented !== undefined ?

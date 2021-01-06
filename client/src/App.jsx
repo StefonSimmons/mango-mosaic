@@ -4,7 +4,7 @@ import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { getAllPosts, updatePost, createPost, destroyPost } from './services/posts'
 import { getAllComments, createComment, destroyComment } from './services/comments'
 import { loginUser, verifyAdmin, removeToken } from './services/auth'
-import {getLocationInfo} from './services/location'
+import { getLocationInfo, postLocation } from './services/location'
 import Header from './components/Header'
 import Blog from './components/Blog'
 import Post from './components/Post'
@@ -37,21 +37,24 @@ function App() {
   // POST AND COMMENT HANDLERS
   useEffect(() => {
     getPosts()
-    getLocation()
   }, [submitted])
+
+  const getPosts = async () => {
+    const res = await getAllPosts()
+    updateAllPosts(res)
+  }
+
+  useEffect(() => {
+    getLocation()
+  }, [])
 
   const getLocation = async () => {
     const data = await getLocationInfo()
     setLocation({
       city: data.city,
       state: data.state,
-      country: data.country
+      country: data.country_name
     })
-  }
-
-  const getPosts = async () => {
-    const res = await getAllPosts()
-    updateAllPosts(res)
   }
 
   useEffect(() => {
@@ -86,6 +89,11 @@ function App() {
   // DELETE, EDIT AND CREATE FORM HANDLERS
   function toggleEditForm() {
     updateEditForm(!editForm)
+  }
+
+  const handlePostLocation = async () => {
+    const res = await postLocation(location)
+    console.log(res)
   }
 
   const handleCreatePost = async (postData) => {
@@ -155,7 +163,7 @@ function App() {
             <MangoHeader />
             {loading
               ?
-              <Loading /> 
+              <Loading />
               : <Blog
                 allPosts={allPosts}
                 getPosts={getPosts}
@@ -163,7 +171,7 @@ function App() {
                 scrollToBlog={scrollToBlog}
                 browsing={browsing}
                 setBrowsing={setBrowsing}
-                loading={loading}
+                handlePostLocation={handlePostLocation}
               />
             }
           </Route>
@@ -185,8 +193,8 @@ function App() {
               deleteClicked={deletionModal}
               cancelDeletion={toggleDeletionModal}
               scrollToBlog={scrollToBlog}
-              setScroll = {setScroll}
-              setBrowsing = {setBrowsing}
+              setScroll={setScroll}
+              setBrowsing={setBrowsing}
             />
           </Route>
 
